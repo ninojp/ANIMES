@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace Src;
 if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 
 /** Configurações básicas do site ANIME.
@@ -21,13 +21,13 @@ abstract class Config
         define('URLADM', 'https://localhost/ANIMES/adms/');
         
         //Página inicial (Principal)
-        define('CONTROLLER', 'Anime');
+        define('CONTROLLER', 'Animes');
         
         //Página de erro (em caso de erro de carregamento)
         define('CONTROLLERERRO', 'Erro');
         
         // E-mail definido como e-mail administrativo (depois alterar)
-        define('EMAILADM', 'meu.sem@gmail.com');
+        define('EMAILADM', 'ninocriptocoin@gmail.com');
 
         //Credenciais(Com senha) do banco de dados
         define('HOST', 'localhost');

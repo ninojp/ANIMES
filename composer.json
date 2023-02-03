@@ -1,0 +1,20 @@
+{
+    "name": "dtudo/animes",
+    "description": "Novo projeto sobre Animes",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/",
+            "Animes\\": "app/animes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edenilson João Pereira",
+            "email": "ninocriptocoin@gmail.com"
+        }
+    ]
+}

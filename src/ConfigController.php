@@ -1,15 +1,11 @@
 <?php
 
-namespace Core;
+namespace Src;
 
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 
-/**
- * Recebe a URL e manipula
- * Carregar a CONTROLLER
- * 
- * @author Cesar <cesar@celke.com.br>
- */
+/** Recebe a URL e a manipula. Carregar a CONTROLLER
+ * @author NinoJP <ninocriptocoin@gmail.com> */
 class ConfigController extends Config
 {
     /** @var string $url Recebe a URL do .htaccess */
@@ -26,10 +22,9 @@ class ConfigController extends Config
     /** @var string $classe Recebe a classe */
     private string $classLoad;
 
-    /**
+    /** ==========================================================================================
      * Recebe a URL do .htaccess
-     * Validar a URL
-     */
+     * Validar a URL     */
     public function __construct()
     {
         $this->config();
@@ -49,13 +44,10 @@ class ConfigController extends Config
             $this->urlController = $this->slugController(CONTROLLER);
         }
     }
-
-    /**
+    /** ==========================================================================================
      * Método privado não pode ser instanciado fora da classe
      * Limpara a URL, elimando as TAG, os espaços em brancos, retirar a barra no final da URL e retirar os caracteres especiais
-     *
-     * @return void
-     */
+     * @return void  */
     private function clearUrl(): void
     {
         //Eliminar as tag
