@@ -2,7 +2,7 @@
 if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
     header("Location: https://localhost/animes/");
 } ?>
-<!-- Início do NavBar, barra de navegação do topo da página -->
+<!-- NAVBAR, barra de navegação do topo da página -->
 <nav class="navbar sticky-top container-fluid">
     <div class="navbar_content">
         <div class="bars">

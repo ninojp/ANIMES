@@ -13,55 +13,52 @@ font-family: 'Ubuntu', sans-serif; */
 }
 /* Variáveis GLOBAIs das CORES da Pagina */
 :root{
-    --branco: #fff;
+    --transp: transparent;
+    --branco: rgb(255, 255, 255);
+    --branco02: rgb(241, 241, 241);
     --gelo: rgba(235,238,246,1);
     --gelo2: rgb(230, 231, 233);
     --gelo3: rgb(213, 212, 212);
-    --transp: transparent;
-    --dark: rgba(55,54,54,1);
-    --preto: #000;
-    --preto20: rgba(0,0,0,0.2);
-    --preto40: rgba(0,0,0,0.4);
-    --preto60: rgba(0,0,0,0.6);
-    --preto80: rgba(0,0,0,0.8);
-    --sixth-color: #222;
+    --cinza: rgba(55,54,54,1);
+    --preto: rgb(0, 0, 0);
+    --preto02: rgba(0,0,0,0.2);
+    --preto04: rgba(0,0,0,0.4);
+    --preto06: rgba(0,0,0,0.6);
+    --preto08: rgba(0,0,0,0.8);
+    --laranja02: rgb(255, 243, 205);
     --gold: rgba(255,215,0,1);
-    --laranja: rgba(240,191,76,1);
-    --warning-color: #ed9c28;
-    --danger-color: #d2322d;
-    --vermelho: rgba(172,2,2,1);
-    --verdeScuro: rgba(6,16,0,1);
-    --verdeEscuro: rgba(16,44,0,1);
-    --verdeClaro: rgba(27,74,0,1);
-    --success-color: #47a447;
-    --azulClarinho: rgb(163, 198, 251);
-    --info-color: rgb(91, 192, 222);
-    --azulClaro: rgba(13,110,253,1);
-    --site-color: rgb(57, 123, 254);
-    --primary-color: rgb(0, 136, 204);
-    --azulMedio: rgba(4,9,170,1);
-    --main-bg-color: rgb(25, 32, 57);
-    --second-bg-color: rgb(30, 39, 70);
-    --azulEscuro: rgba(5,35,57,1);
-    --fourth-bg-color: rgb(19, 27, 56);
-    --azulScuro: rgba(1,13,21,1);
-    --bg-color: #ecedf0;
-    --second-color: #f1f1f1;
-    --main-color: #ebeef6;
-    --third-color: #9fa7bd;
-    --active-color: #d4def7;
-    --primary-color-second: #cfe2ff;
-    --success-color-second: #d1e7dd;
-    --info-color-second: #cff4fc;
-    --warning-color-second: #fff3cd;
-    --danger-color-second: #f8d7da;
+    --laranja05: rgba(240,191,76,1);
+    --laranja07: rgb(237, 156, 40);
+    --vermelho02: rgb(248, 215, 218);
+    --vermelho05: rgb(210, 50, 45);
+    --vermelho08: rgba(172,2,2,1);
+    --verde01: rgb(209, 231, 221);
+    --verde02: rgb(71, 164, 71);
+    --verde03: rgba(27,74,0,1);
+    --verde05: rgba(16,44,0,1);
+    --verde09: rgba(6,16,0,1);
+    --azul001: rgb(207, 226, 255);
+    --azul002: rgb(212, 222, 247);
+    --azul003: rgb(159, 167, 189);
+    --azul004: rgb(163, 198, 251);
+    --azul01: rgb(91, 192, 222);
+    --azul02: rgba(13,110,253,1);
+    --azul03: rgb(57, 123, 254);
+    --azul04: rgb(0, 136, 204);
+    --azul05: rgba(4,9,170,1);
+    --azul06: rgb(25, 32, 57);
+    --azul07: rgb(30, 39, 70);
+    --azul08: rgba(5,35,57,1);
+    --azul09: rgb(19, 27, 56);
+    --azul10: rgba(1,13,21,1);
 }
 body{
     /* min-height: 100vh; */
     background-color: var(--preto) !important;
-    color: var(--azulClaro);
+    color: var(--azul04);
 }
-/* INICIO do NAVBAR do ADM */
+/* ============================================================================================ */
+/****************************** INICIO do NAVBAR do Site Animes *********************************/
 .navbar{
     /* position: fixed; */
     margin-top: 20px;
@@ -77,739 +74,34 @@ body{
     top: 0;
     z-index: 1;
 }
-.navbar .navbar_content{
-    display: flex;
-    align-items: center;
-}
-.navbar .bars{
-    margin: 0 20px 0 30px;
-    cursor: pointer;
-    font-size: 1.7em;
-}
-.notification{
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 1.2em;
-}
-.logo{
-    height: 40px;
-}
-.notification,
-.avatar{
-    position: relative;
-    cursor: pointer;
-}
-.notification .number{
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--gelo);
-    color: var(--azulScuro);
-    font-size: 13px;
-    font-weight: bold;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    right: -10px;
-    top: -10px;
-}
-.avatar img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-/* INICIO dropdown do navbar */
-.dropdown_menu{
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    box-shadow: 0px 4px 16px 0px var(--azulClaro);
-    background-color: var(--gelo);
-    color: var(--azulScuro);
-    width: 230px;
-    border-radius: 5px;
-}
-/* QUANDO A CLASSE É COLOCADA JUNTO A CLASSE ANTERIOR SEM ESPAÇO, indica q as DUAS classes PERTENCEM ao mesmo ELEMENTO */
-.dropdown_menu.active{
-    display: block;
-}
-.dropdown_content{
-    max-height: 400px;
-    overflow-y: auto;
-}
-.dropdown_menu li,
-.dropdown_menu .item{
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    border-bottom: 1px solid var(--azulClaro);
-    cursor: pointer;
-    font-size: 14px;
-}
-.dropdown_menu li img{
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: 50%;
-}
-/* NESTE TEXTO FOI COLOCADO UMA QUEBRA AUTOMATICA DE LINHA */
-.dropdown_menu li .msg_text{
-    font-style: italic;
-    text-overflow: ellipsis;/* será colocado (...) no fim da linha */
-    white-space: nowrap;/* não vai quebrar a linha */
-    overflow: hidden;/* tudo q não couber na div será ocultado */
-    padding-left: 5px;
-}
-.dropdown_menu li:hover .msg_text{
-    white-space: pre-wrap;/* colocado para exibir TODO o texto ao invés d quebrar a linha (quando passar o mouse) */
-}
-/* Menu DropDown do PERFIL do usuário ------------------------------------------------------------*/
-.dropdown_menu li:hover,
-.dropdown_menu .item:hover{
-    background-color: #e5dcdc;
-    border-radius: 5px;
-}
-.dropdown_menu .item a{
-    padding-right: 10px;
-    text-decoration: none;
-    font-size: 1rem;
-}
-.dropdown_menu.setting{
-    width: 150px;
-}
-/* FIM dropdown do navbar */
-
-
-/* =============================================================================================== */
-/* Definições do MAIN da VIEW menu.php ***********************************************************/
-.main_content{
-    display: flex;
-    background-color: var(--azulScuro);
-    box-shadow: 0px 3px 5px 0px var(--azulClaro);
-}
-/* Definições do DIV MENU LATERAL - SIDE-BAR ***************************************************/
-.sidebar{
-    position: sticky;
-    top: 60px;/*testar depois, ainda não muda nada */
-    height: calc(100vh - 100px);
-    width: 60px;
-    /* width: 250px; */
-    overflow: auto;/* para exibir a barra de rolagem se for necessário */
-    overflow-x: hidden;
-    flex-shrink: 0;
-    background-color: var(--azulScuro);
-    color: var(--azulClaro);
-    box-shadow: 4px 4px 4px 0px rgba(13, 110, 253, 0.3);
-    transition: 0.3s width ease-in-out;
-}
-@media (max-width: 768px) {
-    .sidebar{
-        width: 60px;
-        position: fixed;
-        z-index: 1;
-        width: 0;
-    }
-}
-.sidebar:hover,
-.sidebar.active{
-    /* width: 250px; */
-    width: fit-content;
-}
-.sidebar a{
-    color: var(--azulClaro);
-    text-decoration: none;
-}
-.sidebar a:hover{
-    background-color: var(--azulEscuro);
-    color: var(--azulClaro);
-    text-decoration: none;
-}
-/* BUTTON class:dropdown_btn  - Botão DropDown **************************************************/
-.dropdown_btn{
-    padding: 15px 0;
-    font-size: 16px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    width: 100%;
-    color: var(--azulClaro);
-}
-.dropdown_btn span{
-    margin-right: 5px;
-}
-.dropdown_btn:hover{
-    background-color: var(--second-bg-color);
-    color: var(--active-color);
-}
-.dropdown_btn .icon{
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-}
-.dropdown_btn.active{
-    background-color: var(--second-bg-color);
-    color: var(--active-color);
-}
-/* DIV dos ITENS do menu DropDown ************************************************************/
-.dropdown_container{
-    display: none;
-    background-color: var(--fourth-bg-color);
-}
-.dropdown_container.active{
-    display: block !important;
-}
-/* ITENS do menu dropDown */
-.sidebar_nav{
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    font-size: 1em;
-    transition: 0.3s background ease;/* erro testar novamente*/
-    padding: 3px 5px 3px 25px;
-}
-.sidebar_nav.active{
-    background-color: var(--azulEscuro);
-    color: var(--azulClaro);
-}
-.sidebar_nav.active::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 5px;
-    background-color: var(--branco);
-}
-.sidebar_nav .icon{
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-}
-.sidebar_nav .icon_itens{
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-}
-
-/* Verificar depois a onde pertence e se está sendo usado */
-.drop_btn_action{
-    background-color: var(--azulMedio);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--azulMedio);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-.drop_btn_action:hover,
-.drop_btn_action:focus{
-    background-color: var(--gelo2);
-    color: var(--azulMedio);
-}
-.drop_action{
-    position: relative;
-    display: inline-block;
-}
-.drop_action_item{
-    display: none;
-    position: absolute;
-    right: 0px;
-    z-index: 1;
-    background-color: var(--branco);
-    min-width: 130px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px var(--preto40);
-}
-.drop_action_item a{
-    padding: 8px 12px 4px 12px;
-    text-decoration: none;
-    display: block;
-}
-.drop_action_item a:hover{
-    background-color: var(--gelo);
-}
-.drop_action_item.show_drop_action{
-    display: block;
-    border-radius: 7px;
-}
-/* Fim dropdown sidebar */
-
+/********************************* FIM do NAVBAR do Site Animes *********************************/
 /* ============================================================================================ */
-/* Definições da VIEW Dashboard.php ************************************************************/
-.box{
-    position: relative;
-    display: flex;
-    width: 23%;
-    height: 150px;
-    margin: 5px 1%;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 5px;
-    overflow: hidden;
-    flex-direction: column;
-    box-shadow: 0px 4px 6px 0px var(--preto);
-}
-.box_first{
-    background-color: var(--azulEscuro);
-}
-.box_second{
-    background-color: var(--dark);
-}
-.box_third{
-    background-color: var(--verdeClaro);
-}
-.box_fourth{
-    background-color: var(--gold);
-}
-.box span{
-    margin: 5px 0;
-    font-size: 17px;
-    position: relative;
-}
-@media (max-width: 1024px) {
-    .box{
-        width: 48%;
-    }
-}
-@media (max-width: 768px) {
-    .box{
-        width: 98%;
-    }
-}
+/*********************************** INICIO do MAIN da VIEW *************************************/
 
-/* =============================================================================================== */
-/* Definições gerais do LAYOUT das VIEWs LISTAR ****************************************************/
-.wrapper_list{
-    width: 100%;
-    background-color: var(--azulEscuro);
-}
-.row_list{
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--branco);
-    padding: 20px;
-    margin: 35px;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    box-shadow: 1px 4px 16px 1px var(--preto);
-}
-.top_list{
-    width: 100%;
-    overflow: hidden;
-}
-.title_content{
-    align-self: center;
-    text-align: center;
-    padding: 0px 16px;
-}
-.title_h2{
-    text-shadow: 0px 1px 3px #000;
-    color: var(--preto);
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-/* Formulário de pesquisa das views listar **********************************************************/
-.div_row_form{
-    width: 100%;
-    display: flex;
-    margin: 20px 0px 5px 0px;
-}
-.form_pesquisar{
-    width: 100%;
-    display: flex;
-}
-.row_form_pesquisar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.div_row_msg_btn{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.top_list_right{
-    padding: 0px;
-    text-align: center;
-}
-/* Definições gerais das TABELAS *****************************************************************/
-.table_list{
-    /* margin-top: 15px; */
-    width: 100%;
-    box-shadow: 0px 4px 6px 0px var(--preto);
-}
-.table_list .list_head{
-    padding: 10px;
-    text-align: center;
-    border: 1px solid var(--preto);
-}
-.table_list .list_head .list_head_content{
-    background-color: var(--gelo);
-    color: var(--azulScuro);
-    padding: 10px;
-    text-align: center;
-}
-.table_list .list_body{
-    /* background-color: var(--gelo2); */
-    /* color: var(--azulEscuro); */
-    padding: 8px;
-    text-align: center;
-}
-.table_list .list_body .list_body_content{
-    /* background-color: var(--gelo3); */
-    color: var(--azulEscuro);
-    padding: 8px;
-    text-align: center;
-}
-@media (max-width: 550px) {
-    .tb_sm_none,
-    .tb_md_none,
-    .tb_lg_none{
-        display: none;
-    }
-}
-@media (max-width: 790px) {
-    .tb_md_none,
-    .tb_lg_none{
-        display: none;
-    }
-}
-@media (max-width: 1024px) {
-    .tb_lg_none{
-        display: none;
-    }
-}
-@media (max-width: 1290px) {
-    .tb_xxl_none{
-        display: none;
-    }
-}
 
-/* INICIO do Formulário ****************************************************************************/
-/* Definições gerais do LAYOUT das VIEWs com Formulários ******************************************/
-.wrapper_form{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    padding: 35px;
-    /* margin: 35px; */
-    background-color: var(--azulEscuro);
-}
-.row_form{
-    display: flex;
-    justify-content: center;
-    width: 30rem;
-    background-color: var(--branco);
-    flex-wrap: wrap;
-    border-radius: 10px;
-    box-shadow: 1px 4px 16px 1px var(--preto);
-}
-/* CLASSE CRIADA PARA O ADMINISTRATIVO DO SITE (STS) ********************************************/
-.row_form_sts{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 50rem;
-    background-color: var(--azulScuro);
-    flex-wrap: wrap;
-    border-radius: 10px;
-    box-shadow: 1px 4px 16px 1px var(--preto);
-}
 
-.title_form{
-    width: 100%;
-    height: 90px;
-    background-color: var(--main-bg-color);
-    border-radius: 9px 9px 0 0;
-    color: var(--main-color);
-    font-size: 30px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.form_adms{
-    width: 100%;
-    align-items: flex-start;
-    position: relative;
-    padding: 20px;
-    margin: .5em auto 0 auto;
-}
-.row_input{
-    height: 40px;
-    margin-top: 1.5rem;
-    position: relative;
-}
-.row_input i{
-    position: absolute;
-    width: 47px;
-    height: 100%;
-    color: var(--main-color);
-    font-size: 18px;
-    background-color: var(--second-bg-color);
-    border: 1px solid var(--active-color);
-    border-radius: 5px 0 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row_input input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    padding-left: 60px;
-    border-radius: 5px;
-    border: 1px solid var(--active-color);
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-.row_input input::placeholder{
-    color: var(--danger-color);
-    font-size: 0.9rem;
-}
-.select_input{
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.5rem;
-    position: relative;
-    border-radius: 5px;
-    border: 1px solid var(--active-color);
-}
-.select_input i{
-    position: absolute;
-    width: 47px;
-    height: 100%;
-    color: var(--main-color);
-    font-size: 18px;
-    background-color: var(--second-bg-color);
-    border: 1px solid var(--active-color);
-    border-radius: 5px 0 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.select_input .form_label{
-    color: var(--danger-color);
-    font-size: 0.9rem;
-    padding-right: 10px;
-}
-.span_obrigatorio{
-    color: var(--danger-color);
-    font-size: 0.8rem;
-}
-.button_center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-}
-/* DIV ROW dos formularios de edição *****************************************************/
-.row_edit{
-    height: 60px;
-    margin-top: 1rem;
-    position: relative;
-}
-.row_edit i{
-    position: absolute;
-    width: 47px;
-    height: 60%;
-    color: var(--main-color);
-    font-size: 18px;
-    background-color: var(--second-bg-color);
-    border: 1px solid var(--active-color);
-    border-radius: 5px 0 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row_edit input{
-    height: 60%;
-    width: 100%;
-    outline: none;
-    padding-left: 60px;
-    border-radius: 5px;
-    border: 1px solid var(--active-color);
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-/* não está sendo usado.................  */
-.title_input{
-    color: var(--azulScuro);
-    font-size: 1.1em;
-}
-input.input_form,
-textarea.input_form,
-select.input_form{
-    width: 100%;
-    padding: .5em .5em;
-    font-weight: 500;
-    border-radius: 5px;
-    border: 1.2px solid var(--azulClarinho);
-    margin-top: 5px;
-}
-textarea.input_form{
-    resize: none;
-}
-input.input_form:focus,
-textarea.input_form:focus,
-select.input_form:focus{
-    outline: none;
-    border: 1.5px solid var(--azulClaro);
-}
-/* ============================================================================================== */
-/* Definições das VIEWs Visualizar Detalhes *******************************************************/
-.content_adm{
-    width: 100%;
-    padding: 1em;
-    background-color: var(--gelo2);
-}
-.content_adm .view_det{
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    background-color: var(--gelo);
-}
-.view_det .view_det_title{
-    /* width: auto; */
-    color: var(--azulMedio);
-    font-size: 1em;
-    font-weight: 600;
-    margin: .3em .4em .3em .5em;
-}
-.view_det .view_det_info{
-    font-size: 0.9em;
-    font-weight: 400;
-    padding: 3px 10px;
-}
-/* ================================================================================================ */
-/* Inicio da paginação ******************************************************************************/
-.content_pagination{
-    display: flex;
-    margin: 15px 0;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-.pagination{
-    display: inline-block;
-    font-size: 17px;
-}
-.pagination a{
-    float: left;
-    color: var(--azulScuro);
-    text-decoration: none;
-    padding: 8px 14px;
-    transition: background-color .3s;
-}
-.pagination a.active{
-    background-color: var(--azulEscuro);
-    color: var(--branco);
-}
-.pagination a:hover:not(.active){
-    background-color: var(--gelo);
-}
-/* FIM da paginação */
 
-/* ============================================================================================== */
-/* Definições gerais dos BOTÕES *******************************************************************/
-.btn_primary{
-    background-color: var(--azulClaro);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--azulClaro);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-.btn_primary:hover{
-    background-color: var(--gelo2);
-    color: var(--azulClaro);
-}
-.btn-success{
-    box-shadow: 0px 4px 6px 0px var(--preto);
-}
-.btn_success{
-    background-color: var(--verdeClaro);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--verdeClaro);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-    box-shadow: 0px 4px 6px 0px var(--preto);
-    margin: 6px;
-}
-.btn_success:hover{
-    background-color: var(--gelo2);
-    color: var(--verdeClaro);
-}
-.btn_warning{
-    background-color: var(--laranja);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--laranja);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-.btn_warning:hover{
-    background-color: var(--gelo2);
-    color: var(--laranja);
-}
-.btn_danger{
-    background-color: var(--vermelho);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--vermelho);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-.btn_danger:hover{
-    background-color: var(--gelo2);
-    color: var(--vermelho);
-}
-.btn_info{
-    background-color: var(--azulMedio);
-    color: var(--branco);
-    font-size: 15px;
-    padding: 5px 8px;
-    border: 1px solid var(--azulMedio);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-.btn_info:hover{
-    background-color: var(--gelo2);
-    color: var(--azulMedio);
-}
-/* ============================================================================================== */
-/* Definições gerais da classe alert **************************************************************/
+
+/************************************** FIM do MAIN da VIEW ************************************/
+/* =========================================================================================== */
+/********************************* INICIO SIDEBAR (Barra Lateral) ******************************/
+
+
+
+
+
+/********************************** FIM SIDEBAR (Barra Lateral) *********************************/
+/* ============================================================================================ */
+/************************************* INICIO FOOTER (Rodapé) ***********************************/
+
+
+
+
+
+
+/************************************** FIM FOOTER (Rodapé) *************************************/
+/* =========================================================================================== */
+/************************************** INICIO CLASSE ALERT ************************************/
 .msg_alert{
     /* width: 100%; */
     justify-content: center;
@@ -825,3 +117,12 @@ select.input_form:focus{
     width: max-content;
     margin-left: 50px;
 }
+/************************************** FIM do MAIN da VIEW ************************************/
+/* =========================================================================================== */
+/********************************* INICIO DEFINIÇÕES GENÉRICAS *********************************/
+
+
+
+
+
+/************************************ FIM DEFINIÇÕES GENÉRICAS *********************************/
