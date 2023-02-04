@@ -8,6 +8,7 @@
     "autoload": {
         "psr-4": {
             "Src\\": "src/",
+            "App\\": "app/",
             "Animes\\": "app/animes"
         }
     },

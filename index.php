@@ -11,7 +11,7 @@ require './vendor/autoload.php';
 //Instanciar a classe ConfigController, responsável em tratar a URL
 $url = new Src\ConfigController();
 //Instanciar o método para carregar a página/controller
-// $url->loadPage();
+$url->loadPage();
 
 ?>
 <h1>Index! Começando uma nova jornada 01/02/2023</h1>

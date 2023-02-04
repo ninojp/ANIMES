@@ -33,30 +33,30 @@ class ConfigController extends Config
      * Validar a URL     */
     public function __construct()
     {
-        echo "(ConfigController)! Carregar esta pagina! <br>";
-        // $this->config();
+        // echo "(ConfigController)! Carregar esta pagina! <br>";
+        $this->config();
         if (!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))) {
             $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
-            var_dump($this->url);
+            // var_dump($this->url);
             $this->clearUrl();
 
             // Explode para separar(converter), a string em um array com duas posições
             $this->urlArray = explode("/", $this->url);
-            var_dump($this->urlArray);
+            // var_dump($this->urlArray);
 
             if (isset($this->urlArray[0])) {
-                var_dump($this->urlArray[0]);
+                // var_dump($this->urlArray[0]);
                 $this->urlController = $this->slugController($this->urlArray[0]);
             } else {
-                //Caso não seja enviado a pagina(controller), carrega uma página padrão
-                // $this->urlController = $this->slugController(CONTROLLERERRO);
-                $this->urlController = "animes";
+                //Caso não seja enviado a pagina(controller), carrega a página ERRO
+                $this->urlController = $this->slugController(CONTROLLERERRO);
+                // Em servidores linux a primeira letra deve ser Maiúscula(igual a classe)
+                // Em servidores Windows, é indiferente
             }
         } else {
-            // Caso não seja enviado a pagina(controller), carrega uma página padrão
-            // $this->urlController = $this->slugController(CONTROLLER);
-            echo "Acessa a pagina inicial! <br>";
-            $this->urlController = "animes";
+            // echo "Acessa a pagina inicial! <br>";
+            // Caso não seja enviado a pagina(controller), carrega uma página padrão(Inicial)
+            $this->urlController = $this->slugController(CONTROLLER);
         }
         echo "Controller: {$this->urlController}<br>";
     }
@@ -94,20 +94,24 @@ class ConfigController extends Config
         $this->urlSlugController = str_replace(" ", "", $this->urlSlugController);
         return $this->urlSlugController;
     }
-    // /** =======================================================================================
-    //  * Carregar as Controllers.
-    //  * Instanciar as classes da controller e carregar o método index.
-    //  * @return void     */
-    // public function loadPage(): void
-    // {
-    //     $this->classLoad = "\\Animes\\Controllers\\" . $this->urlController;
-    //     if (class_exists($this->classLoad)) {
-    //         $this->loadClass();
-    //     } else {
-    //         $this->urlController = $this->slugController(CONTROLLERERRO);
-    //         $this->loadPage();
-    //     }
-    // }
+    /** =======================================================================================
+     * Carregar as Controllers.
+     * Instanciar as classes da controller e carregar o método index.
+     * @return void     */
+    public function loadPage(): void
+    {
+        // echo "Carregar a pagina/Controller<br>";
+        // $this->classLoad = "\\Animes\\Controllers\\" . $this->urlController;
+        $classLoad = "\\Animes\\Controllers\\" . $this->urlController;
+        $classPage = new $classLoad();
+        $classPage->index();
+        // if (class_exists($this->classLoad)) {
+        //     $this->loadClass();
+        // } else {
+        //     $this->urlController = $this->slugController(CONTROLLERERRO);
+        //     $this->loadPage();
+        // }
+    }
     // /** =======================================================================================
     //  * Verificar se o método existe, existindo o método carrega a página;
     //  * Não existindo o método, para o carregamento e apresenta mensagem de erro.
