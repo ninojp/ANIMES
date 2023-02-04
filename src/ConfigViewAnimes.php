@@ -17,8 +17,8 @@ class ConfigViewAnimes
      * @param array|string|null $data Dados que a VIEW deve receber.     */
     public function __construct(private string $nameView, private array|string|null $data)
     { 
-        var_dump($this->nameView);      
-        var_dump($this->data);      
+        // var_dump($this->nameView);      
+        // var_dump($this->data);      
     }
     /** ==========================================================================================
      * Carregar a VIEW.
@@ -27,13 +27,13 @@ class ConfigViewAnimes
     public function loadViewAnimes(): void
     {
         if (file_exists('app/' . $this->nameView . '.php')) {
-            include 'app/animes/Views/include/header.php';
+            include 'app/animes/Views/include/head.php';
             // include 'app/animes/Views/include/navbar.php';
-            include 'app/' . $this->nameView . '.php';
+            include 'app/'.$this->nameView.'.php';
             // include 'app/animes/Views/include/sidebar.php';
             include 'app/animes/Views/include/footer.php';
         } else {
-            die("Erro 002! Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+            die("Erro 002! Por favor tente novamente. Caso o problema persista, entre em contato o administrador ".EMAILADM);
         }
     }
 }

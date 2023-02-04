@@ -1,6 +1,8 @@
-001 - Erro de conexão com o Banco de dados(AdmsConn.php)
-002 - Erro ao carregar a VIEW(ConfigView.php)
-003 - Erro ao carregar a Classe(CarregarPgAdmLevel.php)
-004 - Erro ao carregar o Método(CarregarPgAdmLevel.php)
-005 - Erro ao carregar a VIEW(login.php)
-006 - Erro não encontrou a pagina no DB (CarregarPgAdmLevel.php)
+Erro 001 - Models/helper/MdConn.php, connectDb()
+
+Erro 002 - SRC/ConfigViewAnimes.php,  loadViewAnimes()
+
+Erro 003 -  ao carregar a Classe(CarregarPgAdmLevel.php)
+Erro 004 - Erro ao carregar o Método(CarregarPgAdmLevel.php)
+Erro 005 - Erro ao carregar a VIEW(login.php)
+Erro 006 - Erro não encontrou a pagina no DB (CarregarPgAdmLevel.php)

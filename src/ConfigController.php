@@ -58,7 +58,7 @@ class ConfigController extends Config
             // Caso não seja enviado a pagina(controller), carrega uma página padrão(Inicial)
             $this->urlController = $this->slugController(CONTROLLER);
         }
-        echo "Controller: {$this->urlController}<br>";
+        // echo "Controller: {$this->urlController}<br>";
     }
     /** =========================================================================================
      * Método privado não pode ser instanciado fora da classe

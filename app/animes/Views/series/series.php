@@ -4,11 +4,6 @@ if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: h
 
 <main class="container-fluid">
     <div class="row">
-        <h1>VIEW da Pg Inicial - Site ANIMES.</h1>
-        <p>
-            <?php
-            var_dump($this->data);
-            ?>
-        </p>
+        <h1>VIEW SÉRIES - Site ANIMES.</h1>
     </div>
 </main>
