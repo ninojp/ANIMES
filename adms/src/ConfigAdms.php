@@ -21,7 +21,7 @@ abstract class ConfigAdms
     {
         // echo "Classe CONFIG! <br>";
         //URL do projeto
-        define('URL', 'https://localhost/ANIMES/');
+        define('URL', 'https://localhost/ANIMES/adms/');
         define('URLADM', 'https://localhost/ANIMES/adms/app/adm/');
         
         //Página inicial (Principal)
