@@ -1,8 +1,11 @@
+Erro 000 - Erro genérico, CONSTANTE defina na index está incoreta
+
 Erro 001 - Models/helper/MdConn.php, connectDb()
 
 Erro 002 - SRC/ConfigViewAnimes.php,  loadViewAnimes()
 
-Erro 003 -  ao carregar a Classe(CarregarPgAdmLevel.php)
+Erro 003 -  SRC/ConfigController.php, loadClass()
+
 Erro 004 - Erro ao carregar o Método(CarregarPgAdmLevel.php)
 Erro 005 - Erro ao carregar a VIEW(login.php)
 Erro 006 - Erro não encontrou a pagina no DB (CarregarPgAdmLevel.php)

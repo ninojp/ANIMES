@@ -1,11 +1,13 @@
 <?php
-namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+namespace AdmsSrc;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/animes/");
+    die("Erro 000! Página Não encontrada"); }
 
 /** Classe abstract(ABSTRATA) não pode ser instânciada, somente herdada.
- * Configurações(CONSTANTES) básicas do site ANIME.
- * @author NinoJP <meu.sem@gmail.com> - 01/02/2023 */
-abstract class Config
+ * Configurações(CONSTANTES) básicas da PARTE ADMINISTRATVA do site ANIME.
+ * @author NinoJP <meu.sem@gmail.com> - 07/02/2023 */
+abstract class ConfigAdms
 {
     /** ==========================================================================================
      * Método protected(PROTEGIDO) somente pode ser instânciado dentro da classe ou da classe FILHA
@@ -15,15 +17,15 @@ abstract class Config
      * Credenciais de acesso ao banco de dados
      * E-mail do administrador.
      * @return void   */
-    protected function config(): void
+    protected function configAdms(): void
     {
         // echo "Classe CONFIG! <br>";
         //URL do projeto
         define('URL', 'https://localhost/ANIMES/');
-        define('URLADM', 'https://localhost/ANIMES/adms/');
+        define('URLADM', 'https://localhost/ANIMES/adms/app/adm/');
         
         //Página inicial (Principal)
-        define('CONTROLLER', 'ListAnimes');
+        define('CONTROLLER', 'Login');
         
         //Página de erro (em caso de erro de carregamento)
         define('CONTROLLERERRO', 'Erro');

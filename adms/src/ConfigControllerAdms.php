@@ -1,10 +1,12 @@
 <?php
-namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+namespace AdmsSrc;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/app/adm/");
+    die("Erro 000! Página Não encontrada"); }
 
 /** Recebe a URL e a manipula. Carregar a CONTROLLER
  * @author NinoJP <ninocriptocoin@gmail.com> - 02/02/2023 */
-class ConfigController extends Config
+class ConfigControllerAdms extends ConfigAdms
 {
     /** @var string $url Recebe a URL do .htaccess */
     private string $url;
@@ -34,7 +36,7 @@ class ConfigController extends Config
     public function __construct()
     {
         // echo "(ConfigController)! Carregar esta pagina! <br>";
-        $this->config();
+        $this->configAdms();
         if (!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))) {
             $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
             // var_dump($this->url);
@@ -100,9 +102,9 @@ class ConfigController extends Config
      * @return void     */
     public function loadPage(): void
     {
-        echo "ConfigController.php -  Carregar a pagina/Controller<br>";
-        $this->classLoad = "\\Animes\\Controllers\\" . $this->urlController;
-        // $classLoad = "\\Animes\\Controllers\\" . $this->urlController;
+        echo "ANIMES/ADMS/SRC/ConfigControllerAdms.php - Carregar a pagina(Controller)<br>";
+        $this->classLoad = "\\Adm\\Controllers\\" . $this->urlController;
+        // $classLoad = "\\Adm\\Controllers\\" . $this->urlController;
         // $classPage = new $classLoad();
         // $classPage->index();
         if (class_exists($this->classLoad)) {

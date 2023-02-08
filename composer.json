@@ -9,7 +9,10 @@
         "psr-4": {
             "Src\\": "src/",
             "App\\": "app/",
-            "Animes\\": "app/animes"
+            "Animes\\": "app/animes/",
+            "Adm\\": "adms/app/adm/",
+            "AdmsSrc\\": "adms/src/",
+            "AdmsAni\\": "adms/app/animes/"
         }
     },
     "authors": [
