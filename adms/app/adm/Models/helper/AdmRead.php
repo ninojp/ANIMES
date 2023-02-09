@@ -1,10 +1,12 @@
 <?php
-namespace Animes\Models\helper;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+namespace Adm\Models\helper;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 use PDO;
 use PDOException;
 /** Classe(Models/Helper) genérica para selecionar registros no banco de dados */
-class MdRead extends MdConn
+class AdmRead extends AdmConn
 {
     /** @var string - Recebe a QUERY   */
     private string $select;

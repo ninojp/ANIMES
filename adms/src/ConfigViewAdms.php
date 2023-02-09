@@ -1,12 +1,12 @@
 <?php
 namespace AdmsSrc;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
-    header("Location: https://localhost/adms/app/adm/");
+    header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 
 /*************************************************************************************************
  * Carregar as páginas da View
- * @author NinoJP <ninocriptocoin@gmail.com> - 03/02/2023 */
+ * @author NinoJP <ninocriptocoin@gmail.com> - 07/02/2023 */
 class ConfigViewAdms
 {
     // Apartir do PHP 8, pode colocar este atributo:$nameView direto dentro do método:__construct()
@@ -47,14 +47,14 @@ class ConfigViewAdms
         if(file_exists('app/'.$this->nameView.'.php')){
             // var_dump($this->data);
             //inclui o arquivo head.php com o cabeçalho html para todas as Paginas(Views)
-            include 'app/adms/Views/include/head_login.php';
+            include 'app/adm/Views/include/head_login.php';
             //se existir, inclui o arquivo(indicado pela controller)
             include 'app/'.$this->nameView.'.php';
             //inclui o arquivo footer.php com o rodapé html para todas as Paginas(Views)
-            include 'app/adms/Views/include/footer_login.php';
+            include 'app/adm/Views/include/footer_login.php';
         }else{
             //pode-se criar uma tabela com codigos de erros, para uso interno:Erro 501
-            die("Erro - 005! Por Favor Tente Novamente ou entre em contato com: ".EMAILADM);
+            die("Erro - 004! Por Favor Tente Novamente ou entre em contato com: ".EMAILADM);
         }
     }
 }

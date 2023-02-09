@@ -1,5 +1,7 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); } ?>
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/animes/");
+    die("Erro 000! Página Não encontrada"); } ?>
 </main><!-- FIM do conteúdo da pagina ADM   (o início está no: menu.php )  -->
 <div class="container-fluid pt-2">
     <div class="row">

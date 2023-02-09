@@ -1,7 +1,7 @@
 <?php
 namespace AdmsSrc;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
-    header("Location: https://localhost/animes/");
+    header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 
 /** Classe abstract(ABSTRATA) não pode ser instânciada, somente herdada.
@@ -21,8 +21,8 @@ abstract class ConfigAdms
     {
         // echo "Classe CONFIG! <br>";
         //URL do projeto
-        define('URL', 'https://localhost/ANIMES/adms/');
-        define('URLADM', 'https://localhost/ANIMES/adms/app/adm/');
+        define('URL', 'https://localhost/ANIMES/');
+        define('URLADM', 'https://localhost/ANIMES/adms/');
         
         //Página inicial (Principal)
         define('CONTROLLER', 'Login');

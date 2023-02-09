@@ -1,11 +1,11 @@
 <?php
 namespace AdmsSrc;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
-    header("Location: https://localhost/adms/app/adm/");
+    header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 
 /** Recebe a URL e a manipula. Carregar a CONTROLLER
- * @author NinoJP <ninocriptocoin@gmail.com> - 02/02/2023 */
+ * @author NinoJP <ninocriptocoin@gmail.com> - 07/02/2023 */
 class ConfigControllerAdms extends ConfigAdms
 {
     /** @var string $url Recebe a URL do .htaccess */
@@ -102,7 +102,7 @@ class ConfigControllerAdms extends ConfigAdms
      * @return void     */
     public function loadPage(): void
     {
-        echo "ANIMES/ADMS/SRC/ConfigControllerAdms.php - Carregar a pagina(Controller)<br>";
+        // echo "ANIMES/ADMS/SRC/ConfigControllerAdms.php - Carregar a pagina(Controller)<br>";
         $this->classLoad = "\\Adm\\Controllers\\" . $this->urlController;
         // $classLoad = "\\Adm\\Controllers\\" . $this->urlController;
         // $classPage = new $classLoad();
@@ -124,7 +124,7 @@ class ConfigControllerAdms extends ConfigAdms
         if (method_exists($classPage, "index")) {
             $classPage->index();
         } else {
-            die("Erro 003! Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+            die("Erro 005! Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
         }
     }
 }

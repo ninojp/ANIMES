@@ -13,4 +13,4 @@ $url = new AdmsSrc\ConfigControllerAdms();
 //Instanciar o método para carregar a página/controller
 $url->loadPage();
 ?>
-<h1>Página INDEX, da parte administrativa do site!</h1>
+<!-- <h1>Página INDEX, da parte administrativa do site!</h1> -->

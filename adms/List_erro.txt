@@ -6,6 +6,10 @@ Erro 002 - SRC/ConfigViewAnimes.php,  loadViewAnimes()
 
 Erro 003 -  SRC/ConfigController.php, loadClass()
 
-Erro 004 - Erro ao carregar o Método(CarregarPgAdmLevel.php)
-Erro 005 - Erro ao carregar a VIEW(login.php)
-Erro 006 - Erro não encontrou a pagina no DB (CarregarPgAdmLevel.php)
+Erro 004 - ADMS/SRC/ConfigViewAdms.php, loadViewAdmsLogin()
+
+Erro 005 - ADMS/SRC/ConfigControllerAdms.php, loadClass()
+
+Erro 006 - ADMS/app/adm/Models/AdmLogin.php, login() 
+
+Erro 007 - ADMS/app/adm/Models/AdmLogin.php, valPassword()
