@@ -1,8 +1,10 @@
 <?php
-namespace App\adms\Models;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+namespace Adm\Models;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsDashboard, Pagina inicial do sistema administrativo "Dashboard" */
-class AdmsDashboard
+class AdmDashboard
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
@@ -26,8 +28,8 @@ class AdmsDashboard
      * Retorna False se houver algun erro    */
     public function countUsers():void
     {
-        $countUsers = new \App\adms\Models\helper\AdmsRead();
-        $countUsers->fullRead("SELECT COUNT(id) AS qntUsers FROM adms_users");
+        $countUsers = new \Adm\Models\helper\AdmRead();
+        $countUsers->fullRead("SELECT COUNT(id) AS qntUsers FROM adms_user");
 
         $this->resultBd = $countUsers->getResult();
         if($this->resultBd){

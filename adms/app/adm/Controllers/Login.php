@@ -27,9 +27,9 @@ class Login
             $valLogin = new \Adm\Models\AdmLogin();
             $valLogin->login($this->dataForm);
             if($valLogin->getResult()){
-                // $urlRedirect = URLADM."dashboard/index";
-                // header("Location: $urlRedirect");
-                echo "<h1>OK! Login com sucesso!</h1>";
+                $urlRedirect = URLADM."dashboard/index";
+                header("Location: $urlRedirect");
+                // echo "<h1>OK! Login com sucesso!</h1>";
             }else{
                 //cria uma nova posição dentro do array $dataForm,(mantém os dados no formulário)
                 $this->data['form'] = $this->dataForm;

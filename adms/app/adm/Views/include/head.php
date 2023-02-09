@@ -1,6 +1,6 @@
 <?php
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
-    header("Location: https://localhost/animes/");
+    header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); } ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,7 +8,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area administrativa</title>
+    <title>Administrativo do Site Animes</title>
     <!-- Carregar o BOOTSTRAP CSS local ------------------------------------------>
     <link rel="stylesheet" href="<?=URLADM;?>app/adm/assets/css/bootstrap.min.css">
     <!-- Carregar o ADMS.CSS CSS - layout do administrativo ----------------------->

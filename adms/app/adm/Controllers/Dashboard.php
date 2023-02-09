@@ -1,7 +1,8 @@
 <?php
-namespace App\adms\controllers;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use Core\ConfigView;
+namespace Adm\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 class Dashboard
 {
     /** Apartir do PHP 8, posso definir a TIPAGEM de varios tipos para o mesmo atributo, usando o PIPE|
@@ -12,7 +13,7 @@ class Dashboard
      * e enviar os dados para a view, através do método:loadView() - @return void */
     public function index():void
     {
-        $countUsers = new \App\adms\Models\AdmsDashboard();
+        $countUsers = new \Adm\Models\AdmDashboard();
         $countUsers->countUsers();
         if($countUsers->getResult()){
             // var_dump($countUsers->getResultBd());
@@ -20,9 +21,9 @@ class Dashboard
         } else {
             $this->data['countUsers'] = false;
         }
-        // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
-        $this->data['menu'] = $listMenu->itemMenu();
+        // Implementação da apresentação dinâmica do menu sidebar
+        // $listMenu = new \Adm\Models\helper\AdmMenu();
+        // $this->data['menu'] = $listMenu->itemMenu();
         // var_dump($this->data['menu']);
 
         // echo "adms/Controller/Dashboard.php: <h1> Página(controller) de Dashboard!</h1>";
@@ -32,9 +33,9 @@ class Dashboard
         $this->data['sidebarActive'] = "dashboard";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new ConfigView("adms/Views/dashboard/dashboard",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adm/Views/dashboard/dashboard",$this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdms();
 
     }
 }
