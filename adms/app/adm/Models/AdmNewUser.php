@@ -100,11 +100,10 @@ class AdmNewUser
             // $this->data['user'] = $this->data['email'];
             $this->data['confirm_email'] = password_hash($this->data['adm_pass'].date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
             
-            $this->data['id_adm_access_level'] = "3";
+            $this->data['id_adms_access_level'] = "3";
 
             $this->data['created'] = date("Y-m-d H:i:s");
-
-            var_dump($this->data);
+            // var_dump($this->data);
 
             $createUser = new \Adm\Models\helper\AdmCreate();
             $createUser->exeCreate("adms_user", $this->data);
@@ -114,7 +113,7 @@ class AdmNewUser
                 $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Usuário cadastrado com sucesso</p>";
                 $this->result = true;
 
-                // $this->sendEmail();
+                $this->sendEmail();
             } else {
                 $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível cadastrar o usuário</p>";
                 $this->result = false;
@@ -144,53 +143,54 @@ class AdmNewUser
     // }
     /** =============================================================================================
      * Médoto responsável por enviar o e-mail    -  @return void     */
-    // private function sendEmail(): void
-    // {
-    //     $this->contentEmailHtml();
-    //     $this->contentEmailText();
+    private function sendEmail(): void
+    {
+        $this->contentEmailHtml();
+        $this->contentEmailText();
         
-    //     $sendEmail = new \App\adms\Models\helper\AdmsSendEmail();
-    //     $sendEmail->sendEmail($this->emailData, 2);
+        $sendEmail = new \Adm\Models\helper\AdmSendEmail();
+        // o ID do e-mail q será usado, está sendo colocado manualmente aqui 1
+        $sendEmail->sendEmail($this->emailData, 1);
 
-    //     //faz a notificação se conseguiu ou não enviar o email
-    //     if($sendEmail->getResult()){
-    //         $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Usuário cadastrado com sucesso, acesse sua caixa de e-mail para confirmar o e-mail!</p>";
-    //         $this->result = true;
-    //     }else{
-    //         //instancia o método:getFromEmail(), para receber o email de quem está enviando
-    //         $this->fromEmail = $sendEmail->getFromEmail();
-    //         $_SESSION['msg'] = "<p class='alert alert-warning'>Usuário cadastrado com sucesso. Mas houve um erro ao enviar o e-mail de confirmação, entre em contado com {$this->fromEmail}</p>";
-    //         $this->result = true;
-    //     }
-    // }
-    /** =============================================================================================
+        //faz a notificação se conseguiu ou não enviar o email
+        if($sendEmail->getResult()){
+            $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Usuário cadastrado com sucesso, acesse sua caixa de e-mail para confirmar o e-mail!</p>";
+            $this->result = true;
+        }else{
+            //instancia o método:getFromEmail(), para receber o email de quem está enviando
+            $this->fromEmail = $sendEmail->getFromEmail();
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Usuário cadastrado com sucesso. Mas houve um erro ao enviar o e-mail de confirmação, entre em contado com {$this->fromEmail}</p>";
+            $this->result = true;
+        }
+    }
+    /** ============================================================================================
      * Método para criação do conteúdo HTML do e-mail
      * @return void     */
-    // private function contentEmailHtml():void
-    // {
-    //     $name = explode(" ", $this->data['name']);
-    //     $this->firstName = $name[0];
+    private function contentEmailHtml():void
+    {
+        $name = explode(" ", $this->data['adm_user']);
+        $this->firstName = $name[0];
 
-    //     $this->emailData['toEmail'] = $this->data['email'];
-    //     $this->emailData['toName'] = $this->data['name'];
-    //     $this->emailData['subject'] = "Confirme seu E-mail!";
-    //     $this->url = URLADM."conf-email/index?key=".$this->data['conf_email'];
+        $this->emailData['toEmail'] = $this->data['adm_email'];
+        $this->emailData['toName'] = $this->data['adm_user'];
+        $this->emailData['subject'] = "Confirme seu E-mail!";
+        $this->url = URLADM."conf-email/index?key=".$this->data['confirm_email'];
 
-    //     $this->emailData['contentHtml'] = "Prezado Sr(a) {$this->firstName}.<br><br>";
-    //     $this->emailData['contentHtml'] .= "Agradecemos sua solicitação de cadastro em nosso site!.<br><br>";
-    //     $this->emailData['contentHtml'] .= "Para que possamos liberar seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicando no link abaixo:<br><br>";
-    //     $this->emailData['contentHtml'] .= "<a href='{$this->url}'>{$this->url}</a><br><br>";
-    //     $this->emailData['contentHtml'] .= "Esta menssagem foi enviado a você pela empresa XXX.<br>Você nunca recebera nenhum e-mail solicitando qualquer informações cadastrais...<br><br>";
-    // }
-    /** =============================================================================================
+        $this->emailData['contentHtml'] = "Prezado Sr(a) {$this->firstName}.<br><br>";
+        $this->emailData['contentHtml'] .= "Agradecemos sua solicitação de cadastro em nosso site!.<br><br>";
+        $this->emailData['contentHtml'] .= "Para que possamos liberar seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicando no link abaixo:<br><br>";
+        $this->emailData['contentHtml'] .= "<a href='{$this->url}'>{$this->url}</a><br><br>";
+        $this->emailData['contentHtml'] .= "Esta menssagem foi enviado a você pela empresa XXX.<br>Você nunca recebera nenhum e-mail solicitando qualquer informações cadastrais...<br><br>";
+    }
+    /** ============================================================================================
      * Método para criação do conteúdo TXT do e-mail
      * @return void     */
-    // private function contentEmailText():void
-    // {
-    //     $this->emailData['contentText'] = "Prezado Sr(a) {$this->firstName}.\n\n";
-    //     $this->emailData['contentText'] .= "Agradecemos sua solicitação de cadastro em nosso site!\n\n";
-    //     $this->emailData['contentText'] .= "Para que possamos liberar seu cadastro em nosso sistema, solicitamos a confirmação do e-mail. COPIE e COLE o endereço abaixo, na barra de endereço do seu navegador de internet.\n\n";
-    //     $this->emailData['contentText'] .= $this->url."\n\n ";
-    //     $this->emailData['contentText'] .= "Esta menssagem foi enviado a você pela empresa XXX.\n Você nunca recebera nenhum e-mail solicitando qualquer informações cadastrais...\n\n";
-    // }
+    private function contentEmailText():void
+    {
+        $this->emailData['contentText'] = "Prezado Sr(a) {$this->firstName}.\n\n";
+        $this->emailData['contentText'] .= "Agradecemos sua solicitação de cadastro em nosso site!\n\n";
+        $this->emailData['contentText'] .= "Para que possamos liberar seu cadastro em nosso sistema, solicitamos a confirmação do e-mail. COPIE e COLE o endereço abaixo, na barra de endereço do seu navegador de internet.\n\n";
+        $this->emailData['contentText'] .= $this->url."\n\n ";
+        $this->emailData['contentText'] .= "Esta menssagem foi enviado a você pela empresa XXX.\n Você nunca recebera nenhum e-mail solicitando qualquer informações cadastrais...\n\n";
+    }
 }

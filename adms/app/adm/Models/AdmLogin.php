@@ -36,7 +36,7 @@ class AdmLogin
         $viewUser = new \Adm\Models\helper\AdmRead();
 
         //Retorna somente as colunas indicadas e Faz a verificação:WHERE através do USER OR EMAIL
-        $viewUser->fullRead("SELECT usr.id_adm_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.id_adms_access_level, lev.id_adms_access_level FROM adms_user AS usr
+        $viewUser->fullRead("SELECT usr.id_adm_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.id_adms_access_level, usr.adm_img, lev.id_adms_access_level FROM adms_user AS usr
         INNER JOIN adms_access_level AS lev ON lev.id_adms_access_level=usr.id_adms_access_level
         WHERE adm_user =:adm_user LIMIT :limit", "adm_user={$this->data['adm_user']}&limit=1");
 
