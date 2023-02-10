@@ -174,7 +174,7 @@ class AdmNewUser
         $this->emailData['toEmail'] = $this->data['adm_email'];
         $this->emailData['toName'] = $this->data['adm_user'];
         $this->emailData['subject'] = "Confirme seu E-mail!";
-        $this->url = URLADM."conf-email/index?key=".$this->data['confirm_email'];
+        $this->url = URLADM."confirm-email/index?key=".$this->data['confirm_email'];
 
         $this->emailData['contentHtml'] = "Prezado Sr(a) {$this->firstName}.<br><br>";
         $this->emailData['contentHtml'] .= "Agradecemos sua solicitação de cadastro em nosso site!.<br><br>";

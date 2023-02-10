@@ -1,6 +1,8 @@
 <?php
 namespace Adm\Models\helper;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -43,17 +45,6 @@ class AdmSendEmail
         //atribui para o atributo:$this->optionConfEmail, o id recebido como parametro
         $this->optionConfEmail = $optionConfEmail;
         $this->data = $data;
-
-        // //será enviado para o e-mail...(fake, no caso, MailTrap)
-        // $this->data['toEmail'] = "meuemailparablog@gmail.com";
-        // //Quem vai receber
-        // $this->data['toName'] = "Edenilson";
-        // //Assunto do email
-        // $this->data['subject'] = "Confirmar o e-mail cadastro";
-        // //conteúdo do e-mail, em HTML
-        // $this->data['contentHtml'] = "Olá <b>Edenilson</b><br><p>Cadastro realizado com sucesso!</p>";
-        // //conteúdo do e-mail, formato texto
-        // $this->data['contentText'] = "Olá Edenilson \n\nCadastro realizado com sucesso!";
 
         //Instancio o método para enviar o email
         $this->infoPhpMailer();

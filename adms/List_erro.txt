@@ -25,3 +25,7 @@ Erro 011 - ADMS/app/adm/Models/AdmValPassword.php, validatePassword() e outras
 Erro 012 - ADMS/app/adm/Models/AdmValUserSimgleLogin.php, validateUserSingleLogin()
 
 Erro 013 - ADMS/app/adm/Models/helper/AdmSendEmail.php, infoPhpMailer()
+
+Erro 014 - ADMS/app/adm/Models/AdmConfirmEmail.php, confEmail()
+
+Erro 015 - ADMS/app/adm/Models/AdmConfirmEmail.php, confEmail()

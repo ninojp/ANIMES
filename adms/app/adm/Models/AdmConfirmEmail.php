@@ -40,12 +40,12 @@ class AdmConfirmEmail extends AdmConn
             if ($this->resultBd) {
                 $this->updateSitUser();
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
                 $this->result = false;
                 // echo "<p class='alert alert-warning'>Erro! Link Invalido</p>";
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
             $this->result = false;
         }
     }
@@ -53,8 +53,8 @@ class AdmConfirmEmail extends AdmConn
      * @return void     */
     private function updateSitUser(): void
     {
-        $this->dataSave['conf_email'] = null;
-        $this->dataSave['adms_sits_user_id'] = 1;
+        $this->dataSave['confirm_email'] = null;
+        $this->dataSave['id_adms_sits_user'] = 1;
         $this->dataSave['modified'] = date("Y-m-d H:i:s");
         // $conf_email = null;
         // $adms_sits_user_id = 1;
@@ -69,19 +69,5 @@ class AdmConfirmEmail extends AdmConn
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
             $this->result = false;
         }
-        // $query_ativate_user = "UPDATE adms_users SET conf_email=:conf_email, adms_sits_user_id=:adms_sits_user_id, modified=NOW() WHERE id=:id LIMIT 1";
-        // $activate_email = $this->connectDb()->prepare($query_ativate_user);
-        // $activate_email->bindParam(':conf_email', $conf_email);
-        // $activate_email->bindParam(':adms_sits_user_id', $adms_sits_user_id);
-        // $activate_email->bindParam(':id', $this->resultBd[0]['id']);
-        // $activate_email->execute();
-
-        // if($activate_email->rowCount()){
-        //     $_SESSION['msg'] = "<p class='alert alert-success'>Ok! E-mail Ativado com Sucesso!</p>";
-        //     $this->result = true;
-        // }else{
-        //     $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Link Invalido!!!!</p>";
-        //     $this->result = false;
-        // }
     }
 }

@@ -39,7 +39,7 @@ if(isset($this->data['form'])){
             </div>
             <div class="signup-link text-center">
                 <a class="btn btn-sm btn-outline-info me-4" href="<?=URLADM?>">Login</a>
-                <a class="btn btn-sm btn-outline-info" href="<?=URLADM?>new-conf-email/index">Novo E-mail confirmação!</a>
+                <a class="btn btn-sm btn-outline-info" href="<?=URLADM?>new-confirm-email/index">Novo E-mail confirmação!</a>
             </div>
         </form>
     </div>
