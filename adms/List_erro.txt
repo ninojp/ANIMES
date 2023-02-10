@@ -13,3 +13,13 @@ Erro 005 - ADMS/SRC/ConfigControllerAdms.php, loadClass()
 Erro 006 - ADMS/app/adm/Models/AdmLogin.php, login() 
 
 Erro 007 - ADMS/app/adm/Models/AdmLogin.php, valPassword()
+
+Erro 008 - ADMS/app/adm/Models/AdmValEmptyField.php, valField()
+
+Erro 009 - ADMS/app/adm/Models/AdmValEmail.php, validateEmail()
+
+Erro 010 - ADMS/app/adm/Models/AdmValEmailSimgle.php, validateEmailSingle()
+
+Erro 011 - ADMS/app/adm/Models/AdmValPassword.php, validatePassword() e outras
+
+Erro 012 - ADMS/app/adm/Models/AdmValUserSimgleLogin.php, validateUserSingleLogin()

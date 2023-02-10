@@ -2,15 +2,15 @@
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-echo "Views/dashboard/dashboard.php<h1>Pagina(view) Dashboard</h1>";
-echo "Bem Vindo ".$_SESSION['adm_user']."!<br>";
+// echo "Views/dashboard/dashboard.php<h1>Pagina(view) Dashboard</h1>";
+// echo "Bem Vindo ".$_SESSION['adm_user']."!<br>";
 //realiza o logout, url raiz:URLADM + nome da classe:Logout + nome do método:index
 // echo "<a href='".URLADM."logout/index'>Sair</a><br>";
 ?>
 <!-- Inicio do conteudo do ADM -->
 <!-- <div class="container-adms"> -->
 
-<div class="wrapper_list">
+<main class="col-9 main_container">
     <div class="row_list">
         <div class="box box_first">
             <span class="class=icon fa-solid fa-users"></span>
@@ -39,6 +39,6 @@ echo "Bem Vindo ".$_SESSION['adm_user']."!<br>";
         </div>
     </div>
     <!-- <?php //var_dump($this->data['menu']); ?> -->
-</div>
+</main>
 <!-- </div> -->
 <!-- FIM do conteudo do ADM -->

@@ -1,5 +1,7 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
     // echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
 if(isset($this->data['form'])){
     // var_dump($this->data['form']);
@@ -13,16 +15,16 @@ if(isset($this->data['form'])){
         <form class="form-login" action="" method="POST" id="form-new-user">
             <div class="row">
                 <i class="fa-solid fa-user"></i>
-                <input class="form-control" type="text" name="name" id="name" value="<?php if(isset($valorForm)){echo $valorForm['name'];} ?>" placeholder="Digite o nome Completo"
+                <input class="form-control" type="text" name="adm_user" id="adm_user" value="<?php if(isset($valorForm)){echo $valorForm['adm_user'];} ?>" placeholder="Digite o USER(usuário)"
                 required>
             </div>
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
-                <input class="form-control" type="email" name="email" id="email" value="<?php if(isset($valorForm)){echo $valorForm['email'];} ?>" placeholder="Digite o Email" required>
+                <input class="form-control" type="email" name="adm_email" id="adm_email" value="<?php if(isset($valorForm)){echo $valorForm['adm_email'];} ?>" placeholder="Digite o E-Mail" required>
             </div>
             <div class="row">
                 <i class="fa-solid fa-lock"></i>
-                <input class="form-control" type="password" autocomplete="on" name="password" id="password" onkeyup="passwordStrength()" value="<?php if(isset($valorForm)){echo $valorForm['password'];} ?>" placeholder="Digite uma Senha" required><br>
+                <input class="form-control" type="password" autocomplete="on" name="adm_pass" id="adm_pass" onkeyup="passwordStrength()" value="<?php if(isset($valorForm)){echo $valorForm['adm_pass'];} ?>" placeholder="Digite uma Senha" required><br>
                 <!-- <span style="color:#f00;">* Campo obrigatório</span><br> -->
             </div>
                 <span id="msgViewStrength"></span>

@@ -30,9 +30,10 @@ class ConfigViewAdms
     {
         if (file_exists('app/' . $this->nameView . '.php')) {
             include 'app/adm/Views/include/head.php';
-            // include 'app/animes/Views/include/navbar.php';
+            include 'app/adm/Views/include/navbar.php';
+            include 'app/adm/Views/include/menu.php';
             include 'app/'.$this->nameView.'.php';
-            // include 'app/animes/Views/include/sidebar.php';
+            
             include 'app/adm/Views/include/footer.php';
         } else {
             die("Erro 002! Por favor tente novamente. Caso o problema persista, entre em contato o administrador ".EMAILADM);

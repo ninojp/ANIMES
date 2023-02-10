@@ -7,8 +7,8 @@ $sidebar_active = "";
 if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 } ?>
-<!-- Inicio do conteúdo da pagina ADM -->
-<main class='main_content'>
+<!-- Inicio do conteúdo da pagina ADM - class='main_content' -->
+<aside class='col-2 aside_container'>
     <!-- Inicio do SIDE-BAR -->
     <div class='sidebar'>
         <h1>Menu SideBar</h1>
@@ -59,4 +59,5 @@ if (isset($this->data['sidebarActive'])) {
             }
         } ?>
     </div>
-    <!-- FIM do SIDE-BAR -->
+</aside>
+<!-- FIM do SIDE-BAR -->
