@@ -9,7 +9,7 @@ define('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF', true);
 require '../vendor/autoload.php';
 
 //Instanciar a classe ConfigController, responsável em tratar a URL
-$url = new AdmsSrc\ConfigControllerAdms();
+$url = new AdmsSrc\ConfigControllerAdm();
 //Instanciar o método para carregar a página/controller
 $url->loadPage();
 ?>

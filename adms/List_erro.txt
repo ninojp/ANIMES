@@ -10,7 +10,12 @@ Erro 004 - ADMS/SRC/ConfigViewAdms.php, loadViewAdmsLogin()
 
 Erro 005 - ADMS/SRC/ConfigControllerAdms.php, loadClass()
 
-Erro 006 - ADMS/app/adm/Models/AdmLogin.php, login() 
+Erro 006 - ADMS/app/adm/Models/AdmLogin.php, login()
+
+Erro 006.1 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
+Erro 006.2 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
+Erro 006.3 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
+Erro 006.4 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
 
 Erro 007 - ADMS/app/adm/Models/AdmLogin.php, valPassword()
 

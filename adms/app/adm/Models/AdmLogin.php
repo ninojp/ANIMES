@@ -36,7 +36,7 @@ class AdmLogin
         $viewUser = new \Adm\Models\helper\AdmRead();
 
         //Retorna somente as colunas indicadas e Faz a verificação:WHERE através do USER OR EMAIL
-        $viewUser->fullRead("SELECT usr.id_adm_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.id_adms_access_level, usr.adm_img, lev.id_adms_access_level FROM adms_user AS usr
+        $viewUser->fullRead("SELECT usr.id_adm_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.adm_img, usr.id_adms_access_level, usr.id_adms_sits_user, lev.id_adms_access_level FROM adms_user AS usr
         INNER JOIN adms_access_level AS lev ON lev.id_adms_access_level=usr.id_adms_access_level
         WHERE adm_user =:adm_user LIMIT :limit", "adm_user={$this->data['adm_user']}&limit=1");
 
@@ -44,13 +44,32 @@ class AdmLogin
         // var_dump($this->resultBd);
         if($this->resultBd){
             // var_dump($this->resultBd);
-            $this->valPassword();
+            $this->valEmailPerm();
         }else{
             $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 006! Usuário ou a senha incorreta!</p>";
             $this->result = false;
         }        
     }
-
+    /** ============================================================================================
+     * @return void     */
+    private function valEmailPerm():void
+    {
+        if($this->resultBd[0]['id_adms_sits_user'] == 1) {
+            $this->valPassword();
+        }elseif($this->resultBd[0]['id_adms_sits_user'] == 3){
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 006.1! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
+            $this->result = false;
+        }elseif($this->resultBd[0]['id_adms_sits_user'] == 5){
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 006.2! E-mail Descadastrado(foi removido), entre em contato com a empresa!</p>";
+            $this->result = false;
+        }elseif($this->resultBd[0]['id_adms_sits_user'] == 2){
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 006.3! E-mail INATIVO, entre em contato com a empresa!</p>";
+            $this->result = false;
+        }else{
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 006.4! E-mail Inválido ou Spam!, entre em contato com a empresa!</p>";
+            $this->result = false;
+        }
+    }
     /** ===========================================================================================
      * @return void  */
     private function valPassword()
