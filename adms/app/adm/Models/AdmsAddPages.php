@@ -1,9 +1,8 @@
 <?php
-namespace App\adms\Models;
-//verifica se está definido a constante(defida na index), se não estiver
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use App\adms\Models\helper\AdmsValEmptyField;
-
+namespace Adm\Models;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe (models):AdmsAddPages para cadastrar novas Páginas  */
 class AdmsAddPages
 {

@@ -1,7 +1,7 @@
 <?php
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) {
-    header("Location: https://localhost/dtudo/public/");
-}
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 // echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
 // Manter os dados no formulário     
 if (isset($this->data['form'])) {

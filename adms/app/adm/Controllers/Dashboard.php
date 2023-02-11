@@ -22,8 +22,8 @@ class Dashboard
             $this->data['countUsers'] = false;
         }
         // Implementação da apresentação dinâmica do menu sidebar
-        // $listMenu = new \Adm\Models\helper\AdmMenu();
-        // $this->data['menu'] = $listMenu->itemMenu();
+        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
         // var_dump($this->data['menu']);
 
         // echo "adms/Controller/Dashboard.php: <h1> Página(controller) de Dashboard!</h1>";
