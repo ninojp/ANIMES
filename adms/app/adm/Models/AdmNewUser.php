@@ -1,8 +1,11 @@
 <?php
+
 namespace Adm\Models;
-if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+
+if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
     header("Location: https://localhost/adms/");
-    die("Erro 000! Página Não encontrada"); }
+    die("Erro 000! Página Não encontrada");
+}
 /** Classe:AdmsNewUser, é filha(Herda) da classe:AdmsConn(abstrata responsável pela conexão) */
 class AdmNewUser
 {
@@ -11,7 +14,7 @@ class AdmNewUser
 
     /** @var array|null - Recebe os registros do banco de dados    */
     private array|null $resultBd;
-    
+
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result;
 
@@ -93,14 +96,14 @@ class AdmNewUser
     private function add(): void
     {
         // Verifica através do método:accessLevel(), o nivel de acesso e a situação do usuário na tabela:adms_levels_forms, que deve ser cadastrada para o novo usuário
-        // if($this->accessLevel()){
+        if ($this->accessLevel()) {
 
             // Criptografar a senha
             $this->data['adm_pass'] = password_hash($this->data['adm_pass'], PASSWORD_DEFAULT);
             // $this->data['user'] = $this->data['email'];
-            $this->data['confirm_email'] = password_hash($this->data['adm_pass'].date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
-            
-            $this->data['id_adms_access_level'] = "3";
+            $this->data['confirm_email'] = password_hash($this->data['adm_pass'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+
+            // $this->data['id_adms_access_level'] = "3";
 
             $this->data['created'] = date("Y-m-d H:i:s");
             // var_dump($this->data);
@@ -118,45 +121,44 @@ class AdmNewUser
                 $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 019! Não foi possível cadastrar o usuário</p>";
                 $this->result = false;
             }
-        // } else {
-        //     $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (accessLevel())! Não foi possível cadastrar o usuário</p>";
-        //     $this->result = false;
-        // }
+        } else {
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 019.1! Não foi possível cadastrar o usuário</p>";
+            $this->result = false;
+        }
     }
     /** -------------------------------------------------------------------------------------------
      * Pesquisar no banco de dados o nivel de acesso e a situação que deve ser utilizada no formulário cadastrar usuário na pagina de login
      * @return bool - verdadeiro ou false    */
-    // private function accessLevel(): bool
-    // {
-    //     $viewAccessLevel = new \Adm\Models\helper\AdmRead();
-    //     $viewAccessLevel->fullRead("SELECT adms_access_level_id, adms_sits_user_id FROM adms_levels_forms ORDER BY id ASC LIMIT :limit", "limit=1");
-    //     $this->resultBd = $viewAccessLevel->getResult();
-    //     // var_dump($this->resultBd);
-    //     if($this->resultBd){
-    //         //ERRO MEU... na tabela adms_users DEVERIA ser:adms_access_level_id eu colquei:access_level_id
-    //         $this->data['access_level_id'] = $this->resultBd[0]['adms_access_level_id'];
-    //         $this->data['adms_sits_user_id'] = $this->resultBd[0]['adms_sits_user_id'];
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    private function accessLevel(): bool
+    {
+        $viewAccessLevel = new \Adm\Models\helper\AdmRead();
+        $viewAccessLevel->fullRead("SELECT id_adms_access_level, id_adms_sits_user FROM adms_default_access ORDER BY id_adms_default_access ASC LIMIT :limit", "limit=1");
+        $this->resultBd = $viewAccessLevel->getResult();
+        // var_dump($this->resultBd);
+        if ($this->resultBd) {
+            $this->data['id_adms_access_level'] = $this->resultBd[0]['id_adms_access_level'];
+            $this->data['id_adms_sits_user'] = $this->resultBd[0]['id_adms_sits_user'];
+            return true;
+        } else {
+            return false;
+        }
+    }
     /** =============================================================================================
      * Médoto responsável por enviar o e-mail    -  @return void     */
     private function sendEmail(): void
     {
         $this->contentEmailHtml();
         $this->contentEmailText();
-        
+
         $sendEmail = new \Adm\Models\helper\AdmSendEmail();
         // o ID do e-mail q será usado, está sendo colocado manualmente aqui 1
         $sendEmail->sendEmail($this->emailData, 1);
 
         //faz a notificação se conseguiu ou não enviar o email
-        if($sendEmail->getResult()){
+        if ($sendEmail->getResult()) {
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Usuário cadastrado com sucesso, acesse sua caixa de e-mail para confirmar o e-mail!</p>";
             $this->result = true;
-        }else{
+        } else {
             //instancia o método:getFromEmail(), para receber o email de quem está enviando
             $this->fromEmail = $sendEmail->getFromEmail();
             $_SESSION['msg'] = "<p class='alert alert-warning'>Usuário cadastrado com sucesso. Mas houve um erro ao enviar o e-mail de confirmação, entre em contado com {$this->fromEmail}</p>";
@@ -166,7 +168,7 @@ class AdmNewUser
     /** ============================================================================================
      * Método para criação do conteúdo HTML do e-mail
      * @return void     */
-    private function contentEmailHtml():void
+    private function contentEmailHtml(): void
     {
         $name = explode(" ", $this->data['adm_user']);
         $this->firstName = $name[0];
@@ -174,7 +176,7 @@ class AdmNewUser
         $this->emailData['toEmail'] = $this->data['adm_email'];
         $this->emailData['toName'] = $this->data['adm_user'];
         $this->emailData['subject'] = "Confirme seu E-mail!";
-        $this->url = URLADM."confirm-email/index?key=".$this->data['confirm_email'];
+        $this->url = URLADM . "confirm-email/index?key=" . $this->data['confirm_email'];
 
         $this->emailData['contentHtml'] = "Prezado Sr(a) {$this->firstName}.<br><br>";
         $this->emailData['contentHtml'] .= "Agradecemos sua solicitação de cadastro em nosso site!.<br><br>";
@@ -185,12 +187,12 @@ class AdmNewUser
     /** ============================================================================================
      * Método para criação do conteúdo TXT do e-mail
      * @return void     */
-    private function contentEmailText():void
+    private function contentEmailText(): void
     {
         $this->emailData['contentText'] = "Prezado Sr(a) {$this->firstName}.\n\n";
         $this->emailData['contentText'] .= "Agradecemos sua solicitação de cadastro em nosso site!\n\n";
         $this->emailData['contentText'] .= "Para que possamos liberar seu cadastro em nosso sistema, solicitamos a confirmação do e-mail. COPIE e COLE o endereço abaixo, na barra de endereço do seu navegador de internet.\n\n";
-        $this->emailData['contentText'] .= $this->url."\n\n ";
+        $this->emailData['contentText'] .= $this->url . "\n\n ";
         $this->emailData['contentText'] .= "Esta menssagem foi enviado a você pela empresa XXX.\n Você nunca recebera nenhum e-mail solicitando qualquer informações cadastrais...\n\n";
     }
 }
