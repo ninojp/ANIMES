@@ -22,7 +22,7 @@ class AdmSendEmail
     /** @var integer - Recebe o id do email q será utilizado para enviar o e-mail     */
     private int $optionConfEmail;
 
-    /** ==============================================================================================
+    /** ============================================================================================
      * Este método serve para obter o resultado(true, false) dos métodos dentro da classe
      * @return boolean     */
     function getResult(): bool

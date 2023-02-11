@@ -21,7 +21,7 @@ class ConfirmEmail
         if(!empty($this->key)){
             $this->valKey();
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 018! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
             $urlRedirect = URLADM."login/index";
             header("Location: $urlRedirect");
         }
@@ -30,7 +30,7 @@ class ConfirmEmail
      * @return void   */    
     private function valKey():void
     {
-        $confEmail = new \App\adms\Models\AdmsConfEmail();
+        $confEmail = new \Adm\Models\AdmConfirmEmail();
         $confEmail->confEmail($this->key);
         if($confEmail->getResult()) {
             $urlRedirect = URLADM."login/index";

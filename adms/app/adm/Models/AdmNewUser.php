@@ -115,7 +115,7 @@ class AdmNewUser
 
                 $this->sendEmail();
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível cadastrar o usuário</p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 019! Não foi possível cadastrar o usuário</p>";
                 $this->result = false;
             }
         // } else {

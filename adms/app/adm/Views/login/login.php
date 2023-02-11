@@ -16,7 +16,7 @@ if(isset($this->data['form'])){
         </div>
         <form class="form-login" action="" method="POST" id="form-login">
             <div class="row">
-            <i class="fa-solid fa-envelope"></i>
+            <i class="fa-solid fa-user"></i>
                 <input class="form-control" type="text" name="adm_user" id="adm_user" value="<?php if(isset($valorForm)){echo $valorForm['adm_user'];} ?>" placeholder="Digite o Nome(user)" required>
             </div>
             <div class="row">
@@ -37,7 +37,7 @@ if(isset($this->data['form'])){
             <div class="signup-link text-center">
                 <!-- Para direcionar para o endereço, URL:URLADM, nome da CONTROLLER:NewUser precisa ter um SEPARADOR entre os termos(espaço ou traço)e depois o nome do método usado:index(dentro da controller) -->
                 <a class="btn btn-sm btn-outline-primary me-4" href="<?=URLADM?>new-user/index">Cadastrar Usuário!</a>
-                <a class="btn btn-sm btn-outline-primary" href="<?=URLADM?>recover-password/index">Recuperar Senha!</a>
+                <a class="btn btn-sm btn-outline-primary" href="<?=URLADM?>recover-pass/index">Recuperar Senha!</a>
             </div>
         </form>
     </div><!-- Finalica a DIV:wrapper-login -->

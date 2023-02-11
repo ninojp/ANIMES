@@ -4,7 +4,6 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 use Adm\Models\helper\AdmConn;
-use PDO;
 /** Confirmar o cadastro do usuário, alterando a situação no banco de dados */
 class AdmConfirmEmail extends AdmConn
 {
@@ -40,16 +39,16 @@ class AdmConfirmEmail extends AdmConn
             if ($this->resultBd) {
                 $this->updateSitUser();
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
                 $this->result = false;
                 // echo "<p class='alert alert-warning'>Erro! Link Invalido</p>";
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
             $this->result = false;
         }
     }
-    /** ==============================================================================================
+    /** ============================================================================================
      * @return void     */
     private function updateSitUser(): void
     {
@@ -59,14 +58,14 @@ class AdmConfirmEmail extends AdmConn
         // $conf_email = null;
         // $adms_sits_user_id = 1;
 
-        $upConfEmail = new \App\adms\Models\helper\AdmsUpdate();
-        $upConfEmail->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
+        $upConfEmail = new \Adm\Models\helper\AdmUpdate();
+        $upConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id_adm_user", "id_adm_user={$this->resultBd[0]['id_adm_user']}");
 
         if($upConfEmail->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! E-mail Ativado com Sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-conf-email/index'> link aqui!</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 014.1! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
             $this->result = false;
         }
     }

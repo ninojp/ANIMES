@@ -28,4 +28,24 @@ Erro 013 - ADMS/app/adm/Models/helper/AdmSendEmail.php, infoPhpMailer()
 
 Erro 014 - ADMS/app/adm/Models/AdmConfirmEmail.php, confEmail()
 
-Erro 015 - ADMS/app/adm/Models/AdmConfirmEmail.php, confEmail()
+Erro 014.1 - ADMS/app/adm/Models/AdmConfirmEmail.php, updateSitUser()()
+
+Erro 015 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, valUser()
+
+Erro 016 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, valConfEmail()
+
+Erro 017 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, sendEmail()
+
+Erro 018 - ADMS/app/adm/Controllers/ConfirmEmail.php, index()
+
+Erro 019 - ADMS/app/adm/Models/AdmNewUser.php, add()
+
+Erro 020 - ADMS/app/adm/Models/AdmRecoverPass.php, valUser()
+
+Erro 020.1 - ADMS/app/adm/Models/AdmRecoverPass.php, valConfEmail()
+
+Erro 020.2 - ADMS/app/adm/Models/AdmRecoverPass.php, sendEmail()
+
+Erro 021 - ADMS/app/adm/Models/AdmUpdatePass.php, valKey()
+
+Erro 021.1 - ADMS/app/adm/Models/AdmUpdatePass.php, updatePassword()

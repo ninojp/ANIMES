@@ -1,12 +1,14 @@
 <?php
-namespace App\adms\Models;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+namespace Adm\Models;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Confirmar a chave atualizar senha. Cadastrar nova senha */
-class AdmsUpdatePassword
+class AdmUpdatePass
 {
     /** @var string - Recebe da URL a chave para atualizar a senha  */
     private string $key;
-    /** @var boolean - Recebe do método:getResult() o valor:(true or false), q será atribuido aqui */
+    /** @var boolean - Recebe do método:getResult(true or false), q será atribuido aqui */
     private bool $result;
     /** @var array - Recebe os dados do conteúdo do e-mail  */
     private array $resultBd;
@@ -30,14 +32,14 @@ class AdmsUpdatePassword
     {
         $this->key = $key;
         // var_dump($this->key);
-        $viewKeyUpPass = new \App\adms\Models\helper\AdmsRead();
-        $viewKeyUpPass->fullRead("SELECT id FROM adms_users WHERE recover_password=:recover_password LIMIT :limit", "recover_password={$this->key}&limit=1");
+        $viewKeyUpPass = new \Adm\Models\helper\AdmRead();
+        $viewKeyUpPass->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_pass_recover=:adm_pass_recover LIMIT :limit", "adm_pass_recover={$this->key}&limit=1");
         $this->resultBd = $viewKeyUpPass->getResult();
         if($this->resultBd){
             $this->result = true;
             return true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Link inválido, Solicite um novo Link <a href='".URLADM."recover-password/index'>Clique aqui</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 022! Link inválido, Solicite um novo Link <a href='".URLADM."recover-pass/index'>Clique aqui</a></p>";
             $this->result = false;
             return false;
         }
@@ -49,7 +51,7 @@ class AdmsUpdatePassword
     {
         $this->data = $data;
         // var_dump($this->data);
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
         $valEmptyField->valField($this->data);
         if($valEmptyField->getResult()){
             $this->valInput();
@@ -61,8 +63,8 @@ class AdmsUpdatePassword
      * @return void     */
     private function valInput():void
     {
-        $valPasword = new \App\adms\Models\helper\AdmsValPassword(); 
-        $valPasword->validatePassword($this->data['password']); 
+        $valPasword = new \Adm\Models\helper\AdmValPassword(); 
+        $valPasword->validatePassword($this->data['adm_pass']); 
         if($valPasword->getResult()){
             if($this->valKey($this->data['key'])){
                 $this->updatePassword();
@@ -73,21 +75,21 @@ class AdmsUpdatePassword
             $this->result = false;
         }
     }
-    /** =============================================================================================
+    /** ============================================================================================
      * @return void     */
     private function updatePassword():void
     {
-        $this->dataSave['recover_password'] = null;
-        $this->dataSave['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+        $this->dataSave['adm_pass_recover'] = null;
+        $this->dataSave['adm_pass'] = password_hash($this->data['adm_pass'], PASSWORD_DEFAULT);
         $this->dataSave['modified'] = date("Y-m-d H:i:s");
 
-        $upPassword = new \App\adms\Models\helper\AdmsUpdate();
-        $upPassword->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
+        $upPassword = new \Adm\Models\helper\AdmUpdate();
+        $upPassword->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id", "id={$this->resultBd[0]['id_adm_user']}");
         if($upPassword->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>OK! Senha atualizada com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível atualiazr a senha</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 021.1! Não foi possível atualiazr a senha</p>";
             $this->result = false;
         }
     }

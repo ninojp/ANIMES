@@ -1,10 +1,10 @@
 <?php
-namespace App\adms\controllers;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-// use Core\ConfigView;
-
+namespace Adm\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe Controller da pagina editar nova senha */
-class UpdatePassword
+class UpdatePass
 {
     /** @var string|null - recebe a key q está vindo na URL, para cadastrar nova senha     */
     private string|null $key;
@@ -34,7 +34,7 @@ class UpdatePassword
      * @return void     */
     private function validateKey(): void
     {
-        $valKey = new \App\adms\Models\AdmsUpdatePassword();
+        $valKey = new \Adm\Models\AdmUpdatePass();
         $valKey->valKey($this->key);
         if($valKey->getResult()) {
             $this->viewUpdatePassword();
