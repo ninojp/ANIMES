@@ -50,7 +50,7 @@ class UpdatePass
         if(!empty($this->dataForm['SendUpPass'])){
             unset($this->dataForm['SendUpPass']);
             $this->dataForm['key'] = $this->key;
-            $upPassword = new \App\adms\Models\AdmsUpdatePassword();
+            $upPassword = new \Adm\Models\AdmUpdatePass();
             $upPassword->editPassword($this->dataForm);
             if($upPassword->getResult()){
                 $urlRedirect = URLADM . "login/index";
@@ -59,7 +59,7 @@ class UpdatePass
                 $this->viewUpdatePassword();
             }
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Link inválido, Solicite um novo Link <a href='".URLADM."recover-password/index'>Clique aqui</a></p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 022! Link inválido, Solicite um novo Link <a href='".URLADM."recover-pass/index'>Clique aqui</a></p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }
@@ -67,15 +67,15 @@ class UpdatePass
     private function viewUpdatePassword():void
     {
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
-        $this->data['menu'] = $listMenu->itemMenu();
+        // $listMenu = new \Adm\Models\helper\AdmMenu();
+        // $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "update-password";
+        // $this->data['sidebarActive'] = "update-pass";
 
         // instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new \Core\ConfigView("adms/Views/login/updatePassword", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/updatePass", $this->data);
         // Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewLogin();
+        $loadView->loadViewAdmLogin();
     }
 }

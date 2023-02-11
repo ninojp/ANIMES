@@ -7,7 +7,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
 /** Classe abstract(ABSTRATA) não pode ser instânciada, somente herdada.
  * Configurações(CONSTANTES) básicas da PARTE ADMINISTRATVA do site ANIME.
  * @author NinoJP <meu.sem@gmail.com> - 07/02/2023 */
-abstract class ConfigAdms
+abstract class ConfigAdm
 {
     /** ==========================================================================================
      * Método protected(PROTEGIDO) somente pode ser instânciado dentro da classe ou da classe FILHA
@@ -17,7 +17,7 @@ abstract class ConfigAdms
      * Credenciais de acesso ao banco de dados
      * E-mail do administrador.
      * @return void   */
-    protected function configAdms(): void
+    protected function configAdm(): void
     {
         // echo "Classe CONFIG! <br>";
         //URL do projeto

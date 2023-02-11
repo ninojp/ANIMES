@@ -1,13 +1,9 @@
 <?php
-
 namespace App\adms\controllers;
-
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) {
-    header("Location: https://localhost/dtudo/public/");
-}
-
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 use Core\ConfigView;
-
 class ListUsers
 {
     /** @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */

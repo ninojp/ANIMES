@@ -36,7 +36,7 @@ class RecoverPass
     /** ======================================================================================== */
     private function viewRecoverPass():void
     {
-       $loadView = new \AdmsSrc\ConfigViewAdms("adm/Views/login/recoverPass", $this->data);
-       $loadView->loadViewAdmsLogin();
+       $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/recoverPass", $this->data);
+       $loadView->loadViewAdmLogin();
     }
 }

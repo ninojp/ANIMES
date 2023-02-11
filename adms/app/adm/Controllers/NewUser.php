@@ -45,8 +45,8 @@ class NewUser
     private function viewNewUser():void
     {
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new \AdmsSrc\ConfigViewAdms("adm/Views/login/newUser", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/newUser", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdmsLogin();
+        $loadView->loadViewAdmLogin();
     }
 }

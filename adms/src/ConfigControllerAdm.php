@@ -6,7 +6,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
 
 /** Recebe a URL e a manipula. Carregar a CONTROLLER
  * @author NinoJP <ninocriptocoin@gmail.com> - 07/02/2023 */
-class ConfigControllerAdms extends ConfigAdms
+class ConfigControllerAdm extends ConfigAdm
 {
     /** @var string $url Recebe a URL do .htaccess */
     private string $url;
@@ -36,7 +36,7 @@ class ConfigControllerAdms extends ConfigAdms
     public function __construct()
     {
         // echo "(ConfigController)! Carregar esta pagina! <br>";
-        $this->configAdms();
+        $this->configAdm();
         if (!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))) {
             $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
             // var_dump($this->url);

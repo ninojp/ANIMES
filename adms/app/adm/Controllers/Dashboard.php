@@ -33,9 +33,9 @@ class Dashboard
         $this->data['sidebarActive'] = "dashboard";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new \AdmsSrc\ConfigViewAdms("adm/Views/dashboard/dashboard",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/dashboard/dashboard", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdms();
+        $loadView->loadViewAdm();
 
     }
 }

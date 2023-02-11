@@ -7,7 +7,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
 /*************************************************************************************************
  * Carregar as páginas da View
  * @author NinoJP <ninocriptocoin@gmail.com> - 07/02/2023 */
-class ConfigViewAdms
+class ConfigViewAdm
 {
     // Apartir do PHP 8, pode colocar este atributo:$nameView direto dentro do método:__construct()
     // private string $nameView;
@@ -26,7 +26,7 @@ class ConfigViewAdms
      * Carregar a VIEW.
      * Verificar se o arquivo existe, e carregar caso exista, não existindo para o carregamento
     * @return void     */
-    public function loadViewAdms(): void
+    public function loadViewAdm(): void
     {
         if (file_exists('app/' . $this->nameView . '.php')) {
             include 'app/adm/Views/include/head.php';
@@ -42,7 +42,7 @@ class ConfigViewAdms
       /** =============================================================================================
      * Método q verifica se existe e carrega(executa) a View Login, sem o MENU
      * Não existindo apresenta a menssagem de erro!     * @return void */
-    public function loadViewAdmsLogin():void
+    public function loadViewAdmLogin():void
     {
         //verifica se existe o arquivo(indicado pela controller) a ser carregado 
         if(file_exists('app/'.$this->nameView.'.php')){

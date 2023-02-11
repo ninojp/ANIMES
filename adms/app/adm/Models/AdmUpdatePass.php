@@ -89,7 +89,7 @@ class AdmUpdatePass
             $_SESSION['msg'] = "<p class='alert alert-success'>OK! Senha atualizada com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 021.1! Não foi possível atualiazr a senha</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 021.1! Não foi possível atualizar a senha</p>";
             $this->result = false;
         }
     }

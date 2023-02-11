@@ -2,11 +2,9 @@
 // echo "adms/Controller/NewUser.php: <h1> Página(controller) Novo usuário</h1>";
 namespace App\adms\controllers;
 //verifica se está definido a constante(defida na index), se não estiver
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){
-    // Redireciona para a pagina escolhida
-    // header("Location: /");
-    header("Location: https://localhost/dtudo/public/");
-}
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 
 use Core\ConfigView;
 /** Classe da controller da pagina de novo usuário */

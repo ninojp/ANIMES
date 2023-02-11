@@ -1,8 +1,8 @@
 <?php
-namespace App\adms\controllers;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use Core\ConfigView;
-
+namespace Adm\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 class Erro
 {
     /** Apartir do PHP 8, posso definir a TIPAGEM de varios tipos para o mesmo atributo, usando o PIPE|
@@ -19,9 +19,9 @@ class Erro
         // $this->data = [];
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new ConfigView("adms/Views/erro/erro",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/erro/erro", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewLogin();
+        $loadView->loadViewAdmLogin();
 
     }
 }

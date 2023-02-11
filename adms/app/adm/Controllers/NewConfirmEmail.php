@@ -42,7 +42,7 @@ class NewConfirmEmail
      * @return void     */
     private function viewNewConfEmail():void
     {
-        $loadView = new \AdmsSrc\ConfigViewAdms("adm/Views/login/newConfirmEmail", $this->data);
-        $loadView->loadViewAdmsLogin();
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/newConfirmEmail", $this->data);
+        $loadView->loadViewAdmLogin();
     }
 }
