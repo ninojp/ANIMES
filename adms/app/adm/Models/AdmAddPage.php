@@ -35,11 +35,11 @@ class AdmAddPage
         // var_dump($this->data);
 
         //atribui o valor que está no campo OBS para o atributo:$dataExitVal
-        $this->dataExitVal['obs'] = $this->data['obs'];
-        $this->dataExitVal['icon'] = $this->data['icon'];
+        $this->dataExitVal['obs_page'] = $this->data['obs_page'];
+        $this->dataExitVal['icon_menu_page'] = $this->data['icon_menu_page'];
         //Destroi o valor que está no atributo:$this->data['nickname']
         // unset($this->data['nickname']);
-        unset($this->data['obs'], $this->data['icon']);
+        unset($this->data['obs_page'], $this->data['icon_menu_page']);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
         $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
@@ -60,8 +60,8 @@ class AdmAddPage
         $this->data['created'] = date("Y-m-d H:i:s");
         // var_dump($this->data);
         //Atribui NOVAMENTE(recupera) o valor q está no atributo:$this->dataExitval['obs'] e coloca no atributo:$this->data['obs'] para ser inserido no DB
-        $this->data['obs'] = $this->dataExitVal['obs'];
-        $this->data['icon'] = $this->dataExitVal['icon'];
+        $this->data['obs_page'] = $this->dataExitVal['obs_page'];
+        $this->data['icon_menu_page'] = $this->dataExitVal['icon_menu_page'];
         
         // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
         // $this->result = false;
@@ -73,7 +73,7 @@ class AdmAddPage
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Página cadastrada com sucesso</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível cadastrar a Página</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 023! Não foi possível cadastrar a Página</p>";
             $this->result = false;
         }
     }
@@ -82,8 +82,8 @@ class AdmAddPage
     public function listSelect():array
     {
         //listar os dados das tabelas, para utilizar no select da view de adição de Página
-        $lists = new \App\adms\Models\helper\AdmsRead();
-        $lists->fullRead("SELECT astp.id AS id_sit, astp.name AS name_sit FROM adms_sits_pgs AS astp ORDER BY astp.name ASC");
+        $lists = new \Adm\Models\helper\AdmRead();
+        $lists->fullRead("SELECT asp.id_sits_page, asp.name_sits_page FROM adms_sits_page AS asp ORDER BY asp.name_sits_page ASC");
         $registry['sit'] = $lists->getResult();
 
         $lists->fullRead("SELECT atp.id AS id_atp, atp.type AS type_atp FROM adms_types_pgs AS atp ORDER BY atp.type ASC");

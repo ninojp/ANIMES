@@ -29,7 +29,7 @@ class AdmDashboard
     public function countUsers():void
     {
         $countUsers = new \Adm\Models\helper\AdmRead();
-        $countUsers->fullRead("SELECT COUNT(id) AS qntUsers FROM adms_user");
+        $countUsers->fullRead("SELECT COUNT(id_user) AS qntUsers FROM adms_user");
 
         $this->resultBd = $countUsers->getResult();
         if($this->resultBd){

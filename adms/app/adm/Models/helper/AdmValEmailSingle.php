@@ -45,9 +45,9 @@ class AdmValEmailSingle
 
         $valEmailSingle = new \Adm\Models\helper\AdmRead();
         if(($this->edit == true) and (!empty($this->id_adm_user))){
-            $valEmailSingle->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_email =:adm_email AND id_adm_user <>:id_adm_user LIMIT :limit", "adm_email={$this->adm_email}&id_adm_user={$this->id_adm_user}&limit=1");
+            $valEmailSingle->fullRead("SELECT id_user FROM adms_user WHERE adm_email =:adm_email AND id_user <>:id_user LIMIT :limit", "adm_email={$this->adm_email}&id_user={$this->id_adm_user}&limit=1");
         }else{
-            $valEmailSingle->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_email =:adm_email LIMIT :limit", "adm_email={$this->adm_email}&limit=1");
+            $valEmailSingle->fullRead("SELECT id_user FROM adms_user WHERE adm_email =:adm_email LIMIT :limit", "adm_email={$this->adm_email}&limit=1");
         }
         $this->resultBd = $valEmailSingle->getResult();
         // var_dump($this->resultBd);

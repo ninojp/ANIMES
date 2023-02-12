@@ -33,7 +33,7 @@ class AdmConfirmEmail extends AdmConn
         // var_dump($this->key);
         if (!empty($this->key)) {
             $viewKeyConfEmail = new \Adm\Models\helper\AdmRead();
-            $viewKeyConfEmail->fullRead("SELECT id_adm_user FROM adms_user WHERE confirm_email=:confirm_email LIMIT  :limit", "confirm_email={$this->key}&limit=1");
+            $viewKeyConfEmail->fullRead("SELECT id_user FROM adms_user WHERE confirm_email=:confirm_email LIMIT  :limit", "confirm_email={$this->key}&limit=1");
             $this->resultBd = $viewKeyConfEmail->getResult();
 
             if ($this->resultBd) {
@@ -53,13 +53,13 @@ class AdmConfirmEmail extends AdmConn
     private function updateSitUser(): void
     {
         $this->dataSave['confirm_email'] = null;
-        $this->dataSave['id_adms_sits_user'] = 1;
+        $this->dataSave['id_sits_user'] = 1;
         $this->dataSave['modified'] = date("Y-m-d H:i:s");
         // $conf_email = null;
         // $adms_sits_user_id = 1;
 
         $upConfEmail = new \Adm\Models\helper\AdmUpdate();
-        $upConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id_adm_user", "id_adm_user={$this->resultBd[0]['id_adm_user']}");
+        $upConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id_user", "id_user={$this->resultBd[0]['id_user']}");
 
         if($upConfEmail->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! E-mail Ativado com Sucesso!</p>";

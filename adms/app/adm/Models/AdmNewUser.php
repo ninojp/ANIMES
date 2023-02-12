@@ -132,12 +132,12 @@ class AdmNewUser
     private function accessLevel(): bool
     {
         $viewAccessLevel = new \Adm\Models\helper\AdmRead();
-        $viewAccessLevel->fullRead("SELECT id_adms_access_level, id_adms_sits_user FROM adms_default_access ORDER BY id_adms_default_access ASC LIMIT :limit", "limit=1");
+        $viewAccessLevel->fullRead("SELECT id_access_level, id_sits_user FROM adms_default_access ORDER BY id_default_access ASC LIMIT :limit", "limit=1");
         $this->resultBd = $viewAccessLevel->getResult();
         // var_dump($this->resultBd);
         if ($this->resultBd) {
-            $this->data['id_adms_access_level'] = $this->resultBd[0]['id_adms_access_level'];
-            $this->data['id_adms_sits_user'] = $this->resultBd[0]['id_adms_sits_user'];
+            $this->data['id_access_level'] = $this->resultBd[0]['id_access_level'];
+            $this->data['id_sits_user'] = $this->resultBd[0]['id_sits_user'];
             return true;
         } else {
             return false;

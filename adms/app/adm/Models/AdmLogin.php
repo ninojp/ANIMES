@@ -36,8 +36,8 @@ class AdmLogin
         $viewUser = new \Adm\Models\helper\AdmRead();
 
         //Retorna somente as colunas indicadas e Faz a verificação:WHERE através do USER OR EMAIL
-        $viewUser->fullRead("SELECT usr.id_adm_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.adm_img, usr.id_adms_access_level, usr.id_adms_sits_user, lev.id_adms_access_level FROM adms_user AS usr
-        INNER JOIN adms_access_level AS lev ON lev.id_adms_access_level=usr.id_adms_access_level
+        $viewUser->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.adm_pass, usr.adm_img, usr.id_access_level, usr.id_sits_user, lev.id_access_level FROM adms_user AS usr
+        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level
         WHERE adm_user =:adm_user LIMIT :limit", "adm_user={$this->data['adm_user']}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
@@ -54,15 +54,15 @@ class AdmLogin
      * @return void     */
     private function valEmailPerm():void
     {
-        if($this->resultBd[0]['id_adms_sits_user'] == 1) {
+        if($this->resultBd[0]['id_sits_user'] == 1) {
             $this->valPassword();
-        }elseif($this->resultBd[0]['id_adms_sits_user'] == 3){
+        }elseif($this->resultBd[0]['id_sits_user'] == 3){
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 006.1! Necessário confirmar o E-mail, Solicite um novo:<a href='".URLADM."new-confirm-email/index'> link aqui!</a></p>";
             $this->result = false;
-        }elseif($this->resultBd[0]['id_adms_sits_user'] == 5){
+        }elseif($this->resultBd[0]['id_sits_user'] == 5){
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 006.2! E-mail Descadastrado(foi removido), entre em contato com a empresa!</p>";
             $this->result = false;
-        }elseif($this->resultBd[0]['id_adms_sits_user'] == 2){
+        }elseif($this->resultBd[0]['id_sits_user'] == 2){
             $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 006.3! E-mail INATIVO, entre em contato com a empresa!</p>";
             $this->result = false;
         }else{
@@ -79,11 +79,11 @@ class AdmLogin
         // if($this->data['adm_pass'] == $this->resultBd[0]['adm_pass']){
             // $_SESSION['msg'] = "<p class='alert alert-success'>Login realizado com sucesso</p>";
             //coloca na constante global:$_SESSION os seguintes valores do usuário
-            $_SESSION['id_adm_user'] = $this->resultBd[0]['id_adm_user'];
+            $_SESSION['id_user'] = $this->resultBd[0]['id_user'];
             $_SESSION['adm_user'] = $this->resultBd[0]['adm_user'];
             $_SESSION['adm_email'] = $this->resultBd[0]['adm_email'];
             $_SESSION['adm_img'] = $this->resultBd[0]['adm_img'];
-            $_SESSION['id_adms_access_level'] = $this->resultBd[0]['id_adms_access_level'];
+            $_SESSION['id_access_level'] = $this->resultBd[0]['id_access_level'];
             $this->result = true;
             // echo $_SESSION['msg'];
         }else{

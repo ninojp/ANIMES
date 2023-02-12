@@ -33,7 +33,7 @@ class AdmUpdatePass
         $this->key = $key;
         // var_dump($this->key);
         $viewKeyUpPass = new \Adm\Models\helper\AdmRead();
-        $viewKeyUpPass->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_pass_recover=:adm_pass_recover LIMIT :limit", "adm_pass_recover={$this->key}&limit=1");
+        $viewKeyUpPass->fullRead("SELECT id_user FROM adms_user WHERE adm_pass_recover=:adm_pass_recover LIMIT :limit", "adm_pass_recover={$this->key}&limit=1");
         $this->resultBd = $viewKeyUpPass->getResult();
         if($this->resultBd){
             $this->result = true;
@@ -84,7 +84,7 @@ class AdmUpdatePass
         $this->dataSave['modified'] = date("Y-m-d H:i:s");
 
         $upPassword = new \Adm\Models\helper\AdmUpdate();
-        $upPassword->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id", "id={$this->resultBd[0]['id_adm_user']}");
+        $upPassword->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id", "id={$this->resultBd[0]['id_user']}");
         if($upPassword->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>OK! Senha atualizada com sucesso</p>";
             $this->result = true;

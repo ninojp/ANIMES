@@ -52,7 +52,7 @@ class AdmNewConfirmEmail extends AdmConn
     private function valUser():void
     {
         $newConfEmail = new \Adm\Models\helper\AdmRead();
-        $newConfEmail->fullRead("SELECT id_adm_user, adm_user, adm_email, confirm_email FROM adms_user WHERE adm_email=:adm_email LIMIT :limit", "adm_email={$this->data['adm_email']}&limit=1");
+        $newConfEmail->fullRead("SELECT id_user, adm_user, adm_email, confirm_email FROM adms_user WHERE adm_email=:adm_email LIMIT :limit", "adm_email={$this->data['adm_email']}&limit=1");
         $this->resultBd = $newConfEmail->getResult();
         if ($this->resultBd) {
             $this->valConfEmail();
@@ -66,12 +66,12 @@ class AdmNewConfirmEmail extends AdmConn
     private function valConfEmail(): void
     {
         if ((empty($this->resultBd[0]['confirm_email'])) or ($this->resultBd[0]['confirm_email'] == NULL)) {
-            $this->dataSave['confirm_email'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id_adm_user'], PASSWORD_DEFAULT);
+            $this->dataSave['confirm_email'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id_user'], PASSWORD_DEFAULT);
             $this->dataSave['modified'] = date("Y-m-d H:i:s");
             // $this->dataSave['exemplo2'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id'], PASSWORD_DEFAULT);
 
             $upNewConfEmail = new \Adm\Models\helper\AdmUpdate();
-            $upNewConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id_adm_user", "id_adm_user={$this->resultBd[0]['id_adm_user']}");
+            $upNewConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id_user", "id_user={$this->resultBd[0]['id_user']}");
 
             if($upNewConfEmail->getResult()){
                 $this->resultBd[0]['confirm_email'] = $this->dataSave['confirm_email'];

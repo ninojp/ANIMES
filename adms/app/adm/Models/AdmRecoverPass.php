@@ -49,7 +49,7 @@ class AdmRecoverPass
     private function valUser():void
     {
         $newConfEmail = new \Adm\Models\helper\AdmRead();
-        $newConfEmail->fullRead("SELECT id_adm_user, adm_user, adm_email FROM adms_user WHERE adm_email=:email LIMIT :limit", "email={$this->data['adm_email']}&limit=1");
+        $newConfEmail->fullRead("SELECT id_user, adm_user, adm_email FROM adms_user WHERE adm_email=:email LIMIT :limit", "email={$this->data['adm_email']}&limit=1");
         $this->resultBd = $newConfEmail->getResult();
         if ($this->resultBd) {
             $this->valConfEmail();
@@ -62,11 +62,11 @@ class AdmRecoverPass
      * @return void     */
     private function valConfEmail(): void
     {
-            $this->dataSave['adm_pass_recover'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id_adm_user'], PASSWORD_DEFAULT);
+            $this->dataSave['adm_pass_recover'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id_user'], PASSWORD_DEFAULT);
             $this->dataSave['modified'] = date("Y-m-d H:i:s");
 
             $upNewConfEmail = new \Adm\Models\helper\AdmUpdate();
-            $upNewConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_adm_user=:id", "id={$this->resultBd[0]['id_adm_user']}");
+            $upNewConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id", "id={$this->resultBd[0]['id_user']}");
 
             if($upNewConfEmail->getResult()){
                 $this->resultBd[0]['adm_pass_recover'] = $this->dataSave['adm_pass_recover'];

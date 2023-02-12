@@ -40,9 +40,9 @@ class AdmValUserSingleLogin
 
         $valUserSingle = new \Adm\Models\helper\AdmRead();
         if(($this->edit == true) and (!empty($this->id_adm_user))){
-            $valUserSingle->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_user =:adm_user id_adm_user <>:id_adm_user LIMIT :limit", "adm_user={$this->adm_user}&id_adm_user={$this->id_adm_user}&limit=1");
+            $valUserSingle->fullRead("SELECT id_user FROM adms_user WHERE adm_user =:adm_user id_user <>:id_user LIMIT :limit", "adm_user={$this->adm_user}&id_user={$this->id_adm_user}&limit=1");
         }else{
-            $valUserSingle->fullRead("SELECT id_adm_user FROM adms_user WHERE adm_user =:adm_user LIMIT :limit", "adm_user={$this->adm_user}&limit=1");
+            $valUserSingle->fullRead("SELECT id_user FROM adms_user WHERE adm_user =:adm_user LIMIT :limit", "adm_user={$this->adm_user}&limit=1");
         }
         $this->resultBd = $valUserSingle->getResult();
         // var_dump($this->resultBd);

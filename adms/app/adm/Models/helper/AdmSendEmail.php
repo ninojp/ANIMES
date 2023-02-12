@@ -55,7 +55,7 @@ class AdmSendEmail
     private function infoPhpMailer():void
     {
        $confEmail = new \Adm\Models\helper\AdmRead();
-       $confEmail->fullRead("SELECT email_config, name_email_config, host_email_config, user_email_config, pass_email_config, smtpsecure, port FROM adms_email_config WHERE id_adms_email_config=:id LIMIT :limit", "id={$this->optionConfEmail}&limit=1");
+       $confEmail->fullRead("SELECT email_config, name_email_config, host_email_config, user_email_config, pass_email_config, smtpsecure, port FROM adms_email_config WHERE id_email_config=:id LIMIT :limit", "id={$this->optionConfEmail}&limit=1");
        $this->resultBd = $confEmail->getResult();
        if($this->resultBd){
             // var_dump($this->resultBd);

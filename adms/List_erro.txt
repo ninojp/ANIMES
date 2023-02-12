@@ -50,7 +50,8 @@ Erro 020.1 - ADMS/app/adm/Models/AdmRecoverPass.php, valConfEmail()
 Erro 020.2 - ADMS/app/adm/Models/AdmRecoverPass.php, sendEmail()
 
 Erro 021 - ADMS/app/adm/Models/AdmUpdatePass.php, valKey()
-
 Erro 021.1 - ADMS/app/adm/Models/AdmUpdatePass.php, updatePassword()
 
 Erro 022 - ADMS/app/adm/Controllers/UpdatePass.php, updatePassword()
+
+Erro 023 - ADMS/app/adm/Models/AdmAddPage.php, addPage()
