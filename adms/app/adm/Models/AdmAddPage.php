@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe (models):AdmsAddPages para cadastrar novas Páginas  */
-class AdmsAddPages
+class AdmAddPage
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -42,7 +42,7 @@ class AdmsAddPages
         unset($this->data['obs'], $this->data['icon']);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new AdmsValEmptyField();
+        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -65,8 +65,8 @@ class AdmsAddPages
         
         // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
         // $this->result = false;
-        $createPage = new \App\adms\Models\helper\AdmsCreate();
-        $createPage->exeCreate("adms_pages", $this->data);
+        $createPage = new \Adm\Models\helper\AdmCreate();
+        $createPage->exeCreate("adms_page", $this->data);
 
         //verifica se existe o ultimo ID inserido
         if ($createPage->getResult()) {
