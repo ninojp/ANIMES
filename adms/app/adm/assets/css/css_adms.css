@@ -190,7 +190,8 @@ body{
 /********************************* INICIO SIDEBAR (Barra Lateral) ******************************/
 .aside_container {
     display: flex;
-    width: max-content;
+    width: 300px;
+    height: 500px;
     background-color: var(--azul10);
     border: 1px dotted var(--gold);
     padding: 1em;
@@ -318,7 +319,111 @@ body{
     font-size: 2.5rem;
     font-weight: 700;
 }
+/* Formulário de pesquisa das views listar **********************************************************/
+.div_row_form{
+    width: 100%;
+    display: flex;
+    margin: 20px 0px 5px 0px;
+}
+.form_pesquisar{
+    width: 100%;
+    display: flex;
+}
+.row_form_pesquisar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div_row_msg_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.top_list_right{
+    padding: 0px;
+    text-align: center;
+}
+/* Definições gerais das TABELAS *****************************************************************/
+.table_list{
+    /* margin-top: 15px; */
+    width: 100%;
+    box-shadow: 0px 4px 6px 0px var(--preto);
+}
+.table_list .list_head{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--preto);
+}
+.table_list .list_head .list_head_content{
+    background-color: var(--gelo);
+    color: var(--azulScuro);
+    padding: 10px;
+    text-align: center;
+}
+.table_list .list_body{
+    /* background-color: var(--gelo2); */
+    /* color: var(--azulEscuro); */
+    padding: 8px;
+    text-align: center;
+}
+.table_list .list_body .list_body_content{
+    /* background-color: var(--gelo3); */
+    color: var(--azulEscuro);
+    padding: 8px;
+    text-align: center;
+}
+@media (max-width: 550px) {
+    .tb_sm_none,
+    .tb_md_none,
+    .tb_lg_none{
+        display: none;
+    }
+}
+@media (max-width: 790px) {
+    .tb_md_none,
+    .tb_lg_none{
+        display: none;
+    }
+}
+@media (max-width: 1024px) {
+    .tb_lg_none{
+        display: none;
+    }
+}
+@media (max-width: 1290px) {
+    .tb_xxl_none{
+        display: none;
+    }
+}
 
+/* INICIO do Formulário ****************************************************************************/
+/* Definições gerais do LAYOUT das VIEWs com Formulários ******************************************/
+.wrapper_form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 35px;
+    /* margin: 35px; */
+    background-color: var(--azulEscuro);
+}
+.row_form{
+    display: flex;
+    justify-content: center;
+    width: 50rem;
+    background-color: var(--branco);
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 1px 4px 16px 1px var(--preto);
+}
+.form_adms{
+    width: 100%;
+    align-items: flex-start;
+    position: relative;
+    padding: 20px;
+    margin: .5em auto 0 auto;
+}
 
 
 /************************************ FIM DEFINIÇÕES GENÉRICAS *********************************/

@@ -8,7 +8,11 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 } ?>
 <!-- Inicio do conteúdo da pagina ADM - class='main_content' -->
-<aside class='col-2 aside_container'>
+<!-- <aside class='aside_container'> -->
+    <!-- Inicio do SIDE-BAR -->
+    <!-- <div class='sidebar'> -->
+<!-- Inicio do conteúdo da pagina ADM -->
+<main class='main_content'>
     <!-- Inicio do SIDE-BAR -->
     <div class='sidebar'>
         <h1>Menu SideBar</h1>
@@ -24,24 +28,24 @@ if (isset($this->data['sidebarActive'])) {
                     $active_item_menu = "active";
                 }
 
-                if ($dropdown == 1) {
-                    if ($count_drop_start != $id_itm_men) {
+                if ($dropdown_menu == 1) {
+                    if ($count_drop_start != $id_item_menu) {
                         //verifica se o $count_drop_end tem o valor 1, quer dizer q está aberto
                         if (($count_drop_end == 1) and ($count_drop_start != 0)) {
                             echo "</div>";
                             $count_drop_end = 0;
                         }
                         //Imprime o MENU DropDown(nome) com o seu icone
-                        echo "<button class='dropdown_btn btn_active$id_itm_men'>";
-                        echo "<i class='icon $icon_itm_men'></i><span>$name_itm_men</span><i class='fa-solid fa-caret-down'></i>";
+                        echo "<button class='dropdown_btn btn_active$id_item_menu'>";
+                        echo "<i class='icon $icon_item_menu'></i><span>$name_item_menu</span><i class='fa-solid fa-caret-down'></i>";
                         echo "</button>";
 
-                        echo "<div class='dropdown_container cont_active$id_itm_men'>";
+                        echo "<div class='dropdown_container cont_active$id_item_menu'>";
                     }
                     // Aqui imprime os itens do menu DropDown
-                    echo "<a href='" . URLADM . "$menu_controller/$menu_metodo' class='sidebar_nav active$id_itm_men $active_item_menu'><i class='icon_itens $icon'></i><span>$name_page</span></a>";
+                    echo "<a href='" . URLADM . "$menu_controller/$menu_metodo' class='sidebar_nav active$id_item_menu $active_item_menu'><i class='icon_itens $icon_menu_page'></i><span>$name_page</span></a>";
 
-                    $count_drop_start = $id_itm_men;
+                    $count_drop_start = $id_item_menu;
                     $count_drop_end = 1;
                 } else {
                     // se o $count_drop_end tem o valor 1(está aberto), então deve ser fechado
@@ -50,7 +54,7 @@ if (isset($this->data['sidebarActive'])) {
                         $count_drop_end = 0;
                     }
                     // os itens que NÃO forem dropdown, são impressos por aqui
-                    echo "<a href='" . URLADM . "$menu_controller/$menu_metodo' class='sidebar_nav $active_item_menu'><i class='icon $icon'></i><span>$name_page</span></a>";
+                    echo "<a href='" . URLADM . "$menu_controller/$menu_metodo' class='sidebar_nav $active_item_menu'><i class='icon $icon_menu_page'></i><span>$name_page</span></a>";
                 }
             }
             if ($count_drop_end == 1) {
@@ -59,5 +63,5 @@ if (isset($this->data['sidebarActive'])) {
             }
         } ?>
     </div>
-</aside>
+<!-- </aside> -->
 <!-- FIM do SIDE-BAR -->

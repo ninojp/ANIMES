@@ -86,10 +86,10 @@ class AdmAddPage
         $lists->fullRead("SELECT asp.id_sits_page, asp.name_sits_page FROM adms_sits_page AS asp ORDER BY asp.name_sits_page ASC");
         $registry['sit'] = $lists->getResult();
 
-        $lists->fullRead("SELECT atp.id AS id_atp, atp.type AS type_atp FROM adms_types_pgs AS atp ORDER BY atp.type ASC");
+        $lists->fullRead("SELECT atp.id_type_page, atp.name_type_page FROM adms_type_page AS atp ORDER BY atp.name_type_page ASC");
         $registry['atp'] = $lists->getResult();
         
-        $lists->fullRead("SELECT agp.id AS id_agp, agp.name AS name_agp FROM adms_groups_pgs AS agp ORDER BY agp.name ASC");
+        $lists->fullRead("SELECT agp.id_group_page, agp.name_group_page FROM adms_group_page AS agp ORDER BY agp.name_group_page ASC");
         $registry['agp'] = $lists->getResult();
 
         $this->listRegistryAdd = ['sit' => $registry['sit'], 'atp' => $registry['atp'], 'agp' => $registry['agp']];

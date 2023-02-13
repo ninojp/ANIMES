@@ -22,40 +22,40 @@ class AddPage
         if (!empty($this->dataForm['SendAddPages'])) {
             // var_dump($this->dataForm);
             unset($this->dataForm['SendAddPages']);
-            $createPage = new \App\adms\Models\AdmsAddPages();
+            $createPage = new \Adm\Models\AdmAddPage();
             $createPage->createPage($this->dataForm);
             //Verifica ee o resultado da QUERY é TRUE, se for faz o redirecionamento para:list-users
             if($createPage->getResult()){
-                $urlRedirect = URLADM."list-pages/index";
+                $urlRedirect = URLADM."list-page/index";
                 header("Location: $urlRedirect");
             }else{
                 // Se o resultado for FALSE, cria uma nova posição dentro do array $dataForm e mantém os dados no formulário
                 $this->data['form'] = $this->dataForm;
-                $this->loadViewAddUser();
+                $this->loadViewAddPage();
             }
         }else{
-            $this->loadViewAddUser();
+            $this->loadViewAddPage();
         }
     } 
 
     /** ============================================================================================
      * @return void     */
-    private function loadViewAddUser():void
+    private function loadViewAddPage():void
     {
-        $listSelect = new \App\adms\Models\AdmsAddPages();
+        $listSelect = new \Adm\Models\AdmAddPage();
         $this->data['select'] = $listSelect->listSelect();
         // var_dump($this->data);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adm\Models\helper\AdmMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "add-pages";
+        $this->data['sidebarActive'] = "add-page";
         
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new ConfigView("adms/Views/pages/addPages", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/addPage", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdm();
     }
 }

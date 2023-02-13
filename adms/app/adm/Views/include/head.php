@@ -12,7 +12,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     <!-- Carregar o BOOTSTRAP CSS local ------------------------------------------>
     <link rel="stylesheet" href="<?=URLADM;?>app/adm/assets/css/bootstrap.min.css">
     <!-- Carregar o CSS_ADMS.CSS CSS - layout do administrativo ----------------------->
-    <link rel="stylesheet" href="<?=URLADM;?>app/adm/assets/css/css_adms.css">
+    <link rel="stylesheet" href="<?=URLADM;?>app/adm/assets/css/adms.css">
     <!-- Carregar o FONT AWESOME CSS local ------------------------------------>
     <link rel="stylesheet" href="<?=URLADM;?>app/adm/assets/css/aw_all.min.css">
     <link rel="shortcut icon" href="<?=URLADM;?>app/adm/assets/imgs/favicon.ico" type="image/x-icon">
