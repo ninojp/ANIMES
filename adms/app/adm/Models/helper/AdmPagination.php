@@ -1,11 +1,10 @@
 <?php
-
-namespace App\adms\Models\helper;
-
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) {
-    header("Location: https://localhost/dtudo/public/"); }
+namespace Adm\Models\helper;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe genérica para paginar os registros do DB */
-class AdmsPagination
+class AdmPagination
 {
     /** @var integer - Recebe o bunero da pagina   */
     private int $page;
@@ -91,7 +90,7 @@ class AdmsPagination
         $this->parseString = (string) $parseString;
         // var_dump($this->query);
         // var_dump($this->parseString);
-        $count = new \App\adms\Models\helper\AdmsRead();
+        $count = new \Adm\Models\helper\AdmRead();
         $count->fullRead($this->query, $this->parseString);
         $this->resultBd = $count->getResult();
         $this->pageInstruction();

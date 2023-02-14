@@ -55,3 +55,12 @@ Erro 021.1 - ADMS/app/adm/Models/AdmUpdatePass.php, updatePassword()
 Erro 022 - ADMS/app/adm/Controllers/UpdatePass.php, updatePassword()
 
 Erro 023 - ADMS/app/adm/Models/AdmAddPage.php, addPage()
+
+Erro 024 - ADMS/app/adm/Models/AdmListPage.php, listPages()
+Erro 024.1 - ADMS/app/adm/Models/AdmListPage.php, searchPageNameController()
+Erro 024.2 - ADMS/app/adm/Models/AdmListPage.php, searchNamePage()
+Erro 024.3 - ADMS/app/adm/Models/AdmListPage.php, searchController()
+
+Erro 025 - ADMS/app/adm/Models/AdmSyncPageLevel.php, SyncPageLevel()
+Erro 025.1 - ADMS/app/adm/Models/AdmSyncPageLevel.php, listPages()
+Erro 025.2 - ADMS/app/adm/Models/AdmSyncPageLevel.php, addNivelPermission()

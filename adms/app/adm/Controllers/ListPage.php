@@ -3,9 +3,7 @@ namespace Adm\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-use Core\ConfigView;
-
-class ListPages
+class ListPage
 {
     /** @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
     private array|string|null $data;
@@ -44,7 +42,7 @@ class ListPages
         // var_dump($this->searchName);
         // var_dump($this->searchController);
 
-        $listPages = new \App\adms\Models\AdmsListPages();
+        $listPages = new \Adm\Models\AdmListPage();
 
         //verifica se foi clicado no botão de pesquisar, se foi executa o codigo abaixo
         if(!empty($this->dataForm['SendSearchPages'])) {
@@ -83,29 +81,29 @@ class ListPages
         }
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
         // Cria o array e suas devidas posições
-        $button = ['add_pages' => ['menu_controller' => 'add-pages', 'menu_metodo' => 'index'], 
-        'sync_pages_nivels' => ['menu_controller' => 'sync-pages-nivels', 'menu_metodo' => 'index'],
-        'view_pages' => ['menu_controller' => 'view-pages', 'menu_metodo' => 'index'],
-        'edit_pages' => ['menu_controller' => 'edit-pages', 'menu_metodo' => 'index'],
-        'delete_pages' => ['menu_controller' => 'delete-pages', 'menu_metodo' => 'index']];
+        $button = ['add_page' => ['menu_controller' => 'add-page', 'menu_metodo' => 'index'], 
+        'sync_page_level' => ['menu_controller' => 'sync-page-level', 'menu_metodo' => 'index'],
+        'view_page' => ['menu_controller' => 'view-page', 'menu_metodo' => 'index'],
+        'edit_page' => ['menu_controller' => 'edit-page', 'menu_metodo' => 'index'],
+        'delete_page' => ['menu_controller' => 'delete-page', 'menu_metodo' => 'index']];
         // Instância a classe:AdmsButton() e cria o objeto:$listButton
-        $listButton = new \App\adms\Models\helper\AdmsButton();
+        $listButton = new \Adm\Models\helper\AdmButton();
         // Passa como parametro o array:$button criado acima, para o método:buttonPermission()
         // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
         $this->data['button'] = $listButton->buttonPermission($button);
         // var_dump($this->data['button']);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adm\Models\helper\AdmMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "list-pages";
+        $this->data['sidebarActive'] = "list-page";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data, recebido da VIEW
-        $loadView = new ConfigView("adms/Views/pages/listPages",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/listPage",$this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdm();
     }
 
 }

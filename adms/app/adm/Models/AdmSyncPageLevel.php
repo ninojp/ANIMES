@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe(Models) para sincronizar o nivel de acesso e as paginas */
-class AdmsSyncPagesNivels
+class AdmSyncPageLevel
 {
     private bool $result;
 
@@ -12,31 +12,31 @@ class AdmsSyncPagesNivels
     private array|null $resultBd;
 
     /** @var array|null - Recebe os registros do banco de dados(DB)     */
-    private array|null $resultBdNivels;
+    private array|null $resultBdLevel;
 
     /** @var array|null - Recebe os registros do banco de dados(DB)     */
     private array|null $resultBdPages;
 
     /** @var array|null - Recebe as informações q devem ser salvas no DB     */
-    private array|null $resultBdNivelsPage;
+    private array|null $resultBdLevelPage;
 
     /** @var array|null - Recebe os registros do banco de dados(DB)     */
     private array|null $resultBdLastOrder;
 
     /** @var array|null - Recebe os registros do banco de dados(DB)     */
-    private array|null $resultBdNivelDefault;
+    private array|null $resultBdLevelDefault;
     
     /** @var array|null - Recebe os registros do banco de dados(DB)     */
-    private array|null $dataNivelPage;
+    private array|null $dataLevelPage;
 
     /** @var integer|string|null - Recebe o Id do Nivel de acesso   */
-    private int|string|null $nivelId;
+    private int|string|null $levelId;
 
     /** @var integer|string|null - Recebe o Id da pagina   */
     private int|string|null $pageId;
 
     /** @var integer|string|null - Recebe o tipo de permissão da página */
-    private int|string|null $publish;
+    private int|string|null $public_page;
 
     /** ==========================================================================================
      * @return boolean         */
@@ -53,24 +53,24 @@ class AdmsSyncPagesNivels
     /** ==========================================================================================
      * Método para recuperar os niveis de acesso no DB
      * @return void - Retorna false se houver algun erro   */
-    public function syncPagesNivels(): void
+    public function SyncPageLevel(): void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listNivels = new \App\adms\Models\helper\AdmsRead();
+        $listLevel = new \Adm\Models\helper\AdmRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $listNivels->fullRead("SELECT id FROM adms_access_levels");
+        $listLevel->fullRead("SELECT id_access_level FROM adms_access_level");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
 
-        $this->resultBdNivels = $listNivels->getResult();
+        $this->resultBdLevel = $listLevel->getResult();
         //verifica se atributo:$this->resultBd é true, se for atribui o true para o atributo:$this->result
-        if ($this->resultBdNivels) {
+        if ($this->resultBdLevel) {
             // var_dump($this->resultBd);
             // $this->result = true;
             //se o atributo:$this->resultBd é false, atribui a frase na constante:$_SESSION['msg']
             // var_dump($this->resultBdNivels);
             $this->listPages();
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nivel de acesso não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 025! Nivel de acesso não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -79,9 +79,9 @@ class AdmsSyncPagesNivels
     private function listPages():void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listPages = new \App\adms\Models\helper\AdmsRead();
+        $listPages = new \Adm\Models\helper\AdmRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $listPages->fullRead("SELECT id, publish FROM adms_pages");
+        $listPages->fullRead("SELECT id_page, public_page FROM adms_page");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
         $this->resultBdPages = $listPages->getResult();
         //verifica se atributo:$this->resultBd é true, se for atribui o true para o atributo:$this->result
@@ -92,7 +92,7 @@ class AdmsSyncPagesNivels
             // var_dump($this->resultBdPages);
             $this->readNivels();
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (listPages())! Nenhuma página encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 025.1! Nenhuma página encontrada!</p>";
             $this->result = false;
         }
     }
@@ -100,11 +100,11 @@ class AdmsSyncPagesNivels
      * @return void - Ler os niveis de acesso no DB     */
     private function readNivels():void
     {
-        foreach($this->resultBdNivels as $nivel){
+        foreach($this->resultBdLevel as $level){
             // var_dump($nivel);
-            extract($nivel);
+            extract($level);
             // echo "ID do nivel de acesso: $id <br>";
-            $this->nivelId = $id;
+            $this->levelId = $id_access_level;
             $this->readPages();
         }
     }
@@ -116,8 +116,8 @@ class AdmsSyncPagesNivels
             // var_dump($page);
             extract($page);
             // echo "ID da Página: $id <br>";
-            $this->pageId = $id;
-            $this->publish = $publish;
+            $this->pageId = $id_page;
+            $this->public_page = $public_page;
             $this->searchNivelsPage();
         }
     }
@@ -126,13 +126,13 @@ class AdmsSyncPagesNivels
     private function searchNivelsPage():void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listNivelsPage = new \App\adms\Models\helper\AdmsRead();
+        $listLevelPage = new \Adm\Models\helper\AdmRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $listNivelsPage->fullRead("SELECT id FROM adms_levels_pages WHERE adms_access_level_id =:adms_access_level_id AND adms_page_id =:adms_page_id", "adms_access_level_id={$this->nivelId}&adms_page_id={$this->pageId}");
+        $listLevelPage->fullRead("SELECT id_level_page FROM adms_level_page WHERE id_access_level=:id_access_level AND id_page=:id_page", "id_access_level={$this->levelId}&id_page={$this->pageId}");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBdNivelsPage
-        $this->resultBdNivelsPage = $listNivelsPage->getResult();
+        $this->resultBdLevelPage = $listLevelPage->getResult();
         //verifica se atributo:$this->resultBd Não for true, precisa cadastrar pois não encontrou no Db
-        if ($this->resultBdNivelsPage) {
+        if ($this->resultBdLevelPage) {
             // var_dump($this->resultBd);
             // $this->result = true;
             //se o atributo:$this->resultBd é false, atribui a frase na constante:$_SESSION['msg']
@@ -149,28 +149,28 @@ class AdmsSyncPagesNivels
         }
     }
     /** ============================================================================================
-     * @return void - Método para cadastrar na tabela:adms_levels_pages     */
+     * @return void - Método para cadastrar na tabela:adms_level_page     */
     private function addNivelPermission():void
     {
         $this->searchLastOrder();
         // Se o nivel de acesso for 1(super adm) OU a página for publica (publish=1), ? = 1, por padrão tem permissão de acessar. Se não : = 2, não tem permissão
-        $this->dataNivelPage['permission'] = (($this->nivelId==1) or ($this->publish==1)) ? 1 : 2;
+        $this->dataLevelPage['permission_level_page'] = (($this->levelId==1) or ($this->public_page==1)) ? 1 : 2;
         // Método para Procurar, se econtrar executa o nivel(LEVEL) de acesso PADRÃO 
         $this->searchNivelDefault();
 
-        $this->dataNivelPage['order_level_page'] = $this->resultBdLastOrder[0]['order_level_page'] +1;
-        $this->dataNivelPage['adms_access_level_id'] = $this->nivelId;
-        $this->dataNivelPage['adms_page_id'] = $this->pageId;
-        $this->dataNivelPage['created'] = date("Y-m-d H:i:s");
+        $this->dataLevelPage['order_level_page'] = $this->resultBdLastOrder[0]['order_level_page'] +1;
+        $this->dataLevelPage['id_access_level'] = $this->levelId;
+        $this->dataLevelPage['id_page'] = $this->pageId;
+        $this->dataLevelPage['created'] = date("Y-m-d H:i:s");
 
-        $addAccessNivel = new \App\adms\Models\helper\AdmsCreate();
-        $addAccessNivel->exeCreate("adms_levels_pages", $this->dataNivelPage);
+        $addAccessNivel = new \Adm\Models\helper\AdmCreate();
+        $addAccessNivel->exeCreate("adms_level_page", $this->dataLevelPage);
 
         if($addAccessNivel->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Permissões sincronizadas com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possivel sincronisar as permissões!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 25.2! Não foi possivel sincronisar as permissões!</p>";
             $this->result = false;
         }
     }
@@ -178,8 +178,8 @@ class AdmsSyncPagesNivels
      * @return void - Método para se ha página está cadastrada para o nivel de acesso na tabela:adms_levels_pages      */
     private function searchLastOrder():void
     {
-        $viewLastOrder = new \App\adms\Models\helper\AdmsRead();
-        $viewLastOrder->fullRead("SELECT order_level_page, adms_access_level_id FROM adms_levels_pages WHERE adms_access_level_id =:adms_access_level_id ORDER BY order_level_page DESC LIMIT :limit", "adms_access_level_id={$this->nivelId}&limit=1");
+        $viewLastOrder = new \Adm\Models\helper\AdmRead();
+        $viewLastOrder->fullRead("SELECT order_level_page, id_access_level FROM adms_level_page WHERE id_access_level=:id_access_level ORDER BY order_level_page DESC LIMIT :limit", "id_access_level={$this->levelId}&limit=1");
 
         $this->resultBdLastOrder = $viewLastOrder->getResult();
 
@@ -194,19 +194,19 @@ class AdmsSyncPagesNivels
      * @return void      */
     private function searchNivelDefault():void
     {
-        $viewNivelDefault = new \App\adms\Models\helper\AdmsRead();
-        $viewNivelDefault->fullRead("SELECT permission, print_menu, dropdown, adms_items_menu_id  
-        FROM adms_levels_pages WHERE adms_page_id=:adms_page_id AND adms_access_level_id=7
+        $viewLevelDefault = new \Adm\Models\helper\AdmRead();
+        // Nesta query eta sendo verificado(Definido) se o ID da tebela:adms_level_page é = 3
+        $viewLevelDefault->fullRead("SELECT permission_level_page, print_menu, dropdown_menu, id_item_menu FROM adms_level_page WHERE id_page=:id_page AND id_access_level=3
         LIMIT :limit",
-        "adms_page_id={$this->pageId}&limit=1");
+        "id_page={$this->pageId}&limit=1");
 
-        $this->resultBdNivelDefault = $viewNivelDefault->getResult();
+        $this->resultBdLevelDefault = $viewLevelDefault->getResult();
         // Verifica, se existir usa os dados do nivel de acesso padrão
-        if($this->resultBdNivelDefault){
-            $this->dataNivelPage['permission'] = $this->resultBdNivelDefault[0]['permission'];
-            $this->dataNivelPage['print_menu'] = $this->resultBdNivelDefault[0]['print_menu'];
-            $this->dataNivelPage['dropdown'] = $this->resultBdNivelDefault[0]['dropdown'];
-            $this->dataNivelPage['adms_items_menu_id'] = $this->resultBdNivelDefault[0]['adms_items_menu_id'];
+        if($this->resultBdLevelDefault){
+            $this->dataLevelPage['permission_level_page'] = $this->resultBdLevelDefault[0]['permission_level_page'];
+            $this->dataLevelPage['print_menu'] = $this->resultBdLevelDefault[0]['print_menu'];
+            $this->dataLevelPage['dropdown_menu'] = $this->resultBdLevelDefault[0]['dropdown_menu'];
+            $this->dataLevelPage['id_item_menu'] = $this->resultBdLevelDefault[0]['id_item_menu'];
         }
     }
 }

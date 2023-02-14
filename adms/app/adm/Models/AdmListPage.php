@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsListUsers, deve receber os dados(do DB) dos usuários para listar */
-class AdmsListPages
+class AdmListPage
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result;
@@ -64,26 +64,26 @@ class AdmsListPages
         $this->page = (int) $page ? $page : 1;
         // var_dump($this->page);
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-pages/index');
+        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index');
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(id) AS num_result FROM adms_pages");
+        $pagination->pagination("SELECT COUNT(id_page) AS num_result FROM adms_page");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listPages = new \App\adms\Models\helper\AdmsRead();
+        $listPages = new \Adm\Models\helper\AdmRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listPages->fullRead("SELECT id, name_page, controller, metodo FROM adms_pages ORDER BY id DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listPages->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listPages->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma Página encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 024! Nenhuma Página encontrado!</p>";
             $this->result = false;
         }
     }
@@ -101,8 +101,8 @@ class AdmsListPages
         // var_dump($this->searchController);
 
         //define que a variavel q vai ser usada na query de pesquisa pode ter valores antes e depois
-        $this->searchNameValue = "%" . $this->searchName . "%";
-        $this->searchControllerValue = "%" . $this->searchController . "%";
+        $this->searchNameValue = "%".$this->searchName."%";
+        $this->searchControllerValue = "%".$this->searchController."%";
         // var_dump($this->searchNameValue);
         // var_dump($this->searchControllerValue);
 
@@ -124,26 +124,26 @@ class AdmsListPages
     public function searchPageNameController(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-pages/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(id) AS num_result FROM adms_pages WHERE name_page LIKE :search_name OR controller LIKE :search_controller", "search_name={$this->searchNameValue}&search_controller={$this->searchControllerValue}");
+        $pagination->pagination("SELECT COUNT(id_page) AS num_result FROM adms_page WHERE name_page LIKE :search_name OR controller_page LIKE :search_controller", "search_name={$this->searchNameValue}&search_controller={$this->searchControllerValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listPageNameController = new \App\adms\Models\helper\AdmsRead();
+        $listPageNameController = new \Adm\Models\helper\AdmRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listPageNameController->fullRead("SELECT id, name_page, controller, metodo FROM adms_pages WHERE name_page LIKE :search_name OR controller LIKE :search_controller ORDER BY id DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}" );
+        $listPageNameController->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE name_page LIKE :search_name OR controller_page LIKE :search_controller ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}" );
 
         $this->resultBd = $listPageNameController->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma página ou e-mail encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 024.1! Nenhuma página ou e-mail encontrado!</p>";
             $this->result = false;
         }
     }
@@ -152,26 +152,26 @@ class AdmsListPages
     public function searchNamePage(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-pages/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(id) AS num_result FROM adms_pages WHERE name_page LIKE :search_name", "search_name={$this->searchNameValue}");
+        $pagination->pagination("SELECT COUNT(id_page) AS num_result FROM adms_page WHERE name_page LIKE :search_name", "search_name={$this->searchNameValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listNamePages = new \App\adms\Models\helper\AdmsRead();
+        $listNamePages = new \Adm\Models\helper\AdmRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listNamePages->fullRead("SELECT id, name_page, controller, metodo FROM adms_pages WHERE name_page LIKE :search_name ORDER BY id DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listNamePages->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE name_page LIKE :search_name ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listNamePages->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma página encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 024.2! Nenhuma página encontrado!</p>";
             $this->result = false;
         }
     }
@@ -180,26 +180,26 @@ class AdmsListPages
     public function searchController(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-pages/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(id) AS num_result FROM adms_pages WHERE controller LIKE :search_controller", "search_controller={$this->searchControllerValue}");
+        $pagination->pagination("SELECT COUNT(id_page) AS num_result FROM adms_page WHERE controller_page LIKE :search_controller", "search_controller={$this->searchControllerValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listController = new \App\adms\Models\helper\AdmsRead();
-        //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listController->fullRead("SELECT id, name_page, controller, metodo FROM adms_pages WHERE controller LIKE :search_controller ORDER BY id DESC LIMIT :limit OFFSET :offset", "search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listController = new \Adm\Models\helper\AdmRead();
+        //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id_page exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
+        $listController->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE controller_page LIKE :search_controller ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listController->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma Pagina ou Controller encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 024.3! Nenhuma Pagina ou Controller encontrado!</p>";
             $this->result = false;
         }
     }

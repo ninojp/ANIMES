@@ -22,9 +22,9 @@ if (isset($this->data['form'])) {
                 </div>
                 <div class="col-3 top_list_right">
                 <?php if($this->data['button']['add_pages']) { ?>
-                    <a class="btn btn-sm btn_success" href="<?= URLADM.'add-pages/index';?>" type="button">Cadastrar Página</a><?php }
-                if($this->data['button']['sync_pages_nivels']) {?>
-                    <a class="btn btn-sm btn_warning" href="<?= URLADM.'sync-pages-nivels/index';?>" type="button">Sincronizar</a> <?php } ?>
+                    <a class="btn btn-sm btn_success" href="<?= URLADM.'add-page/index';?>" type="button">Cadastrar Página</a><?php }
+                if($this->data['button']['sync_page_level']) {?>
+                    <a class="btn btn-sm btn_warning" href="<?= URLADM.'sync-page-level/index';?>" type="button">Sincronizar</a> <?php } ?>
                 </div>
             </div>
             <!-- DIV com o campo de pesquisa -->
