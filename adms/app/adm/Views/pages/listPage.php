@@ -14,17 +14,17 @@ if (isset($this->data['form'])) {
                 <h2 class="title_h2">Listar Páginas</h2>
             </div>
             <div class="div_row_msg_btn">
-                <div class="col-9 msg_alert">
+                <div class="col-8 msg_alert">
                     <!-- Mensagens de avisos -->
                     <?php if (isset($_SESSION['msg'])) {
                             echo $_SESSION['msg'];
                             unset($_SESSION['msg']); } ?>
                 </div>
-                <div class="col-3 top_list_right">
-                <?php if($this->data['button']['add_pages']) { ?>
+                <div class="col-4 top_list_right">
+                <?php if($this->data['button']['add_page']) { ?>
                     <a class="btn btn-sm btn_success" href="<?= URLADM.'add-page/index';?>" type="button">Cadastrar Página</a><?php }
                 if($this->data['button']['sync_page_level']) {?>
-                    <a class="btn btn-sm btn_warning" href="<?= URLADM.'sync-page-level/index';?>" type="button">Sincronizar</a> <?php } ?>
+                    <a class="btn btn-warning" href="<?= URLADM.'sync-page-level/index';?>" type="button">Sincronizar</a> <?php } ?>
                 </div>
             </div>
             <!-- DIV com o campo de pesquisa -->
@@ -40,7 +40,7 @@ if (isset($this->data['form'])) {
                             <input type="text" name="search_name" id="seach_name" value="<?php echo $search_name; ?>" placeholder="Pesquisar pelo nome">
                         </div>
                         <div class="col-3">
-                            <button  class="btn btn-sm btn-outline-info" type="submit" name="SendSearchPages" value="Pesquisar">Pesquisar por nome ou controller</button>
+                            <button  class="btn btn-sm btn-primary" type="submit" name="SendSearchPages" value="Pesquisar">Pesquisar nome ou controller</button>
                         </div>
                         <div class="col-4">
                             <?php $search_controller = "";
@@ -63,25 +63,25 @@ if (isset($this->data['form'])) {
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
                     <th class="list_head_content tb_sm_none">controller</th>
                     <th class="list_head_content tb_sm_none">metodo</th>
-                    <?php if(($this->data['button']['view_pages']) or ($this->data['button']['edit_pages']) or ($this->data['button']['delete_pages'])) { ?>
+                    <?php if(($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { ?>
                     <th class="list_head_content">Botões de Ações</th><?php } ?>
                 </tr>
             </thead>
             <tbody class="list_body">
-                <?php foreach ($this->data['listPages'] as $pages) { extract($pages);  ?>
+                <?php foreach ($this->data['listPage'] as $page) { extract($page);  ?>
                 <tr>
-                    <td class="list_body_content"><?=$id;?></td>
+                    <td class="list_body_content"><?=$id_page;?></td>
                     <td class="list_body_content"><?=$name_page;?></td>
-                    <td class="list_body_content tb_sm_none"><?=$controller;?></td>
-                    <td class="list_body_content tb_sm_none"><?=$metodo;?></td>
-                    <?php if(($this->data['button']['view_pages']) or ($this->data['button']['edit_pages']) or ($this->data['button']['delete_pages'])) { 
+                    <td class="list_body_content tb_sm_none"><?=$controller_page;?></td>
+                    <td class="list_body_content tb_sm_none"><?=$metodo_page;?></td>
+                    <?php if(($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { 
                         echo "<td class='list_body_content'>";
-                        if($this->data['button']['view_pages']) {
-                            echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-pages/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>"; }
-                        if($this->data['button']['edit_pages']) { 
-                            echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-pages/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
-                        if($this->data['button']['delete_pages']) {
-                            echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
+                        if($this->data['button']['view_page']) {
+                            echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-page/index/$id_page'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                        if($this->data['button']['edit_page']) { 
+                            echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-page/index/$id_page'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
+                        if($this->data['button']['delete_page']) {
+                            echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-page/index/$id_page' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
                         echo "</td>";
                     } 
                 echo "</tr>";

@@ -71,12 +71,12 @@ class ListPage
             $listPages->listPages($this->page);
         }
         if($listPages->getResult()){
-            $this->data['listPages'] = $listPages->getResultBd();
+            $this->data['listPage'] = $listPages->getResultBd();
             // var_dump($this->data['listPages']);
             // PAGINAÇÃO - cria a POSIÇÃO:['pagination'] no array:$this->data
             $this->data['pagination'] = $listPages->getResultPg();
         }else{
-            $this->data['listPages'] = [];
+            $this->data['listPage'] = [];
             $this->data['pagination'] = "";
         }
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------

@@ -1,10 +1,11 @@
 <?php
-namespace App\adms\Models\helper;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use PDO;
+namespace Adm\Models\helper;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 use PDOException;
 /** Classe genérica para APAGAR registro no banco de dados */
-class AdmsDelete extends AdmsConn
+class AdmDelete extends AdmConn
 {
     private string $table;
     private string|null $terms;
