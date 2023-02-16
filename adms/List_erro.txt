@@ -2,69 +2,89 @@ Erro 000 - Erro genérico, CONSTANTE defina na index está incoreta
 
 Erro 001 - Models/helper/MdConn.php, connectDb()
 
-Erro 002 - SRC/ConfigViewAnimes.php,  loadViewAnimes()
+Erro 002 - ADMS/SRC/ConfigViewAdms.php,  loadViewAdms()
+Erro 002.1 - ADMS/SRC/ConfigViewAdms.php, loadViewLoginAdms()
 
-Erro 003 -  SRC/ConfigController.php, loadClass()
+Erro 003 -  ADMS/SRC/------------------.php, --------()
 
-Erro 004 - ADMS/SRC/ConfigViewAdms.php, loadViewAdmsLogin()
+Erro 004 -  ADMS/SRC/------------------.php, --------()
 
 Erro 005 - ADMS/SRC/ConfigControllerAdms.php, loadClass()
 
-Erro 006 - ADMS/app/adm/Models/AdmLogin.php, login()
+Erro 006 - ADMS/app/adms/Models/AdmsLogin.php, login()
 
-Erro 006.1 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
-Erro 006.2 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
-Erro 006.3 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
-Erro 006.4 - ADMS/app/adm/Models/AdmLogin.php, valEmailPerm() 
+Erro 006.1 - ADMS/app/adms/Models/AdmsLogin.php, valEmailPerm() 
+Erro 006.2 - ADMS/app/adms/Models/AdmsLogin.php, valEmailPerm() 
+Erro 006.3 - ADMS/app/adms/Models/AdmsLogin.php, valEmailPerm() 
+Erro 006.4 - ADMS/app/adms/Models/AdmsLogin.php, valEmailPerm() 
 
-Erro 007 - ADMS/app/adm/Models/AdmLogin.php, valPassword()
+Erro 007 - ADMS/app/adms/Models/AdmsLogin.php, valPassword()
 
-Erro 008 - ADMS/app/adm/Models/AdmValEmptyField.php, valField()
+Erro 008 - ADMS/app/adms/Models/AdmsValEmptyField.php, valField()
 
-Erro 009 - ADMS/app/adm/Models/AdmValEmail.php, validateEmail()
+Erro 009 - ADMS/app/adms/Models/AdmsValEmail.php, validateEmail()
 
-Erro 010 - ADMS/app/adm/Models/AdmValEmailSimgle.php, validateEmailSingle()
+Erro 010 - ADMS/app/adms/Models/AdmsValEmailSimgle.php, validateEmailSingle()
 
-Erro 011 - ADMS/app/adm/Models/AdmValPassword.php, validatePassword() e outras
+Erro 011 - ADMS/app/adms/Models/AdmsValPassword.php, validatePassword() e outras
 
-Erro 012 - ADMS/app/adm/Models/AdmValUserSimgleLogin.php, validateUserSingleLogin()
+Erro 012 - ADMS/app/adms/Models/AdmsValUserSimgleLogin.php, validateUserSingleLogin()
 
-Erro 013 - ADMS/app/adm/Models/helper/AdmSendEmail.php, infoPhpMailer()
+Erro 013 - ADMS/app/adms/Models/helper/AdmsSendEmail.php, infoPhpMailer()
 
-Erro 014 - ADMS/app/adm/Models/AdmConfirmEmail.php, confEmail()
-Erro 014.1 - ADMS/app/adm/Models/AdmConfirmEmail.php, updateSitUser()()
+Erro 014 - ADMS/app/adms/Models/AdmsConfirmEmail.php, confEmail()
+Erro 014.1 - ADMS/app/adms/Models/AdmsConfirmEmail.php, updateSitUser()()
 
-Erro 015 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, valUser()
+Erro 015 - ADMS/app/adms/Models/AdmsNewConfirmEmail.php, valUser()
 
-Erro 016 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, valConfEmail()
+Erro 016 - ADMS/app/adms/Models/AdmsNewConfirmEmail.php, valConfEmail()
 
-Erro 017 - ADMS/app/adm/Models/AdmNewConfirmEmail.php, sendEmail()
+Erro 017 - ADMS/app/adms/Models/AdmsNewConfirmEmail.php, sendEmail()
 
-Erro 018 - ADMS/app/adm/Controllers/ConfirmEmail.php, index()
+Erro 018 - ADMS/app/adms/Controllers/ConfirmEmail.php, index()
 
-Erro 019 - ADMS/app/adm/Models/AdmNewUser.php, add()
-Erro 019.1 - ADMS/app/adm/Models/AdmNewUser.php, add()
+Erro 019 - ADMS/app/adms/Models/AdmsNewUser.php, add()
+Erro 019.1 - ADMS/app/adms/Models/AdmsNewUser.php, add()
 
-Erro 020 - ADMS/app/adm/Models/AdmRecoverPass.php, valUser()
-Erro 020.1 - ADMS/app/adm/Models/AdmRecoverPass.php, valConfEmail()
-Erro 020.2 - ADMS/app/adm/Models/AdmRecoverPass.php, sendEmail()
+Erro 020 - ADMS/app/adms/Models/AdmsRecoverPass.php, valUser()
+Erro 020.1 - ADMS/app/adms/Models/AdmsRecoverPass.php, valConfEmail()
+Erro 020.2 - ADMS/app/adms/Models/AdmsRecoverPass.php, sendEmail()
 
-Erro 021 - ADMS/app/adm/Models/AdmUpdatePass.php, valKey()
-Erro 021.1 - ADMS/app/adm/Models/AdmUpdatePass.php, updatePassword()
+Erro 021 - ADMS/app/adms/Models/AdmsUpdatePass.php, valKey()
+Erro 021.1 - ADMS/app/adms/Models/AdmsUpdatePass.php, updatePassword()
 
-Erro 022 - ADMS/app/adm/Controllers/UpdatePass.php, updatePassword()
+Erro 022 - ADMS/app/adms/Controllers/UpdatePass.php, updatePassword()
 
-Erro 023 - ADMS/app/adm/Models/AdmAddPage.php, addPage()
+Erro 023 - ADMS/app/adms/Models/AdmsAddPage.php, addPage()
 
-Erro 024 - ADMS/app/adm/Models/AdmListPage.php, listPages()
-Erro 024.1 - ADMS/app/adm/Models/AdmListPage.php, searchPageNameController()
-Erro 024.2 - ADMS/app/adm/Models/AdmListPage.php, searchNamePage()
-Erro 024.3 - ADMS/app/adm/Models/AdmListPage.php, searchController()
+Erro 024 - ADMS/app/adms/Models/AdmsListPage.php, listPages()
+Erro 024.1 - ADMS/app/adms/Models/AdmsListPage.php, searchPageNameController()
+Erro 024.2 - ADMS/app/adms/Models/AdmsListPage.php, searchNamePage()
+Erro 024.3 - ADMS/app/adms/Models/AdmsListPage.php, searchController()
 
-Erro 025 - ADMS/app/adm/Models/AdmSyncPageLevel.php, SyncPageLevel()
-Erro 025.1 - ADMS/app/adm/Models/AdmSyncPageLevel.php, listPages()
-Erro 025.2 - ADMS/app/adm/Models/AdmSyncPageLevel.php, addNivelPermission()
+Erro 025 - ADMS/app/adm/Models/AdmsSyncPageLevel.php, SyncPageLevel()
+Erro 025.1 - ADMS/app/adms/Models/AdmsSyncPageLevel.php, listPages()
+Erro 025.2 - ADMS/app/adms/Models/AdmsSyncPageLevel.php, addNivelPermission()
 
-Erro 026 - ADMS/app/adm/Models/AdmViewPage.php, viewPages()
+Erro 026 - ADMS/app/adms/Models/AdmsViewPage.php, viewPages()
 
-Erro 027 - ADMS/app/adm/Controllers/ViewPage.php, viewPages()
+Erro 027 - ADMS/app/adms/Controllers/ViewPage.php, viewPages()
+
+Erro 028 - ADMS/app/adms/Models/AdmsEditPage.php, viewPages()
+Erro 028.1 - ADMS/app/adms/Models/AdmsEditPage.php, editPage()
+
+Erro 029 - ADMS/app/adms/Controllers/EditPage.php, editPage()
+
+Erro 030 - ADMS/app/adms/Models/AdmsListUser.php, listUsers()
+Erro 030.1 - ADMS/app/adms/Models/AdmsListUser.php, searchUserNameEmail()
+Erro 030.2 - ADMS/app/adms/Models/AdmsListUser.php, searchUserName()
+Erro 030.3 - ADMS/app/adms/Models/AdmsListUser.php, searchUserEmail()
+
+Erro 031 - ADMS/app/adms/Models/AdmsValAccessNivelSingle.php, validateAccessNivelsSingle()
+
+Erro 032 - ADMS/app/adms/Models/AdmsValUserSingle.php, validateUserSingle()
+
+Erro 033 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, searchPage()
+Erro 033.1 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, loadMetodo()
+Erro 033.2 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, verifyLogin()
+Erro 033.3 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, searchLevelPage()

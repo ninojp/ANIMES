@@ -9,16 +9,16 @@
         "psr-4": {
             "Src\\": "src/",
             "App\\": "app/",
-            "Animes\\": "app/animes/",
-            "Adm\\": "adms/app/adm/",
             "AdmsSrc\\": "adms/src/",
+            "Adms\\": "adms/app/adms/",
+            "Animes\\": "app/animes/",
             "AdmsAni\\": "adms/app/animes/"
         }
     },
     "authors": [
         {
-            "name": "Edenilson João Pereira",
-            "email": "ninocriptocoin@gmail.com"
+            "name": "NinoJP",
+            "email": "meu.sem@gmail.com"
         }
     ]
 }
