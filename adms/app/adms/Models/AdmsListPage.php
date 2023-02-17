@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsListUsers, deve receber os dados(do DB) dos usuários para listar */
-class AdmListPage
+class AdmsListPage
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result;
@@ -64,7 +64,7 @@ class AdmListPage
         $this->page = (int) $page ? $page : 1;
         // var_dump($this->page);
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index');
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-page/index');
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -74,7 +74,7 @@ class AdmListPage
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listPages = new \Adm\Models\helper\AdmRead();
+        $listPages = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
         $listPages->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
@@ -124,7 +124,7 @@ class AdmListPage
     public function searchPageNameController(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -134,7 +134,7 @@ class AdmListPage
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listPageNameController = new \Adm\Models\helper\AdmRead();
+        $listPageNameController = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
         $listPageNameController->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE name_page LIKE :search_name OR controller_page LIKE :search_controller ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}" );
 
@@ -152,7 +152,7 @@ class AdmListPage
     public function searchNamePage(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -162,7 +162,7 @@ class AdmListPage
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listNamePages = new \Adm\Models\helper\AdmRead();
+        $listNamePages = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
         $listNamePages->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE name_page LIKE :search_name ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
@@ -180,7 +180,7 @@ class AdmListPage
     public function searchController(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-page/index', "?search_name={$this->searchName}&search_controller={$this->searchController}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -190,7 +190,7 @@ class AdmListPage
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listController = new \Adm\Models\helper\AdmRead();
+        $listController = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id_page exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
         $listController->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page WHERE controller_page LIKE :search_controller ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "search_controller={$this->searchControllerValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 

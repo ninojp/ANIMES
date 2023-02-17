@@ -8,7 +8,6 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         <div class="title_form">
             <h2>Detalhes da Pagina</h2>
         </div>
-        <?php var_dump($this->data['viewPage']); ?>
     <?php if (!empty($this->data['viewPage'])) {
         extract($this->data['viewPage'][0]); 
         echo "<div id='msg' class='msg_alert'>";

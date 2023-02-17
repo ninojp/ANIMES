@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -14,14 +14,14 @@ class ViewPage
      * Método GENÉRICO q instancia a classe:ConfigView() para carregar a View da pagina, 
      * e enviar os dados para a view, através do método:loadView() - @return void 
      * estou passando o ID:$id como parametro, recebido do CORE\CarregarPgAdm.php */
-    public function index(int|string|null $id = null): void
+    public function index(int|string|null $id_page = null): void
     {
-        var_dump($id);
+        // var_dump($id);
         if (!empty($id_page)) {
             // var_dump($id);
             $this->id_page = (int) $id_page;
             // echo "Existe o ID: {$this->id}<br>";
-            $viewPages = new \Adm\Models\AdmViewPage();
+            $viewPages = new \Adms\Models\AdmsViewPage();
             $viewPages->viewPages($this->id_page);
             if ($viewPages->getResult()) {
                 $this->data['viewPage'] = $viewPages->getResultBd();
@@ -32,10 +32,10 @@ class ViewPage
                 header("Location: $urlRedirect");
             }
         } else {
-            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 027! (ID)pagina não encontrado!</p>";
-            // $urlRedirect = URLADM."list-page/index";
-            // header("Location: $urlRedirect");
-            echo "Erro!";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 027! (ID)pagina não encontrado!</p>";
+            $urlRedirect = URLADM."list-page/index";
+            header("Location: $urlRedirect");
+            // echo "Erro!";
         }
     }
     /** ======================================================================================
@@ -46,19 +46,19 @@ class ViewPage
         $button = ['add_page' => ['menu_controller' => 'add-page', 'menu_metodo' => 'index'],
         'edit_page' => ['menu_controller' => 'edit-page', 'menu_metodo' => 'index'],
         'delete_page' => ['menu_controller' => 'delete-page', 'menu_metodo' => 'index']];
-        $listButton = new \Adm\Models\helper\AdmButton();
+        $listButton = new \Adms\Models\helper\AdmsButton();
         $this->data['button'] = $listButton->buttonPermission($button);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "view-page";
         
         //instancia a classe, cria o objeto e passa o parametro:$this->data, recebido da VIEW
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/viewPage", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/viewPage", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdm();
+        $loadView->loadViewAdms();
     }
 }

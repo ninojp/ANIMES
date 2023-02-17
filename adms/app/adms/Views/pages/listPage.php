@@ -90,7 +90,6 @@ if (isset($this->data['form'])) {
             </tbody>
         </table>
         <!-- Inicio da paginação -->
-        <?php echo $this->data['pagination'];
-        var_dump($page); ?>
+        <?php echo $this->data['pagination']; ?>
     </div>
 </div>

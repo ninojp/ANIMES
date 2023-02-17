@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -42,7 +42,7 @@ class ListPage
         // var_dump($this->searchName);
         // var_dump($this->searchController);
 
-        $listPages = new \Adm\Models\AdmListPage();
+        $listPages = new \Adms\Models\AdmsListPage();
 
         //verifica se foi clicado no botão de pesquisar, se foi executa o codigo abaixo
         if(!empty($this->dataForm['SendSearchPages'])) {
@@ -87,23 +87,23 @@ class ListPage
         'edit_page' => ['menu_controller' => 'edit-page', 'menu_metodo' => 'index'],
         'delete_page' => ['menu_controller' => 'delete-page', 'menu_metodo' => 'index']];
         // Instância a classe:AdmsButton() e cria o objeto:$listButton
-        $listButton = new \Adm\Models\helper\AdmButton();
+        $listButton = new \Adms\Models\helper\AdmsButton();
         // Passa como parametro o array:$button criado acima, para o método:buttonPermission()
         // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
         $this->data['button'] = $listButton->buttonPermission($button);
         // var_dump($this->data['button']);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "list-page";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data, recebido da VIEW
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/listPage",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/listPage",$this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdm();
+        $loadView->loadViewAdms();
     }
 
 }

@@ -31,7 +31,7 @@ class AdmsButton
             // var_dump($button);
             extract($button);
 
-            $viewButton = new \Adm\Models\helper\AdmRead();
+            $viewButton = new \Adms\Models\helper\AdmsRead();
             $viewButton->fullRead("SELECT pag.id_page FROM adms_page AS pag INNER JOIN adms_level_page AS lev_pag ON lev_pag.id_page=pag.id_page WHERE pag.menu_controller=:menu_controller AND pag.menu_metodo =:menu_metodo AND lev_pag.permission_level_page=1 AND lev_pag.id_access_level=:id_access_level LIMIT :limit", "menu_controller=$menu_controller&menu_metodo=$menu_metodo&id_access_level=".$_SESSION['id_access_level']."&limit=1");
             // Verifica se obteve resultado, através do objeto:viewButton
             if($viewButton->getResult()){
