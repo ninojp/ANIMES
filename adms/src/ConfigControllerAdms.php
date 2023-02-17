@@ -125,8 +125,13 @@ class ConfigControllerAdms extends ConfigAdms
      * @return void - instanciar as classes da controller e carreagr o método */
     public function loadPage():void
     {
+
         $loadPgAdm = new \AdmsSrc\LoadPageAdmsLevel();
         $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
+
+        // Teste...
+        // $loadPgAdm = new \AdmsSrc\CarregarPgAdm();
+        // $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
         
     }
 

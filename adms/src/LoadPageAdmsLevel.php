@@ -35,7 +35,7 @@ class LoadPageAdmsLevel
         $this->urlController = $urlController;
         $this->urlMetodo = $urlMetodo;
         $this->urlParameter = $urlParameter;
-        // var_dump($this->urlController);
+        var_dump($this->urlController);
 
         $this->searchPage();
     }
@@ -51,21 +51,24 @@ class LoadPageAdmsLevel
         $this->resultPage = $searchPage->getResult();
 
         if($this->resultPage){
-            // var_dump($this->resultPage);
+            var_dump($this->resultPage);
             if($this->resultPage[0]['public_page'] == 1){
-                $this->classLoad = "\\App\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
+                // echo "Página PUBLICA! <br>";
+                $this->classLoad = URLADM. "app/adms/Controllers/".$this->urlController.'.php';
+                // $this->classLoad = "\App\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
+                var_dump($this->classLoad);
                 $this->loadMetodo();
             } else {
-                // echo "Verificar se o user está logado <br>";
-                $this->verifyLogin();
+                echo "Verificar se o user está logado <br>";
+            //     $this->verifyLogin();
             }
         }else{
-            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (searchPage()): Página não encontrada!</p>";
-            // $urlRedirect = URLADM."login/index";
-            // header("Location: $urlRedirect");
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (searchPage()): Página não encontrada!</p>";
+            $urlRedirect = URLADM."login/index";
+            header("Location: $urlRedirect");
 
             // Ao invés de fazer o redirecionamento pode se usar o DIE() para finalizar
-            die("Erro 033! Tente Novamente ou entre em contato: ".EMAILADM);
+            // die("Erro 033! Tente Novamente ou entre em contato: ".EMAILADM);
         }
     }
     /** ============================================================================================
@@ -73,7 +76,8 @@ class LoadPageAdmsLevel
      * @return void    */
     private function loadMetodo():void
     {
-        $classLoad = new $this->classLoad();
+        $classLoad = new $this->classLoad;
+        var_dump($classLoad);
         if(method_exists($classLoad, $this->urlMetodo)){
             //passando a parametro recebido no atributo:$this->urlParameter
             $classLoad->{$this->urlMetodo}($this->urlParameter);
@@ -104,7 +108,7 @@ class LoadPageAdmsLevel
 
         $this->resultLevelPage = $searchLevelPage->getResult();
         if($this->resultLevelPage){
-            $this->classLoad = "\\App\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
+            $this->classLoad = "\\app\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
             $this->loadMetodo();
         } else {
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 033.3! Necessário permissão para acessar a página!</p>";

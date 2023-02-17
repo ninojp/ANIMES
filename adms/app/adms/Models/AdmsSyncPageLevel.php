@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe(Models) para sincronizar o nivel de acesso e as paginas */
-class AdmSyncPageLevel
+class AdmsSyncPageLevel
 {
     private bool $result;
 
@@ -56,7 +56,7 @@ class AdmSyncPageLevel
     public function SyncPageLevel(): void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listLevel = new \Adm\Models\helper\AdmRead();
+        $listLevel = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
         $listLevel->fullRead("SELECT id_access_level FROM adms_access_level");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
@@ -79,7 +79,7 @@ class AdmSyncPageLevel
     private function listPages():void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listPages = new \Adm\Models\helper\AdmRead();
+        $listPages = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
         $listPages->fullRead("SELECT id_page, public_page FROM adms_page");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
@@ -126,7 +126,7 @@ class AdmSyncPageLevel
     private function searchNivelsPage():void
     {
         //instância a classe:AdmsRead() e cria o objeto:$listNivels
-        $listLevelPage = new \Adm\Models\helper\AdmRead();
+        $listLevelPage = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
         $listLevelPage->fullRead("SELECT id_level_page FROM adms_level_page WHERE id_access_level=:id_access_level AND id_page=:id_page", "id_access_level={$this->levelId}&id_page={$this->pageId}");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBdNivelsPage
@@ -163,7 +163,7 @@ class AdmSyncPageLevel
         $this->dataLevelPage['id_page'] = $this->pageId;
         $this->dataLevelPage['created'] = date("Y-m-d H:i:s");
 
-        $addAccessNivel = new \Adm\Models\helper\AdmCreate();
+        $addAccessNivel = new \Adms\Models\helper\AdmsCreate();
         $addAccessNivel->exeCreate("adms_level_page", $this->dataLevelPage);
 
         if($addAccessNivel->getResult()){
@@ -178,7 +178,7 @@ class AdmSyncPageLevel
      * @return void - Método para se ha página está cadastrada para o nivel de acesso na tabela:adms_levels_pages      */
     private function searchLastOrder():void
     {
-        $viewLastOrder = new \Adm\Models\helper\AdmRead();
+        $viewLastOrder = new \Adms\Models\helper\AdmsRead();
         $viewLastOrder->fullRead("SELECT order_level_page, id_access_level FROM adms_level_page WHERE id_access_level=:id_access_level ORDER BY order_level_page DESC LIMIT :limit", "id_access_level={$this->levelId}&limit=1");
 
         $this->resultBdLastOrder = $viewLastOrder->getResult();
@@ -194,7 +194,7 @@ class AdmSyncPageLevel
      * @return void      */
     private function searchNivelDefault():void
     {
-        $viewLevelDefault = new \Adm\Models\helper\AdmRead();
+        $viewLevelDefault = new \Adms\Models\helper\AdmsRead();
         // Nesta query eta sendo verificado(Definido) se o ID da tebela:adms_level_page é = 3
         $viewLevelDefault->fullRead("SELECT permission_level_page, print_menu, dropdown_menu, id_item_menu FROM adms_level_page WHERE id_page=:id_page AND id_access_level=3
         LIMIT :limit",

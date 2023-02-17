@@ -15,7 +15,7 @@ class Login
      * e enviar os dados para a view, através do método:loadView() - @return void */
     public function index(): void
     {
-        // echo "adm/Controller/Login.php: <h1> Página(controller) de Login do ADMS</h1>";
+        echo "adms/Controller/Login.php: <h1> Página(controller) de Login do ADMS</h1>";
 
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

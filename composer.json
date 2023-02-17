@@ -7,12 +7,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Src\\": "src/",
-            "App\\": "app/",
-            "AdmsSrc\\": "adms/src/",
-            "Adms\\": "adms/app/adms/",
+            "Src\\": "src",
+            "App\\": "app",
             "Animes\\": "app/animes/",
-            "AdmsAni\\": "adms/app/animes/"
+            "AdmsSrc\\": "adms/src/",
+            "AdmsApp\\": "adms/app/",
+            "Adms\\": "adms/app/adms/",
+            "AdmsSit\\": "adms/app/site/"
         }
     },
     "authors": [
