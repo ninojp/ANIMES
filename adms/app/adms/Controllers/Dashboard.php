@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -13,7 +13,7 @@ class Dashboard
      * e enviar os dados para a view, através do método:loadView() - @return void */
     public function index():void
     {
-        $countUsers = new \Adm\Models\AdmDashboard();
+        $countUsers = new \Adms\Models\AdmsDashboard();
         $countUsers->countUsers();
         if($countUsers->getResult()){
             // var_dump($countUsers->getResultBd());
@@ -22,7 +22,7 @@ class Dashboard
             $this->data['countUsers'] = false;
         }
         // Implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         // var_dump($this->data['menu']);
 
@@ -33,9 +33,9 @@ class Dashboard
         $this->data['sidebarActive'] = "dashboard";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/dashboard/dashboard", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/dashboard/dashboard", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdm();
+        $loadView->loadViewAdms();
 
     }
 }

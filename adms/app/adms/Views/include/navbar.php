@@ -9,7 +9,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
             <i class="fa-solid fa-bars"></i>
         </div>
         <a href="<?= URLADM; ?>">
-            <img class="logo" src="<?= URLADM; ?>app/adm/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
+            <img class="logo" src="<?= URLADM; ?>app/adms/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
     </div>
     <div class="navbar_content">
         <div class="notification">
@@ -19,10 +19,10 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 <div class="dropdown_content">
                     <li>
                         <?php
-                        if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adm/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
-                            echo "<img src=" . URLADM . 'app/adm/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
+                        if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
+                            echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
                         } else {
-                            echo "<img src='" . URLADM . "app/adm/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
+                            echo "<img src='" . URLADM . "app/adms/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
                         } ?>
                         <!-- <img src="imgs/TI_link.png" alt="foto do usuário"></i> -->
                         <div class="msg_text">Aqui vai aparecer as menssagens de notificações do usuario</div>
@@ -35,10 +35,10 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         </div>
         <div class="avatar">
             <?php
-            if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adm/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
-                echo "<img src=" . URLADM . 'app/adm/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
+            if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
+                echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
             } else {
-                echo "<img src='" . URLADM . "app/adm/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
+                echo "<img src='" . URLADM . "app/adms/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
             }
             ?>
             <!-- <img src="imgs/TI_link.png" alt="foto do usuário" width=""> -->

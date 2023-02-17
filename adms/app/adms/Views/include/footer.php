@@ -11,7 +11,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         </div>
     </div>
 </div>
-<script src="<?=URLADM?>app/adm/assets/js/custom_adms.js"></script>
-<script src="<?=URLADM?>app/adm/assets/js/adms_layout.js"></script>
+<script src="<?=URLADM?>app/adms/assets/js/custom_adms.js"></script>
+<script src="<?=URLADM?>app/adms/assets/js/adms_layout.js"></script>
 </body>
 </html>

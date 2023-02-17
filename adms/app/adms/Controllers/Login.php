@@ -15,13 +15,13 @@ class Login
      * e enviar os dados para a view, através do método:loadView() - @return void */
     public function index(): void
     {
-        echo "adms/Controller/Login.php: <h1> Página(controller) de Login do ADMS</h1>";
+        // echo "adms/Controller/Login.php: <h1> Página(controller) de Login do ADMS</h1>";
 
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         if (!empty($this->dataForm['SendLogin'])) {
             // var_dump($this->dataForm);
-
+    
             $valLogin = new \Adms\Models\AdmsLogin();
             $valLogin->login($this->dataForm);
             if($valLogin->getResult()){
