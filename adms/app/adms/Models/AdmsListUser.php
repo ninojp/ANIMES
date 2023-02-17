@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmListUser, deve receber os dados(do DB) dos usuários para listar */
-class AdmListUser
+class AdmsListUser
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result;
@@ -64,7 +64,7 @@ class AdmListUser
         $this->page = (int) $page ? $page : 1;
         // var_dump($this->page);
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-user/index');
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-user/index');
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -75,13 +75,9 @@ class AdmListUser
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listUsers = new \Adm\Models\helper\AdmRead();
+        $listUsers = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listUsers->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms FROM adms_user AS usr 
-        INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user 
-        INNER JOIN adms_color AS col ON sit.id_color=col.id_color
-        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level 
-        WHERE lev.order_level >:order_level ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listUsers->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms FROM adms_user AS usr INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user INNER JOIN adms_color AS col ON sit.id_color=col.id_color INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE lev.order_level >:order_level ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listUsers->getResult();
         if ($this->resultBd) {
@@ -134,7 +130,7 @@ class AdmListUser
     public function searchUserNameEmail(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -147,17 +143,12 @@ class AdmListUser
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listUsersNameEmail = new \Adm\Models\helper\AdmRead();
+        $listUsersNameEmail = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
         $listUsersNameEmail->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms 
-        FROM adms_user AS usr
-        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level
-        INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user
-        INNER JOIN adms_color AS col ON sit.id_color=col.id_color
-        WHERE (lev.order_level >:order_level)
-        AND ((usr.adm_user LIKE :search_name) OR (usr.adm_email LIKE :search_email))
-        ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset",
-        "order_level=".$_SESSION['order_level']."&search_name={$this->searchNameValue}&search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}" );
+        FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user
+        INNER JOIN adms_color AS col ON sit.id_color=col.id_color WHERE (lev.order_level >:order_level) AND ((usr.adm_user LIKE :search_name) OR (usr.adm_email LIKE :search_email))
+        ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&search_name={$this->searchNameValue}&search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}" );
 
         $this->resultBd = $listUsersNameEmail->getResult();
         if ($this->resultBd) {
@@ -173,7 +164,7 @@ class AdmListUser
     public function searchUserName(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -186,14 +177,9 @@ class AdmListUser
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listUsersName = new \Adm\Models\helper\AdmRead();
+        $listUsersName = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listUsersName->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms FROM adms_user AS usr
-        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level
-        INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user 
-        INNER JOIN adms_color AS col ON sit.id_color=col.id_color 
-        WHERE (lev.order_level >:order_level) AND (usr.adm_user LIKE :search_name)
-        ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listUsersName->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user INNER JOIN adms_color AS col ON sit.id_color=col.id_color WHERE (lev.order_level >:order_level) AND (usr.adm_user LIKE :search_name) ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listUsersName->getResult();
         if ($this->resultBd) {
@@ -209,29 +195,20 @@ class AdmListUser
     public function searchUserEmail(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Adm\Models\helper\AdmPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-user/index', "?search_name={$this->searchName}&search_email={$this->searchEmail}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(usr.id_user) AS num_result FROM adms_user AS usr
-        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level
-        WHERE (lev.order_level >:order_level) AND (usr.email LIKE :search_email)",
-        "order_level=".$_SESSION['order_level']."&search_email={$this->searchEmailValue}");
+        $pagination->pagination("SELECT COUNT(usr.id_user) AS num_result FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE (lev.order_level >:order_level) AND (usr.email LIKE :search_email)", "order_level=".$_SESSION['order_level']."&search_email={$this->searchEmailValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listUsersEmail = new \Adm\Models\helper\AdmRead();
+        $listUsersEmail = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listUsersEmail->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms
-        FROM adms_users AS usr
-        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level
-        INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user
-        INNER JOIN adms_color AS col ON sit.id_color=col.id_color
-        WHERE (lev.order_level >:order_level) AND (usr.adm_email LIKE :search_email)
-        ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset",
-        "order_level=".$_SESSION['order_level']."&search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listUsersEmail->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, sit.name_sits_user, col.name_color, col.color_adms FROM adms_users AS usr
+        INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level INNER JOIN adms_sits_user AS sit ON sit.id_sits_user=usr.id_sits_user INNER JOIN adms_color AS col ON sit.id_color=col.id_color WHERE (lev.order_level >:order_level) AND (usr.adm_email LIKE :search_email) ORDER BY usr.id_user DESC LIMIT :limit OFFSET :offset", "order_level=".$_SESSION['order_level']."&search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listUsersEmail->getResult();
         if ($this->resultBd) {

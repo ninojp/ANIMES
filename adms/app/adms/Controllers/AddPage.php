@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -19,10 +19,10 @@ class AddPage
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        if (!empty($this->dataForm['SendAddPages'])) {
+        if (!empty($this->dataForm['SendAddPage'])) {
             // var_dump($this->dataForm);
-            unset($this->dataForm['SendAddPages']);
-            $createPage = new \Adm\Models\AdmAddPage();
+            unset($this->dataForm['SendAddPage']);
+            $createPage = new \Adms\Models\AdmsAddPage();
             $createPage->createPage($this->dataForm);
             //Verifica ee o resultado da QUERY é TRUE, se for faz o redirecionamento para:list-users
             if($createPage->getResult()){
@@ -42,20 +42,20 @@ class AddPage
      * @return void     */
     private function loadViewAddPage():void
     {
-        $listSelect = new \Adm\Models\AdmAddPage();
+        $listSelect = new \Adms\Models\AdmsAddPage();
         $this->data['select'] = $listSelect->listSelect();
         // var_dump($this->data);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "add-page";
         
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/addPage", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/addPage", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdm();
+        $loadView->loadViewAdms();
     }
 }

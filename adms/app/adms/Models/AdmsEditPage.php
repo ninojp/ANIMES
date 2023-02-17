@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsEditPages, Editar as paginas no banco de dados */
-class AdmEditPage
+class AdmsEditPage
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
@@ -38,7 +38,7 @@ class AdmEditPage
     {
         $this->id_page = $id_page;
 
-        $viewPages = new \Adm\Models\helper\AdmRead();
+        $viewPages = new \Adms\Models\helper\AdmsRead();
         $viewPages->fullRead("SELECT pgs.id_page, pgs.controller_page, pgs.metodo_page, pgs.menu_controller, pgs.menu_metodo, pgs.name_page, pgs.public_page, pgs.icon_menu_page, pgs.obs_page, pgs.id_sits_page, pgs.id_type_page, pgs.id_group_page, pgs.created, pgs.modified, asp.name_sits_page, atp.name_type_page, agp.name_group_page FROM adms_page AS pgs INNER JOIN adms_sits_page AS asp ON asp.id_sits_page=pgs.id_sits_page INNER JOIN adms_type_page AS atp ON atp.id_type_page=pgs.id_type_page INNER JOIN adms_group_page AS agp ON agp.id_group_page=pgs.id_group_page WHERE pgs.id_page=:id_page LIMIT :limit", "id_page={$this->id_page}&limit=1");
 
         $this->resultBd = $viewPages->getResult();
@@ -68,7 +68,7 @@ class AdmEditPage
         // var_dump($this->dataExitVal);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -91,7 +91,7 @@ class AdmEditPage
         // var_dump($this->data);
         // $this->result = false;TESTE
 
-        $upPage = new \Adm\Models\helper\AdmUpdate();
+        $upPage = new \Adms\Models\helper\AdmsUpdate();
         $upPage->exeUpdate("adms_page", $this->data, "WHERE id_page=:id_page", "id_page={$this->data['id_page']}");
 
         if($upPage->getResult()){
@@ -106,7 +106,7 @@ class AdmEditPage
      * @return array     */
     public function listSelect():array
     {
-        $lists = new \Adm\Models\helper\AdmRead();
+        $lists = new \Adms\Models\helper\AdmsRead();
         $lists->fullRead("SELECT astp.id_sits_page AS id_sit, astp.name_sits_page AS name_sit FROM adms_sits_page AS astp ORDER BY astp.name_sits_page ASC");
         $registry['sit'] = $lists->getResult();
 

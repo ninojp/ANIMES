@@ -6,23 +6,23 @@ if (window.history.replaceState){
 // ===============================================================================================
 //Calcular a foça da senha
 function passwordStrength(){
-    var password = document.getElementById('password').value;
+    var adm_pass = document.getElementById('adm_pass').value;
     var strength = 0;
-    if ((password.length >= 6) && (password.length <= 7)){
+    if ((adm_pass.length >= 6) && (adm_pass.length <= 7)){
         strength += 10;
-    } else if (password.length > 7){
+    } else if (adm_pass.length > 7){
         strength += 25;
     }
-    if ((password.length >= 6) && (password.match(/[a-z]+/))){
+    if ((adm_pass.length >= 6) && (adm_pass.match(/[a-z]+/))){
         strength += 10;
     }
-    if ((password.length >= 7) && (password.match(/[A-Z]+/))){
+    if ((adm_pass.length >= 7) && (adm_pass.match(/[A-Z]+/))){
         strength += 20;
     }
-    if ((password.length >= 8 ) && (password.match(/[@#$%;!*]+/))){
+    if ((adm_pass.length >= 8 ) && (adm_pass.match(/[@#$%;!*]+/))){
         strength += 25;
     }
-    if (password.match(/([1-9]+)\1{1,}/)){
+    if (adm_pass.match(/([1-9]+)\1{1,}/)){
         strength -= 25;
     }
     viewStrength(strength);
@@ -46,32 +46,32 @@ function viewStrength(strength){
 const formNewUser = document.getElementById("form-new-user");
 if (formNewUser) {
     formNewUser.addEventListener("submit", async (e) => {
-        //Receber o valor do campo NAME
-        var name = document.querySelector("#name").value;
+        //Receber o valor do campo adm_user
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (name === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo NOME! (JS)</p>";
             return;
         }
         //Receber o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
         }
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (password === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo SENHA! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui 6 caracteres
-        if (password.length < 6) {
+        if (adm_pass.length < 6) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo 6 caracteres! (JS)</p>";
             return;
@@ -79,13 +79,13 @@ if (formNewUser) {
         // Verificar se o campo senha não possui numeros repetidos
         // PARA APRENDER MAIS SOBRE EXPRESSÕES REGULARES
         //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions
-        if (password.match(/([1-9]+)\1{1,}/)) {
+        if (adm_pass.match(/([1-9]+)\1{1,}/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha Não pode conter números repetidos! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui Letras
-        if (!password.match(/[A-Za-z]/)) {
+        if (!adm_pass.match(/[A-Za-z]/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo uma letra! (JS)</p>";
             return;
@@ -100,17 +100,17 @@ const formLogin = document.getElementById("form-login");
 if (formLogin) {
     formLogin.addEventListener("submit", async (e) => {
         //Receber o valor do campo USER
-        var user = document.querySelector("#user").value;
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (user === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo USUÁRIO! (JS)</p>";
             return;
         }
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (password === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo SENHA! (JS)</p>";
             return;
@@ -125,9 +125,9 @@ const formNewConfEmail = document.getElementById("form-new-conf-email");
 if (formNewConfEmail) {
     formNewConfEmail.addEventListener("submit", async(e) => {
         //Receber o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
@@ -142,9 +142,9 @@ const formRecoverPass = document.getElementById("form-recover-pass");
 if (formRecoverPass) {
     formRecoverPass.addEventListener("submit", async(e) => {
         //Receber o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
@@ -159,9 +159,9 @@ const formUpdatePass = document.getElementById("form-update-pass");
 if (formUpdatePass) {
     formUpdatePass.addEventListener("submit", async(e) => {
         //Receber o valor do campo Senha
-        var senha = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (senha === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>Erro! Necessário preencher o campo Senha! (JS)</p>";
             return;
@@ -176,56 +176,48 @@ if (formUpdatePass) {
 const formAddUser = document.getElementById("form-add-user");
 if (formAddUser) {
     formAddUser.addEventListener("submit", async (e) => {
-        //Receber o valor do campo NAME
-        var name = document.querySelector("#name").value;
-        // Verificar se o campo está vazio
-        if (name === "") {
-            e.preventDefault();
-            document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo NOME! (JS)</p>";
-            return;
-        }
         //Receber o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
         }
         //Receber o valor do campo USUÁRIO
-        var user = document.querySelector("#user").value;
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (user === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Usuário! (JS)</p>";
             return;
         }
         //Validar o valor do campo SITUAÇÃO do USUÁRIO
-        var adms_sits_user_id = document.querySelector("#adms_sits_user_id").value;
+        var id_sits_user = document.querySelector("#id_sits_user").value;
         // Verificar se o campo está vazio
-        if (adms_sits_user_id === "") {
+        if (id_sits_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Situação! (JS)</p>";
             return;
         }
         //Validar o valor do campo NIVEL de Acesso do USUÁRIO
-        var access_level_id = document.querySelector("#access_level_id").value;
+        var id_access_level = document.querySelector("#id_access_level").value;
         // Verificar se o campo está vazio
-        if (access_level_id === "") {
+        if (id_access_level === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Nivel de Acesso! (JS)</p>";
             return;
         }
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (password === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo SENHA! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui 6 caracteres
-        if (password.length < 6) {
+        if (adm_pass.length < 6) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo 6 caracteres! (JS)</p>";
             return;
@@ -233,13 +225,13 @@ if (formAddUser) {
         // Verificar se o campo senha não possui numeros repetidos
         // PARA APRENDER MAIS SOBRE EXPRESSÕES REGULARES
         //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions
-        if (password.match(/([1-9]+)\1{1,}/)) {
+        if (adm_pass.match(/([1-9]+)\1{1,}/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha Não pode conter números repetidos!(JS)</p>";
             return;
         }
         // Verificar se o campo senha possui Letras
-        if (!password.match(/[A-Za-z]/)) {
+        if (!adm_pass.match(/[A-Za-z]/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo uma letra!(JS)</p>";
             return;
@@ -254,34 +246,26 @@ if (formAddUser) {
 const formEditUser = document.getElementById("form-edit-user");
 if (formEditUser) {
     formEditUser.addEventListener("submit", async (e) => {
-        //Validar o valor do campo NAME
-        var name = document.querySelector("#name").value;
-        // Verificar se o campo está vazio
-        if (name === "") {
-            e.preventDefault();
-            document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo NOME! (JS)</p>";
-            return;
-        }
         //Validar o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
         }
         //Validar o valor do campo USUÁRIO
-        var user = document.querySelector("#user").value;
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (user === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Usuário! (JS)</p>";
             return;
         }
         //Validar o valor do campo SITUAÇÃO do USUÁRIO
-        var adms_sits_user_id = document.querySelector("#adms_sits_user_id").value;
+        var id_sits_user = document.querySelector("#id_sits_user").value;
         // Verificar se o campo está vazio
-        if (adms_sits_user_id === "") {
+        if (id_sits_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Situação! (JS)</p>";
             return;
@@ -297,15 +281,15 @@ if (formEditUserPass) {
     formEditUserPass.addEventListener("submit", async (e) => {
         
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (password === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo SENHA! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui 6 caracteres
-        if (password.length < 6) {
+        if (adm_pass.length < 6) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo 6 caracteres! (JS)</p>";
             return;
@@ -313,13 +297,13 @@ if (formEditUserPass) {
         // Verificar se o campo senha não possui numeros repetidos
         // PARA APRENDER MAIS SOBRE EXPRESSÕES REGULARES
         //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions
-        if (password.match(/([1-9]+)\1{1,}/)) {
+        if (adm_pass.match(/([1-9]+)\1{1,}/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha Não pode conter números repetidos! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui Letras
-        if (!password.match(/[A-Za-z]/)) {
+        if (!adm_pass.match(/[A-Za-z]/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo uma letra! (JS)</p>";
             return;
@@ -343,17 +327,17 @@ if (formEditProfile) {
             return;
         }
         //Validar o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var adm_email = document.querySelector("#adm_email").value;
         // Verificar se o campo está vazio
-        if (email === "") {
+        if (adm_email === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo EMAIL! (JS)</p>";
             return;
         }
         //Validar o valor do campo USUÁRIO
-        var user = document.querySelector("#user").value;
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (user === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Usuário! (JS)</p>";
             return;
@@ -369,15 +353,15 @@ if (formEditProfPass) {
     formEditProfPass.addEventListener("submit", async (e) => {
         
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var adm_pass = document.querySelector("#adm_pass").value;
         // Verificar se o campo está vazio
-        if (password === "") {
+        if (adm_pass === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo SENHA! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui 6 caracteres
-        if (password.length < 6) {
+        if (adm_pass.length < 6) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo 6 caracteres! (JS)</p>";
             return;
@@ -385,13 +369,13 @@ if (formEditProfPass) {
         // Verificar se o campo senha não possui numeros repetidos
         // PARA APRENDER MAIS SOBRE EXPRESSÕES REGULARES
         //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions
-        if (password.match(/([1-9]+)\1{1,}/)) {
+        if (adm_pass.match(/([1-9]+)\1{1,}/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha Não pode conter números repetidos! (JS)</p>";
             return;
         }
         // Verificar se o campo senha possui Letras
-        if (!password.match(/[A-Za-z]/)) {
+        if (!adm_pass.match(/[A-Za-z]/)) {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-warning'>A Senha deve ter no minímo uma letra! (JS)</p>";
             return;

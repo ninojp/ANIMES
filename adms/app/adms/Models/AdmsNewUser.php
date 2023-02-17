@@ -1,13 +1,13 @@
 <?php
 
-namespace Adm\Models;
+namespace Adms\Models;
 
 if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada");
 }
 /** Classe:AdmsNewUser, é filha(Herda) da classe:AdmsConn(abstrata responsável pela conexão) */
-class AdmNewUser
+class AdmsNewUser
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -48,7 +48,7 @@ class AdmNewUser
         $this->data = $data;
         // var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -68,19 +68,19 @@ class AdmNewUser
     private function valInput(): void
     {
         //instancia a classe para Validar o email
-        $valEmail = new \Adm\Models\helper\AdmValEmail();
+        $valEmail = new \Adms\Models\helper\AdmsValEmail();
         $valEmail->validateEmail($this->data['adm_email']);
 
         //instancia a classe para Validar se o email já existe no banco de dados
-        $valEmailSingle = new \Adm\Models\helper\AdmValEmailSingle();
+        $valEmailSingle = new \Adms\Models\helper\AdmsValEmailSingle();
         $valEmailSingle->validateEmailSingle($this->data['adm_email']);
 
         //instancia a classe para Validar a senha
-        $valPassword = new \Adm\Models\helper\AdmValPassword();
+        $valPassword = new \Adms\Models\helper\AdmsValPassword();
         $valPassword->validatePassword($this->data['adm_pass']);
 
         //instancia a classe para validadr se o usuário já existe no DB
-        $valUserSingleLogin = new \Adm\Models\helper\AdmValUserSingleLogin();
+        $valUserSingleLogin = new \Adms\Models\helper\AdmsValUserSingleLogin();
         //no caso o parametro é EMAIL, pois foi utilizado para cadastrar o NOME do USER
         $valUserSingleLogin->validateUserSingleLogin($this->data['adm_email']);
 
@@ -108,7 +108,7 @@ class AdmNewUser
             $this->data['created'] = date("Y-m-d H:i:s");
             // var_dump($this->data);
 
-            $createUser = new \Adm\Models\helper\AdmCreate();
+            $createUser = new \Adms\Models\helper\AdmsCreate();
             $createUser->exeCreate("adms_user", $this->data);
 
             //verifica se existe o ultimo ID inserido
@@ -131,7 +131,7 @@ class AdmNewUser
      * @return bool - verdadeiro ou false    */
     private function accessLevel(): bool
     {
-        $viewAccessLevel = new \Adm\Models\helper\AdmRead();
+        $viewAccessLevel = new \Adms\Models\helper\AdmsRead();
         $viewAccessLevel->fullRead("SELECT id_access_level, id_sits_user FROM adms_default_access ORDER BY id_default_access ASC LIMIT :limit", "limit=1");
         $this->resultBd = $viewAccessLevel->getResult();
         // var_dump($this->resultBd);
@@ -150,7 +150,7 @@ class AdmNewUser
         $this->contentEmailHtml();
         $this->contentEmailText();
 
-        $sendEmail = new \Adm\Models\helper\AdmSendEmail();
+        $sendEmail = new \Adms\Models\helper\AdmsSendEmail();
         // o ID do e-mail q será usado, está sendo colocado manualmente aqui 1
         $sendEmail->sendEmail($this->emailData, 1);
 

@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -11,7 +11,7 @@ class SyncPageLevel
     public function index():void
     {
         
-        $syncPageLevel = new \Adm\Models\AdmSyncPageLevel();
+        $syncPageLevel = new \Adms\Models\AdmsSyncPageLevel();
         $syncPageLevel->SyncPageLevel();
         
         $urlRedirect = URLADM."list-access-level/index";

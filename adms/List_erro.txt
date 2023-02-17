@@ -88,3 +88,7 @@ Erro 033 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, searchPage()
 Erro 033.1 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, loadMetodo()
 Erro 033.2 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, verifyLogin()
 Erro 033.3 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, searchLevelPage()
+
+Erro 034 - ADMS/app/adms/Models/AdmsAddUser.php, add()
+
+

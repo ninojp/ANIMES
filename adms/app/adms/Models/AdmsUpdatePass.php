@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Confirmar a chave atualizar senha. Cadastrar nova senha */
-class AdmUpdatePass
+class AdmsUpdatePass
 {
     /** @var string - Recebe da URL a chave para atualizar a senha  */
     private string $key;
@@ -32,7 +32,7 @@ class AdmUpdatePass
     {
         $this->key = $key;
         // var_dump($this->key);
-        $viewKeyUpPass = new \Adm\Models\helper\AdmRead();
+        $viewKeyUpPass = new \Adms\Models\helper\AdmsRead();
         $viewKeyUpPass->fullRead("SELECT id_user FROM adms_user WHERE adm_pass_recover=:adm_pass_recover LIMIT :limit", "adm_pass_recover={$this->key}&limit=1");
         $this->resultBd = $viewKeyUpPass->getResult();
         if($this->resultBd){
@@ -51,7 +51,7 @@ class AdmUpdatePass
     {
         $this->data = $data;
         // var_dump($this->data);
-        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if($valEmptyField->getResult()){
             $this->valInput();
@@ -63,7 +63,7 @@ class AdmUpdatePass
      * @return void     */
     private function valInput():void
     {
-        $valPasword = new \Adm\Models\helper\AdmValPassword(); 
+        $valPasword = new \Adms\Models\helper\AdmsValPassword(); 
         $valPasword->validatePassword($this->data['adm_pass']); 
         if($valPasword->getResult()){
             if($this->valKey($this->data['key'])){
@@ -83,7 +83,7 @@ class AdmUpdatePass
         $this->dataSave['adm_pass'] = password_hash($this->data['adm_pass'], PASSWORD_DEFAULT);
         $this->dataSave['modified'] = date("Y-m-d H:i:s");
 
-        $upPassword = new \Adm\Models\helper\AdmUpdate();
+        $upPassword = new \Adms\Models\helper\AdmsUpdate();
         $upPassword->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id", "id={$this->resultBd[0]['id_user']}");
         if($upPassword->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>OK! Senha atualizada com sucesso</p>";

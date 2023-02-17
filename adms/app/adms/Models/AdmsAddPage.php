@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe (models):AdmsAddPages para cadastrar novas Páginas  */
-class AdmAddPage
+class AdmsAddPage
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -42,7 +42,7 @@ class AdmAddPage
         unset($this->data['obs_page'], $this->data['icon_menu_page']);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \Adm\Models\helper\AdmValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -65,7 +65,7 @@ class AdmAddPage
         
         // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
         // $this->result = false;
-        $createPage = new \Adm\Models\helper\AdmCreate();
+        $createPage = new \Adms\Models\helper\AdmsCreate();
         $createPage->exeCreate("adms_page", $this->data);
 
         //verifica se existe o ultimo ID inserido
@@ -82,7 +82,7 @@ class AdmAddPage
     public function listSelect():array
     {
         //listar os dados das tabelas, para utilizar no select da view de adição de Página
-        $lists = new \Adm\Models\helper\AdmRead();
+        $lists = new \Adms\Models\helper\AdmsRead();
         $lists->fullRead("SELECT asp.id_sits_page, asp.name_sits_page FROM adms_sits_page AS asp ORDER BY asp.name_sits_page ASC");
         $registry['sit'] = $lists->getResult();
 

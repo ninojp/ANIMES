@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -23,7 +23,7 @@ class NewConfirmEmail
         if(!empty($this->dataForm['SendNewConfEmail'])){
             unset($this->dataForm['SendNewConfEmail']);
 
-            $newConfEmail = new \Adm\Models\AdmNewConfirmEmail();
+            $newConfEmail = new \Adms\Models\AdmsNewConfirmEmail();
             $newConfEmail->newConfEmail($this->dataForm);
             if($newConfEmail->getResult()){
                 $urlRedirect = URLADM."login/index";
@@ -42,7 +42,7 @@ class NewConfirmEmail
      * @return void     */
     private function viewNewConfEmail():void
     {
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/newConfirmEmail", $this->data);
-        $loadView->loadViewAdmLogin();
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/login/newConfirmEmail", $this->data);
+        $loadView->loadViewLoginAdms();
     }
 }

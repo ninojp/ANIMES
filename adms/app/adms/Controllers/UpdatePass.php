@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -34,7 +34,7 @@ class UpdatePass
      * @return void     */
     private function validateKey(): void
     {
-        $valKey = new \Adm\Models\AdmUpdatePass();
+        $valKey = new \Adms\Models\AdmsUpdatePass();
         $valKey->valKey($this->key);
         if($valKey->getResult()) {
             $this->viewUpdatePassword();
@@ -50,7 +50,7 @@ class UpdatePass
         if(!empty($this->dataForm['SendUpPass'])){
             unset($this->dataForm['SendUpPass']);
             $this->dataForm['key'] = $this->key;
-            $upPassword = new \Adm\Models\AdmUpdatePass();
+            $upPassword = new \Adms\Models\AdmsUpdatePass();
             $upPassword->editPassword($this->dataForm);
             if($upPassword->getResult()){
                 $urlRedirect = URLADM . "login/index";
@@ -66,16 +66,10 @@ class UpdatePass
     }
     private function viewUpdatePassword():void
     {
-        // implementação da apresentação dinâmica do menu sidebar
-        // $listMenu = new \Adm\Models\helper\AdmMenu();
-        // $this->data['menu'] = $listMenu->itemMenu();
-        
-        // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        // $this->data['sidebarActive'] = "update-pass";
 
         // instancia a classe, cria o objeto e passa o parametro:$this->data
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/updatePass", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/login/updatePass", $this->data);
         // Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdmLogin();
+        $loadView->loadViewLoginAdms();
     }
 }

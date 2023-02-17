@@ -1,11 +1,11 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-use Adm\Models\helper\AdmConn;
+use Adms\Models\helper\AdmsConn;
 /** Confirmar o cadastro do usuário, alterando a situação no banco de dados */
-class AdmConfirmEmail extends AdmConn
+class AdmsConfirmEmail extends AdmsConn
 {
     /** @var string - Recebe da URL a chave para confirmar o cadastro     */
     private string $key;
@@ -32,7 +32,7 @@ class AdmConfirmEmail extends AdmConn
         $this->key = $key;
         // var_dump($this->key);
         if (!empty($this->key)) {
-            $viewKeyConfEmail = new \Adm\Models\helper\AdmRead();
+            $viewKeyConfEmail = new \Adms\Models\helper\AdmsRead();
             $viewKeyConfEmail->fullRead("SELECT id_user FROM adms_user WHERE confirm_email=:confirm_email LIMIT  :limit", "confirm_email={$this->key}&limit=1");
             $this->resultBd = $viewKeyConfEmail->getResult();
 
@@ -58,7 +58,7 @@ class AdmConfirmEmail extends AdmConn
         // $conf_email = null;
         // $adms_sits_user_id = 1;
 
-        $upConfEmail = new \Adm\Models\helper\AdmUpdate();
+        $upConfEmail = new \Adms\Models\helper\AdmsUpdate();
         $upConfEmail->exeUpdate("adms_user", $this->dataSave, "WHERE id_user=:id_user", "id_user={$this->resultBd[0]['id_user']}");
 
         if($upConfEmail->getResult()){

@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsViewUsers, Visualizar os usuários no banco de dados */
-class AdmViewUser
+class AdmsViewUser
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;

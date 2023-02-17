@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -19,7 +19,7 @@ class RecoverPass
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(!empty($this->dataForm['SendRecoverPass'])){
             unset($this->dataForm['SendRecoverPass']);
-            $recoverPass = new \Adm\Models\AdmRecoverPass();
+            $recoverPass = new \Adms\Models\AdmsRecoverPass();
             $recoverPass->recoverPassword($this->dataForm);
 
             if($recoverPass->getResult()){
@@ -36,7 +36,7 @@ class RecoverPass
     /** ======================================================================================== */
     private function viewRecoverPass():void
     {
-       $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/recoverPass", $this->data);
-       $loadView->loadViewAdmLogin();
+       $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/login/recoverPass", $this->data);
+       $loadView->loadViewLoginAdms();
     }
 }

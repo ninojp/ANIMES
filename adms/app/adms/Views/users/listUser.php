@@ -79,9 +79,7 @@ if (isset($this->data['form'])) {
                     <td class="list_body_content tb_sm_none"><?=$adm_email;?></td>
                     <td class="list_body_content tb_sm_none"><span style='color:<?=$color_adms;?>'><?=$name_color;?></span></td>
                     <td class="list_body_content">
-                        <?php 
-                            echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-user/index/$id_user'><i class='fa-solid fa-eye'></i> Ver</a>";
-                            if($this->data['button']['view_user']) {
+                        <?php if($this->data['button']['view_user']) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-user/index/$id_user'><i class='fa-solid fa-eye'></i> Ver</a>"; }
                         if($this->data['button']['edit_user']) {
                             echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-user/index/$id_user'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }

@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -24,7 +24,7 @@ class NewUser
         if (!empty($this->dataForm['SendNewUser'])) {
             // var_dump($this->dataForm);
             unset($this->dataForm['SendNewUser']);
-            $createNewUser = new \Adm\Models\AdmNewUser();
+            $createNewUser = new \Adms\Models\AdmsNewUser();
             $createNewUser->create($this->dataForm);
             //Verifica ee o resultado da QUERY é TRUE, se for faz o redirecionamento para:URLADM
             if($createNewUser->getResult()){
@@ -45,8 +45,8 @@ class NewUser
     private function viewNewUser():void
     {
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/login/newUser", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/login/newUser", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdmLogin();
+        $loadView->loadViewLoginAdms();
     }
 }

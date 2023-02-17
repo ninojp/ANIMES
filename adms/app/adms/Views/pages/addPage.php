@@ -140,7 +140,7 @@ if (isset($this->data['form'])) {
             </div>
             <span class="span_obrigatorio">* Campos obrigatórios</span><br>
             <div class="button_center">
-                <button class="btn btn-primary" type="submit" name="SendAddPages" value="Cadastrar">Cadastrar Página</button>
+                <button class="btn btn-primary" type="submit" name="SendAddPage" value="Cadastrar">Cadastrar Página</button>
             </div>
             <div class="button_center">
                  <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-page/index"> Listar  Páginas </a>
