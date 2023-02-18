@@ -14,8 +14,6 @@ class AdmsEditUser
     private int|string|null $id_user;
     /** @var array|null - Recebe as informações do formulário     */
     private array|null $data;
-    /** @var array|null - Recebe os campos que devem ser retirados da validação   */
-    private array|null $dataExitVal;
 
     private array $listRegistryAdd;
 
@@ -101,7 +99,6 @@ class AdmsEditUser
      * @return void     */
     private function edit():void
     {
-        // var_dump($this->data);
         $this->data['modified'] = date("Y-m-d H:i:s");
         // var_dump($this->data);
         // $this->result = false;TESTE

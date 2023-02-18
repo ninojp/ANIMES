@@ -50,6 +50,14 @@ class EditUsersImage
      * @return void     */
     private function viewEditUserImage(): void
     {
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        $button = ['list_user' => ['menu_controller' => 'list-user', 'menu_metodo' => 'index'], 
+        'view_user' => ['menu_controller' => 'view-user', 'menu_metodo' => 'index']];
+        // Instância a classe:AdmsButton() e cria o objeto:$listButton
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
+        $this->data['button'] = $listButton->buttonPermission($button);
+        
         // implementação da apresentação dinâmica do menu sidebar
         $listMenu = new \App\adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();

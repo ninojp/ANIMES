@@ -37,9 +37,6 @@ class EditUser
                 header("Location: $urlRedirect");
             }
         } else {
-            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! (necessário enviar o ID)Usuário não encontrado!</p>";
-            // $urlRedirect = URLADM . "list-users/index";
-            // header("Location: $urlRedirect");
             $this->editUser();
         }
     }
@@ -51,6 +48,17 @@ class EditUser
         $listSelect = new \Adms\Models\AdmsEditUser();
         $this->data['select'] = $listSelect->listSelect();
         // var_dump($this->data);
+
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        $button = ['list_user' => ['menu_controller' => 'list-user', 'menu_metodo' => 'index'], 
+        'view_user' => ['menu_controller' => 'view-user', 'menu_metodo' => 'index'],
+        'edit_user_pass' => ['menu_controller' => 'edit-user-pass', 'menu_metodo' => 'index'],
+        'edit_user_image' => ['menu_controller' => 'edit-user-image', 'menu_metodo' => 'index'],
+        'delete_user' => ['menu_controller' => 'delete-user', 'menu_metodo' => 'index']];
+        // Instância a classe:AdmsButton() e cria o objeto:$listButton
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
+        $this->data['button'] = $listButton->buttonPermission($button);
 
         // implementação da apresentação dinâmica do menu sidebar
         $listMenu = new \Adms\Models\helper\AdmsMenu();

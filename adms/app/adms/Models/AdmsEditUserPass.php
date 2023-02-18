@@ -1,17 +1,17 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsViewUsers, Editar a senha do usuário no banco de dados */
-class AdmsEditUsersPassword
+class AdmsEditUserPass
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
     /** @var array - Recebe os dados do conteúdo do e-mail     */
     private array|null $resultBd;
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_user;
     /** Recebe as indomações do formulário
      * @var array|null     */
     private array|null $data;
@@ -31,19 +31,19 @@ class AdmsEditUsersPassword
     }
     /** ============================================================================================
     */
-    public function viewUsers(int $id):void
+    public function viewUsers(int $id_user):void
     {
-        $this->id = $id;
+        $this->id_user = $id_user;
 
-        $viewUsers = new \App\adms\Models\helper\AdmsRead();
-        $viewUsers->fullRead("SELECT usr.id FROM adms_users AS usr INNER JOIN adms_access_levels AS lev ON lev.id=usr.access_level_id WHERE usr.id=:id AND lev.order_levels >:order_levels LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $viewUsers = new \Adms\Models\helper\AdmsRead();
+        $viewUsers->fullRead("SELECT usr.id_user FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE usr.id_user=:id_user AND lev.order_level >:order_level LIMIT :limit", "id_user={$this->id_user}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewUsers->getResult();
         if($this->resultBd){
             // var_dump($this->resultBd);
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 039! Usuário não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -52,7 +52,7 @@ class AdmsEditUsersPassword
         $this->data = $data;
         // var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -71,8 +71,8 @@ class AdmsEditUsersPassword
     private function valInput(): void
     {
         //instancia a classe para Validar a senha
-        $valPassword = new \App\adms\Models\helper\AdmsValPassword();
-        $valPassword->validatePassword($this->data['password']);
+        $valPassword = new \Adms\Models\helper\AdmsValPassword();
+        $valPassword->validatePassword($this->data['adm_pass']);
 
         if ($valPassword->getResult()) {
             $this->edit();
@@ -84,16 +84,16 @@ class AdmsEditUsersPassword
      * @return void     */
     private function edit():void
     {
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+        $this->data['adm_pass'] = password_hash($this->data['adm_pass'], PASSWORD_DEFAULT);
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $upUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upUser = new \Adms\Models\helper\AdmsUpdate();
+        $upUser->exeUpdate("adms_user", $this->data, "WHERE id_user=:id_user", "id={$this->data['id_user']}");
         if($upUser->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! A Senha do usuário Editado com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível Editar a Senha do usuário</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 039.1! Não foi possível Editar a Senha do usuário</p>";
             $this->result = false;
         }
     }

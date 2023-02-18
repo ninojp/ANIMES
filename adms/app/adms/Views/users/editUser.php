@@ -67,13 +67,19 @@ if(isset($this->data['form'][0])){
                 </div>
             </div>
             <div class="button_center">
-                <button class="btn btn-primary" type="submit" name="SendEditUser" value="Salvar">Salvar</button><br>
+                <button class="btn btn-primary" type="submit" name="SendEditUser" value="Salvar">Salvar Mudanças</button><br>
             </div>
-            <div class="button_center">
-                 <a class="btn btn-sm btn-outline-success mx-2" href="<?=URLADM;?>list-user/index"> Listar  Usuários </a>
-                 <?php if(isset($valorForm['id_user'])){
-                    echo "<a class='btn btn-sm btn-outline-warning mx-2' href='".URLADM."view-user/index/".$valorForm['id_user']."'> Visualizar </a>";
-                    echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-user/index/".$valorForm['id_user']."' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'> Apagar</a>"; } ?>
+            <div class="col-12 text-center p-4">
+                <?php if($this->data['button']['list_user']) { ?>
+                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php }
+                if($this->data['button']['view_user']) { ?>
+                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='fa-solid fa-pen-to-square'></i> Ver</a> <?php }
+                if($this->data['button']['edit_user_pass']) { ?>
+                    <a class="btn btn-sm btn-outline-info mx-2" href="<?= URLADM; ?>edit-user-pass/index/<?= $valorForm['id_user']; ?>"><i class="fa-solid fa-unlock-keyhole"></i> Edit Senha</a><?php }
+                if($this->data['button']['edit_user_image']) { ?>
+                    <a class="btn btn-sm btn-outline-primary mx-4" href="<?= URLADM; ?>edit-user-image/index/<?= $valorForm['id_user']; ?>"><i class="fa-solid fa-image"></i> Edit Imagem</a> <?php }
+                if($this->data['button']['delete_user']) { ?>
+                    <a class="btn btn-sm btn-outline-danger mx-2" href="<?= URLADM; ?>delete-user/index/<?= $valorForm['id_user']; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar</a> <?php } ?>
             </div>
         </form>
     </div>

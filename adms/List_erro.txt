@@ -98,7 +98,9 @@ Erro 036 - ADMS/app/adms/Controllers/ViewUser.php, loadViewUsers()
 Erro 037 - ADMS/app/adms/Models/AdmsEditUser.php, viewUsers()
 Erro 037.1 - ADMS/app/adms/Models/AdmsEditUser.php, edit()
 
-
 Erro 038 - ADMS/app/adms/Controllers/EditUser.php, editUser()
+
+Erro 039 - ADMS/app/adms/Models/AdmsEditUserPass.php, viewUsers()
+Erro 039.1 - ADMS/app/adms/Models/AdmsEditUserPass.php, edit()
 
 

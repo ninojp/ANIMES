@@ -19,8 +19,8 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 <div class="dropdown_content">
                     <li>
                         <?php
-                        if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
-                            echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
+                        if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_user'] . "/" . $_SESSION['adm_img']))) {
+                            echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
                         } else {
                             echo "<img src='" . URLADM . "app/adms/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
                         } ?>
@@ -35,8 +35,8 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         </div>
         <div class="avatar">
             <?php
-            if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_adm_user'] . "/" . $_SESSION['adm_img']))) {
-                echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_adm_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
+            if ((!empty($_SESSION['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_user'] . "/" . $_SESSION['adm_img']))) {
+                echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['id_user'] . '/' . $_SESSION['adm_img'] . " width='50px' height='50px'>";
             } else {
                 echo "<img src='" . URLADM . "app/adms/assets/imgs/Logo-Dtudo_102x40.png' width='50px'>";
             }
