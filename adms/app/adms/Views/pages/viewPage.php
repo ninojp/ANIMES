@@ -41,7 +41,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 <span class="view_det_info"><?= $menu_metodo; ?></span>
             </div>
             <div class="view_det">
-                <span class="view_det_title">publish:</span>
+                <span class="view_det_title">1=Publica, 2=Não é Publica:</span>
                 <span class="view_det_info"><?= $public_page; ?></span>
             </div>
             <div class="view_det">
@@ -79,13 +79,17 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 </div> <?php } ?>
         </div>
         <div class="col-12 text-center p-4">
-            <a class="btn btn-sm btn-outline-success mx-1" href="<?= URLADM; ?>list-page/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a>
+        <?php if(($this->data['button']['list_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page']) or ($this->data['button']['add_page'])) {
+            if($this->data['button']['list_page']) { ?>
+            <a class="btn btn-sm btn-outline-success mx-1" href="<?= URLADM; ?>list-page/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php } ?>
+            <?php if($this->data['button']['add_page']) { ?>
+            <a class="btn btn-sm btn-outline-warning mx-1" href="<?= URLADM; ?>add-page/index"><i class='fa-solid fa-pen-to-square'></i> Adicionar</a> <?php } ?>
             <?php if($this->data['button']['edit_page']) { ?>
-                <a class="btn btn-sm btn-outline-warning mx-1" href="<?= URLADM; ?>edit-page/index/<?= $id_page; ?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php } ?>
+            <a class="btn btn-sm btn-outline-warning mx-1" href="<?= URLADM; ?>edit-page/index/<?= $id_page; ?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php } ?>
             <?php if($this->data['button']['delete_page']) { ?>
-            <a class="btn btn-sm btn-outline-danger mx-1" href="<?= URLADM; ?>delete-page/index/<?= $id_page; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar</a><?php } ?>
+            <a class="btn btn-sm btn-outline-danger mx-1" href="<?= URLADM; ?>delete-page/index/<?= $id_page; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar</a><?php } } ?>
         </div>
-        <?php } ?>
+    <?php } ?>
     </div>
 </div>
 <!-- FIM do conteudo do ADM -->

@@ -43,7 +43,7 @@ class ViewPage
     private function loadViewPages():void
     {
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
-        $button = ['add_page' => ['menu_controller' => 'add-page', 'menu_metodo' => 'index'],
+        $button = ['add_page' => ['menu_controller' => 'add-page', 'menu_metodo' => 'index'], 'list_page' => ['menu_controller' => 'list-page', 'menu_metodo' => 'index'],
         'edit_page' => ['menu_controller' => 'edit-page', 'menu_metodo' => 'index'],
         'delete_page' => ['menu_controller' => 'delete-page', 'menu_metodo' => 'index']];
         $listButton = new \Adms\Models\helper\AdmsButton();

@@ -124,4 +124,9 @@ Erro 045.1 - ADMS/app/adms/Models/AdmsDeleteUser.php, viewUsers()
 
 Erro 046 - ADMS/app/adms/Controllers/DeleteUser.php, index()
 
+Erro 047 - ADMS/app/adms/Controllers/DeletePage.php, index()
+
+Erro 048 - ADMS/app/adms/Models/AdmsDeletePage.php, deletePages()
+Erro 048.1 - ADMS/app/adms/Models/AdmsDeletePage.php, viewPages()
+
 

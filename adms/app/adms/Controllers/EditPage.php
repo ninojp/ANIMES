@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -21,10 +21,10 @@ class EditPage
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         // var_dump($this->dataForm);
-        if ((!empty($id_page)) and (empty($this->dataForm['SendEditPages']))) {
+        if ((!empty($id_page)) and (empty($this->dataForm['SendEditPage']))) {
             $this->id_page = (int) $id_page;
             // var_dump($this->id);
-            $viewPages = new \Adm\Models\AdmEditPage();
+            $viewPages = new \Adms\Models\AdmsEditPage();
             $viewPages->viewPages($this->id_page);
             //verifica se a query obteve resultado(true, false)
             if($viewPages->getResult()){
@@ -37,9 +37,6 @@ class EditPage
                 header("Location: $urlRedirect");
             }
         } else {
-            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! (necessário enviar o ID)Usuário não encontrado!</p>";
-            // $urlRedirect = URLADM . "list-users/index";
-            // header("Location: $urlRedirect");
             $this->editPage();
         }
     }
@@ -48,29 +45,41 @@ class EditPage
      * @return void     */
     private function viewEditPages(): void
     {
-        $listSelect = new \Adm\Models\AdmEditPage();
+        $listSelect = new \Adms\Models\AdmsEditPage();
         $this->data['select'] = $listSelect->listSelect();
         // var_dump($this->data);
 
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        // Cria o array e suas devidas posições
+        $button = ['list_page' => ['menu_controller' => 'list-page', 'menu_metodo' => 'index'], 'add_page' => ['menu_controller' => 'add-page', 'menu_metodo' => 'index'],
+        'view_page' => ['menu_controller' => 'view-page', 'menu_metodo' => 'index'],
+        'delete_page' => ['menu_controller' => 'delete-page', 'menu_metodo' => 'index']];
+        // Instância a classe:AdmsButton() e cria o objeto:$listButton
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        // Passa como parametro o array:$button criado acima, para o método:buttonPermission()
+        // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
+        $this->data['button'] = $listButton->buttonPermission($button);
+        // var_dump($this->data['button']);
+
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \Adm\Models\helper\AdmMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "edit-page";
         
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new \AdmsSrc\ConfigViewAdm("adm/Views/pages/editPage", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/editPage", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadViewAdm();
+        $loadView->loadViewAdms();
     }
     /** =============================================================================================
      * @return void     */
     private function editPage():void
     {
-        if(!empty($this->dataForm['SendEditPages'])){
-            unset($this->dataForm['SendEditPages']);
-            $editPage = new \Adm\Models\AdmEditPage();
+        if(!empty($this->dataForm['SendEditPage'])){
+            unset($this->dataForm['SendEditPage']);
+            $editPage = new \Adms\Models\AdmsEditPage();
             $editPage->updatePage($this->dataForm);
             if($editPage->getResult()){
                 $urlRedirect = URLADM . "view-page/index/".$this->dataForm['id_page'];

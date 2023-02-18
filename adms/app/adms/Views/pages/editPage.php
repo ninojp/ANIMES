@@ -132,13 +132,18 @@ if(isset($this->data['form'][0])){
                 </div>
             </div>
             <div class="button_center">
-                <button class="btn btn-primary" type="submit" name="SendEditPages" value="Salvar">Salvar Mudanças</button><br>
+                <button class="btn btn-primary" type="submit" name="SendEditPage" value="Salvar">Salvar Mudanças</button><br>
             </div>
-            <div class="button_center">
-                 <a class="btn btn-sm btn-outline-success mx-2" href="<?=URLADM;?>list-page/index"> Listar Páginas </a>
-                 <?php if(isset($valorForm['id_page'])){
-                    echo "<a class='btn btn-sm btn-outline-warning mx-2' href='".URLADM."view-page/index/".$valorForm['id_page']."'> Visualizar </a>";
-                    echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-page/index/".$valorForm['id_page']."' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'> Apagar</a>"; } ?>
+            <div class="col-12 text-center p-4">
+                <?php if(($this->data['button']['list_page']) or ($this->data['button']['view_page']) or ($this->data['button']['delete_page']) or ($this->data['button']['add_page'])) {
+                    if($this->data['button']['list_page']) { ?>
+                    <a class="btn btn-sm btn-outline-success mx-1" href="<?= URLADM; ?>list-page/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php } ?>
+                    <?php if($this->data['button']['add_page']) { ?>
+                    <a class="btn btn-sm btn-outline-warning mx-1" href="<?= URLADM; ?>add-page/index"><i class='fa-solid fa-pen-to-square'></i> Adicionar</a> <?php } ?>
+                    <?php if($this->data['button']['view_page']) { ?>
+                    <a class="btn btn-sm btn-outline-warning mx-1" href="<?= URLADM; ?>view-page/index/<?= $valorForm['id_page']; ?>"><i class='fa-solid fa-pen-to-square'></i> visualizar</a> <?php } ?>
+                    <?php if($this->data['button']['delete_page']) { ?>
+                    <a class="btn btn-sm btn-outline-danger mx-1" href="<?= URLADM; ?>delete-page/index/<?= $valorForm['id_page']; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar</a><?php } } ?>
             </div>
         </form>
     </div>
