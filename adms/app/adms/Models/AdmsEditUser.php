@@ -37,7 +37,7 @@ class AdmsEditUser
         $this->id_user = $id_user;
 
         $viewUsers = new \Adms\Models\helper\AdmsRead();
-        $viewUsers->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, usr.id_access_level FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE usr.id_user=:id_user AND lev.order_level >:order_level LIMIT :limit", "id_user={$this->id_user}&order_level=".$_SESSION['order_level']."&limit=1");
+        $viewUsers->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.adm_img, usr.id_sits_user, usr.id_access_level FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE usr.id_user=:id_user AND lev.order_level >:order_level LIMIT :limit", "id_user={$this->id_user}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewUsers->getResult();
         if($this->resultBd){

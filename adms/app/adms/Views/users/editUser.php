@@ -22,7 +22,14 @@ if(isset($this->data['form'][0])){
         <form class="form_adms" action="" method="POST" id="form-edit-user">
             <!-- input oculto pra enviar o id, via post -->
             <input class="form-control" type="hidden" name="id_user" id="id_user" value="<?php if(isset($valorForm['id_user'])){echo $valorForm['id_user'];} ?>">
-
+            
+            <div class="pt-3 text-center">
+                <?php if ((!empty($valorForm['adm_img'])) and (file_exists("app/adms/assets/imgs/users/{$valorForm['id_user']}/{$valorForm['adm_img']}"))) {
+                        echo "<img src='" . URLADM . "app/adms/assets/imgs/users/{$valorForm['id_user']}/{$valorForm['adm_img']}' width='300' height='200'><br><br>";
+                    } else {
+                        echo "<img src='" . URLADM . "app/adms/assets/imgs/users/TI_link.png' width='300' height='200'><br><br>";
+                    } ?>
+            </div>
             <div class="row_edit">
                 <label class="" for="adm_user">Alterar Usuário:</label>
                 <i class="fa-solid fa-file-signature"></i>

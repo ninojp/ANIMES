@@ -119,4 +119,9 @@ Erro 044.1 - ADMS/app/adms/Models/helper/AdmsUploadImgRes.php, uploadFile()
 Erro 044.2 - ADMS/app/adms/Models/helper/AdmsUploadImgRes.php, uploadFileJpeg()
 Erro 044.3 - ADMS/app/adms/Models/helper/AdmsUploadImgRes.php, uploadFilePng()
 
+Erro 045 - ADMS/app/adms/Models/AdmsDeleteUser.php, deleteUsers()
+Erro 045.1 - ADMS/app/adms/Models/AdmsDeleteUser.php, viewUsers()
+
+Erro 046 - ADMS/app/adms/Controllers/DeleteUser.php, index()
+
 
