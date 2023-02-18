@@ -91,4 +91,14 @@ Erro 033.3 - ADMS/app/adms/Models/LoadPageAdmsLevel.php, searchLevelPage()
 
 Erro 034 - ADMS/app/adms/Models/AdmsAddUser.php, add()
 
+Erro 035 - ADMS/app/adms/Models/AdmsViewUser.php, viewUsers()
+
+Erro 036 - ADMS/app/adms/Controllers/ViewUser.php, loadViewUsers()
+
+Erro 037 - ADMS/app/adms/Models/AdmsEditUser.php, viewUsers()
+Erro 037.1 - ADMS/app/adms/Models/AdmsEditUser.php, edit()
+
+
+Erro 038 - ADMS/app/adms/Controllers/EditUser.php, editUser()
+
 

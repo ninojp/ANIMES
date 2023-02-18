@@ -1,17 +1,17 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsViewUsers, Editar o usuário no banco de dados */
-class AdmsEditUsers
+class AdmsEditUser
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
     /** @var array - Recebe os dados do conteúdo do e-mail     */
     private array|null $resultBd;
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_user;
     /** @var array|null - Recebe as informações do formulário     */
     private array|null $data;
     /** @var array|null - Recebe os campos que devem ser retirados da validação   */
@@ -34,19 +34,19 @@ class AdmsEditUsers
     }
     /** ============================================================================================
     */
-    public function viewUsers(int $id):void
+    public function viewUsers(int $id_user):void
     {
-        $this->id = $id;
+        $this->id_user = $id_user;
 
-        $viewUsers = new \App\adms\Models\helper\AdmsRead();
-        $viewUsers->fullRead("SELECT usr.id, usr.name, usr.nickname, usr.email, usr.user, usr.adms_sits_user_id, usr.access_level_id FROM adms_users AS usr INNER JOIN adms_access_levels AS lev ON lev.id=usr.access_level_id WHERE usr.id=:id AND lev.order_levels >:order_levels LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $viewUsers = new \Adms\Models\helper\AdmsRead();
+        $viewUsers->fullRead("SELECT usr.id_user, usr.adm_user, usr.adm_email, usr.id_sits_user, usr.id_access_level FROM adms_user AS usr INNER JOIN adms_access_level AS lev ON lev.id_access_level=usr.id_access_level WHERE usr.id_user=:id_user AND lev.order_level >:order_level LIMIT :limit", "id_user={$this->id_user}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewUsers->getResult();
         if($this->resultBd){
             // var_dump($this->resultBd);
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 037! Usuário não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -57,18 +57,9 @@ class AdmsEditUsers
     {
         $this->data = $data;
         // var_dump($this->data);
-        //o codigo abaixo é apenas para retirar um campo da VALIDAÇÃO
-        //atribui o valor que está no campo NICKNAME para o atributo:$dataExitVal
-        $this->dataExitVal['nickname'] = $this->data['nickname'];
-        // $this->dataExitVal['name'] = $this->data['name'];
-        // unset($this->data['nickname'], $this->data['name']);
-        //Destroi o valor que está no atributo:$this->data['nickname']
-        unset($this->data['nickname']);
-        // var_dump($this->data);
-        // var_dump($this->dataExitVal);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -89,16 +80,16 @@ class AdmsEditUsers
     private function valInput(): void
     {
         //instancia a classe para Validar o email
-        $valEmail = new \App\adms\Models\helper\AdmsValEmail();
-        $valEmail->validateEmail($this->data['email']);
+        $valEmail = new \Adms\Models\helper\AdmsValEmail();
+        $valEmail->validateEmail($this->data['adm_email']);
 
         //validar se o email é único
-        $valEmailSingle = new \App\adms\Models\helper\AdmsValEmailSingle();
-        $valEmailSingle->validateEmailSingle($this->data['email'], true, $this->data['id']);
+        $valEmailSingle = new \Adms\Models\helper\AdmsValEmailSingle();
+        $valEmailSingle->validateEmailSingle($this->data['adm_email'], true, $this->data['id_user']);
 
         //validar se o USER é único
-        $valUserSingle = new \App\adms\Models\helper\AdmsValUserSingle();
-        $valUserSingle->validateUserSingle($this->data['user'], true, $this->data['id']);
+        $valUserSingle = new \Adms\Models\helper\AdmsValUserSingle();
+        $valUserSingle->validateUserSingle($this->data['adm_user'], true, $this->data['id_user']);
 
         if (($valEmail->getResult()) and ($valEmailSingle->getResult()) and ($valUserSingle->getResult())) {
             $this->edit();
@@ -112,20 +103,17 @@ class AdmsEditUsers
     {
         // var_dump($this->data);
         $this->data['modified'] = date("Y-m-d H:i:s");
-        //Atribui NOVAMENTE(recupera) o valor q está no atributo:$this->dataExitval['nickname'] e coloca no atributo:$this->data['nickname'] para ser inserido no DB
-        $this->data['nickname'] = $this->dataExitVal['nickname'];
-        // $this->data['name'] = $this->dataExitVal['name'];
         // var_dump($this->data);
         // $this->result = false;TESTE
 
-        $upUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upUser = new \Adms\Models\helper\AdmsUpdate();
+        $upUser->exeUpdate("adms_user", $this->data, "WHERE id_user=:id_user", "id_user={$this->data['id_user']}");
 
         if($upUser->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Usuário Editado com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível Editar o usuário</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 037.1! Não foi possível Editar o usuário</p>";
             $this->result = false;
         }
     }
@@ -133,12 +121,12 @@ class AdmsEditUsers
      * @return array     */
     public function listSelect():array
     {
-        $list = new \App\adms\Models\helper\AdmsRead();
-        $list->fullRead("SELECT id id_sit, name name_sit FROM adms_sits_users ORDER BY name ASC");
+        $list = new \Adms\Models\helper\AdmsRead();
+        $list->fullRead("SELECT id_sits_user, name_sits_user FROM adms_sits_user ORDER BY name_sits_user ASC");
         $registry['sit'] = $list->getResult();
 
         //listar o nivel de acesso da tabela:adms_access_levels para utilizar no select da view de adição de usuário, só pode adicionar usuários com NIVEL de ACESSO inferior aos dele
-        $list->fullRead("SELECT id id_lev, name name_lev FROM adms_access_levels WHERE order_levels >:order_levels ORDER BY name ASC", "order_levels=".$_SESSION['order_levels']);
+        $list->fullRead("SELECT id_access_level, access_level FROM adms_access_level WHERE order_level >:order_level ORDER BY access_level ASC", "order_level=".$_SESSION['order_level']);
         $registry['lev'] = $list->getResult();
 
         $this->listRegistryAdd = ['sit' => $registry['sit'], 'lev' => $registry['lev']];

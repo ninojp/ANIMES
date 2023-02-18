@@ -12,17 +12,17 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         <?php if (!empty($this->data['viewUser'])) {
             // var_dump($this->data['viewUsers'][0]);
             extract($this->data['viewUser'][0]);
-            if ((!empty($image)) and (file_exists("app/adms/assets/imgs/users/$id/$image"))) {
-                echo "<img src='" . URLADM . "app/adms/assets/imgs/users/$id/$image' width='200' height='200'><br><br>";
+            if ((!empty($adm_img)) and (file_exists("app/adms/assets/imgs/users/$id_user/$adm_img"))) {
+                echo "<img src='" . URLADM . "app/adms/assets/imgs/users/$id_user/$adm_img' width='200' height='200'><br><br>";
             } else {
                 echo "<img src='" . URLADM . "app/adms/assets/imgs/users/Logo_Dtudo_2022-300p.png' width='300' height='100'><br><br>";
             } ?>
         </div>
         <div class="col-12 text-center pb-3">
-        <?php if($this->data['button']['list_users']) { ?>
-            <a class="btn btn-sm btn-outline-success mx-4" href="<?= URLADM; ?>list-users/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php } 
-        if($this->data['button']['edit_users_image']) { ?>
-            <a class="btn btn-sm btn-outline-primary mx-4" href="<?= URLADM; ?>edit-users-image/index/<?= $id; ?>"><i class="fa-solid fa-image"></i> Editar Imagem</a> <?php } ?>
+        <?php if($this->data['button']['list_user']) { ?>
+            <a class="btn btn-sm btn-outline-success mx-4" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php } 
+        if($this->data['button']['edit_user_image']) { ?>
+            <a class="btn btn-sm btn-outline-primary mx-4" href="<?= URLADM; ?>edit-user-image/index/<?= $id_user; ?>"><i class="fa-solid fa-image"></i> Editar Imagem</a> <?php } ?>
         </div>
         <?php echo "<div id='msg' class='msg_alert'>";
             if (isset($_SESSION['msg'])) { 
@@ -32,39 +32,30 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         <div class="content_adm">
             <div class="view_det">
                 <span class="view_det_title">ID:</span>
-                <span class="view_det_info"><?= $id; ?></span>
+                <span class="view_det_info"><?= $id_user; ?></span>
             </div>
             <div class="view_det">
-                <span class="view_det_title">Nome:</span>
-                <span class="view_det_info"><?= $name_usr; ?></span>
+                <span class="view_det_title">Nome do Usuário:</span>
+                <span class="view_det_info"><?= $adm_user; ?></span>
             </div>
             <div class="view_det">
                 <span class="view_det_title">E-mail:</span>
-                <span class="view_det_info"><?= $email; ?></span>
-            </div>
-            <?php if (!empty($nickname)) { ?>
-                <div class="view_det">
-                    <span class="view_det_title">Apelido:</span>
-                    <span class="view_det_info"><?= $nickname; ?></span>
-                </div><?php } ?>
-            <div class="view_det">
-                <span class="view_det_title">User:</span>
-                <span class="view_det_info"><?= $user; ?></span>
+                <span class="view_det_info"><?= $adm_email; ?></span>
             </div>
             <div class="view_det">
                 <span class="view_det_title">Situação Usuário:</span>
-                <span class="view_det_info"><span style='color:<?= $color_col; ?>'><?= $name_sit; ?></span></span>
+                <span class="view_det_info"><span style='color:<?= $color_adms; ?>'><?= $name_sits_user; ?></span></span>
             </div>
-            <?php if (!empty($name_lev)) { ?>
+            <?php if (!empty($access_level)) { ?>
                 <div class="view_det">
                     <span class="view_det_title">Nivel de Acesso:</span>
                     <!-- Link para OUTRA VIEW:view-access-nivels, passando o id da mesma   -->
-                    <span class="view_det_info"><?php echo "<a href='" . URLADM . "view-access-nivels/index/$id_lev'>" .$name_lev. "</a>"; ?></span>
+                    <span class="view_det_info"><?php echo "<a href='" . URLADM . "view-access-nivels/index/$id_access_level'>" .$access_level. "</a>"; ?></span>
             </div><?php } ?>
-            <?php if (!empty($image)) { ?>
+            <?php if (!empty($adm_img)) { ?>
                 <div class="view_det">
                     <span class="view_det_title">Imagem name:</span>
-                    <span class="view_det_info"><?= $image; ?></span>
+                    <span class="view_det_info"><?= $adm_img; ?></span>
                 </div><?php } ?>
             <div class="view_det">
                 <span class="view_det_title">Data Criação:</span>
@@ -77,12 +68,12 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 </div> <?php } ?>
         </div>
         <div class="col-12 text-center p-4">
-        <?php if($this->data['button']['edit_users']) { ?>
-            <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>edit-users/index/<?= $id; ?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php }
-        if($this->data['button']['edit_users_password']) { ?>
-            <a class="btn btn-sm btn-outline-info mx-2" href="<?= URLADM; ?>edit-users-password/index/<?= $id; ?>"><i class="fa-solid fa-unlock-keyhole"></i> Editar Senha</a><?php }
-        if($this->data['button']['delete_users']) { ?>
-            <a class="btn btn-sm btn-outline-danger mx-2" href="<?= URLADM; ?>delete-users/index/<?= $id; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar Usuário</a> <?php } ?>
+        <?php if($this->data['button']['edit_user']) { ?>
+            <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>edit-user/index/<?= $id_user; ?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php }
+        if($this->data['button']['edit_user_pass']) { ?>
+            <a class="btn btn-sm btn-outline-info mx-2" href="<?= URLADM; ?>edit-user-pass/index/<?= $id_user; ?>"><i class="fa-solid fa-unlock-keyhole"></i> Editar Senha</a><?php }
+        if($this->data['button']['delete_user']) { ?>
+            <a class="btn btn-sm btn-outline-danger mx-2" href="<?= URLADM; ?>delete-user/index/<?= $id_user; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar Usuário</a> <?php } ?>
         </div>
         <?php } ?>
     </div>
