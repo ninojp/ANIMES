@@ -24,10 +24,10 @@ if (isset($this->data['form'][0])) {
             <input class="form-control" type="hidden" name="id_user" id="id_user" value="<?php if (isset($valorForm['id_user'])) { echo $valorForm['id_user']; } ?>">
 
             <div class="text-center">
-                <?php if ((!empty($valorForm['image'])) and (file_exists("app/adms/assets/imgs/users/" . $valorForm['id_user'] . "/" . $valorForm['image']))) {
-                    $old_img = URLADM . "app/adms/assets/imgs/users/" . $valorForm['id_user'] . "/" . $valorForm['image'];
+                <?php if ((!empty($valorForm['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $valorForm['id_user'] . "/" . $valorForm['adm_img']))) {
+                    $old_img = URLADM . "app/adms/assets/imgs/users/" . $valorForm['id_user'] . "/" . $valorForm['adm_img'];
                 } else {
-                    $old_img = URLADM . "app/adms/assets/imgs/users/Logo_Dtudo_2022-300p.png";
+                    $old_img = URLADM . "app/adms/assets/imgs/users/TI_link.png";
                 } ?>
                 <span id="preview-img">
                     <img src="<?= $old_img; ?>" alt="Imagem" style="width: 300px;height: 300px;">
