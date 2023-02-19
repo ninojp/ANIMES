@@ -129,4 +129,9 @@ Erro 047 - ADMS/app/adms/Controllers/DeletePage.php, index()
 Erro 048 - ADMS/app/adms/Models/AdmsDeletePage.php, deletePages()
 Erro 048.1 - ADMS/app/adms/Models/AdmsDeletePage.php, viewPages()
 
+Erro 049 - ADMS/app/adms/Models/AdmsListAccessLevel.php, listAccessNivels()
+Erro 049.1 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessNameNivels()
+Erro 049.2 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessName()
+Erro 049.3 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessNivels()
+
 

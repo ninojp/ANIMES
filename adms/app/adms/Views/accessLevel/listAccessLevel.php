@@ -1,13 +1,11 @@
 <?php
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) {
-    header("Location: https://localhost/dtudo/public/");
-}
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 // Manter os dados no formulário     
 if (isset($this->data['form'])) {
     // var_dump($this->data['form']);
-    $valorForm = $this->data['form'];
-} ?>
-
+    $valorForm = $this->data['form']; } ?>
 <!-- Inicio do conteudo LISTAR do ADM -->
 <div class="wrapper_list">
     <div class="row_list">
@@ -23,8 +21,8 @@ if (isset($this->data['form'])) {
                             unset($_SESSION['msg']); } ?>
                 </div>
                 <div class="col-3 top_list_right">
-                    <a class="btn btn-sm btn_success" href="<?= URLADM.'add-access-nivels/index';?>" type="button">Cadastrar Nivel</a>
-                    <a class="btn btn-sm btn_warning" href="<?= URLADM.'sync-pages-nivels/index';?>" type="button">Sincronizar</a>
+                    <a class="btn btn-sm btn_success" href="<?= URLADM.'add-access-level/index';?>" type="button">Cadastrar Nivel</a>
+                    <a class="btn btn-sm btn_warning" href="<?= URLADM.'sync-page-level/index';?>" type="button">Sincronizar</a>
                 </div>
             </div>
             <!-- DIV com o campo de pesquisa -->
@@ -36,32 +34,31 @@ if (isset($this->data['form'])) {
                             if (isset($valorForm['search_name'])) {
                                 $search_name = $valorForm['search_name'];
                             } ?>
-                            <label class="">Nome: </label>
+                            <label class="">Nome do Nivel: </label>
                             <input type="text" name="search_name" id="seach_name" value="<?php echo $search_name; ?>" placeholder="Pesquisar pelo nome">
                         </div>
                         <div class="col-3">
-                            <button  class="btn btn-sm btn-outline-info" type="submit" name="SendSearchAccessNivels" value="Pesquisar">Pesquisar por nome ou Nivel</button>
+                            <button  class="btn btn-sm btn-outline-info" type="submit" name="SendSearchAccessLevel" value="Pesquisar">Pesquisar, nome do Nivel</button>
                         </div>
                         <div class="col-4">
                             <?php $search_access_nivels = "";
                             if (isset($valorForm['search_access_nivels'])) {
                                 $search_access_nivels = $valorForm['search_access_nivels'];
                             } ?>
-                            <label class="">Nivel de Acesso: </label>
-                            <input type="text" name="search_access_nivels" id="search_access_nivels" value="<?= $search_access_nivels; ?>" placeholder="Pesquisar pelo Nivel de acesso">
+                            <label class="">Order Level: </label>
+                            <input type="text" name="search_access_nivels" id="search_access_nivels" value="<?= $search_access_nivels; ?>" placeholder="Pesquisar pela Ordem de Acesso">
                         </div>
                     </div>
                 </form>
             </div>
-            
         </div>
         <table class="table table-striped table_list">
             <thead class="list_head">
                 <tr>
                     <th class="list_head_content">ID</th>
-                    <th class="list_head_content">Nome</th>
+                    <th class="list_head_content">Nome do Nivel</th>
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
-                    <th class="list_head_content tb_sm_none">Nivel de Acesso</th>
+                    <th class="list_head_content tb_sm_none">Ordem do Nivel</th>
                     <th class="list_head_content">Botões de Ações</th>
                 </tr>
             </thead>
@@ -69,22 +66,23 @@ if (isset($this->data['form'])) {
             // var_dump($this->data['listAccessNivels']);
             ?>
             <tbody class="list_body">
-                <?php foreach ($this->data['listAccessNivels'] as $AccessNivels) { extract($AccessNivels); ?>
+                <?php foreach ($this->data['listAccessLevel'] as $AccessNivels) { extract($AccessNivels); ?>
                 <tr>
-                    <td class="list_body_content"><?=$id;?></td>
-                    <td class="list_body_content"><?=$name;?></td>
-                    <td class="list_body_content tb_sm_none"><?=$order_levels;?></td>
-                    <td class="list_body_content">
-                        <?php echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-access-nivels/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordem</a>";
+                    <td class="list_body_content"><?=$id_access_level;?></td>
+                    <td class="list_body_content"><?=$access_level;?></td>
+                    <td class="list_body_content tb_sm_none"><?=$order_level;?></td>
+                    <?php if(($this->data['button']['order_access_level']) or ($this->data['button']['list_permission']) or ($this->data['button']['view_access_level']) or ($this->data['button']['edit_access_level']) or ($this->data['button']['delete_access_level'])) { 
+                        echo "<td class='list_body_content'>";
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-access-level/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordenar</a>";
                         
                         echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-permission/index?level=$id'><i class='icon fa-solid fa-user-lock'></i> Permissão</a>";
 
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-access-nivels/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>";
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-access-level/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>";
 
-                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-access-nivels/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>";
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-access-nivels/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>";
+                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-access-level/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>";
+                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-access-level/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>";
                         ?>
-                    </td>
+                    </td><?php } ?>
                 </tr>
                 <?php } ?>
             </tbody>

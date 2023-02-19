@@ -2,7 +2,6 @@
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-// echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
 // Manter os dados no formulário     
 if(isset($this->data['form'])){
     $valorForm = $this->data['form']; } 
@@ -10,7 +9,6 @@ if(isset($this->data['form'])){
 if(isset($this->data['form'][0])){
     $valorForm = $this->data['form'][0];
 } // var_dump($this->data['form'][0]); ?>
-
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
