@@ -76,7 +76,7 @@ class AdmsListPage
 
         $listPages = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listPages->fullRead("SELECT id_page, name_page, controller_page, metodo_page FROM adms_page ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listPages->fullRead("SELECT id_page, name_page, controller_page, menu_controller FROM adms_page ORDER BY id_page DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listPages->getResult();
         if ($this->resultBd) {

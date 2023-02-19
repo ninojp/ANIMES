@@ -1,8 +1,8 @@
 <?php
-namespace App\adms\controllers;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use Core\ConfigView;
-
+namespace Adms\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 class ListPermission
 {
     /** @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
@@ -44,7 +44,7 @@ class ListPermission
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         // var_dump($this->dataForm);
 
-        $listPermission = new \App\adms\Models\AdmsListPermission();
+        $listPermission = new \Adms\Models\AdmsListPermission();
         
         //envia para a models a pagina atual e o nivel de acesso
         $listPermission->listPermission($this->page, $this->level);
@@ -63,7 +63,7 @@ class ListPermission
         }else{
             // $this->data['listPermission'] = [];
             // $this->data['pagination'] = null;
-            $urlRedirect = URLADM."list-access-nivels/index";
+            $urlRedirect = URLADM."list-access-level/index";
             header("Location: $urlRedirect");
         }
         
@@ -74,24 +74,24 @@ class ListPermission
     {
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
         // Cria o array e suas devidas posições
-        $button = ['list_access_nivels' => ['menu_controller' => 'list-access-nivels', 'menu_metodo' => 'index'], 'order_page_menu' => ['menu_controller' => 'order-page-menu', 'menu_metodo' => 'index'], 'edit_page_menu' => ['menu_controller' => 'edit-page-menu', 'menu_metodo' => 'index']];
+        $button = ['list_access_level'=>['menu_controller'=>'list-access-level', 'menu_metodo'=>'index'], 'order_page_menu'=>['menu_controller'=>'order-page-menu', 'menu_metodo'=>'index'], 'edit_page_menu'=>['menu_controller'=>'edit-page-menu', 'menu_metodo'=>'index']];
         // Instância a classe:AdmsButton() e cria o objeto:$listButton
-        $listButton = new \App\adms\Models\helper\AdmsButton();
+        $listButton = new \Adms\Models\helper\AdmsButton();
         // Passa como parametro o array:$button criado acima, para o método:buttonPermission()
         // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
         $this->data['button'] = $listButton->buttonPermission($button);
         // var_dump($this->data['button']);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "list-access-nivels";
+        $this->data['sidebarActive'] = "list-access-level";
 
         //instancia a classe, cria o objeto e passa o parametro:$this->data, recebido da VIEW
-        $loadView = new ConfigView("adms/Views/permission/listPermission",$this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/permission/listPermission",$this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdms();
     }
 }

@@ -77,7 +77,7 @@ if (isset($this->data['form'])) {
                     <td class="list_body_content"><?=$id_user;?></td>
                     <td class="list_body_content"><?=$adm_user;?></td>
                     <td class="list_body_content tb_sm_none"><?=$adm_email;?></td>
-                    <td class="list_body_content tb_sm_none"><span style='color:<?=$color_adms;?>'><?=$name_color;?></span></td>
+                    <td class="list_body_content tb_sm_none"><span style='color:<?=$color_adms;?>'><?=$name_sits_user;?></span></td>
                     <td class="list_body_content">
                         <?php if($this->data['button']['view_user']) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-user/index/$id_user'><i class='fa-solid fa-eye'></i> Ver</a>"; }

@@ -134,4 +134,12 @@ Erro 049.1 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessNameNivel
 Erro 049.2 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessName()
 Erro 049.3 - ADMS/app/adms/Models/AdmsListAccessLevel.php, searchAccessNivels()
 
+Erro 050 - ADMS/app/adms/Models/AdmsOrderAccessLevel.php, orderAccessNivels()
+Erro 050.1 - ADMS/app/adms/Models/AdmsOrderAccessLevel.php, viewPrevAccessNivels()
+Erro 050.2 - ADMS/app/adms/Models/AdmsOrderAccessLevel.php, editMoveDown()
+Erro 050.3 - ADMS/app/adms/Models/AdmsOrderAccessLevel.php, editMoveUp()
 
+Erro 051 - ADMS/app/adms/Controllers/OrderAccessLevel.php, index()
+
+Erro 052 - ADMS/app/adms/Models/AdmsListPermission.php, listPermission()
+Erro 052.1 - ADMS/app/adms/Models/AdmsListPermission.php, viewAccessNivels()
