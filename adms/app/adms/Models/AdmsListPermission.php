@@ -88,10 +88,11 @@ class AdmsListPermission
             INNER JOIN adms_access_level AS lev ON lev.id_access_level=lev_pag.id_access_level 
             WHERE lev_pag.id_access_level=:id_access_level AND lev.order_level >=:order_level
             AND (((SELECT permission_level_page FROM adms_level_page WHERE id_page=lev_pag.id_page 
-            AND id_access_level={$_SESSION['access_level_id']}) = 1) OR (pag.public_page = 1))
+            AND id_access_level={$_SESSION['id_access_level']}) = 1) OR (pag.public_page = 1))
             ORDER BY pag.id_page DESC LIMIT :limit OFFSET :offset", "id_access_level={$this->level}&order_level=".$_SESSION['order_level']."&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
             $this->resultBd = $listPermission->getResult();
+            // var_dump($this->resultBd);
             if ($this->resultBd) {
                 // var_dump($this->resultBd);
                 $this->result = true;
@@ -116,7 +117,7 @@ class AdmsListPermission
             // var_dump($this->resultBd);
             return true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 052.1(viewAccessNivels())! Nivel de acesso não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 052.1! Nivel de acesso não encontrado!</p>";
             return false;
         }
     }

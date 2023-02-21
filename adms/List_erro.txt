@@ -143,3 +143,13 @@ Erro 051 - ADMS/app/adms/Controllers/OrderAccessLevel.php, index()
 
 Erro 052 - ADMS/app/adms/Models/AdmsListPermission.php, listPermission()
 Erro 052.1 - ADMS/app/adms/Models/AdmsListPermission.php, viewAccessNivels()
+
+Erro 053 - ADMS/app/adms/Models/AdmsEditPermission.php, editPermission()
+Erro 053.1 - ADMS/app/adms/Models/AdmsEditPermission.php, edit()
+
+Erro 054 - ADMS/app/adms/Controllers/EditPermission.php, index()
+
+Erro 055 - ADMS/app/adms/Models/AdmsEditPrintMenu.php, editPrintMenu()
+Erro 055.1 - ADMS/app/adms/Models/AdmsEditPrintMenu.php, edit()
+
+Erro 056 - ADMS/app/adms/Controllers/EditPrintMenu.php, editPrintMenu()
