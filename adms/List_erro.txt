@@ -153,3 +153,8 @@ Erro 055 - ADMS/app/adms/Models/AdmsEditPrintMenu.php, editPrintMenu()
 Erro 055.1 - ADMS/app/adms/Models/AdmsEditPrintMenu.php, edit()
 
 Erro 056 - ADMS/app/adms/Controllers/EditPrintMenu.php, editPrintMenu()
+
+Erro 057 - ADMS/app/adms/Models/AdmsEditDropdownMenu.php, editDropdownMenu()
+Erro 057.1 - ADMS/app/adms/Models/AdmsEditDropdownMenu.php, edit()
+
+Erro 058 - ADMS/app/adms/Controllers/EditDropdownMenu.php, index()

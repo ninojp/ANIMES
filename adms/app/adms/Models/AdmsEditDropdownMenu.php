@@ -13,7 +13,7 @@ class AdmsEditDropdownMenu
     private array|null $resultBd;
 
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_level_page;
 
     /** @var array|null - Recebe os dados que devem ser slavos no DB     */
     private array|null $data;
@@ -34,20 +34,17 @@ class AdmsEditDropdownMenu
     /** ===========================================================================================
      * O Método recebe como parametro o ID que será usado para verificar se tem o registro no DB 
      * se o registro for encontrado, instância o método:edit para editar o mesmo */
-    public function editDropdownMenu(int $id):void
+    public function editDropdownMenu(int $id_level_page):void
     {
-        $this->id = $id;
+        $this->id_level_page = $id_level_page;
         // var_dump($this->id);
 
-        $vieweditPrintMenu = new \App\adms\Models\helper\AdmsRead();
-        $vieweditPrintMenu->fullRead("SELECT lev_pag.id, lev_pag.dropdown
-        FROM adms_levels_pages AS lev_pag 
-        INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id 
-        LEFT JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id
-        WHERE lev_pag.id=:id AND lev.order_levels >=:order_levels
-        AND (((SELECT permission FROM adms_levels_pages WHERE adms_page_id =lev_pag.adms_page_id 
-        AND adms_access_level_id ={$_SESSION['access_level_id']}) = 1) OR (publish = 1))
-        LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $vieweditPrintMenu = new \Adms\Models\helper\AdmsRead();
+        $vieweditPrintMenu->fullRead("SELECT lev_pag.id_level_page, lev_pag.dropdown_menu
+        FROM adms_level_page AS lev_pag INNER JOIN adms_access_level AS lev ON lev.id_access_level=lev_pag.id_access_level LEFT JOIN adms_page AS pag ON pag.id_page=lev_pag.id_page WHERE lev_pag.id_level_page=:id AND lev.order_level >=:order_level
+        AND (((SELECT permission_level_page FROM adms_level_page WHERE id_page=lev_pag.id_page 
+        AND id_access_level={$_SESSION['id_access_level']}) = 1) OR (public_page = 1))
+        LIMIT :limit", "id={$this->id_level_page}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $vieweditPrintMenu->getResult();
         if($this->resultBd){
@@ -55,7 +52,7 @@ class AdmsEditDropdownMenu
             // $this->result = true;
             $this->edit();
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro (editPermission())! Necessário selecionar uma página!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 057! Necessário selecionar uma página!</p>";
             $this->result = false;
         }
     }
@@ -65,20 +62,20 @@ class AdmsEditDropdownMenu
     private function edit():void
     {
         // var_dump($this->resultBd);
-        if($this->resultBd[0]['dropdown'] == 1){
-            $this->data['dropdown'] = 2;
+        if($this->resultBd[0]['dropdown_menu'] == 1){
+            $this->data['dropdown_menu'] = 2;
         } else {
-            $this->data['dropdown'] = 1;
+            $this->data['dropdown_menu'] = 1;
         }
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $upPrintMenu = new \App\adms\Models\helper\AdmsUpdate();
-        $upPrintMenu->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->id}");
+        $upPrintMenu = new \Adms\Models\helper\AdmsUpdate();
+        $upPrintMenu->exeUpdate("adms_level_page", $this->data, "WHERE id_level_page=:id", "id={$this->id_level_page}");
         if($upPrintMenu->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Página DropDown Editada com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (edit())! Não foi possível Editar a Página DropDown</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 057.1! Não foi possível Editar a Página DropDown</p>";
             $this->result = false;
         }
     }
