@@ -164,6 +164,17 @@ Erro 059 - ADMS/app/adms/Models/AdmsViewAccessLevel.php, viewAccessNivels()
 Erro 060 - ADMS/app/adms/Controller/ViewAccessLevel.php, index()
 
 Erro 061 - ADMS/app/adms/Model/ViewAccessLevel.php, viewEditAccessNivels()
+
 Erro 061.1 - ADMS/app/adms/Model/ViewAccessLevel.php, edit()
 
 Erro 062 - ADMS/app/adms/Controller/EditAccessLevel.php, editAccessNivels()
+
+Erro 063 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, deleteAccessNivels()
+
+Erro 063 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, deleteAccessNivels()
+
+Erro 063.1 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, deleteAccessNivels()
+
+Erro 063.2 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, checkStatusUsed()
+
+Erro 064 - ADMS/app/adms/Controller/DeleteAccessLevel.php, index()
