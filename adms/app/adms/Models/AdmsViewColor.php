@@ -29,9 +29,9 @@ class AdmsViewColor
         //atribui o id recebido como parametro no atributo:$this->id
         $this->id_color = (int) $id_color;
         //instância a classe:AdmsRead() e cria o objeto:$viewSitsUsers
-        $viewColors = new \App\adms\Models\helper\AdmsRead();
+        $viewColors = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $viewColors->fullRead("SELECT id, name, color, created, modified FROM adms_colors WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewColors->fullRead("SELECT id_color, name_color, color_adms, created, modified FROM adms_color WHERE id_color=:id LIMIT :limit", "id={$this->id_color}&limit=1");
 
         //ESTE VAR_DUMP MOSTRA TUDO INCLUSIVE OS DADOS DE CONEXAO COM O DB (SENHA)
         // var_dump($viewSitUser); ME PARECE UMA FALHA DE SEGURANÇA
@@ -44,7 +44,7 @@ class AdmsViewColor
             $this->result = true;
             //se o atributo:$this->resultBd é false, atribui a frase na constante:$_SESSION['msg']
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Cor não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 069! Cor não encontrada!</p>";
             $this->result = false;
         }
     }

@@ -188,3 +188,19 @@ Erro 066 - ADMS/app/adms/Models/AdmsListColor.php, listColors()
 Erro 067 - ADMS/app/adms/Models/helper/AdmsValColorSingle.php, validateColorsSingle()
 
 Erro 068 - ADMS/app/adms/Models/AdmsValColorSingle.php, addColors()
+
+Erro 069 - ADMS/app/adms/Models/AdmsViewColor.php, viewColors()
+
+Erro 070 - ADMS/app/adms/Controllers/AdmsViewColor.php, index()
+
+Erro 071 - ADMS/app/adms/Models/AdmsEditColor.php, viewColorsBd()
+Erro 071.1 - ADMS/app/adms/Models/AdmsEditColor.php, editColors()
+
+Erro 072 - ADMS/app/adms/Controllers/EditColor.php, editColors()
+
+Erro 073 - ADMS/app/adms/Models/AdmsDeleteColor.php, deleteColors()
+Erro 073.1 - ADMS/app/adms/Models/AdmsDeleteColor.php, viewAtualColors()
+Erro 073.2 - ADMS/app/adms/Models/AdmsDeleteColor.php, checkStatusUsed()
+
+Erro 074 - ADMS/app/adms/Controllers/DeleteColor.php, index()
+
