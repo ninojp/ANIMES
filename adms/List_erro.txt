@@ -158,3 +158,12 @@ Erro 057 - ADMS/app/adms/Models/AdmsEditDropdownMenu.php, editDropdownMenu()
 Erro 057.1 - ADMS/app/adms/Models/AdmsEditDropdownMenu.php, edit()
 
 Erro 058 - ADMS/app/adms/Controllers/EditDropdownMenu.php, index()
+
+Erro 059 - ADMS/app/adms/Models/AdmsViewAccessLevel.php, viewAccessNivels()
+
+Erro 060 - ADMS/app/adms/Controller/ViewAccessLevel.php, index()
+
+Erro 061 - ADMS/app/adms/Model/ViewAccessLevel.php, viewEditAccessNivels()
+Erro 061.1 - ADMS/app/adms/Model/ViewAccessLevel.php, edit()
+
+Erro 062 - ADMS/app/adms/Controller/EditAccessLevel.php, editAccessNivels()

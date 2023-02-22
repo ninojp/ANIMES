@@ -1,8 +1,10 @@
 <?php
-namespace App\adms\Models;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+namespace Adms\Models;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsViewUsers, Editar o usuário no banco de dados */
-class AdmsEditAccessNivels
+class AdmsEditAccessLevel
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
@@ -11,7 +13,7 @@ class AdmsEditAccessNivels
     private array|null $resultBd;
 
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_access_level;
 
     /** @var array|null - Recebe as informações do formulário     */
     private array|null $data;
@@ -31,19 +33,19 @@ class AdmsEditAccessNivels
     }
     /** ============================================================================================
     */
-    public function viewEditAccessNivels(int $id):void
+    public function viewEditAccessNivels(int $id_access_level):void
     {
-        $this->id = $id;
+        $this->id_access_level = $id_access_level;
 
-        $viewEditAccessNivels = new \App\adms\Models\helper\AdmsRead();
-        $viewEditAccessNivels->fullRead("SELECT id, name, order_levels FROM adms_access_levels WHERE id=:id AND order_levels > :order_levels LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $viewEditAccessNivels = new \Adms\Models\helper\AdmsRead();
+        $viewEditAccessNivels->fullRead("SELECT id_access_level, access_level, order_level FROM adms_access_level WHERE id_access_level=:id AND order_level > :order_level LIMIT :limit", "id={$this->id_access_level}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewEditAccessNivels->getResult();
         if($this->resultBd){
             // var_dump($this->resultBd);
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nivel de Acesso não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 061! Nivel de Acesso não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -55,7 +57,7 @@ class AdmsEditAccessNivels
         $this->data = $data;
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -76,14 +78,14 @@ class AdmsEditAccessNivels
         // var_dump($this->data);
         // $this->result = false;TESTE
 
-        $upAccessNivels = new \App\adms\Models\helper\AdmsUpdate();
-        $upAccessNivels->exeUpdate("adms_access_levels", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upAccessNivels = new \Adms\Models\helper\AdmsUpdate();
+        $upAccessNivels->exeUpdate("adms_access_level", $this->data, "WHERE id_access_level=:id", "id={$this->data['id_access_level']}");
 
         if($upAccessNivels->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Nivel de Acesso Editado com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível Editar o Nivel de Acesso</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 061.1! Não foi possível Editar o Nivel de Acesso</p>";
             $this->result = false;
         }
     }
