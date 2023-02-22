@@ -21,7 +21,7 @@ class ListItensMenu
           // var_dump($this->page);
 
         //Instância a classe:$AdmsListSitsPgs e cria o objeto:$listSitsUsers
-       $listItensMenu = new \App\adms\Models\AdmsListItensMenu();
+       $listItensMenu = new \Adms\Models\AdmsListItensMenu();
        // Usa o objeto para instanciar o método:listSitsUsers() da classe:$AdmsListSitsUsers 
        //envia para a models a pagina atual:$this->page
        $listItensMenu->listItensMenu($this->page);
@@ -38,7 +38,7 @@ class ListItensMenu
         // Cria o array e suas devidas posições
         $button = ['add_itens_menu' => ['menu_controller' => 'add-itens-menu', 'menu_metodo' => 'index'], 'order_itens_menu' => ['menu_controller' => 'order-itens-menu', 'menu_metodo' => 'index'], 'view_itens_menu' => ['menu_controller' => 'view-itens-menu', 'menu_metodo' => 'index'], 'edit_itens_menu' => ['menu_controller' => 'edit-itens-menu', 'menu_metodo' => 'index'], 'delete_itens_menu' => ['menu_controller' => 'delete-itens-menu', 'menu_metodo' => 'index']];
         // Instância a classe:AdmsButton() e cria o objeto:$listButton
-        $listButton = new \App\adms\Models\helper\AdmsButton();
+        $listButton = new \Adms\Models\helper\AdmsButton();
         // Passa como parametro o array:$button criado acima, para o método:buttonPermission()
         // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
         $this->data['button'] = $listButton->buttonPermission($button);
@@ -48,13 +48,13 @@ class ListItensMenu
        $this->data['pag'] = $this->page;
        
        // implementação da apresentação dinâmica do menu sidebar
-       $listMenu = new \App\adms\Models\helper\AdmsMenu();
+       $listMenu = new \Adms\Models\helper\AdmsMenu();
        $this->data['menu'] = $listMenu->itemMenu();
        
        // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
        $this->data['sidebarActive'] = "list-itens-menu";
 
-       $loadSitsUsers = new \Core\ConfigView("adms/Views/itensMenu/listItensMenu", $this->data);
-       $loadSitsUsers->loadView();
+       $loadSitsUsers = new \AdmsSrc\ConfigViewAdms("adms/Views/itensMenu/listItensMenu", $this->data);
+       $loadSitsUsers->loadViewAdms();
     }
 }

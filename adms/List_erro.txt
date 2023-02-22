@@ -204,3 +204,5 @@ Erro 073.2 - ADMS/app/adms/Models/AdmsDeleteColor.php, checkStatusUsed()
 
 Erro 074 - ADMS/app/adms/Controllers/DeleteColor.php, index()
 
+Erro 075 - ADMS/app/adms/Models/AdmsListItensMenu.php, listItensMenu()
+
