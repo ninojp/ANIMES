@@ -182,3 +182,9 @@ Erro 064 - ADMS/app/adms/Controller/DeleteAccessLevel.php, index()
 Erro 065 - ADMS/app/adms/Models/AdmsAddAccessLevel.php, viewLastAccessNivels()
 
 Erro 065.1 - ADMS/app/adms/Models/AdmsAddAccessLevel.php, addAccessNivels()
+
+Erro 066 - ADMS/app/adms/Models/AdmsListColor.php, listColors()
+
+Erro 067 - ADMS/app/adms/Models/helper/AdmsValColorSingle.php, validateColorsSingle()
+
+Erro 068 - ADMS/app/adms/Models/AdmsValColorSingle.php, addColors()
