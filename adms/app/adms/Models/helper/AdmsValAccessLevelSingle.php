@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe genérica para validar o usuário único, somente um cadastro pode utilizar o usuário */
-class AdmsValAccessNivelSingle
+class AdmsValAccessLevelSingle
 {
     /** @var string - Recebe o usuário q deve ser validado    */
     private string $access_level;

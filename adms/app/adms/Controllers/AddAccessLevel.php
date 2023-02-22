@@ -1,11 +1,10 @@
 <?php
-// echo "adms/Controller/NewUser.php: <h1> Página(controller) Novo usuário</h1>";
-namespace App\adms\controllers;
-//verifica se está definido a constante(defida na index), se não estiver
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/");}
-use Core\ConfigView;
+namespace Adms\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe da controller da pagina de novo usuário */
-class AddAccessNivels
+class AddAccessLevel
 {
     /** Apartir do PHP 8, posso definir a TIPAGEM de varios tipos para o mesmo atributo, usando o PIPE| @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
     private array|string|null $data = [];
@@ -20,14 +19,14 @@ class AddAccessNivels
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        if (!empty($this->dataForm['SendAddAccessNivels'])) {
-            var_dump($this->dataForm);
-            unset($this->dataForm['SendAddAccessNivels']);
-            $createAccessNivels = new \App\adms\Models\AdmsAddAccessNivels();
+        if (!empty($this->dataForm['SendAddAccessLevel'])) {
+            // var_dump($this->dataForm);
+            unset($this->dataForm['SendAddAccessLevel']);
+            $createAccessNivels = new \Adms\Models\AdmsAddAccessLevel();
             $createAccessNivels->createAccessNivels($this->dataForm);
-            //Verifica ee o resultado da QUERY é TRUE, se for faz o redirecionamento para:list-users
+            // Verifica e o resultado da QUERY é TRUE, se for faz o redirecionamento para:list-access-level
             if($createAccessNivels->getResult()){
-                $urlRedirect = URLADM."list-access-nivels/index";
+                $urlRedirect = URLADM."list-access-level/index";
                 header("Location: $urlRedirect");
             }else{
                 // Se o resultado for FALSE, cria uma nova posição dentro do array $dataForm e mantém os dados no formulário
@@ -44,15 +43,15 @@ class AddAccessNivels
     private function loadViewAddUser():void
     {
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "list-access-nivels";
+        $this->data['sidebarActive'] = "list-access-level";
 
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new ConfigView("adms/Views/accessNivels/addAccessNivels", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/accessLevel/addAccessLevel", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdms();
     }
 }

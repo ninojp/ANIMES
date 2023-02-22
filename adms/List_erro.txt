@@ -178,3 +178,7 @@ Erro 063.1 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, deleteAccessNivels()
 Erro 063.2 - ADMS/app/adms/Model/AdmsDeleteAccessLevel.php, checkStatusUsed()
 
 Erro 064 - ADMS/app/adms/Controller/DeleteAccessLevel.php, index()
+
+Erro 065 - ADMS/app/adms/Models/AdmsAddAccessLevel.php, viewLastAccessNivels()
+
+Erro 065.1 - ADMS/app/adms/Models/AdmsAddAccessLevel.php, addAccessNivels()

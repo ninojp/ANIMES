@@ -1,11 +1,10 @@
 <?php
-namespace App\adms\Models;
-//verifica se está definido a constante(defida na index), se não estiver
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-use App\adms\Models\helper\AdmsValEmptyField;
-
-/** Classe(Models):AdmsAddAccessNivels, para adicionar um novo Nivel de acesso */
-class AdmsAddAccessNivels
+namespace Adms\Models;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
+/** Classe(Models):AdmsAddAccessLevel, para adicionar um novo Nivel de acesso */
+class AdmsAddAccessLevel
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -32,7 +31,7 @@ class AdmsAddAccessNivels
         $this->data = $data;
         // var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -49,8 +48,8 @@ class AdmsAddAccessNivels
     private function valInput(): void
     {
         //instancia a classe para validadr se o usuário já existe no DB
-        $valUserSingleLogin = new \App\adms\Models\helper\AdmsValAccessNivelSingle();
-        $valUserSingleLogin->validateAccessNivelsSingle($this->data['name']);
+        $valUserSingleLogin = new \Adms\Models\helper\AdmsValAccessLevelSingle();
+        $valUserSingleLogin->validateAccessNivelsSingle($this->data['access_level']);
 
         if (($valUserSingleLogin->getResult())) {
             $this->addAccessNivels();
@@ -63,15 +62,15 @@ class AdmsAddAccessNivels
      * @return void      */
     private function viewLastAccessNivels()
     {
-        $viewLastAccessNivels = new \App\adms\Models\helper\AdmsRead();
-        $viewLastAccessNivels->fullRead("SELECT order_levels FROM adms_access_levels ORDER BY order_levels DESC LIMIT 1");
+        $viewLastAccessNivels = new \Adms\Models\helper\AdmsRead();
+        $viewLastAccessNivels->fullRead("SELECT order_level FROM adms_access_level ORDER BY order_level DESC LIMIT 1");
 
         $this->resultBd = $viewLastAccessNivels->getResult();
         if($this->resultBd){
-            $this->data['order_levels'] = $this->resultBd[0]['order_levels'] + 1;
+            $this->data['order_level'] = $this->resultBd[0]['order_level'] + 1;
             return true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro (viewLastAccessNivels())! Não foi possível cadastrar o Nivel de Acesso</p>";
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 065! Não foi possível cadastrar o Nivel de Acesso</p>";
             return false;
         }
     }
@@ -85,15 +84,15 @@ class AdmsAddAccessNivels
             // var_dump($this->data);
             // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
             // $this->result = false;
-            $createAccessNivels = new \App\adms\Models\helper\AdmsCreate();
-            $createAccessNivels->exeCreate("adms_access_levels", $this->data);
+            $createAccessNivels = new \Adms\Models\helper\AdmsCreate();
+            $createAccessNivels->exeCreate("adms_access_level", $this->data);
 
             //verifica se existe o ultimo ID inserido
             if ($createAccessNivels->getResult()) {
                 $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Nivel de Acesso cadastrado com sucesso</p>";
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (addAccessNivels())! Não foi possível cadastrar o Nivel de Acesso</p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 065.1! Não foi possível cadastrar o Nivel de Acesso</p>";
                 $this->result = false;
             }
         }
