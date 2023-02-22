@@ -1,5 +1,7 @@
 <?php
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) { header("Location: https://localhost/dtudo/public/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 // Manter os dados no formulário     
 if (isset($this->data['form'])) {
     // var_dump($this->data['form']);
@@ -17,17 +19,17 @@ if (isset($this->data['form'])) {
         <form class="form_adms" action="" method="POST" id="form-add-item-Menu">
             <div class="row_input">
                 <?php $name = "";
-                if (isset($valorForm['name'])) {
-                    $name = $valorForm['name']; } ?>
+                if (isset($valorForm['name_item_menu'])) {
+                    $name_item_menu = $valorForm['name_item_menu']; } ?>
                 <i class="fa-regular fa-file-lines"></i>
-                <input class="form-control" type="text" name="name" id="name" value="<?php echo $name; ?>" placeholder="Digite o Nome para o Tipo *">
+                <input class="form-control" type="text" name="name_item_menu" id="name_item_menu" value="<?php echo $name_item_menu; ?>" placeholder="Digite o Nome para o Tipo *">
             </div>
             <div class="row_input">
                 <?php $icon = "";
                 if (isset($valorForm['icon'])) {
                     $icon = $valorForm['icon']; } ?>
                 <i class="fa-regular fa-file-lines"></i>
-                <input class="form-control" type="text" name="icon" id="icon" value="<?php echo $icon; ?>" placeholder="Digite Classe do Icone">
+                <input class="form-control" type="text" name="icon_item_menu" id="icon_item_menu" value="<?php echo $icon_item_menu; ?>" placeholder="Digite Classe do Icone">
             </div>
             <div class="row_input">
                 <?php $order_item_menu = "";

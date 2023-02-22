@@ -1,7 +1,8 @@
 <?php
-namespace App\adms\Controllers;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-
+namespace Adms\controllers;
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 /** Classe (Controller): cadastrar Item de Menu DropDown  */
 class AddItensMenu
 {
@@ -24,7 +25,7 @@ class AddItensMenu
 
         if(!empty($this->dataForm['SendAddItemMenu'])){
             unset($this->dataForm['SendAddItemMenu']);
-            $createItemMenu = new \App\adms\Models\AdmsAddItensMenu();
+            $createItemMenu = new \Adms\Models\AdmsAddItensMenu();
             $createItemMenu->createAddItemMenu($this->dataForm);
             if($createItemMenu->getResult()){
                 $urlRedirect = URLADM . "list-itens-menu/index";
@@ -42,13 +43,13 @@ class AddItensMenu
     private function viewAddItemMenu(): void
     {
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "add-itens-menu";
 
-        $loadView = new \Core\ConfigView("adms/Views/itensMenu/addItensMenu", $this->data);
-        $loadView->loadView();
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/itensMenu/addItensMenu", $this->data);
+        $loadView->loadViewAdms();
     }
 }
