@@ -208,3 +208,8 @@ Erro 075 - ADMS/app/adms/Models/AdmsListItensMenu.php, listItensMenu()
 
 Erro 076 - ADMS/app/adms/Models/AdmsAddItensMenu.php, addItemMenu()
 
+Erro 077 - ADMS/app/adms/Models/AdmsEditItensMenu.php, viewItensMenu()
+Erro 077.1 - ADMS/app/adms/Models/AdmsEditItensMenu.php, editItensMenu()
+
+Erro 078 - ADMS/app/adms/Controllers/editItensMenu.php, editItensMenu()
+

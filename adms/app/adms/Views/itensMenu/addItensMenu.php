@@ -18,7 +18,7 @@ if (isset($this->data['form'])) {
             echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-add-item-Menu">
             <div class="row_input">
-                <?php $name = "";
+                <?php $name_item_menu = "";
                 if (isset($valorForm['name_item_menu'])) {
                     $name_item_menu = $valorForm['name_item_menu']; } ?>
                 <i class="fa-regular fa-file-lines"></i>
