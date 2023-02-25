@@ -236,4 +236,10 @@ Erro 087.1 - ADMS/app/adms/Models/AdmsEditProfile.php, edit()
 
 Erro 088 - ADMS/app/adms/controllers/AdmsEditProfile.php, editProfile()
 
+Erro 089 - ADMS/app/adms/Models/AdmsEditProfileImage.php, viewProfile()
+Erro 089.1 - ADMS/app/adms/Models/AdmsEditProfileImage.php, update()
+Erro 089.2 - ADMS/app/adms/Models/AdmsEditProfileImage.php, edit()
+
+Erro 090 - ADMS/app/adms/controllers/EditProfileImage.php, editProfImage()
+
 

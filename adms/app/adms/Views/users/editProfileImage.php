@@ -1,17 +1,12 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-// echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
-// Manter os dados no formulário     
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); } 
 if (isset($this->data['form'])) {
-    $valorForm = $this->data['form'];
-}
+    $valorForm = $this->data['form']; }
 //na posição [0] e quando os dados vem do banco de dados
 if (isset($this->data['form'][0])) {
-    $valorForm = $this->data['form'][0];
-}
-// var_dump($this->data['form'][0]);
-?>
-<!-- <span id="msg"></span> -->
+    $valorForm = $this->data['form'][0];} ?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
@@ -25,10 +20,10 @@ if (isset($this->data['form'][0])) {
         <!--OBRIGATóRIO o enctype="multipart/form-data", para trabalhar com imagens dentro de formulários-->
         <form class="form_adms" action="" method="POST" id="form-edit-prof-img" enctype="multipart/form-data">
             <div class="text-center">
-            <?php if ((!empty($valorForm['image'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $valorForm['image']))) {
-                    $old_img = URLADM . "app/adms/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $valorForm['image'];
+            <?php if ((!empty($valorForm['adm_img'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['id_user'] . "/" . $valorForm['adm_img']))) {
+                    $old_img = URLADM . "app/adms/assets/imgs/users/" . $_SESSION['id_user'] . "/" . $valorForm['adm_img'];
                 } else {
-                    $old_img = URLADM . "app/adms/assets/imgs/users/Logo_Dtudo_2022-300p.png";
+                    $old_img = URLADM . "app/adms/assets/imgs/users/TI_link.png";
                 }
                 ?>
                 <span id="preview-img">
@@ -43,9 +38,17 @@ if (isset($this->data['form'][0])) {
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendEditProfImage" value="Salvar">Salvar Mudança</button>
             </div>
-            <div class="button_center">
-                <a class="btn btn-sm btn-outline-primary" href="<?= URLADM; ?>view-profile/index">Perfil</a>
-            </div>
+            <?php if(($this->data['button']['view_profile']) or ($this->data['button']['edit_profile_pass']) or ($this->data['button']['edit_profile']) or ($this->data['button']['logout'])) { 
+                echo "<div class='col-12 text-center p-4'>";
+                if($this->data['button']['view_profile']) { 
+                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."view-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                if($this->data['button']['edit_profile_pass']) {
+                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."edit-profile-pass/index/{$_SESSION['user_id']}'><i class='fa-solid fa-unlock-keyhole'></i> Editar Senha</a>"; }
+                if($this->data['button']['edit_profile']) {
+                echo "<a class='btn btn-sm btn-outline-primary mx-1' href=".URLADM."edit-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-image'></i> Editar</a>"; }
+                if($this->data['button']['logout']) {
+                echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."logou/index/{$_SESSION['user_id']}'><i class='fa-solid fa-right-from-bracket'></i> Logout</a>"; }
+            echo "</div>"; } ?>
         </form>
     </div>
 </div>
