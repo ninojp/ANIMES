@@ -20,42 +20,29 @@ if(isset($this->data['form'][0])){
             echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-edit-profile">
             <div class="row_edit">
-                <label class="" for="name">Nome:<span style="color:#f00;">*</span></label>
+                <label class="" for="name">Nome Usuário:<span style="color:#f00;">*</span></label>
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="text" name="name" id="name" value="<?php if(isset($valorForm['name'])){echo $valorForm['name'];} ?>" placeholder="Digite o nome Completo" required>
+                <input class="form-control" type="text" name="adm_user" id="adm_user" value="<?php if(isset($valorForm['adm_user'])){echo $valorForm['adm_user'];} ?>" placeholder="Digite o nome Completo" required>
             </div>
             <div class="row_edit">
-                <label class="" for="nickname">Apelido:</label>
-                <i class="fa-brands fa-square-odnoklassniki"></i>
-                <input class="form-control" type="text" name="nickname" id="nickname" value="<?php if(isset($valorForm['nickname'])){echo $valorForm['nickname'];} ?>" placeholder="Digite um Apelido">
-            </div>
-            <div class="row_edit">
-                <label class="" for="email">Email:<span style="color:#f00;">*</span></label>
+                <label class="" for="adm_email">Email:<span style="color:#f00;">*</span></label>
                 <i class="fa-solid fa-envelope"></i>
-                <input class="form-control" type="email" name="email" id="email" value="<?php if(isset($valorForm['email'])){echo $valorForm['email'];} ?>" placeholder="Digite o Email" required>
-            </div>
-            <div class="row_edit">
-                <label class="" for="user">Usuário:<span style="color:#f00;">*</span></label>
-                <i class="fa-solid fa-user"></i>
-                <input class="form-control" type="text" name="user" id="user" value="<?php if(isset($valorForm['user'])){echo $valorForm['user'];} ?>" placeholder="Digite o usuário para acessar o administrativo" required>
+                <input class="form-control" type="email" name="adm_email" id="adm_email" value="<?php if(isset($valorForm['adm_email'])){echo $valorForm['adm_email'];} ?>" placeholder="Digite o Email" required>
             </div>
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendEditProfile" value="Salvar">Salvar Mudança</button><br>
             </div>
-            <div class="button_center">
-                <?= "<a class='btn btn-sm btn-outline-info' href='".URLADM."view-profile/index'>Perfil</a>"; ?>
-            </div>
-            <?php if(($this->data['button']['edit_profile']) or ($this->data['button']['edit_profile_pass']) or ($this->data['button']['edit_profile_image']) or ($this->data['button']['logout'])) { ?>
-            <div class="col-12 text-center p-4">
-            <?php if($this->data['button']['edit_profile']) { ?>
-            <a class="btn btn-sm btn-outline-warning mx-1" href="<?=URLADM;?>view-profile/index/<?=$_SESSION['user_id'];?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php } ?>
-            <?php if($this->data['button']['edit_profile_pass']) { ?>
-            <a class="btn btn-sm btn-outline-info mx-1" href="<?=URLADM;?>edit-profile-pass/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-unlock-keyhole"></i> Editar Senha</a> <?php } ?>
-            <?php if($this->data['button']['edit_profile_image']) { ?>
-            <a class="btn btn-sm btn-outline-primary mx-1" href="<?=URLADM;?>edit-profile-image/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-image"></i> Editar Imagem</a><?php } ?>
-            <?php if($this->data['button']['logout']) { ?>
-            <a class="btn btn-sm btn-outline-danger mx-1" href="<?=URLADM;?>logou/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a><?php } ?>
-        </div> <?php } } ?>
+            <?php if(($this->data['button']['view_profile']) or ($this->data['button']['edit_profile_pass']) or ($this->data['button']['edit_profile_image']) or ($this->data['button']['logout'])) { 
+                echo "<div class='col-12 text-center p-4'>";
+                if($this->data['button']['view_profile']) { 
+                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."view-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                if($this->data['button']['edit_profile_pass']) {
+                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."edit-profile-pass/index/{$_SESSION['user_id']}'><i class='fa-solid fa-unlock-keyhole'></i> Editar Senha</a>"; }
+                if($this->data['button']['edit_profile_image']) {
+                echo "<a class='btn btn-sm btn-outline-primary mx-1' href=".URLADM."edit-profile-image/index/{$_SESSION['user_id']}'><i class='fa-solid fa-image'></i> Editar Imagem</a>"; }
+                if($this->data['button']['logout']) {
+                echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."logou/index/{$_SESSION['user_id']}'><i class='fa-solid fa-right-from-bracket'></i> Logout</a>"; }
+            echo "</div>"; } ?>
         </form>
     </div>
 </div>

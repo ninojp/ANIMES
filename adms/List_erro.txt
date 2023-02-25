@@ -231,4 +231,9 @@ Erro 085 - ADMS/app/adms/Controllers/AdmsEditDefaultAccess.php, editLevelsForms(
 
 Erro 086 - ADMS/app/adms/Models/AdmsViewProfile.php, viewProfile()
 
+Erro 087 - ADMS/app/adms/Models/AdmsEditProfile.php, viewProfile()
+Erro 087.1 - ADMS/app/adms/Models/AdmsEditProfile.php, edit()
+
+Erro 088 - ADMS/app/adms/controllers/AdmsEditProfile.php, editProfile()
+
 

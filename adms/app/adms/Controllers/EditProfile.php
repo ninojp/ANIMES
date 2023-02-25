@@ -27,11 +27,11 @@ class EditProfile
             $this->editProfile();
         } else {
             //instância a classe:AdmsEditProfile e cria o objeto para instanciar o método
-            $viewProfile = new \App\adms\Models\AdmsEditProfile();
+            $viewProfile = new \Adms\Models\AdmsEditProfile();
             //método:viewProfile() q vai solicitar as informações no db
             $viewProfile->viewProfile();
             //verifica se existe resultado da query, através do método:getResult()=true
-            if($viewProfile->getResult()){
+            if($viewProfile->getResult()) {
                 //se existir, pega os resultados no método:getResultBd() e os coloca no atributo:$this->data['form'], com a posição FORM
                 $this->data['form'] = $viewProfile->getResultBd();
                 $this->viewEditProfile();
@@ -47,7 +47,7 @@ class EditProfile
     private function viewEditProfile(): void
     {
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
-        $button = ['edit_profile' => ['menu_controller' => 'edit-profile', 'menu_metodo' => 'index'],
+        $button = ['view_profile' => ['menu_controller' => 'view-profile', 'menu_metodo' => 'index'],
         'edit_profile_pass' => ['menu_controller' => 'edit-profile-pass', 'menu_metodo' => 'index'],
         'edit_profile_image' => ['menu_controller' => 'edit-profile-image', 'menu_metodo' => 'index'],
         'logout' => ['menu_controller' => 'logout', 'menu_metodo' => 'index']];
@@ -57,16 +57,16 @@ class EditProfile
         $this->data['button'] = $listButton->buttonPermission($button);
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
         $this->data['sidebarActive'] = "edit-profile";
 
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new ConfigView("adms/Views/users/editProfile", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/users/editProfile", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdms();
     }
     /** =============================================================================================
      * @return void     */
@@ -74,7 +74,7 @@ class EditProfile
     {
         if(!empty($this->dataForm['SendEditProfile'])){
             unset($this->dataForm['SendEditProfile']);
-            $editProfile = new \App\adms\Models\AdmsEditProfile();
+            $editProfile = new \Adms\Models\AdmsEditProfile();
             $editProfile->update($this->dataForm);
             if($editProfile->getResult()){
                 $urlRedirect = URLADM . "view-profile/index";
@@ -84,7 +84,7 @@ class EditProfile
                 $this->viewEditProfile();
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 088! Perfil não encontrado!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }
