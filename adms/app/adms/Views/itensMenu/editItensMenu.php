@@ -41,16 +41,18 @@ if(isset($this->data['form'][0])){
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendEditItensMenu" value="Salvar">Salvar Mudanças</button><br>
             </div>
+            <div class="col-12 text-center p-4">
             <?php if(($this->data['button']['list_itens_menu']) or ($this->data['button']['view_itens_menu']) or ($this->data['button']['add_itens_menu']) or ($this->data['button']['delete_itens_menu'])) { 
-                        if($this->data['button']['list_itens_menu']) {
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-itens-menu/index'> Listar</a>"; }
-                        if($this->data['button']['view_itens_menu']) {
-                        echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."view-itens-menu/index/{$valorForm['id_item_menu']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
-                        if($this->data['button']['add_itens_menu']){
-                        echo "<a class='btn btn-sm btn-outline-success' href='" .URLADM . "add-itens-menu/index' type='button'>Cadastrar</a>"; }
-                        if($this->data['button']['delete_itens_menu']) {
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-itens-menu/index/{$valorForm['id_item_menu']}' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
-                        echo "</td>"; } ?>
+                if($this->data['button']['list_itens_menu']) {
+                echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-itens-menu/index'> Listar</a>"; }
+                if($this->data['button']['view_itens_menu']) {
+                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."view-itens-menu/index/{$valorForm['id_item_menu']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                if($this->data['button']['add_itens_menu']){
+                echo "<a class='btn btn-sm btn-outline-success' href='" .URLADM . "add-itens-menu/index' type='button'>Cadastrar</a>"; }
+                if($this->data['button']['delete_itens_menu']) {
+                echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-itens-menu/index/{$valorForm['id_item_menu']}' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+                echo "</td>"; } ?>
+            </div>
         </form>
     </div>
 </div>

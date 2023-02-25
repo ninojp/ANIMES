@@ -1,5 +1,7 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); } ?>
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); } ?>
 <!-- Inicio do conteudo do Visualizar ADM  -->
 <div class="wrapper_form">
     <div class="row_form">
@@ -17,15 +19,15 @@ if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://lo
         <div class="content_adm">
             <div class="view_det">
                 <span class="view_det_title">ID:</span>
-                <span class="view_det_info"><?=$id;?></span>
+                <span class="view_det_info"><?=$id_default_access;?></span>
             </div>
             <div class="view_det">
                 <span class="view_det_title">Nivel de Acesso (New User):</span>
-                <span class="view_det_info"><?=$name_aal;?></span>
+                <span class="view_det_info"><?=$access_level;?></span>
             </div>
             <div class="view_det">
                 <span class="view_det_title">Situação do cadastro:</span>
-                <span class="view_det_info"><?=$name_asu;?></span>
+                <span class="view_det_info"><?=$name_sits_user;?></span>
             </div>
             
             <div class="view_det">
@@ -38,8 +40,11 @@ if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://lo
                 <span class="view_det_info"><?=date('d/m/Y H:i:s', strtotime($modified)); ?></span>
             </div> <?php } ?>
         </div>
+
         <div class="col-12 text-center p-4">
-            <a class="btn btn-sm btn-outline-warning mx-1" href="<?=URLADM;?>edit-levels-forms/index/<?=$id;?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a>
+        <?php if(($this->data['button']['edit_default_access'])) { ?>
+            <a class="btn btn-sm btn-outline-warning mx-1" href="<?=URLADM;?>edit-default-access/index/<?=$id_default_access;?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a>
+        <?php }?>
         </div>
         <?php } ?>
     </div>

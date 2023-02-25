@@ -213,3 +213,20 @@ Erro 077.1 - ADMS/app/adms/Models/AdmsEditItensMenu.php, editItensMenu()
 
 Erro 078 - ADMS/app/adms/Controllers/editItensMenu.php, editItensMenu()
 
+Erro 079 - ADMS/app/adms/Models/AdmsViewItensMenu.php, editItensMenu()
+
+Erro 080 - ADMS/app/adms/Controllers/ViewItensMenu.php, index()
+
+Erro 081 - ADMS/app/adms/Models/AdmsDeleteItensMenu.php, deleteItensMenu()
+Erro 081.1 - ADMS/app/adms/Models/AdmsDeleteItensMenu.php, viewItemMenu()
+
+Erro 082 - ADMS/app/adms/Models/DeleteItensMenu.php, index()
+
+Erro 083 - ADMS/app/adms/Models/AdmsViewDefaultAccess.php, viewLevelsForms()
+
+Erro 084 - ADMS/app/adms/Models/AdmsEditDefaultAccess.php, viewLevelsForms()
+Erro 084.1 - ADMS/app/adms/Models/AdmsEditDefaultAccess.php, editLevelsForms()
+
+Erro 085 - ADMS/app/adms/Controllers/AdmsEditDefaultAccess.php, editLevelsForms()
+
+
