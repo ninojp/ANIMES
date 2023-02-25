@@ -1,12 +1,10 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-use Core\ConfigView;
-
 /** Classe da controller da pagina de editar senha perfil */
-class EditProfilePassword
+class EditProfilePass
 {
     /** Apartir do PHP 8, posso definir a TIPAGEM de varios tipos para o mesmo atributo, usando o PIPE| @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
     private array|string|null $data = [];
@@ -27,7 +25,7 @@ class EditProfilePassword
             $this->editProfPass();
         } else {
             //instância a classe:AdmsEditProfile e cria o objeto para instanciar o método
-            $viewProfPass = new \App\adms\Models\AdmsEditProfilePassword();
+            $viewProfPass = new \Adms\Models\AdmsEditProfilePass();
             //método:viewProfile() q vai solicitar as informações no db
             $viewProfPass->viewProfile();
             //verifica se existe resultado da query, através do método:getResult()=true
@@ -46,17 +44,27 @@ class EditProfilePassword
      * @return void     */
     private function viewEditProfPass(): void
     {
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        $button = ['view_profile' => ['menu_controller' => 'view-profile', 'menu_metodo' => 'index'],
+        'edit_profile_image' => ['menu_controller' => 'edit-profile-image', 'menu_metodo' => 'index'],
+        'edit_profile' => ['menu_controller' => 'edit-profile', 'menu_metodo' => 'index'],
+        'logout' => ['menu_controller' => 'logout', 'menu_metodo' => 'index']];
+        // Instância a classe:AdmsButton() e cria o objeto:$listButton
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
+        $this->data['button'] = $listButton->buttonPermission($button);
+
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "edit-profile-password";
+        $this->data['sidebarActive'] = "edit-profile-pass";
 
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadView = new ConfigView("adms/Views/users/editProfilePassword", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/users/editProfilePass", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadView->loadView();
+        $loadView->loadViewAdms();
     }
     /** =============================================================================================
      * @return void     */
@@ -64,7 +72,7 @@ class EditProfilePassword
     {
         if(!empty($this->dataForm['SendEditProfPass'])){
             unset($this->dataForm['SendEditProfPass']);
-            $editProfPass = new \App\adms\Models\AdmsEditProfilePassword();
+            $editProfPass = new \Adms\Models\AdmsEditProfilePass();
             $editProfPass->update($this->dataForm);
             if($editProfPass->getResult()){
                 $urlRedirect = URLADM . "view-profile/index";
@@ -74,7 +82,7 @@ class EditProfilePassword
                 $this->viewEditProfPass();
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 092! Perfil não encontrado!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }

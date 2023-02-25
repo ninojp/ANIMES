@@ -3,7 +3,7 @@ namespace Adm\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-class ListGroupsPgs
+class ListGroupsPage
 {
     /** @var array|string|null - Atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
     private array|string|null $data;
@@ -36,6 +36,13 @@ class ListGroupsPgs
        }
        // coloca na posição:$this->data['pag'], o numero da pagina atual
        $this->data['pag'] = $this->page;
+
+       // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+       $button = ['view_groups_page' => ['menu_controller' => 'view-groups-page', 'menu_metodo' => 'index'], 'order_groups_page' => ['menu_controller' => 'order-groups-page', 'menu_metodo' => 'index'], 'edit_groups_page' => ['menu_controller' => 'edit-groups-page', 'menu_metodo' => 'index'], 'delete_groups_page' => ['menu_controller' => 'delete-groups-page', 'menu_metodo' => 'index']];
+       // Instância a classe:AdmsButton() e cria o objeto:$listButton
+       $listButton = new \Adms\Models\helper\AdmsButton();
+       // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
+       $this->data['button'] = $listButton->buttonPermission($button);
        
        // implementação da apresentação dinâmica do menu sidebar
        $listMenu = new \App\adms\Models\helper\AdmsMenu();

@@ -35,14 +35,17 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                     <td class="list_body_content"><?=$id;?></td>
                     <td class="list_body_content"><?=$name;?></td>
                     <td class="list_body_content tb_sm_none"><?=$order_group_pg;?></td>
-                    <td class="list_body_content">
-                        <?php 
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-groups-pgs/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordem</a>";
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-groups-pgs/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>"; 
-                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-groups-pgs/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>";
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-groups-pgs/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>";
-                        ?>
-                    </td>
+                    <?php if(($this->data['button']['view_groups_page']) or ($this->data['button']['edit_groups_page']) or ($this->data['button']['delete_groups_page']) or ($this->data['button']['order_groups_page'])) {
+                    echo "<td class='list_body_content'>";
+                    if($this->data['button']['order_groups_page']) {
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-groups-pgs/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordem</a>"; }
+                    if($this->data['button']['view_groups_page']) {
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-groups-pgs/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                    if($this->data['button']['edit_groups_page']) {
+                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-groups-pgs/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
+                    if($this->data['button']['delete_groups_page']) {
+                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-groups-pgs/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+                    echo "</td>"; } ?>
                 </tr>  <?php } ?>
             </tbody>
         </table>

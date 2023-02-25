@@ -47,11 +47,11 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
             <?php if($this->data['button']['edit_profile']) { ?>
             <a class="btn btn-sm btn-outline-warning mx-1" href="<?=URLADM;?>edit-profile/index/<?=$_SESSION['user_id'];?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php } ?>
             <?php if($this->data['button']['edit_profile_pass']) { ?>
-            <a class="btn btn-sm btn-outline-info mx-1" href="<?=URLADM;?>edit-profile-pass/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-unlock-keyhole"></i> Editar Senha</a> <?php } ?>
+            <a class="btn btn-sm btn-outline-info mx-1" href="<?=URLADM;?>edit-profile-pass/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-unlock-keyhole"></i> Senha</a> <?php } ?>
             <?php if($this->data['button']['edit_profile_image']) { ?>
-            <a class="btn btn-sm btn-outline-primary mx-1" href="<?=URLADM;?>edit-profile-image/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-image"></i> Editar Imagem</a><?php } ?>
+            <a class="btn btn-sm btn-outline-primary mx-1" href="<?=URLADM;?>edit-profile-image/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-image"></i> Imagem</a><?php } ?>
             <?php if($this->data['button']['logout']) { ?>
-            <a class="btn btn-sm btn-outline-danger mx-1" href="<?=URLADM;?>logou/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a><?php } ?>
+            <a class="btn btn-sm btn-outline-danger mx-1" href="<?=URLADM;?>logout/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a><?php } ?>
         </div> <?php } } ?>
     </div>
 </div>

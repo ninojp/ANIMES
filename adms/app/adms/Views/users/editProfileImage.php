@@ -43,7 +43,7 @@ if (isset($this->data['form'][0])) {
                 if($this->data['button']['view_profile']) { 
                 echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."view-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
                 if($this->data['button']['edit_profile_pass']) {
-                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."edit-profile-pass/index/{$_SESSION['user_id']}'><i class='fa-solid fa-unlock-keyhole'></i> Editar Senha</a>"; }
+                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."edit-profile-pass/index/{$_SESSION['user_id']}'><i class='fa-solid fa-unlock-keyhole'></i> Senha</a>"; }
                 if($this->data['button']['edit_profile']) {
                 echo "<a class='btn btn-sm btn-outline-primary mx-1' href=".URLADM."edit-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-image'></i> Editar</a>"; }
                 if($this->data['button']['logout']) {

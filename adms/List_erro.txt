@@ -242,4 +242,9 @@ Erro 089.2 - ADMS/app/adms/Models/AdmsEditProfileImage.php, edit()
 
 Erro 090 - ADMS/app/adms/controllers/EditProfileImage.php, editProfImage()
 
+Erro 091 - ADMS/app/adms/Models/AdmsEditProfilePass.php, viewProfile()
+Erro 091.1 - ADMS/app/adms/Models/AdmsEditProfilePass.php, edit()
+
+Erro 092 - ADMS/app/adms/Controllers/EditProfilePass.php, editProfPass()
+
 
