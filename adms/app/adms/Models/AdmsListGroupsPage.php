@@ -62,7 +62,7 @@ class AdmsListGroupsPage
         //-------------------------------------------------------------------------------------
 
         $listSitUsers = new \Adms\Models\helper\AdmsRead();
-        $listSitUsers->fullRead("SELECT id_group_page, name_group_page, sits.order_group_pg FROM adms_group_page ORDER BY id_group_page ASC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listSitUsers->fullRead("SELECT id_group_page, name_group_page, order_group_page FROM adms_group_page ORDER BY id_group_page ASC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listSitUsers->getResult();
 
@@ -70,7 +70,7 @@ class AdmsListGroupsPage
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma Grupo de pagina encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 093! Nenhuma Grupo de pagina encontrada!</p>";
             $this->result - false;
         }
     }

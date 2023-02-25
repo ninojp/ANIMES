@@ -11,33 +11,32 @@ if (isset($this->data['form'])) {
         <div class="title_form">
             <h2>Cadastrar Grupo de Páginas</h2>
         </div>
-        <?php if (isset($_SESSION['msg'])) { 
-            echo "<div class='msg_alert'>";
+        <?php echo "<div id='msg' class='msg_alert'>";
+            if (isset($_SESSION['msg'])) { 
             echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-            echo "</div>"; } ?>
-        <div class="msg_alert" id='msg'></div>
+            unset($_SESSION['msg']); }
+            echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-add-groups-pgs">
             <div class="row_input">
-                <?php $name = "";
-                if (isset($valorForm['name'])) {
-                    $name = $valorForm['name']; } ?>
+                <?php $name_group_page = "";
+                if (isset($valorForm['name_group_page'])) {
+                    $name_group_page = $valorForm['name_group_page']; } ?>
                 <i class="fa-regular fa-file-lines"></i>
-                <input class="form-control" type="text" name="name" id="name" value="<?php echo $name; ?>" placeholder="Digite o Nome para o Tipo *">
+                <input class="form-control" type="text" name="name_group_page" id="name_group_page" value="<?php echo $name_group_page; ?>" placeholder="Digite o Nome para o Tipo *">
             </div>
             <div class="row_input">
-                <?php $order_group_pg = "";
-                if (isset($valorForm['order_group_pg'])) {
-                    $order_group_pg = $valorForm['order_group_pg']; } ?>
+                <?php $order_group_page = "";
+                if (isset($valorForm['order_group_page'])) {
+                    $order_group_page = $valorForm['order_group_page']; } ?>
                 <i class="fa-solid fa-file"></i>
-                <input class="form-control" type="text" name="order_group_pg" id="order_group_pg" value="<?= $order_group_pg; ?>" placeholder="Digite o order_group_pg *" required>
+                <input class="form-control" type="text" name="order_group_page" id="order_group_page" value="<?= $order_group_page; ?>" placeholder="Digite o numero da Ordem do grupo *" required>
             </div>
             <span class="span_obrigatorio">* Campos obrigatórios</span><br>
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendAddGroupsPgs" value="Cadastrar">Cadastrar Grupo</button>
             </div>
             <div class="button_center">
-                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-groups-pgs/index"> Listar os Grupod de Pgs </a>
+                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-groups-page/index"> Listar Grupos</a>
             </div>
         </form>
     </div>

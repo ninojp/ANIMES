@@ -1,11 +1,10 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-
 /** Classe (Controller): cadastrar situação da pagina  */
-class AddGroupsPgs
+class AddGroupsPage
 {
  /** @var array|string|null $data Recebe os dados que devem ser enviados para VIEW */
     private array|string|null $data = [];
@@ -26,10 +25,10 @@ class AddGroupsPgs
 
         if(!empty($this->dataForm['SendAddGroupsPgs'])){
             unset($this->dataForm['SendAddGroupsPgs']);
-            $createSitPg = new \App\adms\Models\AdmsAddGroupsPgs();
+            $createSitPg = new \Adms\Models\AdmsAddGroupsPage();
             $createSitPg->createAddGroupsPgs($this->dataForm);
             if($createSitPg->getResult()){
-                $urlRedirect = URLADM . "list-groups-pgs/index";
+                $urlRedirect = URLADM . "list-groups-page/index";
                 header("Location: $urlRedirect");
             }else{
                 $this->data['form'] = $this->dataForm;
@@ -44,13 +43,13 @@ class AddGroupsPgs
     private function viewAddGroupPg(): void
     {
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "add-groups-pgs";
+        $this->data['sidebarActive'] = "add-groups-page";
 
-        $loadView = new \Core\ConfigView("adms/Views/pages/addGroupsPgs", $this->data);
-        $loadView->loadView();
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/addGroupsPage", $this->data);
+        $loadView->loadViewAdms();
     }
 }

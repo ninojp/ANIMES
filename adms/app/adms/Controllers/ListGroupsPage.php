@@ -1,5 +1,5 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -21,7 +21,7 @@ class ListGroupsPage
           // var_dump($this->page);
 
         //Instância a classe:$AdmsListSitsPgs e cria o objeto:$listSitsUsers
-       $listGroupsPgs = new \App\adms\Models\AdmsListGroupsPgs();
+       $listGroupsPgs = new \Adms\Models\AdmsListGroupsPage();
        // Usa o objeto para instanciar o método:listSitsUsers() da classe:$AdmsListSitsUsers 
        //envia para a models a pagina atual:$this->page
        $listGroupsPgs->listGroupsPgs($this->page);
@@ -38,20 +38,20 @@ class ListGroupsPage
        $this->data['pag'] = $this->page;
 
        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
-       $button = ['view_groups_page' => ['menu_controller' => 'view-groups-page', 'menu_metodo' => 'index'], 'order_groups_page' => ['menu_controller' => 'order-groups-page', 'menu_metodo' => 'index'], 'edit_groups_page' => ['menu_controller' => 'edit-groups-page', 'menu_metodo' => 'index'], 'delete_groups_page' => ['menu_controller' => 'delete-groups-page', 'menu_metodo' => 'index']];
+       $button = ['add_groups_page' => ['menu_controller' => 'add-groups-page', 'menu_metodo' => 'index'], 'view_groups_page' => ['menu_controller' => 'view-groups-page', 'menu_metodo' => 'index'], 'order_groups_page' => ['menu_controller' => 'order-groups-page', 'menu_metodo' => 'index'], 'edit_groups_page' => ['menu_controller' => 'edit-groups-page', 'menu_metodo' => 'index'], 'delete_groups_page' => ['menu_controller' => 'delete-groups-page', 'menu_metodo' => 'index']];
        // Instância a classe:AdmsButton() e cria o objeto:$listButton
        $listButton = new \Adms\Models\helper\AdmsButton();
        // E Atribui o resultado para o atributo:$this->data['button'], criando esta posição
        $this->data['button'] = $listButton->buttonPermission($button);
        
        // implementação da apresentação dinâmica do menu sidebar
-       $listMenu = new \App\adms\Models\helper\AdmsMenu();
+       $listMenu = new \Adms\Models\helper\AdmsMenu();
        $this->data['menu'] = $listMenu->itemMenu();
        
        // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-       $this->data['sidebarActive'] = "list-groups-pgs";
+       $this->data['sidebarActive'] = "list-groups-page";
 
-       $loadSitsUsers = new \Core\ConfigView("adms/Views/pages/listGroupsPgs", $this->data);
-       $loadSitsUsers->loadView();
+       $loadSitsUsers = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/listGroupsPage", $this->data);
+       $loadSitsUsers->loadViewAdms();
     }
 }

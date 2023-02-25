@@ -247,4 +247,32 @@ Erro 091.1 - ADMS/app/adms/Models/AdmsEditProfilePass.php, edit()
 
 Erro 092 - ADMS/app/adms/Controllers/EditProfilePass.php, editProfPass()
 
+Erro 093 - ADMS/app/adms/Models/AdmsListGroupsPage.php, listGroupsPgs()
+
+Erro 094 - ADMS/app/adms/Models/AdmsViewGroupsPage.php, viewGroupsUsers()
+
+Erro 095 - ADMS/app/adms/Controllers/ViewGroupsPage.php, index()
+
+Erro 096 - ADMS/app/adms/Models/AdmsAddGroupsPage.php, addGroupsPgs()
+
+Erro 097 - ADMS/app/adms/Models/AdmsEditGroupsPage.php, viewGroupsPgs()
+Erro 097.1 - ADMS/app/adms/Models/AdmsEditGroupsPage.php, editGroupsPgs()
+
+Erro 098 - ADMS/app/adms/Controllers/EditGroupsPage.php, editGroupsPgs()
+
+Erro 099 - ADMS/app/adms/Models/AdmsDeleteGroupsPage.php, deleteGroupPgs()
+Erro 099.1 - ADMS/app/adms/Models/AdmsDeleteGroupsPage.php, viewGroupsPgs()
+Erro 099.2 - ADMS/app/adms/Models/AdmsDeleteGroupsPage.php, checkStatusUsed()
+
+Erro 100 - ADMS/app/adms/Controllers/DeleteGroupsPage.php, index()
+
+Erro 101 - ADMS/app/adms/Models/AdmsOrderGroupsPage.php, orderGroupsPgs()
+Erro 101.1 - ADMS/app/adms/Models/AdmsOrderGroupsPage.php, viewPrevGroupsPgs()
+Erro 101.2 - ADMS/app/adms/Models/AdmsOrderGroupsPage.php, editMoveDown()
+Erro 101.3 - ADMS/app/adms/Models/AdmsOrderGroupsPage.php, editMoveUp()
+
+Erro 102 - ADMS/app/adms/Controllers/OrderGroupsPage.php, index()
+
+
+
 
