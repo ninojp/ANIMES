@@ -38,7 +38,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 <?php foreach ($this->data['listColor'] as $colorList) { extract($colorList);  ?>
                 <tr>
                     <td class="list_body_content"><?=$id_color;?></td>
-                    <td class="list_body_content"><span style='background-color:<?=$color_adms?>;color:#fff;'><?=$name_color?></span></td>
+                    <td class="list_body_content"><span style='background-color:<?=$color_adms;?>;color:#fff;'><?=$name_color?></span></td>
                     <td class="list_body_content tb_sm_none"><span style='color:<?=$color_adms;?>'><?=$color_adms;?></span></td>
                     <?php if(($this->data['button']['view_color']) or ($this->data['button']['edit_color']) or ($this->data['button']['delete_color'])) { 
                         echo "<td class='list_body_content'>";

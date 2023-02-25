@@ -43,9 +43,9 @@ if (isset($this->data['form'][0])) {
             </div>
             <div class="col-12 text-center p-4">
                 <?php if($this->data['button']['list_user']) { ?>
-                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-rectangle-list"></i> Listar Usuários</a> <?php }
+                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-list"></i> Listar Usuários</a> <?php }
                 if($this->data['button']['view_user']) { ?>
-                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='fa-solid fa-pen-to-square'></i> Visualizar Usuário</a> <?php } ?>
+                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='<i class="fa-solid fa-eye"></i>'></i> Visualizar Usuário</a> <?php } ?>
             </div>
         </form>
     </div>

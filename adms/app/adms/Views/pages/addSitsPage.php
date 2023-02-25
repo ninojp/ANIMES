@@ -18,25 +18,25 @@ if(isset($this->data['form'])){
         </div>
         <form class="form_adms" action="" method="POST" id="form-add-sit-pg">
             <div class="row_input">
-            <?php $name="";
-            if(isset($valorForm['name'])) {
-                $name = $valorForm['name'];} ?>
+            <?php $name_sits_page="";
+            if(isset($valorForm['name_sits_page'])) {
+                $name_sits_page = $valorForm['name_sits_page'];} ?>
                 <!-- <label class="form-label" for="name">Nova Situação:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="text" name="name" id="name" value="<?php echo $name; ?>" placeholder="Digite a Situação da página *" required>
+                <input class="form-control" type="text" name="name_sits_page" id="name_sits_page" value="<?php echo $name_sits_page; ?>" placeholder="Digite a Situação da página *" required>
             </div>
             <div class="row_input">
                 <i class="fa-solid fa-hand-pointer"></i>
                 <div class="select_input">
-                    <label class="form_label" for="adms_color_id">Cor da Situação<span style="color:#f00;"> *</span></label>
-                    <select name="adms_color_id" id="adms_color_id" required>
+                    <label class="form_label" for="id_color">Cor da Situação<span style="color:#f00;"> *</span></label>
+                    <select name="id_color" id="id_color" required>
                         <option value="">Selecione a Cor</option>
                         <?php foreach($this->data['selectCor']['cor'] as $cor){
                             extract($cor);
-                            if((isset($valorForm['adms_color_id'])) and ($valorForm['adms_color_id'] == $idCor)){
-                                echo "<option value='$idCor' selected>$nameCor</option>";
+                            if((isset($valorForm['id_color'])) and ($valorForm['id_color'] == $idCor)){
+                                echo "<option value='$id_color' selected>$name_color</option>";
                             } else {
-                                echo "<option value='$idCor'>$nameCor</option>";
+                                echo "<option value='$id_color'>$name_color</option>";
                             }  } ?>
                     </select>
                 </div>
@@ -46,7 +46,7 @@ if(isset($this->data['form'])){
                 <button class="btn btn-primary" type="submit" name="SendAddSitPg" value="Cadastrar">Cadastrar Situação</button>
             </div>
             <div class="button_center">
-                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-sits-pgs/index"> Listar Situações </a>
+                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-sits-page/index"> Listar Situações </a>
             </div>
         </form>
     </div>

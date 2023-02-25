@@ -1,9 +1,9 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
-class AdmsAddSitsPgs
+class AdmsAddSitsPage
 {
     private array|string|null $data;
 
@@ -23,7 +23,7 @@ class AdmsAddSitsPgs
         $this->data = $data;
         // var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valImputEmpty = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valImputEmpty = new \Adms\Models\helper\AdmsValEmptyField();
         $valImputEmpty->valField($this->data);
         //verifica, se o objeto:$valAddStitsUsers ainda está com true
         if($valImputEmpty->getResult()){
@@ -41,14 +41,14 @@ class AdmsAddSitsPgs
         //usa a função:date() para receber a data e hora atual e atribui para o atributo:$this->data na posição:['created']
         $this->data['created'] = date('Y-m-d H:i:s');
 
-        $addSitsPgs = new \App\adms\Models\helper\AdmsCreate();
-        $addSitsPgs->exeCreate("adms_sits_pgs", $this->data);
+        $addSitsPgs = new \Adms\Models\helper\AdmsCreate();
+        $addSitsPgs->exeCreate("adms_sits_page", $this->data);
         //Usa o objeto para instânciar o método:getResult(), e verificar, se o método retornou true, adicionou com sucesso
         if($addSitsPgs->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Situação da Página cadastrado com sucesso</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro! Situação da Página não cadastrado com sucesso</p>";
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 104! Situação da Página não cadastrado com sucesso</p>";
             $this->result = false;
         }
     }
@@ -57,9 +57,9 @@ class AdmsAddSitsPgs
     public function listSelectCor():array
     {
         //instância a classe:AdmsRead() para fazer a consulta
-        $listCor = new \App\adms\Models\helper\AdmsRead();
+        $listCor = new \Adms\Models\helper\AdmsRead();
         //usa o método:fullRead() para fazer a query
-        $listCor->fullRead("SELECT id AS idCor, name AS nameCor FROM adms_colors ORDER BY name ASC");
+        $listCor->fullRead("SELECT id_color, name_color FROM adms_color ORDER BY name_color ASC");
         //recebe o resultado da query e o atribui para um NOVO array:$resultCor['cor']
         $resultCor['cor'] = $listCor->getResult();
         //coloca no atributo:$this->resultListCor

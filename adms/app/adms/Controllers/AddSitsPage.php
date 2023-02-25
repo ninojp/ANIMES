@@ -1,11 +1,11 @@
 <?php
-namespace Adm\controllers;
+namespace Adms\controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 
 /** Classe (Controller): cadastrar situação da pagina  */
-class AddSitsPgs
+class AddSitsPage
 {
  /** @var array|string|null $data Recebe os dados que devem ser enviados para VIEW */
     private array|string|null $data = [];
@@ -26,10 +26,10 @@ class AddSitsPgs
 
         if(!empty($this->dataForm['SendAddSitPg'])){
             unset($this->dataForm['SendAddSitPg']);
-            $createSitPg = new \App\adms\Models\AdmsAddSitsPgs();
+            $createSitPg = new \Adms\Models\AdmsAddSitsPage();
             $createSitPg->createAddSitsPgs($this->dataForm);
             if($createSitPg->getResult()){
-                $urlRedirect = URLADM . "list-sits-pgs/index";
+                $urlRedirect = URLADM . "list-sits-page/index";
                 header("Location: $urlRedirect");
             }else{
                 $this->data['form'] = $this->dataForm;
@@ -44,17 +44,17 @@ class AddSitsPgs
      * Instanciar a classe responsável em carregar a View e enviar os dados para View. */
     private function viewAddSitPg(): void
     {
-        $listSelect = new \App\adms\Models\AdmsAddSitsUsers();
+        $listSelect = new \Adms\Models\AdmsAddSitsPage();
         $this->data['selectCor'] = $listSelect->listSelectCor();
 
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
 
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "add-sits-pgs";
+        $this->data['sidebarActive'] = "add-sits-page";
 
-        $loadView = new \Core\ConfigView("adms/Views/pages/addSitsPgs", $this->data);
-        $loadView->loadView();
+        $loadView = new \AdmsSrc\ConfigViewAdms("adms/Views/pages/addSitsPage", $this->data);
+        $loadView->loadViewAdms();
     }
 }

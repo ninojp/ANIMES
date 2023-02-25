@@ -273,6 +273,25 @@ Erro 101.3 - ADMS/app/adms/Models/AdmsOrderGroupsPage.php, editMoveUp()
 
 Erro 102 - ADMS/app/adms/Controllers/OrderGroupsPage.php, index()
 
+Erro 103 - ADMS/app/adms/Models/AdmsListSitsPage.php, listSitsPgs()
+
+Erro 104 - ADMS/app/adms/Models/AdmsAddSitsPage.php, addSitsPgs()
+
+Erro 105 - ADMS/app/adms/Models/AdmsViewSitsPage.php, viewSitsPgs()
+
+Erro 106 - ADMS/app/adms/Controllers/ViewSitsPage.php, index()
+
+Erro 107 - ADMS/app/adms/Models/AdmsEditSitsPage.php, viewSitsPgs()
+Erro 107.1 - ADMS/app/adms/Models/AdmsEditSitsPage.php, editSitsPgs()
+
+Erro 108 - ADMS/app/adms/Controllers/EditSitsPage.php, editSitsPgs()
+
+Erro 109 - ADMS/app/adms/Models/AdmsDeleteSitsPage.php, deleteSitsPgs()
+Erro 109.1 - ADMS/app/adms/Models/AdmsDeleteSitsPage.php, viewSitsUsers()
+Erro 109.2 - ADMS/app/adms/Models/AdmsDeleteSitsPage.php, checkStatusUsed()
+
+Erro 110 - ADMS/app/adms/Controllers/EditSitsPage.php, deleteSitsPgs()
+
 
 
 

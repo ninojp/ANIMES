@@ -63,8 +63,8 @@ if (isset($this->data['form'])) {
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
                     <th class="list_head_content tb_sm_none">controller(Class)</th>
                     <th class="list_head_content tb_sm_none">Menu(Controller)</th>
-                    <?php if(($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { ?>
-                    <th class="list_head_content">Botões de Ações</th><?php } ?>
+                    <?php if(isset($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { 
+                    echo "<th class='list_head_content'>Botões de Ações</th>"; } ?>
                 </tr>
             </thead>
             <tbody class="list_body">
@@ -75,7 +75,7 @@ if (isset($this->data['form'])) {
                     <td class="list_body_content"><?=$name_page;?></td>
                     <td class="list_body_content tb_sm_none"><?=$controller_page;?></td>
                     <td class="list_body_content tb_sm_none"><?=$menu_controller;?></td>
-                    <?php if(($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { 
+                    <?php if(isset($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { 
                         echo "<td class='list_body_content'>";
                         if($this->data['button']['view_page']) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-page/index/$id_page'><i class='fa-solid fa-eye'></i> Ver</a>"; }

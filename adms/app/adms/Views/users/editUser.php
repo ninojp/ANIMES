@@ -78,9 +78,9 @@ if(isset($this->data['form'][0])){
             </div>
             <div class="col-12 text-center p-4">
                 <?php if($this->data['button']['list_user']) { ?>
-                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-rectangle-list"></i> Listar</a> <?php }
+                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-list"></i> Listar</a> <?php }
                 if($this->data['button']['view_user']) { ?>
-                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='fa-solid fa-pen-to-square'></i> Ver</a> <?php }
+                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='<i class="fa-solid fa-eye"></i>'></i> Ver</a> <?php }
                 if($this->data['button']['edit_user_pass']) { ?>
                     <a class="btn btn-sm btn-outline-info mx-2" href="<?= URLADM; ?>edit-user-pass/index/<?= $valorForm['id_user']; ?>"><i class="fa-solid fa-unlock-keyhole"></i> Edit Senha</a><?php }
                 if($this->data['button']['edit_user_image']) { ?>
