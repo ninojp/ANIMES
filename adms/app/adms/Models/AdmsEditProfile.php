@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -30,8 +30,8 @@ class AdmsEditProfile
     */
     public function viewProfile():void
     {
-        $viewUsers = new \App\adms\Models\helper\AdmsRead();
-        $viewUsers->fullRead("SELECT id, name, nickname, email, user FROM adms_users WHERE id =:id LIMIT :limit", "id=".$_SESSION['user_id']."&limit=1");
+        $viewUsers = new \Adms\Models\helper\AdmsRead();
+        $viewUsers->fullRead("SELECT id_user, adm_user, email, user FROM adms_users WHERE id =:id LIMIT :limit", "id=".$_SESSION['user_id']."&limit=1");
 
         $this->resultBd = $viewUsers->getResult();
         if($this->resultBd){

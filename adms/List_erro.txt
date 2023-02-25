@@ -229,4 +229,6 @@ Erro 084.1 - ADMS/app/adms/Models/AdmsEditDefaultAccess.php, editLevelsForms()
 
 Erro 085 - ADMS/app/adms/Controllers/AdmsEditDefaultAccess.php, editLevelsForms()
 
+Erro 086 - ADMS/app/adms/Models/AdmsViewProfile.php, viewProfile()
+
 

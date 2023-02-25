@@ -1,35 +1,23 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-// echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); } 
 // Manter os dados no formulário     
 if(isset($this->data['form'])){
-    $valorForm = $this->data['form'];
-} 
+    $valorForm = $this->data['form']; } 
 //na posição [0] e quando os dados vem do banco de dados
 if(isset($this->data['form'][0])){
-    $valorForm = $this->data['form'][0];
-} 
-// var_dump($this->data['form'][0]);
-?>
-<!-- <h1 class="text-center mt-5">Editar Perfil</h1> -->
-<?php
-// echo "<a class='btn btn-sm btn-outline-primary ms-4' href='".URLADM."view-profile/index'>Perfil</a>";
-
-// if(isset($_SESSION['msg'])){
-//     echo $_SESSION['msg'];
-//     unset($_SESSION['msg']);
-// } ?>
-<!-- <span id="msg"></span> -->
+    $valorForm = $this->data['form'][0]; } ?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
             <h2>Editar o Perfil</h2>
         </div>
-        <?php if (isset($_SESSION['msg'])) { 
-            echo "<div id='msg' class='msg_alert'>";
+        <?php echo "<div id='msg' class='msg_alert'>";
+            if (isset($_SESSION['msg'])) { 
             echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-            echo "</div>"; } ?>
+            unset($_SESSION['msg']); }
+            echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-edit-profile">
             <div class="row_edit">
                 <label class="" for="name">Nome:<span style="color:#f00;">*</span></label>
@@ -57,6 +45,17 @@ if(isset($this->data['form'][0])){
             <div class="button_center">
                 <?= "<a class='btn btn-sm btn-outline-info' href='".URLADM."view-profile/index'>Perfil</a>"; ?>
             </div>
+            <?php if(($this->data['button']['edit_profile']) or ($this->data['button']['edit_profile_pass']) or ($this->data['button']['edit_profile_image']) or ($this->data['button']['logout'])) { ?>
+            <div class="col-12 text-center p-4">
+            <?php if($this->data['button']['edit_profile']) { ?>
+            <a class="btn btn-sm btn-outline-warning mx-1" href="<?=URLADM;?>view-profile/index/<?=$_SESSION['user_id'];?>"><i class='fa-solid fa-pen-to-square'></i> Editar</a> <?php } ?>
+            <?php if($this->data['button']['edit_profile_pass']) { ?>
+            <a class="btn btn-sm btn-outline-info mx-1" href="<?=URLADM;?>edit-profile-pass/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-unlock-keyhole"></i> Editar Senha</a> <?php } ?>
+            <?php if($this->data['button']['edit_profile_image']) { ?>
+            <a class="btn btn-sm btn-outline-primary mx-1" href="<?=URLADM;?>edit-profile-image/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-image"></i> Editar Imagem</a><?php } ?>
+            <?php if($this->data['button']['logout']) { ?>
+            <a class="btn btn-sm btn-outline-danger mx-1" href="<?=URLADM;?>logou/index/<?=$_SESSION['user_id'];?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a><?php } ?>
+        </div> <?php } } ?>
         </form>
     </div>
 </div>
