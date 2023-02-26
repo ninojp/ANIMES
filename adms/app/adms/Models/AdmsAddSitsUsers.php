@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -23,7 +23,7 @@ class AdmsAddSitsUsers
         $this->data = $data;
         // var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valAddStitsUsers = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valAddStitsUsers = new \Adms\Models\helper\AdmsValEmptyField();
         $valAddStitsUsers->valField($this->data);
         //verifica, se o objeto:$valAddStitsUsers ainda está com true
         if($valAddStitsUsers->getResult()){
@@ -38,16 +38,11 @@ class AdmsAddSitsUsers
      * @return void     */
     private function valInputSits():void
     {
-        //instancia a classe para Validar a situação
-        $valSits = new \App\adms\Models\helper\AdmsValSits();
-        //apenas para teste, filtro simples FILTER_DEFAULT, o prof não fez este filtro
-        $valSits->validateSits($this->data['name']);
-
         //validação de nome unico, para não haver outro com mesmo nome
-        $valSitsSingle = new \App\adms\Models\helper\AdmsValSitsSingle();
-        $valSitsSingle->validateSitsSingle($this->data['name']);
+        $valSitsSingle = new \Adms\Models\helper\AdmsValSitsSingle();
+        $valSitsSingle->validateSitsSingle($this->data['name_sits_user']);
 
-        if(($valSits->getResult()) and ($valSitsSingle->getResult())){
+        if($valSitsSingle->getResult()){
             $this->addSitsUsers();
         } else {
             $this->result = false;
@@ -60,14 +55,14 @@ class AdmsAddSitsUsers
         //usa a função:date() para receber a data e hora atual e atribui para o atributo:$this->data na posição:['created']
         $this->data['created'] = date('Y-m-d H:i:s');
 
-        $addSitsUsers = new \App\adms\Models\helper\AdmsCreate();
-        $addSitsUsers->exeCreate("adms_sits_users", $this->data);
+        $addSitsUsers = new \Adms\Models\helper\AdmsCreate();
+        $addSitsUsers->exeCreate("adms_sits_user", $this->data);
         //Usa o objeto para instânciar o método:getResult(), e verificar, se o método retornou true, adicionou com sucesso
         if($addSitsUsers->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Situação cadastrado com sucesso</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro! Situação não cadastrado com sucesso</p>";
+            $_SESSION['msg'] = "<p class='alert alert-danger'>Erro 123! Situação não cadastrado com sucesso</p>";
             $this->result = false;
         }
     }
@@ -76,9 +71,9 @@ class AdmsAddSitsUsers
     public function listSelectCor():array
     {
         //instância a classe:AdmsRead() para fazer a consulta
-        $listCor = new \App\adms\Models\helper\AdmsRead();
+        $listCor = new \Adms\Models\helper\AdmsRead();
         //usa o método:fullRead() para fazer a query
-        $listCor->fullRead("SELECT id AS idCor, name AS nameCor FROM adms_colors ORDER BY name ASC");
+        $listCor->fullRead("SELECT id_color, name_color, color_adms FROM adms_color ORDER BY name_color ASC");
         //recebe o resultado da query e o atribui para um NOVO array:$resultCor['cor']
         $resultCor['cor'] = $listCor->getResult();
         //coloca no atributo:$this->resultListCor

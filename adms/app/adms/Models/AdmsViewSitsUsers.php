@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -8,7 +8,7 @@ class AdmsViewSitsUsers
 {
     private bool $result;
     private array|null $resultBd;
-    private int|string|null $id;
+    private int|string|null $id_sits_user;
 
     /** ==========================================================================================
      * @return boolean         */
@@ -24,14 +24,14 @@ class AdmsViewSitsUsers
     }
     /** ==========================================================================================
      * @param integer $id -  @return void      */
-    public function viewSitsUsers(int $id): void
+    public function viewSitsUsers(int $id_sits_user): void
     {
         //atribui o id recebido como parametro no atributo:$this->id
-        $this->id = $id;
+        $this->id_sits_user = $id_sits_user;
         //instância a classe:AdmsRead() e cria o objeto:$viewSitsUsers
-        $viewSitUser = new \App\adms\Models\helper\AdmsRead();
+        $viewSitUser = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $viewSitUser->fullRead("SELECT sits.id, sits.name AS sitsname, sits.created, sits.modified, col.name AS colname, col.color FROM adms_sits_users AS sits INNER JOIN adms_colors AS col ON col.id=sits.adms_color_id WHERE sits.id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewSitUser->fullRead("SELECT sits.id_sits_user, sits.name_sits_user, sits.created, sits.modified, col.name_color, col.color_adms FROM adms_sits_user AS sits INNER JOIN adms_color AS col ON col.id_color=sits.id_color WHERE sits.id_sits_user=:id LIMIT :limit", "id={$this->id_sits_user}&limit=1");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
 
         //ESTE VAR_DUMP MOSTRA TUDO INCLUSIVE OS DADOS DE CONEXAO COM O DB (SENHA)
@@ -44,7 +44,7 @@ class AdmsViewSitsUsers
             $this->result = true;
             //se o atributo:$this->resultBd é false, atribui a frase na constante:$_SESSION['msg']
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 124! Situação não encontrada!</p>";
             $this->result = false;
         }
     }

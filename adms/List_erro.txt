@@ -321,6 +321,27 @@ Erro 119.2 - ADMS/app/adms/Models/AdmsDeleteTypesPage.php, checkStatusUsed()
 
 Erro 120 - ADMS/app/adms/Controllers/DeleteTypesPage.php, checkStatusUsed()
 
+Erro 121 - ADMS/app/adms/Models/AdmsListSitsUsers.php, listSitsUsers()
+
+Erro 122 - ADMS/app/adms/Models/helper/AdmsValSitsSingle.php, validateSitsSingle()
+
+Erro 123 - ADMS/app/adms/Models/AdmsAddSitsSingle.php, addSitsUsers()
+
+Erro 124 - ADMS/app/adms/Models/AdmsViewSitsUsers.php, viewSitsUsers()
+
+Erro 125 - ADMS/app/adms/Controllers/ViewSitsUsers.php, index()
+
+Erro 126 - ADMS/app/adms/Models/AdmsEditSitsUsers.php, viewSitsUsers()
+Erro 126.1 - ADMS/app/adms/Models/AdmsEditSitsUsers.php, editSitsUsers()
+
+Erro 127 - ADMS/app/adms/Controllers/EditSitsUsers.php, editSitsUser()
+
+Erro 128 - ADMS/app/adms/Models/AdmsDeleteSitsUsers.php, deleteSitsUsers()
+Erro 128.1 - ADMS/app/adms/Models/AdmsDeleteSitsUsers.php, viewSitsUsers()
+Erro 128.2 - ADMS/app/adms/Models/AdmsDeleteSitsUsers.php, checkStatusUsed()
+
+Erro 129 - ADMS/app/adms/Controlllers/DeleteSitsUsers.php, index()
+
 
 
 

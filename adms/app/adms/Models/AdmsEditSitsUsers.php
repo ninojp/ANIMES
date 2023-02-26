@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -11,7 +11,7 @@ class AdmsEditSitsUsers
     /** @var array - Recebe os dados do conteúdo do e-mail     */
     private array|null $resultBd;
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_sits_user;
     /** @var array|null - Recebe as informações do formulário     */
     private array|null $data;
     /** @var array|null - Recebe os dados da lista de cores   */
@@ -32,19 +32,19 @@ class AdmsEditSitsUsers
     }
     /** ============================================================================================
     */
-    public function viewSitsUsers(int $id):void
+    public function viewSitsUsers(int $id_sits_user):void
     {
-        $this->id = $id;
+        $this->id_sits_user = $id_sits_user;
 
-        $viewUsers = new \App\adms\Models\helper\AdmsRead();
-        $viewUsers->fullRead("SELECT id, name, adms_color_id FROM adms_sits_users WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUsers = new \Adms\Models\helper\AdmsRead();
+        $viewUsers->fullRead("SELECT id_sits_user, name_sits_user, id_color FROM adms_sits_user WHERE id_sits_user=:id LIMIT :limit", "id={$this->id_sits_user}&limit=1");
 
         $this->resultBd = $viewUsers->getResult();
         if($this->resultBd){
             // var_dump($this->resultBd);
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 126! Situação não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -57,28 +57,13 @@ class AdmsEditSitsUsers
         // var_dump($this->data);
         
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
         if ($valEmptyField->getResult()) {
-            $this->valInputSits();
-            // $this->result = false;
-        } else {
-            $this->result = false;
-        }
-    }
-    /** ===========================================================================================
-     * @return void     */
-    private function valInputSits():void
-    {
-        //instancia a classe para Validar a situação
-        $valSits = new \App\adms\Models\helper\AdmsValSits();
-        //apenas para teste, filtro simples FILTER_DEFAULT, o prof não fez este filtro
-        $valSits->validateSits($this->data['name']);
-
-        if($valSits->getResult()){
             $this->editSitsUsers();
+            // $this->result = false;
         } else {
             $this->result = false;
         }
@@ -90,14 +75,14 @@ class AdmsEditSitsUsers
         // var_dump($this->data);
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $upSitsUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upSitsUser->exeUpdate("adms_sits_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upSitsUser = new \Adms\Models\helper\AdmsUpdate();
+        $upSitsUser->exeUpdate("adms_sits_user", $this->data, "WHERE id_sits_user=:id", "id={$this->data['id_sits_user']}");
 
         if($upSitsUser->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Situação Editada com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível Editar a Situação</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 126.1! Não foi possível Editar a Situação</p>";
             $this->result = false;
         }
     }
@@ -106,9 +91,9 @@ class AdmsEditSitsUsers
     public function listSelectCor():array
     {
         //instância a classe:AdmsRead() para fazer a consulta
-        $listCor = new \App\adms\Models\helper\AdmsRead();
+        $listCor = new \Adms\Models\helper\AdmsRead();
         //usa o método:fullRead() para fazer a query
-        $listCor->fullRead("SELECT id AS idCor, name AS nameCor FROM adms_colors ORDER BY name ASC");
+        $listCor->fullRead("SELECT id_color, name_color, color_adms FROM adms_color ORDER BY name_color ASC");
         //recebe o resultado da query e o atribui para um NOVO array:$resultCor['cor']
         $resultCor['cor'] = $listCor->getResult();
         //coloca no atributo:$this->resultListCor

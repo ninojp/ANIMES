@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -51,18 +51,18 @@ class AdmsListSitsUsers
         $this->page = (int) $page ? $page : 1;
         // var_dump($this->page);
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM.'list-sits-users/index');
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM.'list-sits-users/index');
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(sit.id) AS num_result FROM adms_sits_users AS sit");
+        $pagination->pagination("SELECT COUNT(id_sits_user) AS num_result FROM adms_sits_user");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listSitUsers = new \App\adms\Models\helper\AdmsRead();
-        $listSitUsers->fullRead("SELECT sits.id, sits.name AS sitsname, col.name AS colname, col.color FROM adms_sits_users AS sits INNER JOIN adms_colors AS col ON col.id=sits.adms_color_id ORDER BY sits.id DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listSitUsers = new \Adms\Models\helper\AdmsRead();
+        $listSitUsers->fullRead("SELECT sits.id_sits_user, sits.name_sits_user, col.name_color, col.color_adms FROM adms_sits_user AS sits INNER JOIN adms_color AS col ON col.id_color=sits.id_color ORDER BY sits.id_sits_user DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listSitUsers->getResult();
 
@@ -70,7 +70,7 @@ class AdmsListSitsUsers
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhuma informação(Situação) encontrada na DB!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 121! Nenhuma Situação encontrada na DB!</p>";
             $this->result - false;
         }
     }
