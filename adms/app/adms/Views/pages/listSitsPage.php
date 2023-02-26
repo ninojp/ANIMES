@@ -46,7 +46,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                         if(!empty($this->data['button']['delete_sits_page'])) {
                             echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-sits-page/index/$id_sits_page' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
                         echo "</td>"; } 
-                echo "</tr>"; } ?>
+                    echo "</tr>"; } ?>
             </tbody>
         </table>
         <!-- Inicio da paginação -->

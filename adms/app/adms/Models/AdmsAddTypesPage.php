@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe (Models):AdmsAddTypesPgs para adicionar novas paginas */
-class AdmsAddTypesPgs
+class AdmsAddTypesPage
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -28,7 +28,7 @@ class AdmsAddTypesPgs
         $this->data = $data;
         var_dump($this->data);
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -47,15 +47,15 @@ class AdmsAddTypesPgs
         var_dump($this->data);
         // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
         // $this->result = false;
-        $createUser = new \App\adms\Models\helper\AdmsCreate();
-        $createUser->exeCreate("adms_types_pgs", $this->data);
+        $createUser = new \Adms\Models\helper\AdmsCreate();
+        $createUser->exeCreate("adms_type_page", $this->data);
 
         //verifica se existe o ultimo ID inserido
         if ($createUser->getResult()) {
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Tipo de pagina cadastrado com sucesso</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível cadastrar o Tipo de pagina</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 112! Não foi possível cadastrar o Tipo de pagina</p>";
             $this->result = false;
         }
     }

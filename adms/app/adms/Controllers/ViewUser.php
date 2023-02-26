@@ -45,6 +45,7 @@ class ViewUser
     {
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
         $button = ['list_user' => ['menu_controller' => 'list-user', 'menu_metodo' => 'index'], 
+        'add_user' => ['menu_controller' => 'add-user', 'menu_metodo' => 'index'],
         'edit_user' => ['menu_controller' => 'edit-user', 'menu_metodo' => 'index'],
         'edit_user_pass' => ['menu_controller' => 'edit-user-pass', 'menu_metodo' => 'index'],
         'edit_user_image' => ['menu_controller' => 'edit-user-image', 'menu_metodo' => 'index'],

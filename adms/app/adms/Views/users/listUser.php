@@ -5,13 +5,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
 // Manter os dados no formulário de PESQUISA   
 if (isset($this->data['form'])) {
     // var_dump($this->data['form']);
-    $valorForm = $this->data['form'];
-}
-// var_dump($this->data);
-// var_dump($this->data['listUser']);
-?>
-
-<!-- Inicio do conteudo LISTAR do ADM -->
+    $valorForm = $this->data['form'];} ?>
 <div class="wrapper_list">
     <div class="row_list">
         <div class="top_list">
@@ -25,7 +19,7 @@ if (isset($this->data['form'])) {
                             echo $_SESSION['msg'];
                             unset($_SESSION['msg']); } ?>
                 </div>
-                <?php if($this->data['button']['add_user']) {?>
+                <?php if(!empty($this->data['button']['add_user'])) {?>
                     <div class="col-3 top_list_right">
                         <a class="btn btn-sm btn_success" href="<?= URLADM.'add-user/index';?>" type="button">Cadastrar Usuário</a>
                     </div>
@@ -67,27 +61,27 @@ if (isset($this->data['form'])) {
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
                     <th class="list_head_content tb_sm_none">E-mail</th>
                     <th class="list_head_content tb_sm_none">Situação Cadastral</th>
-                    <th class="list_head_content">Botões de Ações</th>
+                    <?php if((!empty($this->data['button']['view_user'])) or (!empty($this->data['button']['edit_user'])) or (!empty($this->data['button']['delete_user']))) { 
+                    echo "<th class='list_head_content'>Botões de Ações</th>"; }?>
                 </tr>
             </thead>
             <tbody class="list_body">
-                <?php foreach ($this->data['listUser'] as $user) { extract($user); 
-                    // var_dump($user); ?>
+                <?php foreach ($this->data['listUser'] as $user) { extract($user); ?>
                 <tr>
                     <td class="list_body_content"><?=$id_user;?></td>
                     <td class="list_body_content"><?=$adm_user;?></td>
                     <td class="list_body_content tb_sm_none"><?=$adm_email;?></td>
                     <td class="list_body_content tb_sm_none"><span style='color:<?=$color_adms;?>'><?=$name_sits_user;?></span></td>
-                    <td class="list_body_content">
-                        <?php if($this->data['button']['view_user']) {
+                    <?php if((!empty($this->data['button']['view_user'])) or (!empty($this->data['button']['edit_user'])) or (!empty($this->data['button']['delete_user']))) { 
+                    echo "<td class='list_body_content'>";
+                        if(!empty($this->data['button']['view_user'])) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-user/index/$id_user'><i class='fa-solid fa-eye'></i> Ver</a>"; }
-                        if($this->data['button']['edit_user']) {
+                        if(!empty($this->data['button']['edit_user'])) { 
                             echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-user/index/$id_user'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
-                        if($this->data['button']['delete_user']) {
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-user/index/$id_user' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } ?>
-                    </td>
-                </tr>
-                <?php } ?>
+                        if(!empty($this->data['button']['delete_user'])) {
+                            echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-user/index/$id_user' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
+                    echo "</td>"; } 
+                echo "</tr>"; } ?>
             </tbody>
         </table>
         <!-- Inicio da paginação -->

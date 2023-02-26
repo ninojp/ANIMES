@@ -292,6 +292,36 @@ Erro 109.2 - ADMS/app/adms/Models/AdmsDeleteSitsPage.php, checkStatusUsed()
 
 Erro 110 - ADMS/app/adms/Controllers/EditSitsPage.php, deleteSitsPgs()
 
+Erro 111 - ADMS/app/adms/Models/AdmsListTypesPage.php, listTypesPgs()
+Erro 111.1 - ADMS/app/adms/Models/AdmsListTypesPage.php, searchTypesPgsName()
+Erro 111.2 - ADMS/app/adms/Models/AdmsListTypesPage.php, searchName()
+Erro 111.3 - ADMS/app/adms/Models/AdmsListTypesPage.php, searchType()
+
+Erro 112 - ADMS/app/adms/Models/AdmsAddTypesPage.php, addTypePgs()
+
+Erro 113 - ADMS/app/adms/Models/AdmsViewTypesPage.php, viewTypesPgs()
+
+Erro 114 - ADMS/app/adms/Controllers/ViewTypesPage.php, index()
+
+Erro 115 - ADMS/app/adms/Models/AdmsEditTypesPage.php, viewTypesPgs()
+Erro 115.1 - ADMS/app/adms/Models/AdmsEditTypesPage.php, editTypePg()
+
+Erro 116 - ADMS/app/adms/Controllers/EditTypesPage.php, editTypesPgs()
+
+Erro 117 - ADMS/app/adms/Models/AdmsOrderTypesPage.php, orderTypesPgs()
+Erro 117.1 - ADMS/app/adms/Models/AdmsOrderTypesPage.php, viewPrevOrderTypePg()
+Erro 117.2 - ADMS/app/adms/Models/AdmsOrderTypesPage.php, editMoveDown()
+Erro 117.3 - ADMS/app/adms/Models/AdmsOrderTypesPage.php, editMoveUp()
+
+Erro 118 - ADMS/app/adms/Controllers/OrderTypesPage.php, index()
+
+Erro 119 - ADMS/app/adms/Models/AdmsDeleteTypesPage.php, deleteTypePg()
+Erro 119.1 - ADMS/app/adms/Models/AdmsDeleteTypesPage.php, viewTypePages()
+Erro 119.2 - ADMS/app/adms/Models/AdmsDeleteTypesPage.php, checkStatusUsed()
+
+Erro 120 - ADMS/app/adms/Controllers/DeleteTypesPage.php, checkStatusUsed()
+
+
 
 
 

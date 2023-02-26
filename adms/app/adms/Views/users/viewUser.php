@@ -2,7 +2,6 @@
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); } ?>
-<!-- Inicio do conteudo do Visualizar ADM -->
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
@@ -61,17 +60,21 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                     <span class="view_det_info"><?= date('d/m/Y H:i:s', strtotime($modified)); ?></span>
                 </div> <?php } ?>
         </div>
-        <?php if(($this->data['button']['edit_profile']) or ($this->data['button']['edit_profile_pass']) or ($this->data['button']['edit_profile_image']) or ($this->data['button']['logout'])) { 
-                echo "<div class='col-12 text-center p-4'>";
-                if($this->data['button']['edit_profile']) { 
-                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-profile/index/{$_SESSION['user_id']}'><i class='fa-solid fa-eye'></i> Ver</a>"; }
-                if($this->data['button']['edit_profile_pass']) {
-                echo "<a class='btn btn-sm btn-outline-info mx-1' href='".URLADM."edit-profile-pass/index/{$_SESSION['user_id']}'><i class='fa-solid fa-unlock-keyhole'></i> Editar Senha</a>"; }
-                if($this->data['button']['edit_profile_image']) {
-                echo "<a class='btn btn-sm btn-outline-primary mx-1' href=".URLADM."edit-profile-image/index/{$_SESSION['user_id']}'><i class='fa-solid fa-image'></i> Editar Imagem</a>"; }
-                if($this->data['button']['logout']) {
-                echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."logou/index/{$_SESSION['user_id']}'><i class='fa-solid fa-right-from-bracket'></i> Logout</a>"; }
-            echo "</div>"; } }?>
+        <?php if ((!empty($this->data['button']['list_user'])) or (!empty($this->data['button']['add_user'])) or (!empty($this->data['button']['edit_user'])) or (!empty($this->data['button']['edit_user_pass'])) or (!empty($this->data['button']['edit_user_image'])) or (!empty($this->data['button']['delete_user']))) {
+        echo "<div class='col-12 text-center p-4'>";
+            if (!empty($this->data['button']['list_user'])) {
+                echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-user/index'><i class='fa-solid fa-list'></i> Listar</a>"; }
+            if (!empty($this->data['button']['add_user'])) {
+                echo "<a class='btn btn-sm btn-outline-success mx-1' href='".URLADM."add-user/index'><i class='fa-solid fa-plus'></i> Adicionar</a>"; }
+            if (!empty($this->data['button']['edit_user'])) {
+                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-user/index/$id_user'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
+            if (!empty($this->data['button']['edit_user_pass'])) {
+                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-user-pass/index/$id_user'><i class='fa-solid fa-unlock-keyhole'></i> Senha</a>"; }
+            if (!empty($this->data['button']['edit_user_image'])) {
+                echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-user-image/index/$id_user'><i class='fa-solid fa-image'></i> Imagem</a>"; }
+            if (!empty($this->data['button']['delete_user'])) {
+                echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-user/index/$id_user' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
+        echo "</div>"; }  } ?>
     </div>
 </div>
 <!-- FIM do conteudo do ADM -->

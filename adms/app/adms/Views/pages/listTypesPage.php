@@ -22,9 +22,10 @@ if (isset($this->data['form'])) {
                             echo $_SESSION['msg'];
                             unset($_SESSION['msg']); } ?>
                 </div>
-                <div class="col-3 top_list_right">
-                    <a class="btn btn-sm btn_success" href="<?= URLADM.'add-types-pgs/index';?>" type="button">Cadastrar Tipo Pgs</a>
-                </div>
+                <?php if(!empty($this->data['button']['add_types_page'])) { 
+                    echo "<div class='col-3 top_list_right'>";
+                        echo "<a class='btn btn-sm btn_success' href='".URLADM."add-types-page/index'; type='button'>Cadastrar Tipo Pgs</a>";
+                    echo "</div>"; } ?>
             </div>
             <!-- DIV com o campo de pesquisa -->
             <div class="div_row_form">
@@ -60,26 +61,29 @@ if (isset($this->data['form'])) {
                     <th class="list_head_content">Nome do Tipo</th>
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
                     <th class="list_head_content tb_sm_none">order_type_pg</th>
-                    <th class="list_head_content">Botões de Ações</th>
+                    <?php if((!empty($this->data['button']['order_types_page'])) or (!empty($this->data['button']['view_types_page'])) or (!empty($this->data['button']['edit_types_page'])) or (!empty($this->data['button']['delete_types_page']))) { 
+                        echo "<th class='list_head_content'>Botões de Ações</th>"; } ?>
                 </tr>
             </thead>
             <tbody class="list_body">
                 <?php foreach ($this->data['listTypesPgs'] as $typePgs) { extract($typePgs);  ?>
                 <tr>
-                    <td class="list_body_content"><?=$id;?></td>
-                    <td class="list_body_content"><?=$type;?></td>
-                    <td class="list_body_content"><?=$name;?></td>
-                    <td class="list_body_content tb_sm_none"><?=$order_type_pg;?></td>
-                    <td class="list_body_content">
-                        <?php 
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-types-pgs/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordem</a>";
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-types-pgs/index/$id'><i class='fa-solid fa-eye'></i> Ver</a>"; 
-                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-types-pgs/index/$id'><i class='fa-solid fa-pen-to-square'></i> Editar</a>";
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-types-pgs/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>";
-                        ?>
-                    </td>
-                </tr>
-                <?php } ?>
+                    <td class="list_body_content"><?=$id_type_page;?></td>
+                    <td class="list_body_content"><?=$type_page;?></td>
+                    <td class="list_body_content"><?=$name_type_page;?></td>
+                    <td class="list_body_content tb_sm_none"><?=$order_type_page;?></td>
+                    <?php if((!empty($this->data['button']['order_types_page'])) or (!empty($this->data['button']['view_types_page'])) or (!empty($this->data['button']['edit_types_page'])) or (!empty($this->data['button']['delete_types_page']))) { 
+                        echo "<td class='list_body_content'>";
+                        if(!empty($this->data['button']['order_types_page'])) {
+                            echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-types-page/index/$id_type_page?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordenar</a>"; }
+                        if(!empty($this->data['button']['view_types_page'])) {
+                            echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-types-page/index/$id_type_page'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                        if(!empty($this->data['button']['edit_types_page'])) { 
+                            echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-types-page/index/$id_type_page'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
+                        if(!empty($this->data['button']['delete_types_page'])) {
+                            echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-types-page/index/$id_type_page' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
+                    echo "</td>"; } 
+                echo "</tr>"; } ?>
             </tbody>
         </table>
         <!-- Inicio da paginação -->

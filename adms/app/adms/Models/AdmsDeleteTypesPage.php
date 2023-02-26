@@ -1,16 +1,16 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsDeleteSitsUsers, para Apagar uma situação no banco de dados */
-class AdmsDeleteTypesPgs
+class AdmsDeleteTypesPage
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result = false;
 
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_type_page;
 
     /** @var array - Recebe os registros do banco de dados    */
     private array|null $resultBd;
@@ -23,19 +23,19 @@ class AdmsDeleteTypesPgs
     }
     /** ============================================================================================
      *  @return void      */
-    public function deleteTypePg(int $id):void
+    public function deleteTypePg(int $id_type_page):void
     {
-        $this->id = (int) $id;
+        $this->id_type_page = (int) $id_type_page;
         // var_dump($this->id);
-        if(($this->viewSitsUsers()) and ($this->checkStatusUsed())){
-            $deleteUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteUser->exeDelete("adms_types_pgs", "WHERE id =:id", "id={$this->id}");
+        if(($this->viewTypePages()) and ($this->checkStatusUsed())){
+            $deleteUser = new \Adms\Models\helper\AdmsDelete();
+            $deleteUser->exeDelete("adms_type_page", "WHERE id_type_page =:id", "id={$this->id_type_page}");
 
             if($deleteUser->getResult()){
                 $_SESSION['msg'] = "<p class='alert alert-warning'>OK! Tipo de Pagina APAGADO com sucesso!</p>";
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Tipo de Pagina NÃO APAGADA!!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 119! Tipo de Pagina NÃO APAGADA!!</p>";
                 $this->result = false;
             }
         } else {
@@ -44,17 +44,17 @@ class AdmsDeleteTypesPgs
     }
     /** ============================================================================================
     * @return boolean   */
-    private function viewSitsUsers():bool
+    private function viewTypePages():bool
     {
-        $viewSitsUsers = new \App\adms\Models\helper\AdmsRead();
-        $viewSitsUsers->fullRead("SELECT id FROM adms_types_pgs WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewSitsUsers = new \Adms\Models\helper\AdmsRead();
+        $viewSitsUsers->fullRead("SELECT id_type_page FROM adms_type_page WHERE id_type_page=:id LIMIT :limit", "id={$this->id_type_page}&limit=1");
 
         $this->resultBd = $viewSitsUsers->getResult();
         if($this->resultBd){
             // var_dump($this->resultBd);
             return true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! (ID)Situação não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 119.1! (ID)Situação não encontrado!</p>";
             return false;
         }
     }
@@ -63,10 +63,10 @@ class AdmsDeleteTypesPgs
      * @return void     */
     private function checkStatusUsed():bool
     {
-        $checkStatusUsed = new \App\adms\Models\helper\AdmsRead();
-        $checkStatusUsed->fullRead("SELECT id FROM adms_pages WHERE adms_types_pgs_id  =:adms_types_pgs_id LIMIT :limit", "adms_types_pgs_id={$this->id}&limit=1",);
+        $checkStatusUsed = new \Adms\Models\helper\AdmsRead();
+        $checkStatusUsed->fullRead("SELECT id_page FROM adms_page WHERE id_type_page=:types_pgs_id LIMIT :limit", "types_pgs_id={$this->id_type_page}&limit=1",);
         if($checkStatusUsed->getResult()){
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! (ID)Tipo da pagina não pode ser apagada, pois existe um registro o utilizando!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 119.2! Tipo da pagina não pode ser apagada, pois existe um registro utilizando!</p>";
             return false;
         } else {
             return true;

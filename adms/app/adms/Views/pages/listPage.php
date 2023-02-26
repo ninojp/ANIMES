@@ -21,9 +21,9 @@ if (isset($this->data['form'])) {
                             unset($_SESSION['msg']); } ?>
                 </div>
                 <div class="col-4 top_list_right">
-                <?php if($this->data['button']['add_page']) { ?>
+                <?php if(!empty($this->data['button']['add_page'])) { ?>
                     <a class="btn btn-sm btn_success" href="<?= URLADM.'add-page/index';?>" type="button">Cadastrar Página</a><?php }
-                if($this->data['button']['sync_page_level']) {?>
+                if(!empty($this->data['button']['sync_page_level'])) {?>
                     <a class="btn btn-warning" href="<?= URLADM.'sync-page-level/index';?>" type="button">Sincronizar</a> <?php } ?>
                 </div>
             </div>
@@ -75,13 +75,13 @@ if (isset($this->data['form'])) {
                     <td class="list_body_content"><?=$name_page;?></td>
                     <td class="list_body_content tb_sm_none"><?=$controller_page;?></td>
                     <td class="list_body_content tb_sm_none"><?=$menu_controller;?></td>
-                    <?php if(isset($this->data['button']['view_page']) or ($this->data['button']['edit_page']) or ($this->data['button']['delete_page'])) { 
+                    <?php if(!empty($this->data['button']['view_page']) or (!empty($this->data['button']['edit_page'])) or (!empty($this->data['button']['delete_page']))) { 
                         echo "<td class='list_body_content'>";
-                        if($this->data['button']['view_page']) {
+                        if(!empty($this->data['button']['view_page'])) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-page/index/$id_page'><i class='fa-solid fa-eye'></i> Ver</a>"; }
-                        if($this->data['button']['edit_page']) { 
+                        if(!empty($this->data['button']['edit_page'])) { 
                             echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-page/index/$id_page'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
-                        if($this->data['button']['delete_page']) {
+                        if(!empty($this->data['button']['delete_page'])) {
                             echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-page/index/$id_page' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; }
                         echo "</td>";
                     } 

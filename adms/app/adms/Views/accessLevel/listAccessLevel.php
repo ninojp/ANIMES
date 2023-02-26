@@ -59,7 +59,9 @@ if (isset($this->data['form'])) {
                     <th class="list_head_content">Nome do Nivel</th>
                     <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
                     <th class="list_head_content tb_sm_none">Ordem do Nivel</th>
-                    <th class="list_head_content">Botões de Ações</th>
+                    <?php if((!empty($this->data['button']['order_access_level'])) or (!empty($this->data['button']['list_permission'])) or (!empty($this->data['button']['view_access_level'])) or (!empty($this->data['button']['edit_access_level'])) or (!empty($this->data['button']['delete_access_level']))) { 
+                    echo "<th class='list_head_content'>Botões de Ações</th>"; } ?>
+                    
                 </tr>
             </thead>
             <?php
@@ -71,18 +73,19 @@ if (isset($this->data['form'])) {
                     <td class="list_body_content"><?=$id_access_level;?></td>
                     <td class="list_body_content"><?=$access_level;?></td>
                     <td class="list_body_content tb_sm_none"><?=$order_level;?></td>
-                    <?php if(($this->data['button']['order_access_level']) or ($this->data['button']['list_permission']) or ($this->data['button']['view_access_level']) or ($this->data['button']['edit_access_level']) or ($this->data['button']['delete_access_level'])) { 
-                        echo "<td class='list_body_content'>";
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-access-level/index/$id_access_level?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordenar</a>";
-                        
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-permission/index?level=$id_access_level'><i class='icon fa-solid fa-user-lock'></i> Permissão</a>";
-
-                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-access-level/index/$id_access_level'><i class='fa-solid fa-eye'></i> Ver</a>";
-
-                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-access-level/index/$id_access_level'><i class='fa-solid fa-pen-to-square'></i> Editar</a>";
-                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-access-level/index/$id_access_level' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>";
-                        ?>
-                    </td><?php } ?>
+                    <?php if((!empty($this->data['button']['order_access_level'])) or (!empty($this->data['button']['list_permission'])) or (!empty($this->data['button']['view_access_level'])) or (!empty($this->data['button']['edit_access_level'])) or (!empty($this->data['button']['delete_access_level']))) { 
+                    echo "<td class='list_body_content'>";
+                        if(!empty($this->data['button']['order_access_level'])) {
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."order-access-level/index/$id_access_level?pag=".$this->data['pag']."'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordenar</a>"; }
+                        if(!empty($this->data['button']['list_permission'])) {
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."list-permission/index?level=$id_access_level'><i class='icon fa-solid fa-user-lock'></i> Permissão</a>"; }
+                        if(!empty($this->data['button']['view_access_level'])) {
+                        echo "<a class='btn btn-sm btn-outline-primary mx-1' href='".URLADM."view-access-level/index/$id_access_level'><i class='fa-solid fa-eye'></i> Ver</a>"; }
+                        if(!empty($this->data['button']['edit_access_level'])) {
+                        echo "<a class='btn btn-sm btn-outline-warning mx-1' href='".URLADM."edit-access-level/index/$id_access_level'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
+                        if(!empty($this->data['button']['delete_access_level'])) {
+                        echo "<a class='btn btn-sm btn-outline-danger mx-1' href='".URLADM."delete-access-level/index/$id_access_level' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+                    echo "</td>"; } ?>
                 </tr>
                 <?php } ?>
             </tbody>

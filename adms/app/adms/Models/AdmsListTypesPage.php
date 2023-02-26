@@ -1,10 +1,10 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsListUsers, deve receber os dados(do DB) dos usuários para listar */
-class AdmsListTypesPgs
+class AdmsListTypesPage
 {
     // Recebe do método:getResult() o valor:(true or false), q será atribuido aqui
     private bool $result;
@@ -16,7 +16,7 @@ class AdmsListTypesPgs
     private int $page;
 
     /** @var integer - Recebe a quantidade de registros que deve retornar do DB    */
-    private int $limitResult = 4;
+    private int $limitResult = 10;
 
     /** @var string|null -  - Recebe a paginação  */
     private string|null $resultPg;
@@ -64,26 +64,26 @@ class AdmsListTypesPgs
         $this->page = (int) $page ? $page : 1;
         // var_dump($this->page);
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-types-pgs/index');
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-types-page/index');
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(atp.id) AS num_result FROM adms_types_pgs AS atp");
+        $pagination->pagination("SELECT COUNT(id_type_page) AS num_result FROM adms_type_page");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listTypespgs = new \App\adms\Models\helper\AdmsRead();
+        $listTypespgs = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listTypespgs->fullRead("SELECT atp.id, atp.type, atp.name, atp.order_type_pg FROM adms_types_pgs AS atp ORDER BY atp.id DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listTypespgs->fullRead("SELECT id_type_page, type_page, name_type_page, order_type_page FROM adms_type_page ORDER BY id_type_page DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listTypespgs->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhum Tipo de pagina encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 111! Nenhum Tipo de pagina encontrado!</p>";
             $this->result = false;
         }
     }
@@ -124,26 +124,26 @@ class AdmsListTypesPgs
     public function searchTypesPgsName(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-types-pgs/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-types-page/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(atp.id) AS num_result FROM adms_types_pgs AS atp WHERE atp.name LIKE :search_name OR atp.type LIKE :search_type", "search_name={$this->searchNameValue}&search_type={$this->searchTypesPgsValue}");
+        $pagination->pagination("SELECT COUNT(atp.id_type_page) AS num_result FROM adms_type_page AS atp WHERE atp.name_type_page LIKE :search_name OR atp.type_page LIKE :search_type", "search_name={$this->searchNameValue}&search_type={$this->searchTypesPgsValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listTypesPgsName = new \App\adms\Models\helper\AdmsRead();
+        $listTypesPgsName = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listTypesPgsName->fullRead("SELECT atp.id, atp.type, atp.name, atp.order_type_pg FROM adms_types_pgs AS atp WHERE atp.name LIKE :search_name OR atp.type LIKE :search_type ORDER BY atp.id DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_type={$this->searchTypesPgsValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listTypesPgsName->fullRead("SELECT atp.id_type_page, atp.type_page, atp.name_type_page, atp.order_type_page FROM adms_type_page AS atp WHERE atp.name_type_page LIKE :search_name OR atp.type_page LIKE :search_type ORDER BY atp.id_type_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_type={$this->searchTypesPgsValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listTypesPgsName->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhum Nome ou Tipo de pagina encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 111.1! Nenhum Nome ou Tipo de pagina encontrado!</p>";
             $this->result = false;
         }
     }
@@ -152,26 +152,26 @@ class AdmsListTypesPgs
     public function searchName(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-types-pgs/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-types-page/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(atp.id) AS num_result FROM adms_types_pgs AS atp WHERE atp.name LIKE :search_name", "search_name={$this->searchNameValue}");
+        $pagination->pagination("SELECT COUNT(atp.id_type_page) AS num_result FROM adms_type_page AS atp WHERE atp.name_type_page LIKE :search_name", "search_name={$this->searchNameValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listName = new \App\adms\Models\helper\AdmsRead();
+        $listName = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listName->fullRead("SELECT atp.id, atp.type, atp.name, atp.order_type_pg FROM adms_types_pgs AS atp WHERE atp.name LIKE :search_name ORDER BY atp.id DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listName->fullRead("SELECT atp.id_type_page, atp.type_page, atp.name_type_page, atp.order_type_page FROM adms_type_page AS atp WHERE atp.name_type_page LIKE :search_name ORDER BY atp.id_type_page DESC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listName->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nome de tipo de pgs encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 111.2! Nome de tipo de pgs encontrado!</p>";
             $this->result = false;
         }
     }
@@ -180,26 +180,26 @@ class AdmsListTypesPgs
     public function searchType(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-types-pgs/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM . 'list-types-pages/index', "?search_name={$this->searchName}&search_type={$this->searchTypes}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(atp.id) AS num_result FROM adms_types_pgs AS atp WHERE atp.type LIKE :search_type", "search_type={$this->searchTypesPgsValue}");
+        $pagination->pagination("SELECT COUNT(atp.id_type_page) AS num_result FROM adms_type_page AS atp WHERE atp.type_page LIKE :search_type", "search_type={$this->searchTypesPgsValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
 
-        $listUsersEmail = new \App\adms\Models\helper\AdmsRead();
+        $listUsersEmail = new \Adms\Models\helper\AdmsRead();
         //INNER JOIN, é obrigátorio(para retornar o registro) q a chave EXTRANGEIRA:adms_sits_user_id exista na tabela outra tabela, a qual está se fazendo o inner join(adms_sits_users)
-        $listUsersEmail->fullRead("SELECT atp.id, atp.type, atp.name, atp.order_type_pg FROM adms_types_pgs AS atp WHERE atp.type LIKE :search_type ORDER BY atp.order_type_pg ASC LIMIT :limit OFFSET :offset", "search_type={$this->searchTypesPgsValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listUsersEmail->fullRead("SELECT atp.id_type_page, atp.type_page, atp.name_type_page, atp.order_type_page FROM adms_type_page AS atp WHERE atp.type_page LIKE :search_type ORDER BY atp.order_type_page ASC LIMIT :limit OFFSET :offset", "search_type={$this->searchTypesPgsValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listUsersEmail->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Nenhum Tipo de pgs encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 111.3! Nenhum Tipo de pgs encontrado!</p>";
             $this->result = false;
         }
     }
