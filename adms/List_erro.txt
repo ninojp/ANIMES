@@ -348,6 +348,27 @@ Erro 131 - ADMS/app/adms/Models/helper/AdmsValEmailConfig.php, valEmailSingleCon
 
 Erro 132 - ADMS/app/adms/Models/AdmsAddEmailConfig.php, addEmailConfs()
 
+Erro 133 - ADMS/app/adms/Models/AdmsViewEmailConfig.php, ViewEmailConfs()
+
+Erro 134 - ADMS/app/adms/Controllers/ViewEmailConfig.php, index()
+
+Erro 135 - ADMS/app/adms/Models/AdmsEditEmailConfig.php, viewAtualEmailConfs()
+Erro 135.1 - ADMS/app/adms/Models/AdmsEditEmailConfig.php, edit()
+
+Erro 136 - ADMS/app/adms/Controlllers/EditEmailConfig.php, editEmailConfs()
+
+Erro 137 - ADMS/app/adms/Models/AdmsEditEmailConfigPass.php, viewAtualEmailPass()
+Erro 137.1 - ADMS/app/adms/Models/AdmsEditEmailConfigPass.php, edit()
+
+Erro 138 - ADMS/app/adms/Controllers/EditEmailConfigPass.php, editEmailPass()
+
+Erro 139 - ADMS/app/adms/Models/AdmsDeleteEmailConfig.php, deleteEmailConfs()
+Erro 139.1 - ADMS/app/adms/Models/AdmsDeleteEmailConfig.php, viewAtualEmailConfs()
+
+Erro 140 - ADMS/app/adms/Controllers/DeleteEmailConfig.php, index()
+
+
+
 
 
 
