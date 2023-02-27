@@ -5,19 +5,21 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
 <div class="wrapper_list">
     <div class="row_list">
         <div class="top_list">
-            <span class="title_content">
+            <div class="title_content">
                 <h2 class="title_h2">Listar Configurações de E-mail</h2>
-            </span>
-            <div id="msg" class="msg_alert">
-                <!-- Mensagens de avisos -->
-                <?php if (isset($_SESSION['msg'])) {
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']); }?>
             </div>
-            <?php if(!empty($this->data['button']['add_email_config'])) {
-                    echo "<div class='col-3 top_list_right'>";
-                        echo "<a class='btn btn-sm btn_success' href='".URLADM."add-email-config/index'> type='button'>Cadastrar</a>";
-                    echo "</div>"; }?>
+            <div class="div_row_msg_btn">
+                <div id="msg" class="col-9 msg_alert">
+                    <!-- Mensagens de avisos -->
+                    <?php if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']); }?>
+                </div>
+                <?php if(!empty($this->data['button']['add_email_config'])) {
+                        echo "<div class='col-3 top_list_right'>";
+                            echo "<a class='btn btn-sm btn_success' href='".URLADM."add-email-config/index' type='button'>Cadastrar</a>";
+                        echo "</div>"; }?>
+            </div>
         </div>
         <table class="table table-striped table_list">
             <thead class="list_head">

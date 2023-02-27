@@ -9,7 +9,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                 <h2 class="title_h2">Listar Situações do Usuário</h2>
             </div>
             <div class="div_row_msg_btn">
-                <div class="col-9 msg_alert">
+                <div id="msg" class="col-9 msg_alert">
                     <!-- Mensagens de avisos -->
                     <?php if (isset($_SESSION['msg'])) {
                             echo $_SESSION['msg'];

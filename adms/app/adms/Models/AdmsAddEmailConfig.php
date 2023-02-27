@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** Classe:AdmsNewUser, é filha(Herda) da classe:AdmsConn(abstrata responsável pela conexão) */
-class AdmsAddEmailConfs
+class AdmsAddEmailConfig
 {
     //recebido como parametro através do método:create() e colocado neste atributo
     private array|null $data;
@@ -40,7 +40,7 @@ class AdmsAddEmailConfs
         unset($this->data['smtpsecure'], $this->data['port']);
 
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
@@ -60,16 +60,16 @@ class AdmsAddEmailConfs
     private function valInputEmailConfs(): void
     {
         //instancia a classe para Validar o email
-        $valEmail = new \App\adms\Models\helper\AdmsValEmail();
-        $valEmail->validateEmail($this->data['email']);
+        $valEmail = new \Adms\Models\helper\AdmsValEmail();
+        $valEmail->validateEmail($this->data['email_config']);
 
         //instancia a classe para Validar se o email já existe no banco de dados
-        $valEmailConfsSingle = new \App\adms\Models\helper\AdmsValEmailSingleConfs();
-        $valEmailConfsSingle->validateEmailSingleConfs($this->data['email']);
+        $valEmailConfsSingle = new \Adms\Models\helper\AdmsValEmailSingleConfig();
+        $valEmailConfsSingle->valEmailSingleConfig($this->data['email_config']);
 
         //instancia a classe para Validar a senha
-        $valPassword = new \App\adms\Models\helper\AdmsValPassword();
-        $valPassword->validatePassword($this->data['password']);
+        $valPassword = new \Adms\Models\helper\AdmsValPassword();
+        $valPassword->validatePassword($this->data['pass_email_config']);
 
         if (($valEmail->getResult()) and ($valEmailConfsSingle->getResult()) and ($valPassword->getResult())) {
             $this->addEmailConfs();
@@ -83,7 +83,7 @@ class AdmsAddEmailConfs
     private function addEmailConfs(): void
     {
         // Criptografar a senha
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+        $this->data['pass_email_config'] = password_hash($this->data['pass_email_config'], PASSWORD_DEFAULT);
         $this->data['created'] = date("Y-m-d H:i:s");
         //Atribui NOVAMENTE(recupera) os valores q está no atributo:$this->temExitval['...'] e coloca no atributo:$this->data['...'] para ser inserido no DB se necessário
         $this->data['smtpsecure'] = $this->tempExitVal['smtpsecure'];
@@ -92,15 +92,15 @@ class AdmsAddEmailConfs
         // foi usado para encontrar um erro, antes de instânciar a classe(foi comentada) abaixo
         // $this->result = false;
         
-        $addEmailConfs = new \App\adms\Models\helper\AdmsCreate();
-        $addEmailConfs->exeCreate("adms_confs_emails", $this->data);
+        $addEmailConfs = new \Adms\Models\helper\AdmsCreate();
+        $addEmailConfs->exeCreate("adms_email_config", $this->data);
 
         //verifica se existe o ultimo ID inserido
         if ($addEmailConfs->getResult()) {
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! E-mail de Configuração cadastrado com sucesso</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro! Não foi possível cadastrar o E-mail de Configuração</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 132! Não foi possível cadastrar o E-mail de Configuração</p>";
             $this->result = false;
         }
     }

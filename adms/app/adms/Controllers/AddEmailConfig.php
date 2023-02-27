@@ -22,11 +22,11 @@ class AddEmailConfig
         if (!empty($this->dataForm['SendAddEmailConfs'])) {
             // var_dump($this->dataForm);
             unset($this->dataForm['SendAddEmailConfs']);
-            $createEmailConfs = new \App\adms\Models\AdmsAddEmailConfs();
+            $createEmailConfs = new \Adms\Models\AdmsAddEmailConfig();
             $createEmailConfs->createEmailConfs($this->dataForm);
             //Verifica ee o resultado da QUERY é TRUE, se for faz o redirecionamento para:list-users
             if($createEmailConfs->getResult()){
-                $urlRedirect = URLADM."list-email-confs/index";
+                $urlRedirect = URLADM."list-email-config/index";
                 header("Location: $urlRedirect");
             }else{
                 // Se o resultado for FALSE, cria uma nova posição dentro do array $dataForm e mantém os dados no formulário
@@ -37,21 +37,20 @@ class AddEmailConfig
             $this->loadViewAddEmailConfs();
         }
     } 
-
     /** ============================================================================================
      * @return void     */
     private function loadViewAddEmailConfs():void
     {
         // implementação da apresentação dinâmica do menu sidebar
-        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         
         // posição no array:$this->data['sidebarActive'], que define como ACTIVE no menu SIDEBAR
-        $this->data['sidebarActive'] = "list-email-confs";
+        $this->data['sidebarActive'] = "list-email-config";
         
         //Instancio a classe:ConfigView() e crio o objeto:$loadView
-        $loadViewAddEmailConfs = new ConfigView("adms/Views/emailConfs/addEmailConfs", $this->data);
+        $loadViewAddEmailConfs = new \AdmsSrc\ConfigViewAdms("adms/Views/emailConfig/addEmailConfig", $this->data);
         //Instancia o método:loadView() da classe:ConfigView
-        $loadViewAddEmailConfs->loadView();
+        $loadViewAddEmailConfs->loadViewAdms();
     }
 }

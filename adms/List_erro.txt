@@ -344,6 +344,10 @@ Erro 129 - ADMS/app/adms/Controlllers/DeleteSitsUsers.php, index()
 
 Erro 130 - ADMS/app/adms/Models/AdmsListEmailConfig.php, listAtualEmails()
 
+Erro 131 - ADMS/app/adms/Models/helper/AdmsValEmailConfig.php, valEmailSingleConfig()
+
+Erro 132 - ADMS/app/adms/Models/AdmsAddEmailConfig.php, addEmailConfs()
+
 
 
 

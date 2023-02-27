@@ -18,53 +18,53 @@ if(isset($this->data['form'])){
             echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-add-email-confs">
             <div class="row_input">
-                <?php $email="";
-                if(isset($valorForm['email'])) {
-                $email=$valorForm['email'];} ?>
-                <!-- <label class="form-label" for="email">Email:<span style="color:#f00;">*</span></label> -->
+                <?php $email_config="";
+                if(isset($valorForm['email_config'])) {
+                $email_config=$valorForm['email_config'];} ?>
+                <!-- <label class="form-label" for="email_config">email_config:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-envelope"></i>
-                <input class="form-control" type="email" name="email" id="email" value="<?=$email;?>" placeholder="Digite o Email *" required>
+                <input class="form-control" type="email" name="email_config" id="email_config" value="<?=$email_config;?>" placeholder="Digite o Email *" required>
             </div>
             <div class="row_input">
-                <?php $username="";
-                if(isset($valorForm['username'])) {
-                $username = $valorForm['username'];} ?>
-                <!-- <label class="form-label" for="username">username:<span style="color:#f00;">*</span></label> -->
+                <?php $user_email_config="";
+                if(isset($valorForm['user_email_config'])) {
+                $user_email_config = $valorForm['user_email_config'];} ?>
+                <!-- <label class="form-label" for="user_email_config">user_email_config:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-user"></i>
-                <input class="form-control" type="text" name="username" id="username" value="<?php echo $username; ?>" placeholder="Digite o nome do usuário (login) *" required>
+                <input class="form-control" type="text" name="user_email_config" id="user_email_config" value="<?php echo $user_email_config; ?>" placeholder="Digite o nome do usuário (login) *" required>
             </div>
             <div class="row_input">
-                <?php $password ="";
-                if(isset($valorForm['password'])) {
-                $password = $valorForm['password'];} ?>
-                <!-- <label class="form-label" for="password">Senha:<span style="color:#f00;">*</span></label> -->
+                <?php $pass_email_config ="";
+                if(isset($valorForm['pass_email_config'])) {
+                $pass_email_config = $valorForm['pass_email_config'];} ?>
+                <!-- <label class="form-label" for="pass_email_config">Senha:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-lock"></i>
-                <input class="form-control" type="password" name="password" id="password" onkeyup="passwordStrength()" autocomplete="on" value="<?= $password; ?>" placeholder="Digite a Senha do E-mail (login) *" required>
+                <input class="form-control" type="password" name="pass_email_config" id="pass_email_config" onkeyup="passwordStrength()" autocomplete="on" value="<?= $pass_email_config; ?>" placeholder="Digite a Senha do E-mail (login) *" required>
             </div>
             <div class="msg_alert" id="msgViewStrength"></div>
             <div class="row_input">
-                <?php $title="";
-                if(isset($valorForm['title'])){
-                $title = $valorForm['title'];} ?>
-                <!-- <label class="form-label" for="title">Titulo:<span style="color:#f00;">*</span></label> -->
+                <?php $title_email_config="";
+                if(isset($valorForm['title_email_config'])){
+                $title_email_config = $valorForm['title_email_config'];} ?>
+                <!-- <label class="form-label" for="title_email_config">Titulo:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="text" name="title" id="title" value="<?php echo $title; ?>" placeholder="Digite um Titulo *" required>
+                <input class="form-control" type="text" name="title_email_config" id="title_email_config" value="<?php echo $title_email_config; ?>" placeholder="Digite um Titulo *" required>
             </div>
             <div class="row_input">
-                <?php $name="";
-                if(isset($valorForm['name'])) {
-                $name=$valorForm['name'];} ?>
-                <!-- <label class="form-label" for="name">Nome:<span style="color:#f00;">*</span></label> -->
+                <?php $name_email_config="";
+                if(isset($valorForm['name_email_config'])) {
+                $name_email_config=$valorForm['name_email_config'];} ?>
+                <!-- <label class="form-label" for="name_email_config">Nome:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="name" name="name" id="name" value="<?=$name;?>" placeholder="Digite uma descrição (name) *" required>
+                <input class="form-control" type="text" name="name_email_config" id="name_email_config" value="<?=$name_email_config;?>" placeholder="Digite uma descrição (name) *" required>
             </div>
             <div class="row_input">
-                <?php $host="";
-                if(isset($valorForm['host'])) {
-                $host = $valorForm['host'];} ?>
-                <!-- <label class="form-label" for="host">Host:<span style="color:#f00;">*</span></label> -->
+                <?php $host_email_config="";
+                if(isset($valorForm['host_email_config'])) {
+                $host_email_config = $valorForm['host_email_config'];} ?>
+                <!-- <label class="form-label" for="host_email_config">host_email_config:<span style="color:#f00;">*</span></label> -->
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="text" name="host" id="host" value="<?php echo $host; ?>" placeholder="Digite o nome do host *" required>
+                <input class="form-control" type="text" name="host_email_config" id="host_email_config" value="<?php echo $host_email_config; ?>" placeholder="Digite o nome do host *" required>
             </div>
             <span class="span_obrigatorio">* Campos obrigatórios</span><br>
             <div class="row_input">
@@ -87,7 +87,7 @@ if(isset($this->data['form'])){
                 <button class="btn btn-primary" type="submit" name="SendAddEmailConfs" value="Cadastrar">Cadastrar E-Mail</button>
             </div>
             <div class="button_center">
-                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-email-confs/index"> Listar  Usuários </a>
+                 <a class="btn btn-sm btn-outline-info" href="<?=URLADM;?>list-email-config/index"> Listar E-Mails</a>
             </div>
         </form>
     </div>
