@@ -367,6 +367,19 @@ Erro 139.1 - ADMS/app/adms/Models/AdmsDeleteEmailConfig.php, viewAtualEmailConfs
 
 Erro 140 - ADMS/app/adms/Controllers/DeleteEmailConfig.php, index()
 
+Erro 141 - ADMS/app/adms/Models/AdmsEditPageMenu.php, viewPageMenu()
+Erro 141.1 - ADMS/app/adms/Models/AdmsEditPageMenu.php, updatePageMenu()
+Erro 141.2 - ADMS/app/adms/Models/AdmsEditPageMenu.php, editPageMenu()
+
+Erro 143 - ADMS/app/adms/Controllers/EditPageMenu.php, editPageMenu()
+
+Erro 144 - ADMS/app/adms/Models/AdmsOrderPageMenu.php, orderPageMenu()
+Erro 144.1 - ADMS/app/adms/Models/AdmsOrderPageMenu.php, viewPrevPageMenu()
+Erro 144.2 - ADMS/app/adms/Models/AdmsOrderPageMenu.php, editMoveDown()
+Erro 144.3 - ADMS/app/adms/Models/AdmsOrderPageMenu.php, editMoveUp()
+
+Erro 145 - ADMS/app/adms/Models/OrderPageMenu.php, index()
+
 
 
 

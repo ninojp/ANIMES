@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -13,7 +13,7 @@ class AdmsEditPageMenu
     private array|null $resultBd;
 
     /** @var integer|string|null - Recebe o ID do registro    */
-    private int|string|null $id;
+    private int|string|null $id_level_page;
 
     /** @var array|null - Recebe as informações do formulário     */
     private array|null $data;
@@ -35,18 +35,17 @@ class AdmsEditPageMenu
     }
     /** ===========================================================================================
      * Método para visualizar os detalhes da página no Item de menu(sidebar)    */
-    public function viewPageMenu(int $id):bool
+    public function viewPageMenu(int $id_level_page):bool
     {
-        $this->id = $id;
+        $this->id_level_page = $id_level_page;
 
-        $viewPageMenu = new \App\adms\Models\helper\AdmsRead();
-        $viewPageMenu->fullRead("SELECT lev_pag.id, lev_pag.adms_items_menu_id, pag.name_page
-        FROM adms_levels_pages AS lev_pag
-        INNER JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id
-        INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id
-        WHERE lev_pag.id=:id AND lev.order_levels >=:order_levels
-        AND (((SELECT permission FROM adms_levels_pages WHERE adms_page_id =lev_pag.adms_page_id 
-        AND adms_access_level_id ={$_SESSION['access_level_id']}) = 1) OR (publish = 1)) LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $viewPageMenu = new \Adms\Models\helper\AdmsRead();
+        $viewPageMenu->fullRead("SELECT lev_p.id_level_page, lev_p.id_item_menu, pag.name_page
+        FROM adms_level_page AS lev_p
+        INNER JOIN adms_page AS pag ON pag.id_page=lev_p.id_page
+        INNER JOIN adms_access_level AS a_lev ON a_lev.id_access_level=lev_p.id_access_level        WHERE lev_p.id_level_page=:id AND a_lev.order_level >=:order_level
+        AND (((SELECT permission_level_page FROM adms_level_page WHERE id_page=lev_p.id_page 
+        AND id_access_level={$_SESSION['id_access_level']}) = 1) OR (public_page = 1)) LIMIT :limit", "id={$this->id_level_page}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewPageMenu->getResult();
         if($this->resultBd){
@@ -55,7 +54,7 @@ class AdmsEditPageMenu
             //retorna true, pode continuar o processamento
             return true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (viewPageMenu()! Item de Menu da página, não encontrada no DB!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 141! Item de Menu da página, não encontrada no DB!</p>";
             $this->result = false;
             return false;
         }
@@ -71,17 +70,17 @@ class AdmsEditPageMenu
         // var_dump($this->data);
         
         //instancia a classe:AdmsValEmptyField e cria o objeto:$valEmptyField
-        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
         //usa o objeto:$valEmptyField para instanciar o método:valField() para validar os dados dentro do atributo:$this->data
         $valEmptyField->valField($this->data);
         //verifica se o método:getResult() retorna true, se sim significa q deu tudo certo se não aprensenta o Erro
         if ($valEmptyField->getResult()) {
             //se retornou true(usuário tem a permissão de acessar)
-            if($this->viewPageMenu($this->data['id'])){
+            if($this->viewPageMenu($this->data['id_level_page'])){
                 // então instancia o método:editPageMenu(), e pode editar o item;
                 $this->editPageMenu();
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (updatePageMenu()!Sem permissão de editar!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 141.1!Sem permissão de editar!</p>";
             $this->result = false;
             }
             // $this->result = false;
@@ -97,14 +96,14 @@ class AdmsEditPageMenu
         // var_dump($this->data);
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $updatePageMenu = new \App\adms\Models\helper\AdmsUpdate();
-        $updatePageMenu->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $updatePageMenu = new \Adms\Models\helper\AdmsUpdate();
+        $updatePageMenu->exeUpdate("adms_level_page", $this->data, "WHERE id_level_page=:id", "id={$this->data['id_level_page']}");
 
         if($updatePageMenu->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Item de Menu da página Editada com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (editPageMenu())! Não foi possível Editar o Item de Menu da página!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 141.2! Não foi possível Editar o Item de Menu da página!</p>";
             $this->result = false;
         }
     }
@@ -112,8 +111,8 @@ class AdmsEditPageMenu
      * @return array     */
     public function listSelect():array
     {
-        $lists = new \App\adms\Models\helper\AdmsRead();
-        $lists->fullRead("SELECT id AS id_itm, name AS name_itm FROM adms_items_menus ORDER BY name ASC");
+        $lists = new \Adms\Models\helper\AdmsRead();
+        $lists->fullRead("SELECT id_item_menu, name_item_menu FROM adms_item_menu ORDER BY name_item_menu ASC");
         $registry['itm'] = $lists->getResult();
 
         $this->listRegistryAdd = ['itm' => $registry['itm']];

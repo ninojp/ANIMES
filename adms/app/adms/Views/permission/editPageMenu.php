@@ -1,18 +1,13 @@
 <?php
-if (!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')) {
-    header("Location: https://localhost/dtudo/public/");
-}
-// echo "Views/login/login.php <h1> Pagina(view) para fazer o login</h1>";
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 // Manter os dados no formulário     
 if (isset($this->data['form'])) {
-    $valorForm = $this->data['form'];
-}
+    $valorForm = $this->data['form'];}
 //na posição [0] e quando os dados vem do banco de dados
 if (isset($this->data['form'][0])) {
-    $valorForm = $this->data['form'][0];
-}
-// var_dump($this->data['form'][0]); 
-?>
+    $valorForm = $this->data['form'][0];}?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
@@ -21,18 +16,15 @@ if (isset($this->data['form'][0])) {
         <?php echo "<div id='msg' class='msg_alert'>";
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
+            unset($_SESSION['msg']); }
         echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-edit-page-menu">
             <!-- input oculto pra enviar o id, via post -->
-            <?php $id = "";
-            if (isset($valorForm['id'])) {
-                $id = $valorForm['id'];
-            }
-            echo "<input class='form-control' type='hidden' name='id' id='id' value='$id'>"; ?>
-
-            <?php $name_page = "";
+            <?php $id_level_page = "";
+            if (isset($valorForm['id_level_page'])) {
+                $id_level_page = $valorForm['id_level_page']; }
+            echo "<input class='form-control' type='hidden' name='id_level_page' id='id_level_page' value='$id_level_page'>";
+            $name_page = "";
             if (isset($valorForm['name_page'])) {
                 $name_page = $valorForm['name_page'];
             } ?>
@@ -44,15 +36,15 @@ if (isset($this->data['form'][0])) {
             <div class="row_input">
                 <i class="fa-solid fa-hand-pointer"></i>
                 <div class="select_input">
-                    <label class="mx-3" for="adms_items_menu_id">Item de Menu:<span class="text-danger">*</span></label>
-                    <select name="adms_items_menu_id" id="adms_items_menu_id">
+                    <label class="mx-3" for="id_item_menu">Item de Menu:<span class="text-danger">*</span></label>
+                    <select name="id_item_menu" id="id_item_menu">
                         <option value="">Selecione</option>
                         <?php foreach ($this->data['select']['itm'] as $it_menu) {
                             extract($it_menu);
-                            if ((isset($valorForm['adms_items_menu_id'])) and ($valorForm['adms_items_menu_id'] == $id_itm)) {
-                                echo "<option value='$id_itm' selected>$name_itm</option>";
+                            if ((isset($valorForm['id_item_menu'])) and ($valorForm['id_item_menu'] == $id_item_menu)) {
+                                echo "<option value='$id_item_menu' selected>$name_item_menu</option>";
                             } else {
-                                echo "<option value='$id_itm'>$name_itm</option>";
+                                echo "<option value='$id_item_menu'>$name_item_menu</option>";
                             }
                         } ?>
                     </select>

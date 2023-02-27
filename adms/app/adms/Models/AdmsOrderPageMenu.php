@@ -1,5 +1,5 @@
 <?php
-namespace Adm\Models;
+namespace Adms\Models;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
@@ -16,7 +16,7 @@ class AdmsOrderPageMenu
     private array|null $resultBdPrev;
 
     /** @var integer|string|null - Rcebe o id do registro     */
-    private int|string|null $id;
+    private int|string|null $id_level_page;
 
     /** @var array|null - Recebe as novas posições e as atribui para o array - Eu que criei, na aula o prof não o fez     */
     private array|null $data;
@@ -36,20 +36,18 @@ class AdmsOrderPageMenu
     /** ==========================================================================================
      * Recebe como parametro o id, através do mesmo verifica o nivel de acesso atual:order_levels, se for maior, o coloca no atributo:$resultBd para instanciar o método:viewPrevAccessNivels()
      * @param integer $id -  @return void      */
-    public function orderPageMenu(int $id): void
+    public function orderPageMenu(int $id_level_page): void
     {
         //atribui o id recebido como parametro no atributo:$this->id
-        $this->id = (int) $id;
+        $this->id_level_page = (int) $id_level_page;
         //instância a classe:AdmsRead() e cria o objeto:$viewSitsUsers
-        $viewPageMenu = new \App\adms\Models\helper\AdmsRead();
+        $viewPageMenu = new \Adms\Models\helper\AdmsRead();
         //usa o objeto para instânciar o método:fullRead(), passando a query desejada
-        $viewPageMenu->fullRead("SELECT lev_pag.id, lev_pag.order_level_page, lev_pag.adms_access_level_id FROM adms_levels_pages AS lev_pag
-        INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id
-        LEFT JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id
-        WHERE lev_pag.id=:id AND lev.order_levels >=:order_levels
-        AND (((SELECT permission FROM adms_levels_pages WHERE adms_page_id =lev_pag.adms_page_id 
-        AND adms_access_level_id ={$_SESSION['access_level_id']})=1) OR (publish=1)) LIMIT :limit",
-        "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
+        $viewPageMenu->fullRead("SELECT lev_p.id_level_page, lev_p.order_level_page, lev_p.id_access_level FROM adms_level_page AS lev_p INNER JOIN adms_access_level AS lev ON lev.id_access_level=lev_p.id_access_level LEFT JOIN adms_page AS pag ON pag.id_page=lev_p.id_page
+        WHERE lev_p.id_level_page=:id AND lev.order_level >=:order_level
+        AND (((SELECT permission_level_page FROM adms_level_page WHERE id_page=lev_p.id_page 
+        AND id_access_level={$_SESSION['id_access_level']})=1) OR (public_page=1)) LIMIT :limit",
+        "id={$this->id_level_page}&order_level=".$_SESSION['order_level']."&limit=1");
         //usa o objeto para instânciar o método:getResult() e atribui o seu valor no atributo:$this->resultBd
 
         $this->resultBd = $viewPageMenu->getResult();
@@ -59,7 +57,7 @@ class AdmsOrderPageMenu
             $this->viewPrevPageMenu();
             //se o atributo:$this->resultBd é false, atribui a frase na constante:$_SESSION['msg']
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (orderPageMenu())! Item de Menu não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 144! Item de Menu não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -68,16 +66,14 @@ class AdmsOrderPageMenu
      * @return void     */
     private function viewPrevPageMenu():void
     {
-        $prevPageMenu = new \App\adms\Models\helper\AdmsRead();
-        $prevPageMenu->fullRead("SELECT lev_pag.id, lev_pag.order_level_page
-        FROM adms_levels_pages AS lev_pag
-        LEFT JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id
-        WHERE lev_pag.order_level_page <:order_level_page
-        AND lev_pag.adms_access_level_id =:adms_access_level_id
-        AND (((SELECT permission FROM adms_levels_pages WHERE adms_page_id =lev_pag.adms_page_id 
-        AND adms_access_level_id ={$_SESSION['access_level_id']}) = 1) OR (publish = 1))
-        ORDER BY lev_pag.order_level_page DESC LIMIT :limit",
-        "order_level_page={$this->resultBd[0]['order_level_page']}&adms_access_level_id={$this->resultBd[0]['adms_access_level_id']}&limit=1");
+        $prevPageMenu = new \Adms\Models\helper\AdmsRead();
+        $prevPageMenu->fullRead("SELECT lev_p.id_level_page, lev_p.order_level_page
+        FROM adms_level_page AS lev_p LEFT JOIN adms_page AS pag ON pag.id_page=lev_p.id_page
+        WHERE lev_p.order_level_page <:order_level_page AND lev_p.id_access_level=:id_access_level
+        AND (((SELECT permission_level_page FROM adms_level_page WHERE id_page=lev_p.id_page 
+        AND id_access_level={$_SESSION['access_level_id']}) = 1) OR (public_page = 1))
+        ORDER BY lev_p.order_level_page DESC LIMIT :limit",
+        "order_level_page={$this->resultBd[0]['order_level_page']}&id_access_level={$this->resultBd[0]['id_access_level']}&limit=1");
 
         $this->resultBdPrev = $prevPageMenu->getResult();
         if($this->resultBdPrev){
@@ -85,7 +81,7 @@ class AdmsOrderPageMenu
             $this->editMoveDown();
             // $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (viewPrevPageMenu())! Item de menu não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 144.1! Item de menu não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -98,14 +94,14 @@ class AdmsOrderPageMenu
         $this->data['modified'] = date("Y-m-d H:i:s");
         // var_dump($this->data);
 
-        $moveDown = new \App\adms\Models\helper\AdmsUpdate();
-        $moveDown->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->resultBdPrev[0]['id']}");
+        $moveDown = new \Adms\Models\helper\AdmsUpdate();
+        $moveDown->exeUpdate("adms_level_page", $this->data, "WHERE id_level_page=:id", "id={$this->resultBdPrev[0]['id_level_page']}");
 
         if($moveDown->getResult()){
             $this->result = true;
             $this->editMoveUp();
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (editMoveDown())! Ordem do Item de Menu não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 144.2! Ordem do Item de Menu não editado com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -118,16 +114,15 @@ class AdmsOrderPageMenu
         $this->data['modified'] = date("Y-m-d H:i:s");
         // var_dump($this->data);
 
-        $moveUp = new \App\adms\Models\helper\AdmsUpdate();
-        $moveUp->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
+        $moveUp = new \Adms\Models\helper\AdmsUpdate();
+        $moveUp->exeUpdate("adms_level_page", $this->data, "WHERE id_level_page=:id", "id={$this->resultBd[0]['id_level_page']}");
 
         if($moveUp->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Ordem do Item de Menu editado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (editMoveUp())! Ordem do Item de Menu Não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 144.3! Ordem do Item de Menu Não editado com sucesso!</p>";
             $this->result = false;
         }
-
     }
 }

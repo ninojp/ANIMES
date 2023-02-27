@@ -38,7 +38,8 @@ if (isset($this->data['form'])) {
                     <th class="list_head_content tb_sm_none">Permissão</th>
                     <th class="list_head_content tb_sm_none">Menu Simples</th>
                     <th class="list_head_content tb_sm_none">Menu DropDown</th>
-                    <th class="list_head_content">Botões de Ações</th>
+                    <?php  if(!empty($this->data['button']['order_page_menu']) or (!empty($this->data['button']['edit_page_menu']))) {
+                    echo "<th class='list_head_content'>Botões de Ações</th>"; } ?>
                 </tr>
             </thead>
             <?php
@@ -76,18 +77,17 @@ if (isset($this->data['form'])) {
                             } else {
                                 echo "<a href='" . URLADM . "edit-dropdown-menu/index/$id_level_page?&level=$id_access_level&pag=" . $this->data['pag'] . "'><span class='text-danger'>Não</span></a>";
                             } 
-                        echo "</td>"; ?>
-                        <!-- BOTÃO Ordem - ordenar as paginas -->
-                        <td class="list_body_content">
-                            <?php  if($this->data['button']['order_page_menu']) {
+                        echo "</td>";
+                        // BOTÃO Ordem - ordenar as paginas
+                        if(!empty($this->data['button']['order_page_menu']) or (!empty($this->data['button']['edit_page_menu']))) {
+                        echo "<td class='list_body_content'>"; 
+                            if(!empty($this->data['button']['order_page_menu'])) {
                             echo "<a class='btn btn-sm btn-outline-primary mx-1' href='" . URLADM . "order-page-menu/index/$id_level_page?&level=$id_access_level&pag=" . $this->data['pag'] . "'><i class='fa-solid fa-arrow-up-short-wide'></i> Ordem</a>"; }
                             // BOTÃO Editar - Edita em qual item(grupo) do menu DropDown, o link da pagina deve ser exibido.
-                            if($this->data['button']['edit_page_menu']) {
+                            if(!empty($this->data['button']['edit_page_menu'])) {
                             echo "<a class='btn btn-sm btn-outline-warning mx-1' href='" . URLADM . "edit-page-menu/index/$id_level_page?&level=$id_access_level&pag=" . $this->data['pag'] . "'><i class='fa-solid fa-pen-to-square'></i> Editar</a>"; }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
+                        echo "</td>"; }
+                    echo "</tr>"; } ?>
             </tbody>
         </table>
         <!-- Inicio da paginação -->
