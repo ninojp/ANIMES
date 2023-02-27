@@ -342,6 +342,8 @@ Erro 128.2 - ADMS/app/adms/Models/AdmsDeleteSitsUsers.php, checkStatusUsed()
 
 Erro 129 - ADMS/app/adms/Controlllers/DeleteSitsUsers.php, index()
 
+Erro 130 - ADMS/app/adms/Models/AdmsListEmailConfig.php, listAtualEmails()
+
 
 
 

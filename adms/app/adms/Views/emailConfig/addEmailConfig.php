@@ -1,29 +1,21 @@
 <?php
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
-// echo "Views/emailConfs/addEmailConfs.php<h1> Adicionar novo e-mail de Configuração</h1>";
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
+    header("Location: https://localhost/adms/");
+    die("Erro 000! Página Não encontrada"); }
 // Manter os dados no formulário     
 if(isset($this->data['form'])){
     // var_dump($this->data['form']);
-    $valorForm = $this->data['form'];
-} ?>
-<!-- <h1 class="text-center mt-5">Adicionar E-mail de Configuração</h1> -->
-<?php
-// echo "<a class='btn btn-sm btn-outline-primary ms-4' href='".URLADM."list-email-confs/index'> Listar </a> ";
-// if(isset($_SESSION['msg'])){
-//     echo $_SESSION['msg'];
-//     unset($_SESSION['msg']);
-// } ?>
-<!-- <span id="msg"></span> -->
+    $valorForm = $this->data['form']; } ?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
             <h2>Adicionar E-mail de Configuração</h2>
         </div>
-        <?php if (isset($_SESSION['msg'])) { 
-            echo "<div id='msg' class='msg_alert'>";
+        <?php echo "<div id='msg' class='msg_alert'>";
+            if (isset($_SESSION['msg'])) { 
             echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-            echo "</div>"; } ?>
+            unset($_SESSION['msg']); }
+            echo "</div>"; ?>
         <form class="form_adms" action="" method="POST" id="form-add-email-confs">
             <div class="row_input">
                 <?php $email="";

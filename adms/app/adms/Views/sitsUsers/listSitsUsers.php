@@ -15,11 +15,10 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
                             echo $_SESSION['msg'];
                             unset($_SESSION['msg']); } ?>
                 </div>
-                <?php if(!empty($this->data['button']['add_sits_users'])) {?>
-                    <div class="col-3 top_list_right">
-                        <a class="btn btn-sm btn_success" href="<?= URLADM.'add-sits-users/index';?>" type="button">Cadastrar</a>
-                    </div>
-                <?php }?>
+                <?php if(!empty($this->data['button']['add_sits_users'])) {
+                    echo "<div class='col-3 top_list_right'>";
+                        echo "<a class='btn btn-sm btn_success' href='".URLADM."add-sits-users/index'> type='button'>Cadastrar</a>";
+                    echo "</div>"; }?>
             </div>
         </div>
         <table class="table table-striped table_list">
