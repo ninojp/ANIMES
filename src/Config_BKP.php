@@ -3,8 +3,8 @@ namespace Src;
 if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 
 /** Classe abstract(ABSTRATA) não pode ser instânciada, somente herdada.
- * Configurações(CONSTANTES) básicas da PARTE ADMINISTRATVA do site ANIME.
- * @author NinoJP <meu.sem@gmail.com> - 07/02/2023 */
+ * Configurações(CONSTANTES) básicas do site ANIME.
+ * @author NinoJP <meu.sem@gmail.com> - 01/02/2023 */
 abstract class Config
 {
     /** ==========================================================================================
@@ -15,35 +15,34 @@ abstract class Config
      * Credenciais de acesso ao banco de dados
      * E-mail do administrador.
      * @return void   */
-    protected function config()
+    protected function config(): void
     {
+        // echo "Classe CONFIG! <br>";
         //URL do projeto
-        define('URL','https://localhost/ANIMES/');
-        define('URLADM','https://localhost/ANIMES/adms/');
-
+        define('URL', 'https://localhost/ANIMES/');
+        define('URLADM', 'https://localhost/ANIMES/adms/');
+        
         //Página inicial (Principal)
-        define('CONTROLLER','list-animes');
-
-        define('METODO','index');
+        define('CONTROLLER', 'ListAnimes');
+        
         //Página de erro (em caso de erro de carregamento)
-        define('CONTROLLERERRO','list-animes');
-
+        define('CONTROLLERERRO', 'Erro');
+        
         // E-mail definido como e-mail administrativo (depois alterar)
-        define('EMAILADM', 'meu.sem@gmail.com');
+        define('EMAILADM', 'ninocriptocoin@gmail.com');
 
-        //credenciais do DB
+        //Credenciais(Com senha) do banco de dados
         define('HOST', 'localhost');
         define('USER', 'NinoJP');
         define('PASS', '3RtsEpuR21!@');
         define('DBNAME', 'animes');
         define('PORT', 3306);
 
-        //credenciais do DB
+        //credenciais(Sem senha) do DB
         // define('HOST','localhost');
         // define('USER','root');
         // define('PASS','');
         // define('DBNAME','animes');
         // define('PORT',3306);
-
     }
 }

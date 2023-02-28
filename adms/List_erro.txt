@@ -382,6 +382,16 @@ Erro 145 - ADMS/app/adms/Models/OrderPageMenu.php, index()
 
 
 
+========================================================================================
+------------------------- ERROs das paginas ANIMES -------------------------------------
+
+Erro 150 - APP/SRC/LoadPageLevel.php - searchPage()
+Erro 150.1 - APP/SRC/LoadPageLevel.php - loadMetodo()
+Erro 150.2 - APP/SRC/LoadPageLevel.php - verifyLogin()
+Erro 150.3 - APP/SRC/LoadPageLevel.php - searchLevelPage()
+
+
+
 
 
 

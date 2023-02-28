@@ -1,11 +1,9 @@
 <?php
-namespace AdmsSrc;
-if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ 
-    header("Location: https://localhost/adms/");
-    die("Erro 000! Página Não encontrada"); }
+namespace Src;
+if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 /** Verificar se existe a classe e Carregar a CONTROLLER
  * @author Nino JP <meu.sem@gmail.com>  */
-class LoadPageAdmsLevel
+class LoadPageLevel
 {
     /** @var string $urlController Recebe da URL o nome da controller */
     private string $urlController;
@@ -46,13 +44,14 @@ class LoadPageAdmsLevel
      * @return void     */
     private function searchPage():void
     {
-        $searchPage = new \Adms\Models\helper\AdmsRead();
+        $searchPage = new \Animes\Models\helper\MdRead();
         $searchPage->fullRead("SELECT pag.id_page, pag.public_page, typ.type_page FROM adms_page AS pag INNER JOIN adms_type_page AS typ ON typ.id_type_page=pag.id_type_page
         WHERE pag.controller_page=:controller_page AND pag.metodo_page =:metodo_page
         AND pag.id_sits_page=:id_sits_page LIMIT :limit",
         "controller_page={$this->urlController}&metodo_page={$this->urlMetodo}&id_sits_page=1&limit=1");
         $this->resultPage = $searchPage->getResult();
-
+        // var_dump($this->resultPage);
+        // die ("AQUI!");
         if($this->resultPage){
             // var_dump($this->resultPage);
             if($this->resultPage[0]['public_page'] == 1){
@@ -60,18 +59,19 @@ class LoadPageAdmsLevel
                 // $this->classLoad = "\\Adms\\Controllers\\" . $this->urlController;
                 $this->classLoad = "\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
                 // var_dump($this->classLoad);
+                // die ("AQUI!");
                 $this->loadMetodo();
             } else {
                 // echo "Verificar se o user está logado <br>";
                 $this->verifyLogin();
             }
         }else{
-            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro (searchPage()): Página não encontrada!</p>";
-            // $urlRedirect = URLADM."login/index";
+            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 150: Página não encontrada!</p>";
+            // $urlRedirect = URL."ListAnimes/index";
             // header("Location: $urlRedirect");
 
             // Ao invés de fazer o redirecionamento pode se usar o DIE() para finalizar
-            die("Erro 033! Tente Novamente ou entre em contato: ".EMAILADM);
+            die("Erro 150! Tente Novamente ou entre em contato: ".EMAILADM);
         }
     }
     /** ============================================================================================
@@ -85,7 +85,10 @@ class LoadPageAdmsLevel
             //passando a parametro recebido no atributo:$this->urlParameter
             $classLoad->{$this->urlMetodo}($this->urlParameter);
         }else{
-            die("Erro 033.1! Tente Novamente ou entre em contato: ".EMAILADM);
+            // $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 150.1: Página(metodo) não encontrada!</p>";
+            // $urlRedirect = URL."ListAnimes/index";
+            // header("Location: $urlRedirect");
+            die("Erro 150.1! Tente Novamente ou entre em contato: ".EMAILADM);
         }
     } 
     /** ===========================================================================================
@@ -97,8 +100,8 @@ class LoadPageAdmsLevel
             // $this->classLoad = "\\App\\adms\\Controllers\\".$this->urlController;
             $this->searchLevelPage();
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 033.2: Para acessar a Página realize o login!</p>";
-            $urlRedirect = URLADM."login/index";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 150.2: Para acessar a Página realize o login!</p>";
+            $urlRedirect = URL."ListAnimes/index";
             header("Location: $urlRedirect"); 
         }
     }
@@ -106,7 +109,7 @@ class LoadPageAdmsLevel
      * @return void     */ 
     private function searchLevelPage():void
     {
-        $searchLevelPage = new \Adms\Models\helper\AdmsRead();
+        $searchLevelPage = new \Animes\Models\helper\MdRead();
         $searchLevelPage->fullRead("SELECT id_level_page, permission_level_page FROM adms_level_page WHERE id_page=:id_page AND id_access_level=:id_access_level AND permission_level_page=:permission_level_page LIMIT :limit", "id_page={$this->resultPage[0]['id_page']}&id_access_level=".$_SESSION['id_access_level']."&permission_level_page=1&limit=1");
 
         $this->resultLevelPage = $searchLevelPage->getResult();
@@ -114,8 +117,8 @@ class LoadPageAdmsLevel
             $this->classLoad = "\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
             $this->loadMetodo();
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 033.3! Necessário permissão para acessar a página!</p>";
-            $urlRedirect = URLADM."login/index";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 150.3! Necessário permissão para acessar a página!</p>";
+            $urlRedirect = URL."ListAnimes/index";
             header("Location: $urlRedirect");
         }
     }

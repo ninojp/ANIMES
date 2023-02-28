@@ -1,10 +1,8 @@
 <?php
 namespace Animes\Models\helper;
-
+if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 use PDO;
 use PDOException;
-
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 /** Classe ABSTRACT(Models), para fazer a conexão com o DB(Banco de Dados).
  * @author NinoJP <ninocriptocoin@gmail.com> - 04/02/2023 */
 class MdConn

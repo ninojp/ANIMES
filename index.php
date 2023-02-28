@@ -11,5 +11,5 @@ require './vendor/autoload.php';
 //Instanciar a classe ConfigController, responsável em tratar a URL
 $url = new Src\ConfigController();
 //Instanciar o método para carregar a página/controller
-$url->loadPage();
-?>
+$url->loadPage(); ?>
+<h1>Pagina inicial do site Animes!</h1>

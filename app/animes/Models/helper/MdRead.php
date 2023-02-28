@@ -1,6 +1,6 @@
 <?php
 namespace Animes\Models\helper;
-if(!defined('$2y!10#OaHjLtRhiDTKNv(2022)TkYurzF')){ header("Location: https://localhost/dtudo/public/"); }
+if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
 use PDO;
 use PDOException;
 /** Classe(Models/Helper) genérica para selecionar registros no banco de dados */
