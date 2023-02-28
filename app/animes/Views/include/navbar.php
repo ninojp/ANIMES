@@ -4,12 +4,9 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
 } ?>
 <!-- NAVBAR, barra de navegação do topo da página -->
 <nav class="navbar sticky-top container-fluid">
-    <div class="navbar_content">
-        <div class="bars">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-        <a href="<?= URLADM; ?>">
-            <img class="logo" src="<?= URLADM; ?>app/adms/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
+    <div>
+        <a href="<?= URL; ?>">
+            <img class="logo" src="<?= URL; ?>app/animes/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
     </div>
     <div class="navbar_content">
         <div class="notification">
@@ -55,6 +52,11 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
                     <a class="" href="<?= URLADM ?>logout/index">
                         <i class="fa-solid fa-right-from-bracket"></i> Sair</a>
                 </div>
+            </div>
+        </div>
+        <div class="navbar_content">
+            <div class="bars">
+                <i class="fa-solid fa-bars"></i>
             </div>
         </div>
     </div>

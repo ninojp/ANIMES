@@ -8,9 +8,9 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 } ?>
 <!-- Inicio do conteúdo do SIDEBAR, barra lateral do site -->
-<aside class='aside_container'>
-    <!-- Inicio do SIDE-BAR -->
-    <div class='sidebar'>
+<aside class='sidebar'>
+    <!-- <div class='sidebar'> -->
+        <h2>Barra Lateral</h2>
         <?php
         //Menu DropDown Dinâmico com os dados da tabela:adms_items_menus
         if ((isset($this->data['menu'])) and ($this->data['menu'])) {
@@ -57,6 +57,5 @@ if (isset($this->data['sidebarActive'])) {
                 $count_drop_end = 0;
             }
         } ?>
-    </div>
+    <!-- </div> -->
 </aside>
-<!-- FIM do SIDE-BAR -->

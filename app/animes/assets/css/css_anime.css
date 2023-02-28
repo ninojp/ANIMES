@@ -194,12 +194,47 @@ body{
 
 /* =========================================================================================== */
 /********************************* INICIO SIDEBAR (Barra Lateral) ******************************/
-.aside_container{
+/* .aside_container{
     display: block;
     width: 20%;
     background-color: var(--azul10);
     box-shadow: 3px 3px 3px 0px var(--azul04);
     z-index: 1;
+} */
+.sidebar{
+    position: sticky;
+    top: 60px;/*testar depois, ainda não muda nada */
+    height: calc(100vh - 100px);
+    width: 60px;
+    background-color: var(--azul10);
+    /* z-index: 3; */
+    overflow: auto;/* para exibir a barra de rolagem se for necessário */
+    overflow-x: hidden;
+    flex-shrink: 0;
+    box-shadow: -3px 3px 6px 0px var(--azul04);
+    transition: 0.3s width ease-in-out;
+}
+@media (max-width: 768px) {
+    .sidebar{
+        width: 60px;
+        position: fixed;
+        z-index: 1;
+        width: 0;
+    }
+}
+.sidebar:hover,
+.sidebar.active{
+    /* width: 250px; */
+    width: fit-content;
+}
+.sidebar a{
+    color: var(--azulClaro);
+    text-decoration: none;
+}
+.sidebar a:hover{
+    background-color: var(--azulEscuro);
+    color: var(--azulClaro);
+    text-decoration: none;
 }
 
 /********************************** FIM SIDEBAR (Barra Lateral) *********************************/
