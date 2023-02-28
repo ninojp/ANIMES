@@ -318,10 +318,10 @@ if (formEditUserPass) {
 const formEditProfile = document.getElementById("form-edit-profile");
 if (formEditProfile) {
     formEditProfile.addEventListener("submit", async (e) => {
-        //Validar o valor do campo NAME
-        var name = document.querySelector("#name").value;
+        //Validar o valor do campo adm_user
+        var adm_user = document.querySelector("#adm_user").value;
         // Verificar se o campo está vazio
-        if (name === "") {
+        if (adm_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo NOME! (JS)</p>";
             return;
@@ -459,15 +459,15 @@ const formAddSitsUsers = document.getElementById("form-add-sit-user");
 if (formAddSitsUsers) {
     formAddSitsUsers.addEventListener("submit", async(e) => {
         //Receber o valor do campo Nova Situação
-        var nameSits = document.querySelector("#name").value;
+        var name_sits_user = document.querySelector("#name_sits_user").value;
         // Verificar se o campo está vazio
-        if (nameSits === "") {
+        if (name_sits_user === "") {
             e.preventDefault();
             document.getElementById("msg").innerHTML = "<p class='alert alert-danger'>Erro! Necessário preencher o campo Nova situação! (JS)</p>";
             return;
         } 
         //Validar o valor do campo SITUAÇÃO do USUÁRIO
-        var admsSitsCor = document.querySelector("#adms_color_id").value;
+        var admsSitsCor = document.querySelector("#id_color").value;
         // Verificar se o campo está vazio
         if (admsSitsCor === "") {
             e.preventDefault();
@@ -485,7 +485,7 @@ const formAddColors = document.getElementById("form-add-colors");
 if (formAddColors) {
     formAddColors.addEventListener("submit", async(e) => {
         //Receber o valor do campo Nova Situação
-        var nameColors = document.querySelector("#name").value;
+        var nameColors = document.querySelector("#name_color").value;
         // Verificar se o campo está vazio
         if (nameColors === "") {
             e.preventDefault();
@@ -493,7 +493,7 @@ if (formAddColors) {
             return;
         } 
         //Validar o valor do campo SITUAÇÃO do USUÁRIO
-        var codColors = document.querySelector("#color").value;
+        var codColors = document.querySelector("#color_adms").value;
         // Verificar se o campo está vazio
         if (codColors === "") {
             e.preventDefault();
@@ -511,7 +511,7 @@ const editEmailConf = document.getElementById("form-edit-email-confs");
 if (editEmailConf) {
     editEmailConf.addEventListener("submit", async (e) => {
         //Validar o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var email = document.querySelector("#email_config").value;
         // Verificar se o campo está vazio
         if (email === "") {
             e.preventDefault();
@@ -519,7 +519,7 @@ if (editEmailConf) {
             return;
         }
         //Validar contém valor no campo Titulo do e-mail
-        var name = document.querySelector("#title").value;
+        var name = document.querySelector("#title_email_config").value;
         // Verificar se o campo está vazio
         if (name === "") {
             e.preventDefault();
@@ -527,7 +527,7 @@ if (editEmailConf) {
             return;
         }
         //Validar se contém valor do campo NAME
-        var name = document.querySelector("#name").value;
+        var name = document.querySelector("#name_email_config").value;
         // Verificar se o campo está vazio
         if (name === "") {
             e.preventDefault();
@@ -535,7 +535,7 @@ if (editEmailConf) {
             return;
         }
         //Validar se contém valor do campo HOST
-        var user = document.querySelector("#host").value;
+        var user = document.querySelector("#host_email_config").value;
         // Verificar se o campo está vazio
         if (user === "") {
             e.preventDefault();
@@ -543,7 +543,7 @@ if (editEmailConf) {
             return;
         }
         //Validar se contém valor do campo USERNAME
-        var user = document.querySelector("#username").value;
+        var user = document.querySelector("#user_email_config").value;
         // Verificar se o campo está vazio
         if (user === "") {
             e.preventDefault();
@@ -562,7 +562,7 @@ if (formEditEmailConfsPass) {
     formEditEmailConfsPass.addEventListener("submit", async (e) => {
         
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var password = document.querySelector("#pass_email_config").value;
         // Verificar se o campo está vazio
         if (password === "") {
             e.preventDefault();
@@ -600,7 +600,7 @@ const formaddEmailConfs = document.getElementById("form-add-email-confs");
 if (formaddEmailConfs) {
     formaddEmailConfs.addEventListener("submit", async (e) => {
         //Receber o valor do campo EMAIL
-        var email = document.querySelector("#email").value;
+        var email = document.querySelector("#email_config").value;
         // Verificar se o campo está vazio
         if (email === "") {
             e.preventDefault();
@@ -608,7 +608,7 @@ if (formaddEmailConfs) {
             return;
         }
         //Receber o valor do campo NAME
-        var name = document.querySelector("#name").value;
+        var name = document.querySelector("#name_email_config").value;
         // Verificar se o campo está vazio
         if (name === "") {
             e.preventDefault();
@@ -616,7 +616,7 @@ if (formaddEmailConfs) {
             return;
         }
         //Receber o valor do campo title
-        var title = document.querySelector("#title").value;
+        var title = document.querySelector("#title_email_config").value;
         // Verificar se o campo está vazio
         if (title === "") {
             e.preventDefault();
@@ -624,7 +624,7 @@ if (formaddEmailConfs) {
             return;
         }
         //Receber o valor do campo host
-        var host = document.querySelector("#host").value;
+        var host = document.querySelector("#host_email_config").value;
         // Verificar se o campo está vazio
         if (host === "") {
             e.preventDefault();
@@ -632,7 +632,7 @@ if (formaddEmailConfs) {
             return;
         }
         //Receber o valor do campo username
-        var username = document.querySelector("#username").value;
+        var username = document.querySelector("#user_email_config").value;
         // Verificar se o campo está vazio
         if (username === "") {
             e.preventDefault();
@@ -640,7 +640,7 @@ if (formaddEmailConfs) {
             return;
         }
         //Receber o valor do campo PASSWORD
-        var password = document.querySelector("#password").value;
+        var password = document.querySelector("#pass_email_config").value;
         // Verificar se o campo está vazio
         if (password === "") {
             e.preventDefault();
@@ -678,7 +678,7 @@ const formEditPageMenu = document.getElementById("form-edit-page-menu");
 if (formEditPageMenu) {
     formEditPageMenu.addEventListener("submit", async (e) => {
         //Validar o valor do campo IMAGE
-        var items_menu_id = document.querySelector("#adms_items_menu_id").value;
+        var items_menu_id = document.querySelector("#id_item_menu").value;
         // Verificar se o campo está vazio
         if (items_menu_id === "") {
             e.preventDefault();

@@ -15,7 +15,7 @@ class MdListAnimes
 
         $conn = new \Animes\Models\helper\MdConn();
         $this->conn = $conn->connectDb();
-        var_dump($this->conn);
+        // var_dump($this->conn);
 
         return $this->data;
     }

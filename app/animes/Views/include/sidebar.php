@@ -8,7 +8,7 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 } ?>
 <!-- Inicio do conteúdo do SIDEBAR, barra lateral do site -->
-<aside class='main_content'>
+<aside class='aside_container'>
     <!-- Inicio do SIDE-BAR -->
     <div class='sidebar'>
         <?php

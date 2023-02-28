@@ -12,4 +12,4 @@ require './vendor/autoload.php';
 $url = new Src\ConfigController();
 //Instanciar o método para carregar a página/controller
 $url->loadPage(); ?>
-<h1>Pagina inicial do site Animes!</h1>
+<!-- <h1>Pagina inicial do site Animes!</h1> -->

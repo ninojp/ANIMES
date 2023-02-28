@@ -124,7 +124,7 @@ class ConfigController extends Config
     public function loadPage():void
     {
 
-        echo "Carregou até aqui!";
+        // echo "Carregou até aqui!";
         $loadPgAdm = new \Src\LoadPageLevel();
         $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
 

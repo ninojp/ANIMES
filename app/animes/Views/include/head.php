@@ -6,7 +6,7 @@ if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: h
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animes - baixar e assitir online</title>
+    <title>Animes - Baixar e Assitir Online</title>
     <!-- Carregar o BOOTSTRAP CSS local ------------------------------------------>
     <link rel="stylesheet" href="<?=URL;?>app/animes/assets/css/bootstrap.min.css">
     <!-- Carregar o CSS_ANIMES.CSS CSS Local - layout do Site ----------------------->
