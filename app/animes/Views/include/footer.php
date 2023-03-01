@@ -12,8 +12,13 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
         </div>
     </div>
 </footer>
+<!---------------- Carrega o DATA TABLE(jquery) via CDN ---------------------->
+<script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<!------------ Carrega o FONT AWESOME (JS) local ------------------->
 <script src="<?= URL; ?>app/animes/assets/js/aw_all.min.js"></script>
+<!--------------------- Carrega o BOOTSTRAP (JS) local ---------------------->
 <script src="<?= URL; ?>app/animes/assets/js/bootstrap.bundle.min.js"></script>
+<!-------------- Carrega MEUS JS local ---------------------------->
 <script src="<?= URL; ?>app/animes/assets/js/js_layout.js"></script>
 <script src="<?= URL; ?>app/animes/assets/js/js_custom.js"></script>
 
