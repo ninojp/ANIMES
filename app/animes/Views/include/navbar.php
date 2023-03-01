@@ -16,10 +16,10 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
                 <div class="dropdown_content">
                     <li>
                         <?php
-                        if ((!empty($_SESSION['user_image'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
-                            echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
+                        if ((!empty($_SESSION['user_image'])) and (file_exists("app/animes/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
+                            echo "<img src=".URL.'app/animes/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
                         } else {
-                            echo "<img src='" . URLADM . "app/adms/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
+                            echo "<img src='".URLADM."app/animes/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
                         } ?>
                         <!-- <img src="imgs/TI_link.png" alt="foto do usuário"></i> -->
                         <div class="msg_text">Aqui vai aparecer as menssagens de notificações do usuario</div>
@@ -32,24 +32,24 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
         </div>
         <div class="avatar">
             <?php
-            if ((!empty($_SESSION['user_image'])) and (file_exists("app/adms/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
-                echo "<img src=" . URLADM . 'app/adms/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
+            if ((!empty($_SESSION['user_image'])) and (file_exists("app/animes/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
+                echo "<img src=".URL.'app/animes/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
             } else {
-                echo "<img src='" . URLADM . "app/adms/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
+                echo "<img src='".URL."app/animes/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
             }
             ?>
             <!-- <img src="imgs/TI_link.png" alt="foto do usuário" width=""> -->
             <div class="dropdown_menu setting">
                 <div class="item">
-                    <a class="" href="<?= URLADM ?>view-profile/index">
+                    <a class="" href="<?=URL;?>view-profile/index">
                         <i class="fa-solid fa-circle-user"></i> Perfil</a>
                 </div>
                 <div class="item">
-                    <a class="" href="<?= URLADM ?>edit-profile/index">
+                    <a class="" href="<?=URL;?>edit-profile/index">
                         <i class="fa-solid fa-gear"></i> Configurações</a>
                 </div>
                 <div class="item">
-                    <a class="" href="<?= URLADM ?>logout/index">
+                    <a class="" href="<?=URL;?>logout/index">
                         <i class="fa-solid fa-right-from-bracket"></i> Sair</a>
                 </div>
             </div>
@@ -62,4 +62,4 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
     </div>
 </nav>
 <!-- Inicio do corpo principal do site (final está no rodapé) -->
-<main class="corpo_pg">
+<div class="corpo_pg">

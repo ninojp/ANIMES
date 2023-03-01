@@ -2,7 +2,7 @@
 if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
     header("Location: https://localhost/animes/"); } ?>
 <!-- Parte final do corpo do site (inicio no navbar) -->
-</main>
+</div>
 <!-- Rodapé da página - Classes do bootStrap, sticky-bottom, fixed-bottom -->
 <footer class="rodape container-fluid fixed-bottom">
         <div class="row">
