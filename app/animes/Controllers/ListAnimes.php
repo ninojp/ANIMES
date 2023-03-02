@@ -13,8 +13,7 @@ class ListAnimes
      * @return void     */
     public function index()
     {
-        $animesPg = new \Animes\Models\MdListAnimes();
-        $this->data = $animesPg->index();
+        
 
         $loadView = new \Src\ConfigViewAnimes("animes/Views/animes/listAnimes", $this->data);
         $loadView->loadViewAnimes();

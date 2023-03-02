@@ -104,5 +104,10 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">Z</a></div>
             </div>
         </div>
+        <!-- DIV que vai apresentar os thumbs do ANIMES -->
+        <div class="col-12">
+
+        </div>
+
     </div>
 </main>
