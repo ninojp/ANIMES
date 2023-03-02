@@ -62,12 +62,12 @@ body{
 /****************************** INICIO do NAVBAR do Site Animes *********************************/
 .navbar{
     /* position: fixed; */
-    margin-top: 7px;
+    margin-top: 4px;
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
-    background-color: var(--azul10);
+    justify-content: space-evenly;
+    background-color: var(--preto08);
     color: var(--azul04);
     box-shadow: 0px 0px 10px 0px var(--azul04);
     padding: 5px 15px;
@@ -286,8 +286,8 @@ body{
     align-items: center;
     justify-content: center;
 }
-.t_320{
-    width: 320px;
+.img_fundo{
+    background-image: linear-gradient(to right, var(--preto) 25%, rgba(255, 255, 255, 0)), url('app/animes/assets/imgs/?php echo $image_top; ?>') no-repeat center; background-size: cover; background-attachment: fixed;;
 }
 
 

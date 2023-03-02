@@ -18,4 +18,4 @@ if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: h
     <link rel="stylesheet" href="<?=URL;?>app/animes/assets/css/aw_all.min.css">
     <link rel="shortcut icon" href="<?=URL;?>app/animes/assets/imgs/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body style="background: linear-gradient(to top, var(--preto) 25%, rgba(255, 255, 255, 0)), url('<?php echo URL; ?>app/animes/assets/imgs/galaxy_1366x768.jpg') no-repeat center; background-size: cover; background-attachment: fixed;">

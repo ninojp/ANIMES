@@ -4,60 +4,48 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
 } ?>
 <!-- NAVBAR, barra de navegação do topo da página -->
 <nav class="navbar sticky-top container-fluid">
-    <div>
+    <div class="col-2 text-center">
         <a href="<?= URL; ?>">
             <img class="logo" src="<?= URL; ?>app/animes/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
     </div>
-    <div class="navbar_content">
-        <div class="notification">
-            <i class="fa-solid fa-bell"></i>
-            <span class="number">2</span>
-            <div class="dropdown_menu">
-                <div class="dropdown_content">
-                    <li>
-                        <?php
-                        if ((!empty($_SESSION['user_image'])) and (file_exists("app/animes/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
-                            echo "<img src=".URL.'app/animes/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
-                        } else {
-                            echo "<img src='".URLADM."app/animes/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
-                        } ?>
-                        <!-- <img src="imgs/TI_link.png" alt="foto do usuário"></i> -->
-                        <div class="msg_text">Aqui vai aparecer as menssagens de notificações do usuario</div>
-                    </li>
-                    <li><img src="imgs/TI_link.png" alt="foto do usuário"></i>
-                        <div class="msg_text">A Segunda menssagens vai aparecer aqui nas notificações do usuario</div>
-                    </li>
-                </div>
-            </div>
+    <!--------------- DIV - PRINCIPAL DO BLOCO DE MENU collapse ------------->
+    <div class="col-10 d-flex justify-content-evenly">
+        <!--BLOCO PARA ACESSO RAPIDO DE INSERÇÃO E EXCLUSÃO-->
+        <div class="nav-item">
+            <a class="nav-link" href="animacao.php">Animes</a>
         </div>
-        <div class="avatar">
-            <?php
-            if ((!empty($_SESSION['user_image'])) and (file_exists("app/animes/assets/imgs/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
-                echo "<img src=".URL.'app/animes/assets/imgs/users/' . $_SESSION['user_id'] . '/' . $_SESSION['user_image'] . " width='50px' height='50px'>";
-            } else {
-                echo "<img src='".URL."app/animes/assets/imgs/users/TI_link.png' width='50px' height='50px'>";
-            }
-            ?>
-            <!-- <img src="imgs/TI_link.png" alt="foto do usuário" width=""> -->
-            <div class="dropdown_menu setting">
-                <div class="item">
-                    <a class="" href="<?=URL;?>view-profile/index">
-                        <i class="fa-solid fa-circle-user"></i> Perfil</a>
-                </div>
-                <div class="item">
-                    <a class="" href="<?=URL;?>edit-profile/index">
-                        <i class="fa-solid fa-gear"></i> Configurações</a>
-                </div>
-                <div class="item">
-                    <a class="" href="<?=URL;?>logout/index">
-                        <i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-                </div>
-            </div>
+        <div class="nav-item">
+            <a class="nav-link" href="series.php">Séries</a>
         </div>
-        <div class="navbar_content">
-            <div class="bars">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+        <div class="nav-item">
+            <a class="nav-link" href="filmes.php">Filmes</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="ovas.php">Ovas</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="especiais.php">Especiais</a>
+        </div>
+        <!-- Menu do botão dropdown ANIMES - Filmes - Ecchi BOTÃO DROPDOWN ----- -->
+        <div class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link" role="button" data-bs-toggle="dropdown">Gêneros</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item nav-link" href="#" target="_blank">Ação</a></li>
+                <li><a class="dropdown-item nav-link" href="#" target="_blank">Aventura</a></li>
+                <li><a class="dropdown-item nav-link" href="#" target="_blank">Ficção</a></li>
+                <li><a class="dropdown-item nav-link" href="#" target="_blank">etc</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+                <a class="dropdown-toggle nav-link" role="button" data-bs-toggle="dropdown" alt="Link para Login" title="Link para Login">
+        <div class="d-inline"><img class="ms-2" src="<?=URL;?>app/animes/assets/imgs/login.png">
+        </div>
+        <div class="d-inline fonte_small"><span>Login</span></div></a>
+                <ul class="dropdown-menu dropdown-menu-dark fonte_small" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item nav-link" href="" data-bs-toggle="modal" data-bs-target="#Modal_login">Fazer Login</a></li>
+                    <li><a class="dropdown-item nav-link" href="" data-bs-toggle="modal" data-bs-target="#Modal_cadastrar">Cadastrar</a></li>
+                    <li><a class="dropdown-item nav-link" href="" data-bs-toggle="modal" data-bs-target="#Modal_recuperarSenha">Recuperar Senha</a></li>
+                </ul>
         </div>
     </div>
 </nav>

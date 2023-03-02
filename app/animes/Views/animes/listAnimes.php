@@ -11,8 +11,8 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
         <header class="align_center" id="ir_para_topo">
             <div class="col-4 text-center">
                 <h3>Animes Completos</h3>
-                <h3>Links para Download</h3>
-                <h3>Links para Assistir Online</h3>
+                <h3>Para Download</h3>
+                <h3>E Assistir Online</h3>
             </div>
             <!-- Carousel de IMAGENS Animes-->
             <div class="col-4 align_center" style="height: 250px;">
@@ -75,8 +75,8 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
             </div>
         </header>
         <!-- coluna do campo Busca por letras -->
-        <div class="row ms-4">
-            <div class="col-xxl-12 nav nav-tabs">
+        <div class="row">
+            <div class="col-12 nav nav-tabs">
                 <div class="nav-item px-1"><a class="nav-link active px-2" href="form_busca.php?input_busca=a">B</a></div>
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">C</a></div>
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">D</a></div>
@@ -102,12 +102,58 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">Y</a></div>
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">W</a></div>
                 <div class="nav-item px-1"><a class="nav-link px-2" href="">Z</a></div>
+                <div class="nav-item ps-2">
+                    <form class="form_pesquisar" action="" name="form_pesquisar" method="POST">
+                        <div class="d-inline">
+                            <?php $search_name = "";
+                            if (isset($valorForm['search_name'])) {
+                                $search_name = $valorForm['search_name'];
+                            } ?>
+                            <!-- <label for="search_name">Nome: </label> -->
+                            <input type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquisar: Título, Nome...">
+                        </div>
+                        <div class="d-inline">
+                            <button class="btn btn-sm btn-outline-info" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?=URL;?>app/animes/assets/imgs/pesquisar.png"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <!-- DIV que vai apresentar os thumbs do ANIMES -->
-        <div class="col-12">
-
+        <!-- DIV-Row que vai apresentar os thumbs do ANIMES -->
+        <!-- <div class="row"> -->
+        <?php //var_dump($this->data['listAnimes'][0]['img_mini']); ?>
+        <div class="row">
+            <?php // Manter os dados no formulário de PESQUISA   
+            if (isset($this->data['form'])) {
+                $valorForm = $this->data['form']; } 
+            echo "<div class='col-6 msg_alert'>";
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']); } ?>
+            </div>
+            
+            <table class="table table-striped table_list">
+            <thead class="list_head">
+                <tr>
+                    <th class="list_head_content">ID Anime</th>
+                    <th class="list_head_content">CodNome Anime</th>
+                    <!-- classe:tb_sm_none para OCULTAR o item em resolucão menores -->
+                    <th class="list_head_content tb_sm_none">Titulo Anime</th>
+                    <th class="list_head_content tb_sm_none">Nome img_mini</th>
+                </tr>
+            </thead>
+            <tbody class="list_body">
+                <?php foreach ($this->data['listAnimes'] as $anime) { extract($anime); ?>
+                <tr>
+                    <td class="list_body_content"><?=$id_anime;?></td>
+                    <td class="list_body_content"><?=$codnome;?></td>
+                    <td class="list_body_content tb_sm_none"><?=$tit_anime;?></td>
+                    <td class="list_body_content tb_sm_none"><?=$img_mini;?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
         </div>
-
+        <?php echo $this->data['pagination']; ?>
     </div>
 </main>

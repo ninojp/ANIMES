@@ -38,7 +38,7 @@ class ConfigController extends Config
         // Verifica se esta recebendo algo na URL
         if (!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))) {
             $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
-            var_dump($this->url);
+            // var_dump($this->url);
             //instancia o método:clearUrl() para executar(automaticamente), junto com este método
             $this->clearUrl();
             // Se receber, divide a string:url em três partes e cria um array:$urlArray
