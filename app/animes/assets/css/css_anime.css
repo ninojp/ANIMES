@@ -359,5 +359,11 @@ body{
 .img_fundo{
     background-image: linear-gradient(to right, var(--preto) 25%, rgba(255, 255, 255, 0)), url('app/animes/assets/imgs/?php echo $image_top; ?>') no-repeat center; background-size: cover; background-attachment: fixed;;
 }
+button::after, .btn_tranp{
+    background-color: var(--transp)!important;
+}
+button::before, .btn_tranp{
+    background-color: var(--transp)!important;
+}
 
 /************************************ FIM DEFINIÇÕES GENÉRICAS *********************************/

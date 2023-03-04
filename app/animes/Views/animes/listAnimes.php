@@ -8,7 +8,7 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
         <header class="align_center" id="ir_para_topo">
             <div class="col-4 text-center">
                 <h3><abbr title="Clicando nas imagens você tera acesso a lista completa com TODAS as Séries, Filmes, OVAs e Especiais do respectivo Anime">Animes Completos</abbr></h3>
-                <h3 class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">Para Download</h3>
+                <h3>Para Download</h3>
                 <h3>E Assistir Online</h3>
             </div>
             <!-- Carousel de IMAGENS Animes-->
@@ -72,74 +72,73 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
             </div>
         </header>
         <!-- coluna do campo Busca por letras -->
-        <div class="row">
-            <div title="Escolha uma Letra para listar os Animes pela mesma" class="col-12 nav nav-tabs">
-                <div class="nav-item px-1"><a class="nav-link active px-2" href="form_busca.php?input_busca=a">B</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">C</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">D</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">E</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">F</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">G</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">H</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">I</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">J</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">K</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">L</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">M</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">N</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">O</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">P</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">Q</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">R</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">S</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">T</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">U</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">V</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">X</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">Y</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">W</a></div>
-                <div class="nav-item px-1"><a class="nav-link px-2" href="">Z</a></div>
-                <div class="nav-item ps-2">
-                    <!-- Manter os dados no formulário de PESQUISA   -->
-                    <?php if (isset($this->data['form'])) {
-                    $valorForm = $this->data['form']; } ?>
-                    <form class="form_pesquisar" action="" name="form_pesquisar" method="POST">
-                        <div class="d-inline">
-                            <?php $search_name = "";
-                            if (isset($valorForm['search_name'])) {
-                                $search_name = $valorForm['search_name'];
-                            } ?>
-                            <!-- <label for="search_name">Nome: </label> -->
-                            <input type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquisar: Título, Nome...">
-                        </div>
-                        <div class="d-inline">
-                        
-                            <button class="btn btn-sm btn-outline-info" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?=URL;?>app/animes/assets/imgs/pesquisar.png"></button>
-                        </div>
-                    </form>
-                </div>
+        <div class="row align_center">
+            <div data-bs-placement="top" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Listar os Animes por LETRA" class="col-8 nav nav-tabs align_center">
+                <div class="nav-item px-1"><a class="nav-link active px-1" href="form_busca.php?input_busca=a">B</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">C</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">D</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">E</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">F</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">G</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">H</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">I</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">J</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">K</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">L</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">M</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">N</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">O</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">P</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">Q</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">R</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">S</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">T</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">U</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">V</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">X</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">Y</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">W</a></div>
+                <div class="nav-item px-1"><a class="nav-link px-1" href="">Z</a></div>
+            </div>
+            <div class="col-4 align_center" data-bs-placement="top" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Pesquise por nome, termo ou título">
+                <!-- Manter os dados no formulário de PESQUISA   -->
+                <?php if (isset($this->data['form'])) {
+                $valorForm = $this->data['form']; } ?>
+                <form class="form_pesquisar" action="" name="form_pesquisar" method="POST">
+                    <div class="d-inline">
+                        <?php $search_name = "";
+                        if (isset($valorForm['search_name'])) {
+                            $search_name = $valorForm['search_name'];
+                        } ?>
+                        <!-- <label for="search_name">Nome: </label> -->
+                        <input type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquise Aqui!">
+                    </div>
+                    <div class="d-inline">
+                        <button class="btn_tranp" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?=URL;?>app/animes/assets/imgs/pesquisar.png"></button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- DIV-Row que vai apresentar os thumbs do ANIMES -->
-        <div class="row">
-            <?php echo "<div class='col-12 msg_alert'>";
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']); }
-                    echo "</div>"; ?>
-        </div>
-        <div class="row">
-            <div class="div_list_animes justify-content-evenly">
-                <?php foreach ($this->data['listAnimes'] as $anime) { extract($anime);
-                $tit_anime2 = nl2br(mb_strimwidth($tit_anime,0,150,'...'));
-                echo "<div class='thumb_div text-center'>";?>
-                    <a class="link_sem" href="anime_detalhes.php?id_anime=$id_anime" title="<?=$tit_anime2?>" target="_blank">
-                    <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/anime/<?=$img_mini;?>">
-                    <div class="col-12"><span class="span_nome"><?=$codnome;?></span>
-                    </div></a>
-                </div><?php }
-            echo "</div><hr>";
-            echo $this->data['pagination']; ?>
-        </div>
+    </div>
+    <!-- DIV-Row que vai apresentar os thumbs do ANIMES -->
+    <div class="row">
+        <?php echo "<div class='col-12 msg_alert'>";
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']); }
+                echo "</div>"; ?>
+    </div>
+    <div class="row">
+        <div class="div_list_animes justify-content-evenly">
+            <?php foreach ($this->data['listAnimes'] as $anime) { extract($anime);
+            $tit_anime2 = nl2br(mb_strimwidth($tit_anime,0,150,'...'));
+            echo "<div class='thumb_div text-center'>";?>
+                <a class="link_sem" href="anime_detalhes.php?id_anime=$id_anime" title="<?=$tit_anime2?>" target="_blank">
+                <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/anime/<?=$img_mini;?>">
+                <div class="col-12"><span class="span_nome"><?=$codnome;?></span>
+                </div></a>
+            </div><?php }
+        echo "</div><hr>";
+        echo $this->data['pagination']; ?>
     </div>
 </main>
