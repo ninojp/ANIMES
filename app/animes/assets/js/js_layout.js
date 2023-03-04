@@ -1,5 +1,6 @@
 // JavaScript - Criado no curoso CELKE PHPDelopment modulo layout do administrativo
-
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 //==================================================================================================
 // Início do Dropdown Navbar
 let varNotification=document.querySelector(".notification");
