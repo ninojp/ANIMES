@@ -68,9 +68,9 @@ class ConfigController extends Config
             $this->urlMetodo = $this->slugMetodo(METODO);
             $this->urlParameter = "";
         }
-        echo "Controller: {$this->urlController}<br>";
-        echo "Método: {$this->urlMetodo}<br>";
-        echo "Parametro: {$this->urlParameter}<br>";
+        // echo "Controller: {$this->urlController}<br>";
+        // echo "Método: {$this->urlMetodo}<br>";
+        // echo "Parametro: {$this->urlParameter}<br>";
     }
     /** =========================================================================================
      * Método privado para fazer a limpeza da URL
@@ -102,7 +102,6 @@ class ConfigController extends Config
         $this->urlSlugController = ucwords($this->urlSlugController);
         //Retirar o espaço em branco
         $this->urlSlugController = str_replace(" ","",$this->urlSlugController);
-
         // var_dump($this->urlSlugController);
         return $this->urlSlugController;
     }
@@ -123,15 +122,11 @@ class ConfigController extends Config
      * @return void - instanciar as classes da controller e carreagr o método */
     public function loadPage():void
     {
-
         // echo "Carregou até aqui!";
         $loadPgAdm = new \Src\LoadPageLevel();
         $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
-
         // Teste...
         // $loadPgAdm = new \AdmsSrc\CarregarPgAdm();
         // $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
-        
     }
-
 }

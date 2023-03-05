@@ -73,7 +73,7 @@ body{
     padding: 5px 15px;
     font-size: 17px;
     /* top: 0; */
-    z-index: 1;
+    z-index: 100;
 }
 .navbar_content{
     display: flex;

@@ -37,7 +37,6 @@ class LoadPageLevel
         // var_dump($this->urlController);
         // var_dump($this->urlMetodo);
         // var_dump($this->urlParameter);
-
         $this->searchPage();
     }
     /** ===========================================================================================

@@ -8,6 +8,5 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location:
         <p>CONTACTE O ADMINISTRADOR</p>
         <p>OCOREU ALGUNS ERRO NO CARREGAMENTO DA PAGINA CLICADA</p>
         <p>VERIFIQUE NA LISTA DE ERROS PARA MAIS DETALHES</p>
-        
     </div>
 </main>

@@ -396,6 +396,12 @@ Erro 151.1 - APP/animes/Models/MdListAnimes.php - searchNameAnimes()
 Erro 152 - APP/animes/Models/MdListSeries.php - listSeries()
 Erro 152.1 - APP/animes/Models/MdListSeries.php - searchNameSerie()
 
+Erro 153 - APP/animes/Models/MdListFilmes.php - listFilmes()
+Erro 153.1 - APP/animes/Models/MdListFilmes.php - searchNameFilmes()
+
+Erro 154 - APP/animes/Models/MdListOvas.php - listOvas()
+Erro 154.1 - APP/animes/Models/MdListOvas.php - searchNameOvas()
+
 
 
 

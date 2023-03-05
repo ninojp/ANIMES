@@ -5,23 +5,23 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
 <!-- NAVBAR, barra de navegação do topo da página -->
 <nav class="navbar sticky-top container-fluid">
     <div class="col-2 text-center">
-        <a href="<?= URL; ?>">
+        <a href="<?= CONTROLLER; ?>">
             <img class="logo" src="<?= URL; ?>app/animes/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
     </div>
     <!--------------- DIV - PRINCIPAL DO BLOCO DE MENU collapse ------------->
     <div class="col-10 d-flex justify-content-evenly">
         <!--BLOCO PARA ACESSO RAPIDO DE INSERÇÃO E EXCLUSÃO-->
         <div class="nav-item">
-            <a class="nav-link" href="list-animes">Animes</a>
+            <a class="nav-link" href="<?=URL.'list-animes/index';?>">Animes +</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="list-series">Séries</a>
+            <a class="nav-link" href="<?=URL.'list-series/index';?>">Séries</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="list-filmes">Filmes</a>
+            <a class="nav-link" href="<?=URL.'list-filmes/index';?>">Filmes</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="list-ovas">Ovas</a>
+            <a class="nav-link" href="<?=URL.'list-ovas/index';?>">Ovas</a>
         </div>
         <!-- Menu do botão dropdown ANIMES - Filmes - Ecchi BOTÃO DROPDOWN ----- -->
         <div class="nav-item dropdown">
