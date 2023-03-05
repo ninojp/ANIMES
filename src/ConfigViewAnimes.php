@@ -29,6 +29,8 @@ class ConfigViewAnimes
         if (file_exists('app/' . $this->nameView . '.php')) {
             include 'app/animes/Views/include/head.php';
             include 'app/animes/Views/include/navbar.php';
+            include 'app/animes/Views/include/header.php';
+            include 'app/animes/Views/include/search.php';
             include 'app/'.$this->nameView.'.php';
             // include 'app/animes/Views/include/sidebar.php';
             include 'app/animes/Views/include/footer.php';
