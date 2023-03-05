@@ -13,11 +13,11 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) { header("Locatio
         <div class="row">
             <div class="div_list_animes justify-content-evenly">
                 <?php foreach ($this->data['listSeries'] as $serie) { extract($serie);
-                $s_titulo_serie2 = nl2br(mb_strimwidth($s_titulo_serie,0,150,'...'));
+                $titulo_serie2 = nl2br(mb_strimwidth($titulo_serie,0,50,'...'));
                 echo "<div class='thumb_div text-center'>";?>
-                    <a class="link_sem" href="serie_detalhes.php?id_serie=$id_serie" title="<?=$s_titulo_serie2?>" target="_blank">
+                    <a class="link_sem" href="serie_detalhes.php?id_serie=$id_serie" title="<?=$s_titulo_serie?>" target="_blank">
                     <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/serie/<?=$img_mini;?>">
-                    <div class="col-12"><span class="span_nome"><?=$titulo_serie;?></span>
+                    <div class="col-12"><span class="span_nome"><?=$titulo_serie2;?></span>
                     </div></a>
                 </div><?php }
             echo "</div><hr>";

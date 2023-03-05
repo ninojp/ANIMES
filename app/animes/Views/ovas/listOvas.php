@@ -13,11 +13,11 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) { header("Locatio
         <div class="row">
             <div class="div_list_animes justify-content-evenly">
                 <?php foreach ($this->data['listOvas'] as $ova) { extract($ova);
-                $s_titulo_ova2 = nl2br(mb_strimwidth($s_titulo_ova,0,100,'...'));
+                $titulo_ova2 = nl2br(mb_strimwidth($titulo_ova,0,50,'...'));
                 echo "<div class='thumb_div text-center'>";?>
-                    <a class="link_sem" href="ova_detalhes.php?id_ova=$id_ova" title="<?=$s_titulo_ova2?>" target="_blank">
+                    <a class="link_sem" href="ova_detalhes.php?id_ova=$id_ova" title="<?=$s_titulo_ova?>" target="_blank">
                     <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/ova/<?=$img_mini;?>">
-                    <div class="col-12"><span class="span_nome"><?=$titulo_ova;?></span>
+                    <div class="col-12"><span class="span_nome"><?=$titulo_ova2;?></span>
                     </div></a>
                 </div><?php }
             echo "</div><hr>";

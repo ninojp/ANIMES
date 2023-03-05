@@ -5,7 +5,7 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
 <!-- NAVBAR, barra de navegação do topo da página -->
 <nav class="navbar sticky-top container-fluid">
     <div class="col-2 text-center">
-        <a href="<?= CONTROLLER; ?>">
+        <a href="<?= URL.'list-animes/index'; ?>">
             <img class="logo" src="<?= URL; ?>app/animes/assets/imgs/Logo-Dtudo_102x40.png" alt="Logo Dtudo"></a>
     </div>
     <!--------------- DIV - PRINCIPAL DO BLOCO DE MENU collapse ------------->
