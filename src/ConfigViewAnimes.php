@@ -1,16 +1,11 @@
 <?php
 namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
-
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /*************************************************************************************************
  * Carregar as páginas da View
  * @author NinoJP <ninocriptocoin@gmail.com> - 03/02/2023 */
 class ConfigViewAnimes
 {
-    // Apartir do PHP 8, pode colocar este atributo:$nameView direto dentro do método:__construct()
-    // private string $nameView;
-    // private array|string|null $data
-
     /** ==========================================================================================
      * Receber o endereço da VIEW e os dados.
      * @param string $nameView Endereço da VIEW que deve ser carregada

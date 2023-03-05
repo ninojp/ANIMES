@@ -1,6 +1,6 @@
 <?php
 namespace Animes\Models;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Classe Models, Recebe e envia as requisições(Dados) para a Controller
  * @author NinoJP <ninocriptocoin@gmail.com> - 04/02/2023 */
 class MdListAnimes
@@ -59,10 +59,10 @@ class MdListAnimes
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
         //-------------------------------------------------------------------------------------
-        $listUsers = new \Animes\Models\helper\MdRead();
-        $listUsers->fullRead("SELECT id_anime, codnome, tit_anime, img_mini FROM anime ORDER BY codnome ASC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        $listAnimes = new \Animes\Models\helper\MdRead();
+        $listAnimes->fullRead("SELECT id_anime, codnome, tit_anime, img_mini FROM anime ORDER BY codnome ASC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
-        $this->resultBd = $listUsers->getResult();
+        $this->resultBd = $listAnimes->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
@@ -103,7 +103,7 @@ class MdListAnimes
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
-        $pagination->pagination("SELECT COUNT(id_anime) AS num_result FROM anime WHERE codnome LIKE :search_name", "search_name={$this->searchNameValue}");
+        $pagination->pagination("SELECT COUNT(id_anime) AS num_result FROM anime WHERE tit_anime LIKE :search_name", "search_name={$this->searchNameValue}");
         //recebe o resultado do método:getResult() e atribui para:$this->resultPg
         $this->resultPg = $pagination->getResult();
         // var_dump($this->resultPg);
@@ -112,7 +112,7 @@ class MdListAnimes
 
         $listUsersNameEmail = new \Animes\Models\helper\MdRead();
         $listUsersNameEmail->fullRead("SELECT id_anime, codnome, tit_anime, img_mini 
-        FROM anime WHERE codnome LIKE :search_name ORDER BY codnome ASC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+        FROM anime WHERE tit_anime LIKE :search_name ORDER BY codnome ASC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
         $this->resultBd = $listUsersNameEmail->getResult();
         if ($this->resultBd) {
             // var_dump($this->resultBd);

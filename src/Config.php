@@ -1,6 +1,6 @@
 <?php
 namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 
 /** Classe abstract(ABSTRATA) não pode ser instânciada, somente herdada.
  * Configurações(CONSTANTES) básicas da PARTE ADMINISTRATVA do site ANIME.
@@ -26,7 +26,7 @@ abstract class Config
 
         define('METODO','index');
         //Página de erro (em caso de erro de carregamento)
-        define('CONTROLLERERRO','list-animes');
+        define('CONTROLLERERRO','erro-animes');
 
         // E-mail definido como e-mail administrativo (depois alterar)
         define('EMAILADM', 'meu.sem@gmail.com');

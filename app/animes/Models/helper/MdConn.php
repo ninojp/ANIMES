@@ -1,6 +1,6 @@
 <?php
 namespace Animes\Models\helper;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 use PDO;
 use PDOException;
 /** Classe ABSTRACT(Models), para fazer a conexão com o DB(Banco de Dados).

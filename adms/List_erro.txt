@@ -390,7 +390,11 @@ Erro 150.1 - APP/SRC/LoadPageLevel.php - loadMetodo()
 Erro 150.2 - APP/SRC/LoadPageLevel.php - verifyLogin()
 Erro 150.3 - APP/SRC/LoadPageLevel.php - searchLevelPage()
 
-Erro 151 - APP/animes/Models/MdListAnimes.php - viewAnimes()
+Erro 151 - APP/animes/Models/MdListAnimes.php - listAnimes()
+Erro 151.1 - APP/animes/Models/MdListAnimes.php - searchNameAnimes()
+
+Erro 152 - APP/animes/Models/MdListSeries.php - listSeries()
+Erro 152.1 - APP/animes/Models/MdListSeries.php - searchNameSerie()
 
 
 

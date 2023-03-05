@@ -1,9 +1,9 @@
 <?php
 namespace Animes\Controllers;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Classe controller, para gerenciar as informações entre a Views e a Models
  * @author NinoJP <ninocriptocoin@gmail.com> - 04/02/2023 */
-class Erro
+class ErroAnimes
 {
     /** @var array|string|null - Recebe os dados que devem ser enviados para View     */
     private array|string|null $data;
@@ -15,7 +15,7 @@ class Erro
     {
         $this->data = null;
 
-        $loadView = new \Src\ConfigViewAnimes("animes/Views/erro/erro", $this->data);
+        $loadView = new \Src\ConfigViewAnimes("animes/Views/erro/erroAnimes", $this->data);
         $loadView->loadViewAnimes();
     }
 }

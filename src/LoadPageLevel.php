@@ -1,6 +1,6 @@
 <?php
 namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Verificar se existe a classe e Carregar a CONTROLLER
  * @author Nino JP <meu.sem@gmail.com>  */
 class LoadPageLevel
@@ -44,7 +44,7 @@ class LoadPageLevel
      * @return void     */
     private function searchPage():void
     {
-        $searchPage = new \Animes\Models\helper\MdRead();
+        $searchPage = new \Adms\Models\helper\AdmsRead();
         $searchPage->fullRead("SELECT pag.id_page, pag.public_page, typ.type_page FROM adms_page AS pag INNER JOIN adms_type_page AS typ ON typ.id_type_page=pag.id_type_page
         WHERE pag.controller_page=:controller_page AND pag.metodo_page =:metodo_page
         AND pag.id_sits_page=:id_sits_page LIMIT :limit",

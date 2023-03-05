@@ -1,6 +1,6 @@
 <?php
 namespace Src;
-if(!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')){ header("Location: https://localhost/animes/"); }
+if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Recebe a URL e manipula - Carregar a CONTROLLER
  * @author NinoJP <meu.sem@gmail.com> - 07/02/2023 
  * DOCUMENTAÇÃO - Manual
@@ -68,9 +68,9 @@ class ConfigController extends Config
             $this->urlMetodo = $this->slugMetodo(METODO);
             $this->urlParameter = "";
         }
-        // echo "Controller: {$this->urlController}<br>";
-        // echo "Método: {$this->urlMetodo}<br>";
-        // echo "Parametro: {$this->urlParameter}<br>";
+        echo "Controller: {$this->urlController}<br>";
+        echo "Método: {$this->urlMetodo}<br>";
+        echo "Parametro: {$this->urlParameter}<br>";
     }
     /** =========================================================================================
      * Método privado para fazer a limpeza da URL

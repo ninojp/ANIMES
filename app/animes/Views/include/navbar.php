@@ -1,5 +1,5 @@
 <?php
-if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
+if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
     header("Location: https://localhost/animes/");
 } ?>
 <!-- NAVBAR, barra de navegação do topo da página -->
@@ -12,19 +12,16 @@ if (!defined('$2y!10#OaHjLtR20hiD23TKNv(0$2)TkYur)$23$(zF')) {
     <div class="col-10 d-flex justify-content-evenly">
         <!--BLOCO PARA ACESSO RAPIDO DE INSERÇÃO E EXCLUSÃO-->
         <div class="nav-item">
-            <a class="nav-link" href="animacao.php">Animes</a>
+            <a class="nav-link" href="list-animes">Animes</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="series.php">Séries</a>
+            <a class="nav-link" href="list-series">Séries</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="filmes.php">Filmes</a>
+            <a class="nav-link" href="list-filmes">Filmes</a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="ovas.php">Ovas</a>
-        </div>
-        <div class="nav-item">
-            <a class="nav-link" href="especiais.php">Especiais</a>
+            <a class="nav-link" href="list-ovas">Ovas</a>
         </div>
         <!-- Menu do botão dropdown ANIMES - Filmes - Ecchi BOTÃO DROPDOWN ----- -->
         <div class="nav-item dropdown">
