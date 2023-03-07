@@ -16,7 +16,7 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) { header("Locatio
                 $titulo_serie2 = nl2br(mb_strimwidth($titulo_serie,0,50,'...'));
                 echo "<div class='thumb_div text-center'>";?>
                     <a class="link_sem" href="serie_detalhes.php?id_serie=$id_serie" title="<?=$s_titulo_serie?>" target="_blank">
-                    <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/serie/<?=$img_mini;?>">
+                    <img class="thumb_img" src="<?=URLADM;?>app/site/assets/imgs/serie/<?=$img_mini;?>">
                     <div class="col-12"><span class="span_nome"><?=$titulo_serie2;?></span>
                     </div></a>
                 </div><?php }

@@ -16,7 +16,7 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) { header("Locatio
                 $titulo_filme2 = nl2br(mb_strimwidth($titulo_filme,0,50,'...'));
                 echo "<div class='thumb_div text-center'>";?>
                     <a class="link_sem" href="filme_detalhes.php?id_filme=$id_filme" title="<?=$s_titulo_filme?>" target="_blank">
-                    <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/filme/<?=$img_mini;?>">
+                    <img class="thumb_img" src="<?=URLADM;?>app/site/assets/imgs/filme/<?=$img_mini;?>">
                     <div class="col-12"><span class="span_nome"><?=$titulo_filme2;?></span>
                     </div></a>
                 </div><?php }

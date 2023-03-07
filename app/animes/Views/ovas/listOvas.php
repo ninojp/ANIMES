@@ -16,7 +16,7 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) { header("Locatio
                 $titulo_ova2 = nl2br(mb_strimwidth($titulo_ova,0,50,'...'));
                 echo "<div class='thumb_div text-center'>";?>
                     <a class="link_sem" href="ova_detalhes.php?id_ova=$id_ova" title="<?=$s_titulo_ova?>" target="_blank">
-                    <img class="thumb_img" src="<?=URL;?>app/animes/assets/imgs/ova/<?=$img_mini;?>">
+                    <img class="thumb_img" src="<?=URLADM;?>app/site/assets/imgs/ova/<?=$img_mini;?>">
                     <div class="col-12"><span class="span_nome"><?=$titulo_ova2;?></span>
                     </div></a>
                 </div><?php }
