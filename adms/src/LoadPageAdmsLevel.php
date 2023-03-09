@@ -36,9 +36,9 @@ class LoadPageAdmsLevel
         $this->urlController = $urlController;
         $this->urlMetodo = $urlMetodo;
         $this->urlParameter = $urlParameter;
-        // var_dump($this->urlController);
-        // var_dump($this->urlMetodo);
-        // var_dump($this->urlParameter);
+        var_dump($this->urlController);
+        var_dump($this->urlMetodo);
+        var_dump($this->urlParameter);
 
         $this->searchPage();
     }
@@ -54,7 +54,7 @@ class LoadPageAdmsLevel
         $this->resultPage = $searchPage->getResult();
 
         if($this->resultPage){
-            // var_dump($this->resultPage);
+            var_dump($this->resultPage);
             if($this->resultPage[0]['public_page'] == 1){
                 // echo "Página PUBLICA! <br>";
                 // $this->classLoad = "\\Adms\\Controllers\\" . $this->urlController;
@@ -80,7 +80,9 @@ class LoadPageAdmsLevel
     private function loadMetodo():void
     {
         $classLoad = new $this->classLoad;
+        // $classLoad = $this->classLoad;
         // var_dump($classLoad);
+        // die ("aqui!");
         if(method_exists($classLoad, $this->urlMetodo)){
             //passando a parametro recebido no atributo:$this->urlParameter
             $classLoad->{$this->urlMetodo}($this->urlParameter);
@@ -112,6 +114,8 @@ class LoadPageAdmsLevel
         $this->resultLevelPage = $searchLevelPage->getResult();
         if($this->resultLevelPage){
             $this->classLoad = "\\".$this->resultPage[0]['type_page']."\\Controllers\\".$this->urlController;
+            // var_dump($this->urlController);
+            // echo "Agora vai carregar o metodo...";
             $this->loadMetodo();
         } else {
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 033.3! Necessário permissão para acessar a página!</p>";

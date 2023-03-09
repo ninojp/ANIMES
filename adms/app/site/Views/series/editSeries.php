@@ -24,35 +24,65 @@ if(isset($this->data['form'][0])){
             <input class="form-control" type="hidden" name="id_serie" id="id_serie" value="<?php if(isset($valorForm['id_serie'])){echo $valorForm['id_serie'];} ?>">
             
             <div class="pt-3 text-center">
-                <?php if ((!empty($valorForm['img_mini'])) and (file_exists("app/site/assets/imgs/{$valorForm['img_mini']}"))) {
-                        echo "<img src='".URLADM."app/site/assets/imgs/{$valorForm['img_mini']}' height='300'><br><br>";
+                <?php if ((!empty($valorForm['img_mini'])) and (file_exists("app/site/assets/imgs/serie/{$valorForm['img_mini']}"))) {
+                        echo "<img src='".URLADM."app/site/assets/imgs/serie/{$valorForm['img_mini']}' height='300'><br><br>";
                     } else {
                         echo "<img src='".URLADM."app/site/assets/imgs/TI_link.png' height='300'><br><br>";
                     } ?>
             </div>
             <div class="row_edit">
-                <label class="" for="adm_user">Alterar Usuário:</label>
+                <label class="" for="titulo_serie">Alterar Título:</label>
                 <i class="fa-solid fa-file-signature"></i>
-                <input class="form-control" type="text" name="adm_user" id="adm_user" value="<?php if(isset($valorForm['adm_user'])){echo $valorForm['adm_user'];} ?>" placeholder="Alterar o nome do Usuário" required>
+                <input class="form-control" type="text" name="titulo_serie" id="titulo_serie" value="<?php if(isset($valorForm['titulo_serie'])){echo $valorForm['titulo_serie'];} ?>" placeholder="Alterar o Título da Série" required>
             </div>
             <div class="row_edit">
-                <label class="" for="adm_email">Alterar Email:</label>
+                <label class="" for="s_titulo_serie">Alterar SubTítulo:</label>
+                <i class="fa-solid fa-file-signature"></i>
+                <input class="form-control" type="text" name="s_titulo_serie" id="s_titulo_serie" value="<?php if(isset($valorForm['s_titulo_serie'])){echo $valorForm['s_titulo_serie'];} ?>" placeholder="Alterar o SubTítulo da Série" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="enredo_serie">Alterar Enredo:</label>
                 <i class="fa-solid fa-envelope"></i>
-                <input class="form-control" type="email" name="adm_email" id="adm_email" value="<?php if(isset($valorForm['adm_email'])){echo $valorForm['adm_email'];} ?>" placeholder="Edite o E-mail" required>
+                <input class="form-control" type="text" name="enredo_serie" id="enredo_serie" value="<?php if(isset($valorForm['enredo_serie'])){echo $valorForm['enredo_serie'];} ?>" placeholder="Edite o Enredo da Serie" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="exib_inicio">Data de Inicio da exibição:</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="exib_inicio" id="exib_inicio" value="<?php if(isset($valorForm['exib_inicio'])){echo $valorForm['exib_inicio'];} ?>" placeholder="Inicio da Exibição da Serie" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="exib_fim">Data do fim da exibição:</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="exib_fim" id="exib_fim" value="<?php if(isset($valorForm['exib_fim'])){echo $valorForm['exib_fim'];} ?>" placeholder="Fim da Exibição da Serie" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="num_ep_serie">Numero de Episódios:</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="num_ep_serie" id="num_ep_serie" value="<?php if(isset($valorForm['num_ep_serie'])){echo $valorForm['num_ep_serie'];} ?>" placeholder="Numero de Episódios" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="dura_ep_serie">Duração de cada Episódio:</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="dura_ep_serie" id="dura_ep_serie" value="<?php if(isset($valorForm['dura_ep_serie'])){echo $valorForm['dura_ep_serie'];} ?>" placeholder="Duração de cada Episódio" required>
+            </div>
+            <div class="row_edit">
+                <label class="" for="trailer">Link do Trailer:</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="trailer" id="trailer" value="<?php if(isset($valorForm['trailer'])){echo $valorForm['trailer'];} ?>" placeholder="Fim da Exibição da Serie" required>
             </div>
             <div class="row_input">
                 <i class="fa-solid fa-hand-pointer"></i>
                 <div class="select_input">
-                    <label class="mx-3" for="id_sits_user">Alterar Situação: </label>
-                    <select name="id_sits_user" id="id_sits_user">
+                    <label class="mx-3" for="anime_id">Anime Relacionado:</label>
+                    <select name="anime_id" id="anime_id">
                         <option value="">Selecione</option>
-                        <?php foreach($this->data['select']['sit'] as $sit){
-                            extract($sit);
+                        <?php foreach($this->data['select']['ani'] as $ani){
+                            extract($ani);
                             //verifica se existe, E SE É IGUAL ao valor do id
-                            if((isset($valorForm['id_sits_user'])) and ($valorForm['id_sits_user'] == $id_sits_user)){
-                                echo "<option value='$id_sits_user' selected>$name_sits_user</option>";
+                            if((isset($valorForm['anime_id'])) and ($valorForm['anime_id'] == $id_anime)){
+                                echo "<option value='$id_anime' selected>$codnome</option>";
                             } else {
-                                echo "<option value='$id_sits_user'>$name_sits_user</option>";
+                                echo "<option value='$id_anime'>$codnome</option>";
                             } } ?>
                     </select>
                 </div>
@@ -60,34 +90,29 @@ if(isset($this->data['form'][0])){
             <div class="row_input">
                 <i class="fa-solid fa-hand-pointer"></i>
                 <div class="select_input">
-                    <label class="mx-3" for="id_access_level">Nivel de Acesso:</label>
-                    <select name="id_access_level" id="id_access_level">
+                    <label class="mx-3" for="cat_anime_id">Anime Categoria:</label>
+                    <select name="cat_anime_id" id="cat_anime_id">
                         <option value="">Selecione</option>
-                        <?php foreach($this->data['select']['lev'] as $lev){
-                            extract($lev);
-                            if((isset($valorForm['id_access_level'])) and ($valorForm['id_access_level'] == $id_access_level)){
-                                echo "<option value='$id_access_level' selected>$access_level</option>";
+                        <?php foreach($this->data['select']['cat_ani'] as $cat_ani){
+                            extract($cat_ani);
+                            if((isset($valorForm['cat_anime_id'])) and ($valorForm['cat_anime_id'] == $id_cat_anime)){
+                                echo "<option value='$id_cat_anime' selected>$cat_anime</option>";
                             } else {
-                                echo "<option value='$id_access_level'>$access_level</option>";
+                                echo "<option value='$id_cat_anime'>$cat_anime</option>";
                             } } ?>
                     </select>
                 </div>
             </div>
             <div class="button_center">
-                <button class="btn btn-primary" type="submit" name="SendEditUser" value="Salvar">Salvar Mudanças</button><br>
+                <button class="btn btn-primary" type="submit" name="SendEditSeries" value="Salvar">Salvar Mudanças</button><br>
             </div>
-            <div class="col-12 text-center p-4">
-                <?php if($this->data['button']['list_user']) { ?>
-                    <a class="btn btn-sm btn-outline-success mx-2" href="<?= URLADM; ?>list-user/index"><i class="fa-solid fa-list"></i> Listar</a> <?php }
-                if($this->data['button']['view_user']) { ?>
-                    <a class="btn btn-sm btn-outline-warning mx-2" href="<?= URLADM; ?>view-user/index/<?= $valorForm['id_user']; ?>"><i class='<i class="fa-solid fa-eye"></i>'></i> Ver</a> <?php }
-                if($this->data['button']['edit_user_pass']) { ?>
-                    <a class="btn btn-sm btn-outline-info mx-2" href="<?= URLADM; ?>edit-user-pass/index/<?= $valorForm['id_user']; ?>"><i class="fa-solid fa-unlock-keyhole"></i> Edit Senha</a><?php }
-                if($this->data['button']['edit_user_image']) { ?>
-                    <a class="btn btn-sm btn-outline-primary mx-4" href="<?= URLADM; ?>edit-user-image/index/<?= $valorForm['id_user']; ?>"><i class="fa-solid fa-image"></i> Edit Imagem</a> <?php }
-                if($this->data['button']['delete_user']) { ?>
-                    <a class="btn btn-sm btn-outline-danger mx-2" href="<?= URLADM; ?>delete-user/index/<?= $valorForm['id_user']; ?>" onclick="return confirm('Tem certeza que deseja excluir o registro?')"><i class='fa-solid fa-trash-can'></i> Apagar</a> <?php } ?>
-            </div>
+            <!-- // if(!empty($this->data['button']['list_user']) OR ($this->data['button']['delete_user'])) {
+                //echo "<div class='col-12 text-center p-4'>";
+                //if(!empty($this->data['button']['list_user'])) { 
+                    //echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."list-user/index'><i class='fa-solid fa-list'></i> Listar</a>"; }
+                //if(!empty($this->data['button']['delete_user'])) { 
+                    //echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-user/index/{$valorForm['id_user']}' onclick='return confirm('Tem certeza que deseja excluir o registro?')'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+            //echo "</div>"; } ?> -->
         </form>
     </div>
 </div>

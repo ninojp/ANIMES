@@ -28,7 +28,7 @@ class MdEditSeries
         $this->id_serie = $id_serie;
         $viewSeries = new \Adms\Models\helper\AdmsRead();
         $viewSeries->fullRead("SELECT ser.id_serie, ser.titulo_serie, ser.s_titulo_serie, ser.enredo_serie, ser.exib_inicio, ser.exib_fim, ser.num_ep_serie, ser.dura_ep_serie, ser.trailer, ser.anime_id, ser.cat_anime_id, ser.genero_id, ser.down_id, ser.online_id
-        FROM serie AS ser INNER JOIN adms_access_level AS lev ON lev.id_access_level=ser.id_access_level INNER JOIN down ON id_down=ser.down_id WHERE ser.id_serie=:id_serie AND lev.order_level >:order_level LIMIT :limit", "id_serie={$this->id_serie}&order_level=".$_SESSION['order_level']."&limit=1");
+        FROM serie AS ser INNER JOIN adms_access_level AS lev ON lev.id_access_level=ser.id_access_level INNER JOIN down ON id_down=ser.down_id INNER JOIN anime ON id_anime=ser.anime_id WHERE ser.id_serie=:id_serie AND lev.order_level >:order_level LIMIT :limit", "id_serie={$this->id_serie}&order_level=".$_SESSION['order_level']."&limit=1");
 
         $this->resultBd = $viewSeries->getResult();
         if($this->resultBd){
