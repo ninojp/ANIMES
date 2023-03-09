@@ -2,8 +2,9 @@ Erro 000 - Erro genérico, CONSTANTE defina na index está incoreta
 
 Erro 001 - Models/helper/MdConn.php, connectDb()
 
-Erro 002 - ADMS/SRC/ConfigViewAdms.php,  loadViewAdms()
+Erro 002 - ADMS/SRC/ConfigViewAdms.php, loadViewAdms()
 Erro 002.1 - ADMS/SRC/ConfigViewAdms.php, loadViewLoginAdms()
+Erro 002.2 - ADMS/SRC/ConfigViewAdms.php, loadViewSite()
 
 Erro 003 -  ADMS/SRC/------------------.php, --------()
 
@@ -401,6 +402,12 @@ Erro 153.1 - APP/animes/Models/MdListFilmes.php - searchNameFilmes()
 
 Erro 154 - APP/animes/Models/MdListOvas.php - listOvas()
 Erro 154.1 - APP/animes/Models/MdListOvas.php - searchNameOvas()
+
+---------------------------- ADM do Site Animes --------------------------------
+Erro 155 - ADMS/app/adms/Models/MdEditSeries.php - viewSeries()
+Erro 155.1 - ADMS/app/adms/Models/MdEditSeries.php - editSeries()
+
+Erro 156 - ADMS/app/adms/Controllers/EditSeries.php - loadEditSeries()
 
 
 

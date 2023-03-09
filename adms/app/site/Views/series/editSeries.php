@@ -24,10 +24,10 @@ if(isset($this->data['form'][0])){
             <input class="form-control" type="hidden" name="id_serie" id="id_serie" value="<?php if(isset($valorForm['id_serie'])){echo $valorForm['id_serie'];} ?>">
             
             <div class="pt-3 text-center">
-                <?php if ((!empty($valorForm['adm_img'])) and (file_exists("app/adms/assets/imgs/users/{$valorForm['id_user']}/{$valorForm['adm_img']}"))) {
-                        echo "<img src='" . URLADM . "app/adms/assets/imgs/users/{$valorForm['id_user']}/{$valorForm['adm_img']}' width='300' height='200'><br><br>";
+                <?php if ((!empty($valorForm['img_mini'])) and (file_exists("app/site/assets/imgs/{$valorForm['img_mini']}"))) {
+                        echo "<img src='".URLADM."app/site/assets/imgs/{$valorForm['img_mini']}' height='300'><br><br>";
                     } else {
-                        echo "<img src='" . URLADM . "app/adms/assets/imgs/users/TI_link.png' width='300' height='200'><br><br>";
+                        echo "<img src='".URLADM."app/site/assets/imgs/TI_link.png' height='300'><br><br>";
                     } ?>
             </div>
             <div class="row_edit">
