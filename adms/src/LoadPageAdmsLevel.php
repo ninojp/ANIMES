@@ -36,10 +36,9 @@ class LoadPageAdmsLevel
         $this->urlController = $urlController;
         $this->urlMetodo = $urlMetodo;
         $this->urlParameter = $urlParameter;
-        var_dump($this->urlController);
-        var_dump($this->urlMetodo);
-        var_dump($this->urlParameter);
-
+        // var_dump($this->urlController);
+        // var_dump($this->urlMetodo);
+        // var_dump($this->urlParameter);
         $this->searchPage();
     }
     /** ===========================================================================================
@@ -54,7 +53,7 @@ class LoadPageAdmsLevel
         $this->resultPage = $searchPage->getResult();
 
         if($this->resultPage){
-            var_dump($this->resultPage);
+            // var_dump($this->resultPage);
             if($this->resultPage[0]['public_page'] == 1){
                 // echo "Página PUBLICA! <br>";
                 // $this->classLoad = "\\Adms\\Controllers\\" . $this->urlController;
