@@ -3,7 +3,7 @@ namespace Animes\Controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Classe controller, para gerenciar as informações entre a Views e a Models
  * @author NinoJP <ninocriptocoin@gmail.com> - 03/02/2023 */
-class ListAnimes
+class ListAnimesAdm
 {
     /** @var array|string|null - Define que o atributo:$data pode receber(da view) os dados(parametros) de diversos tipos, q devem ser enviados novamente para serem exibidos pela view */
     private array|string|null $data;
@@ -28,7 +28,7 @@ class ListAnimes
         // Recebe os dados da pesquisa via URL
         $this->searchName = filter_input(INPUT_GET, 'search_name', FILTER_DEFAULT);
 
-        $listAnimes = new \Animes\Models\MdListAnimes();
+        $listAnimes = new \Animes\Models\MdListAnimesAdm();
 
         //verifica se foi clicado no botão pesquisar, se foi executa o codigo abaixo
         if (!empty($this->dataForm['SendSearchAnime'])) {

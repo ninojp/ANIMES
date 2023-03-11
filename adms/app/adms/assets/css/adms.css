@@ -717,7 +717,7 @@ select.input_form:focus{
 }
 .pagination a{
     float: left;
-    color: var(--azulScuro);
+    color: var(--azulClaro);
     text-decoration: none;
     padding: 8px 14px;
     transition: background-color .3s;
@@ -730,7 +730,47 @@ select.input_form:focus{
     background-color: var(--gelo);
 }
 /* FIM da paginação */
-
+/******************************* DIVs E IMAGENS DO LISTAR_ANIMES ********************************/
+.div_list_animes{
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+.thumb_div {
+    max-height: 320px;
+    max-width: 195px;
+    margin: 2rem 0rem 0rem 1rem;
+}
+.thumb_img {
+    height:270px;
+    width:190px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255,1.00);
+}
+.thumb_img:hover{
+    box-shadow: 0px 0px 10px #ffd700;
+}
+.thumb_div:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+}
+.span_nome {
+    position: relative;
+    top: -23px; 
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.8);
+    padding: 0rem 0.5rem 0rem 0.5rem;
+}
+.link_sem {
+    text-decoration: none;
+}
+.fonte_small {
+    font-weight: 400;
+    font-size: 14pt;
+}
 /* ============================================================================================== */
 /* Definições gerais dos BOTÕES *******************************************************************/
 .btn_primary{

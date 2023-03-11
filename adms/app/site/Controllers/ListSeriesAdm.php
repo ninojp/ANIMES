@@ -1,8 +1,8 @@
 <?php
-namespace Animes\Controllers;
+namespace AdmsSit\Controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** @author NinoJP  - 05/03/2023 */
-class listSeries
+class listSeriesAdm
 {
     private array|string|null $data;
     private array|null $dataForm;
@@ -15,7 +15,7 @@ class listSeries
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $this->searchName = filter_input(INPUT_GET, 'search_name', FILTER_DEFAULT);
 
-        $listSeries = new \Animes\Models\MdListSeries();
+        $listSeries = new \AdmsSit\Models\MdListSeriesAdm();
 
         if (!empty($this->dataForm['SendSearchAnime'])) {
         $this->page = 1;
@@ -34,7 +34,19 @@ class listSeries
             $this->data['listSeries'] = [];
             $this->data['pagination'] = "";
         }
-        $loadView = new \Src\ConfigViewAnimes("animes/Views/series/listSeries", $this->data);
-        $loadView->loadViewAnimes();
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        // $button = ['list_user' => ['menu_controller' => 'list-user', 'menu_metodo' => 'index'], 
+        // 'view_user' => ['menu_controller' => 'view-user', 'menu_metodo' => 'index'],
+        // 'edit_user_pass' => ['menu_controller' => 'edit-user-pass', 'menu_metodo' => 'index'],
+        // 'edit_user_image' => ['menu_controller' => 'edit-user-image', 'menu_metodo' => 'index'],
+        // 'delete_user' => ['menu_controller' => 'delete-user', 'menu_metodo' => 'index']];
+        // $listButton = new \Adms\Models\helper\AdmsButton();
+        // $this->data['button'] = $listButton->buttonPermission($button);
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        $this->data['sidebarActive'] = "list-series-adm";
+
+        $loadView = new \AdmsSrc\ConfigViewAdms("site/Views/series/listSeriesAdm", $this->data);
+        $loadView->loadViewSite();
     }
 }

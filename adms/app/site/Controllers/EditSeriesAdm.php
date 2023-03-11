@@ -4,7 +4,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); }
 /** NinoJP - 08/03/2023 */
-class EditSeries
+class EditSeriesAdm
 {
     private array|string|null $data = [];
     private array|null $dataForm;
@@ -15,7 +15,7 @@ class EditSeries
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if ((!empty($id_serie)) and (empty($this->dataForm['SendEditSeries']))) {
             $this->id_serie = (int) $id_serie;
-            $viewSeries = new \AdmsSit\Models\MdEditSeries();
+            $viewSeries = new \AdmsSit\Models\MdEditSeriesAdm();
             $viewSeries->viewSeries($this->id_serie);
            if($viewSeries->getResult()){
                 $this->data['form'] = $viewSeries->getResultBd();
@@ -31,7 +31,7 @@ class EditSeries
     /** ========================================================================================== */
     private function loadViewEditSeries(): void
     {
-        $listSelect = new \AdmsSit\Models\MdEditSeries();
+        $listSelect = new \AdmsSit\Models\MdEditSeriesAdm();
         $this->data['select'] = $listSelect->listSelect();
 
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
@@ -54,7 +54,7 @@ class EditSeries
     {
         if(!empty($this->dataForm['SendEditSeries'])){
             unset($this->dataForm['SendEditSeries']);
-            $loadEditSeries = new \AdmsSit\Models\MdEditSeries();
+            $loadEditSeries = new \AdmsSit\Models\MdEditSeriesAdm();
             $loadEditSeries->editSeries($this->dataForm);
             if($loadEditSeries->getResult()){
                 $urlRedirect = URLADM."edit-series/index/".$this->dataForm['id_serie'];

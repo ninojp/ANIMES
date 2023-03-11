@@ -404,10 +404,13 @@ Erro 154 - APP/animes/Models/MdListOvas.php - listOvas()
 Erro 154.1 - APP/animes/Models/MdListOvas.php - searchNameOvas()
 
 ---------------------------- ADM do Site Animes --------------------------------
-Erro 155 - ADMS/app/adms/Models/MdEditSeries.php - viewSeries()
-Erro 155.1 - ADMS/app/adms/Models/MdEditSeries.php - editSeries()
+Erro 155 - ADMS/app/site/Models/MdEditSeriesAdm.php - viewSeries()
+Erro 155.1 - ADMS/app/site/Models/MdEditSeriesAdm.php - editSeries()
 
-Erro 156 - ADMS/app/adms/Controllers/EditSeries.php - loadEditSeries()
+Erro 156 - ADMS/app/site/Controllers/EditSeriesAdm.php - loadEditSeries()
+
+Erro 157 - ADMS/app/site/Models/MdlistSeriesAdm.php - listSeries()
+Erro 157.1 - ADMS/app/site/Models/MdlistSeriesAdm.php - searchNameSerie()
 
 
 
