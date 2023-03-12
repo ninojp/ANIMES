@@ -39,50 +39,24 @@ class MdEditSeriesAdm
         }
     }
     /** ========================================================================================== */
-    // public function update(array $data = null):void
-    // {
-    //     $this->data = $data;
-    //     $valEmptyField = new \Adms\Models\helper\AdmsValEmptyField();
-    //     $valEmptyField->valField($this->data);
-    //     if ($valEmptyField->getResult()) {
-    //         $this->valInput();
-    //     } else {
-    //         $this->result = false;
-    //     }
-    // }
-    /** ========================================================================================== */
-    // private function valInput(): void
-    // {
-    //     $valEmail = new \Adms\Models\helper\AdmsValEmail();
-    //     $valEmail->validateEmail($this->data['adm_email']);
-    //     $valEmailSingle = new \Adms\Models\helper\AdmsValEmailSingle();
-    //     $valEmailSingle->validateEmailSingle($this->data['adm_email'], true, $this->data['id_serie']);
-    //     $valUserSingle = new \Adms\Models\helper\AdmsValUserSingle();
-    //     $valUserSingle->validateUserSingle($this->data['adm_user'], true, $this->data['id_serie']);
-    //     if (($valEmail->getResult()) and ($valEmailSingle->getResult()) and ($valUserSingle->getResult())) {
-    //         $this->edit();
-    //     } else {
-    //         $this->result = false;
-    //     }
-    // }
-    /** =============================================================================================
-     * @return void     */
     public function editSeries(array $data = null):void
     {
         $this->data = $data;
+        var_dump($this->data);
         $this->data['modified'] = date("Y-m-d H:i:s");
-        $upUser = new \Adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("serie", $this->data, "WHERE id_serie=:id_serie", "id_serie={$this->data['id_serie']}");
-        if($upUser->getResult()){
+        $updateSerie = new \Adms\Models\helper\AdmsUpdate();
+        $updateSerie->exeUpdate("serie", $this->data, "WHERE id_serie=:id_serie", "id_serie={$this->data['id_serie']}");
+        $updateSerie->exeUpdate("down", $this->data, "WHERE id_down=:down_id", "down_id={$this->data['down_id']}");
+
+        if($updateSerie->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Registro Editado com sucesso</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 155.1! Não foi possível Editar o usuário</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 155.1! Não foi possível Editar o Registro</p>";
             $this->result = false;
         }
     }
-    /** ===========================================================================================
-     * @return array     */
+    /** ======================================================================================== */
     public function listSelect():array
     {
         $list = new \Adms\Models\helper\AdmsRead();
@@ -92,7 +66,10 @@ class MdEditSeriesAdm
         $list->fullRead("SELECT id_cat_anime, cat_anime FROM anime_categoria ORDER BY cat_anime ASC");
         $registry['cat_ani'] = $list->getResult();
 
-        $this->listRegistryAdd = ['ani' => $registry['ani'], 'cat_ani' => $registry['cat_ani']];
+        $list->fullRead("SELECT id_down, link_down, link_down_desc, link_online, link_online_desc, link_torrent, link_torrent_desc FROM down ");
+        $registry['down'] = $list->getResult();
+
+        $this->listRegistryAdd = ['ani' => $registry['ani'], 'cat_ani' => $registry['cat_ani'], 'down' => $registry['down']];
         // var_dump($this->listRegistryAdd);
 
         return $this->listRegistryAdd;

@@ -8,7 +8,7 @@ if(isset($this->data['form'])){
 //na posição [0] e quando os dados vem do banco de dados
 if(isset($this->data['form'][0])){
     $valorForm = $this->data['form'][0];
-} // var_dump($this->data['form'][0]); ?>
+} //var_dump($this->data['form'][0]); ?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
@@ -22,6 +22,7 @@ if(isset($this->data['form'][0])){
         <form class="form_adms" action="" method="POST" id="form-edit-series">
             <!-- input oculto pra enviar o id, via post -->
             <input class="form-control" type="hidden" name="id_serie" id="id_serie" value="<?php if(isset($valorForm['id_serie'])){echo $valorForm['id_serie'];} ?>">
+            <input class="form-control" type="hidden" name="down_id" id="down_id" value="<?php if(isset($valorForm['down_id'])){echo $valorForm['down_id'];} ?>">
             
             <div class="pt-3 text-center">
                 <?php if ((!empty($valorForm['img_mini'])) and (file_exists("app/site/assets/imgs/serie/{$valorForm['img_mini']}"))) {
@@ -52,7 +53,7 @@ if(isset($this->data['form'][0])){
             </div>
             <div class="row_edit">
                 <label class="" for="exib_fim">Data do fim da exibição:</label>
-                <i class="fa-solid fa-calendar-days"></i>
+                <i class="fa-regular fa-calendar-days"></i>
                 <input class="form-control" type="text" name="exib_fim" id="exib_fim" value="<?php if(isset($valorForm['exib_fim'])){echo $valorForm['exib_fim'];} ?>" placeholder="Fim da Exibição da Serie" required>
             </div>
             <div class="row_edit">
@@ -69,6 +70,16 @@ if(isset($this->data['form'][0])){
                 <label class="" for="trailer">Link do Trailer:</label>
                 <i class="fa-solid fa-link"></i>
                 <input class="form-control" type="text" name="trailer" id="trailer" value="<?php if(isset($valorForm['trailer'])){echo $valorForm['trailer'];} ?>" placeholder="Fim da Exibição da Serie">
+            </div>
+            <div class="div_inputs_down">
+                <h3>Link para download e Assistir Online:</h3>
+                <?php foreach($this->data['select']['down'] as $down){ extract($down); ?>
+                <label class="" for="link_down">Link para download:</label>
+                <i class="fa-solid fa-link"></i>
+                <input class="form-control" type="text" name="link_down" id="link_down" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $id_down)){echo $link_down;}?>" placeholder="Link para download da série">
+
+
+                <?php }?>
             </div>
             <div class="row_input_select">
                 <label class="mx-3" for="anime_id">Anime Relacionado:</label>

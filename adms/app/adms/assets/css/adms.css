@@ -674,6 +674,10 @@ body{
 .label_textarea{
     margin-left: 25px;
 }
+.div_inputs_down{
+    border: 1px dotted var(--azulEscuro);
+    margin-top: 1.5rem;
+}
 
 /* não está sendo usado.................  */
 input.input_form,
