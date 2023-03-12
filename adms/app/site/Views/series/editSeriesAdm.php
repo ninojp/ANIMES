@@ -72,14 +72,29 @@ if(isset($this->data['form'][0])){
                 <input class="form-control" type="text" name="trailer" id="trailer" value="<?php if(isset($valorForm['trailer'])){echo $valorForm['trailer'];} ?>" placeholder="Fim da Exibição da Serie">
             </div>
             <div class="div_inputs_down">
-                <h3>Link para download e Assistir Online:</h3>
-                <?php foreach($this->data['select']['down'] as $down){ extract($down); ?>
-                <label class="" for="link_down">Link para download:</label>
+                <h4>Link para download e Assistir Online:</h4>
+                <?php foreach($this->data['select']['down'] as $this->data['down']){ ?>
                 <i class="fa-solid fa-link"></i>
-                <input class="form-control" type="text" name="link_down" id="link_down" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $id_down)){echo $link_down;}?>" placeholder="Link para download da série">
+                <label class="" for="link_down">Link para download:</label>
+                <input class="form-control" type="text" name="link_down" id="link_down" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] ==  $this->data['down']['id_down'])){echo $this->data['down']['link_down'];}?>" placeholder="Link para download da série">
+                <i class="fa-solid fa-file-signature"></i>
+                <label class="" for="link_down_desc">Descrição do Link Down:</label>
+                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_down_desc" id="link_down_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_down_desc'];} ?></textarea>
 
+                <i class="fa-solid fa-link"></i>
+                <label class="" for="link_online">Link para Assistir Online:</label>
+                <input class="form-control" type="text" name="link_online" id="link_online" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_online'];}?>" placeholder="Link para Assistir Online a série">
+                <i class="fa-solid fa-file-signature"></i>
+                <label class="" for="link_online_desc">Descrição do Link Assistir Online:</label>
+                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_online_desc" id="link_online_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_online_desc'];} ?></textarea>
 
-                <?php }?>
+                <i class="fa-solid fa-link"></i>
+                <label class="" for="link_torrent">Link para download via Torrent:</label>
+                <input class="form-control" type="text" name="link_torrent" id="link_torrent" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_torrent'];}?>" placeholder="Link para download da série">
+                <i class="fa-solid fa-file-signature"></i>
+                <label class="" for="link_torrent_desc">Descrição do Link Torrent:</label>
+                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_torrent_desc" id="link_torrent_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_torrent_desc'];} ?></textarea>
+                <?php } var_dump($this->data['down']); ?>
             </div>
             <div class="row_input_select">
                 <label class="mx-3" for="anime_id">Anime Relacionado:</label>

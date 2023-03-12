@@ -8,11 +8,13 @@ class EditSeriesAdm
 {
     private array|string|null $data = [];
     private array|null $dataForm;
+    private array|null $down;
     private int|string|null $id_serie;
     /** ================================================================================== */
-    public function index(int|string|null $id_serie = null): void
+    public function index(int|string|null $id_serie=null): void
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        // $this->down = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if ((!empty($id_serie)) and (empty($this->dataForm['SendEditSeries']))) {
             $this->id_serie = (int) $id_serie;
             $viewSeries = new \AdmsSit\Models\MdEditSeriesAdm();
@@ -55,7 +57,10 @@ class EditSeriesAdm
         if(!empty($this->dataForm['SendEditSeries'])){
             unset($this->dataForm['SendEditSeries']);
             $loadEditSeries = new \AdmsSit\Models\MdEditSeriesAdm();
-            $loadEditSeries->editSeries($this->dataForm);
+            $loadEditSeries->editSeries($this->dataForm, $this->down);
+            // $down=$this->down;
+            var_dump($this->down);
+            // die ("AQUI!");
             if($loadEditSeries->getResult()){
                 $urlRedirect = URLADM."edit-series-adm/index/".$this->dataForm['id_serie'];
                 header("Location: $urlRedirect");
