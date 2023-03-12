@@ -21,7 +21,7 @@ class EditSeriesAdm
                 $this->data['form'] = $viewSeries->getResultBd();
                 $this->loadViewEditSeries();
             } else {
-                $urlRedirect = URL."list-animes/index";
+                $urlRedirect = URLADM."list-animes-adm/index";
                 header("Location: $urlRedirect");
             }
         } else {
@@ -44,9 +44,9 @@ class EditSeriesAdm
         // $this->data['button'] = $listButton->buttonPermission($button);
         $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
-        $this->data['sidebarActive'] = "edit-series";
+        $this->data['sidebarActive'] = "edit-series-adm";
         
-        $loadView = new \AdmsSrc\ConfigViewAdms("site/views/series/editSeries", $this->data);
+        $loadView = new \AdmsSrc\ConfigViewAdms("site/views/series/editSeriesAdm", $this->data);
         $loadView->loadViewSite();
     }
     /** ========================================================================================== */
@@ -57,7 +57,7 @@ class EditSeriesAdm
             $loadEditSeries = new \AdmsSit\Models\MdEditSeriesAdm();
             $loadEditSeries->editSeries($this->dataForm);
             if($loadEditSeries->getResult()){
-                $urlRedirect = URLADM."edit-series/index/".$this->dataForm['id_serie'];
+                $urlRedirect = URLADM."edit-series-adm/index/".$this->dataForm['id_serie'];
                 header("Location: $urlRedirect");
                 $_SESSION['msg'] = "<p class='alert alert-success'>Série EDITADA com Sucesso!</p>";
             }else{
@@ -66,7 +66,7 @@ class EditSeriesAdm
             }
         } else {
             $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 156! Registro não encontrado!</p>";
-            $urlRedirect = URL."list-animes/index";
+            $urlRedirect = URLADM."list-animes-adm/index";
             header("Location: $urlRedirect");
         }
     }

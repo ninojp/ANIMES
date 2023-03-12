@@ -517,7 +517,7 @@ body{
 .row_form{
     display: flex;
     justify-content: center;
-    width: 30rem;
+    width: 50rem;
     background-color: var(--branco);
     flex-wrap: wrap;
     border-radius: 10px;
@@ -586,12 +586,17 @@ body{
     color: var(--danger-color);
     font-size: 0.9rem;
 }
+.row_input_select{
+    height: 40px;
+    margin-top: 1.5rem;
+    position: relative;
+}
 .select_input{
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     position: relative;
     border-radius: 5px;
     border: 1px solid var(--active-color);
@@ -600,11 +605,12 @@ body{
     position: absolute;
     width: 47px;
     height: 100%;
+    right: 1px;
     color: var(--main-color);
     font-size: 18px;
     background-color: var(--second-bg-color);
     border: 1px solid var(--active-color);
-    border-radius: 5px 0 0 5px;
+    border-radius: 0px 5px 5px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -622,7 +628,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 /* DIV ROW dos formularios de edição *****************************************************/
 .row_edit{
@@ -653,11 +659,23 @@ body{
     font-size: 16px;
     transition: all 0.3s ease;
 }
-/* não está sendo usado.................  */
-.title_input{
-    color: var(--azulScuro);
-    font-size: 1.1em;
+.row_edit_textarea{
+    /* height: 60px; */
+    margin-top: 1rem;
+    position: relative;
 }
+.row_edit_textarea i{
+    position: absolute;
+    top: 3px;
+    color: var(--azulEscuro);
+    font-size: 18px;
+    display: flex;
+}
+.label_textarea{
+    margin-left: 25px;
+}
+
+/* não está sendo usado.................  */
 input.input_form,
 textarea.input_form,
 select.input_form{
