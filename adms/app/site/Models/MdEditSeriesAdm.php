@@ -10,7 +10,6 @@ class MdEditSeriesAdm
     private array|null $resultBd;
     private int|string|null $id_serie;
     private array|null $data;
-    private array|null $down;
     private array $listRegistryAdd;
 
     /** ========================================================================================= */
@@ -40,18 +39,12 @@ class MdEditSeriesAdm
         }
     }
     /** ========================================================================================== */
-    public function editSeries(array $data=null, array $down=null):void
+    public function editSeries(array $data=null):void
     {
         $this->data = $data;
-        $this->down = $down;
-        var_dump($this->data);
-        var_dump($this->down);
-        die ("AQUI! Model");
         $this->data['modified'] = date("Y-m-d H:i:s");
         $updateSerie = new \Adms\Models\helper\AdmsUpdate();
         $updateSerie->exeUpdate("serie", $this->data, "WHERE id_serie=:id_serie", "id_serie={$this->data['id_serie']}");
-        $updateSerie->exeUpdate("down", $this->down, "WHERE id_down=:down_id", "down_id={$this->data['down_id']}");
-
         if($updateSerie->getResult()){
             $_SESSION['msg'] = "<p class='alert alert-success'>Ok! Registro Editado com sucesso</p>";
             $this->result = true;
@@ -70,10 +63,7 @@ class MdEditSeriesAdm
         $list->fullRead("SELECT id_cat_anime, cat_anime FROM anime_categoria ORDER BY cat_anime ASC");
         $registry['cat_ani'] = $list->getResult();
 
-        $list->fullRead("SELECT id_down, link_down, link_down_desc, link_online, link_online_desc, link_torrent, link_torrent_desc FROM down ");
-        $registry['down'] = $list->getResult();
-
-        $this->listRegistryAdd = ['ani' => $registry['ani'], 'cat_ani' => $registry['cat_ani'], 'down' => $registry['down']];
+        $this->listRegistryAdd = ['ani' => $registry['ani'], 'cat_ani' => $registry['cat_ani']];
         // var_dump($this->listRegistryAdd);
 
         return $this->listRegistryAdd;

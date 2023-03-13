@@ -8,13 +8,11 @@ class EditSeriesAdm
 {
     private array|string|null $data = [];
     private array|null $dataForm;
-    private array|null $down;
     private int|string|null $id_serie;
     /** ================================================================================== */
     public function index(int|string|null $id_serie=null): void
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        // $this->down = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if ((!empty($id_serie)) and (empty($this->dataForm['SendEditSeries']))) {
             $this->id_serie = (int) $id_serie;
             $viewSeries = new \AdmsSit\Models\MdEditSeriesAdm();
@@ -35,15 +33,14 @@ class EditSeriesAdm
     {
         $listSelect = new \AdmsSit\Models\MdEditSeriesAdm();
         $this->data['select'] = $listSelect->listSelect();
-
+        
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
-        // $button = ['list_user' => ['menu_controller' => 'list-user', 'menu_metodo' => 'index'], 
-        // 'view_user' => ['menu_controller' => 'view-user', 'menu_metodo' => 'index'],
-        // 'edit_user_pass' => ['menu_controller' => 'edit-user-pass', 'menu_metodo' => 'index'],
-        // 'edit_user_image' => ['menu_controller' => 'edit-user-image', 'menu_metodo' => 'index'],
-        // 'delete_user' => ['menu_controller' => 'delete-user', 'menu_metodo' => 'index']];
-        // $listButton = new \Adms\Models\helper\AdmsButton();
-        // $this->data['button'] = $listButton->buttonPermission($button);
+        $button = ['list_animacao' => ['menu_controller' => 'list-animacao', 'menu_metodo' => 'index'],
+        'edit_serie_down' => ['menu_controller' => 'edit-serie-down', 'menu_metodo' => 'index'],
+        'edit_serie_image' => ['menu_controller' => 'edit-serie-image', 'menu_metodo' => 'index'],
+        'delete_serie' => ['menu_controller' => 'delete-serie', 'menu_metodo' => 'index']];
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        $this->data['button'] = $listButton->buttonPermission($button);
         $listMenu = new \Adms\Models\helper\AdmsMenu();
         $this->data['menu'] = $listMenu->itemMenu();
         $this->data['sidebarActive'] = "edit-series-adm";
@@ -57,10 +54,7 @@ class EditSeriesAdm
         if(!empty($this->dataForm['SendEditSeries'])){
             unset($this->dataForm['SendEditSeries']);
             $loadEditSeries = new \AdmsSit\Models\MdEditSeriesAdm();
-            $loadEditSeries->editSeries($this->dataForm, $this->down);
-            // $down=$this->down;
-            var_dump($this->down);
-            // die ("AQUI!");
+            $loadEditSeries->editSeries($this->dataForm);
             if($loadEditSeries->getResult()){
                 $urlRedirect = URLADM."edit-series-adm/index/".$this->dataForm['id_serie'];
                 header("Location: $urlRedirect");

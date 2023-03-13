@@ -8,7 +8,7 @@ if(isset($this->data['form'])){
 //na posição [0] e quando os dados vem do banco de dados
 if(isset($this->data['form'][0])){
     $valorForm = $this->data['form'][0];
-} //var_dump($this->data['form'][0]); ?>
+} //var_dump($valorForm); ?>
 <div class="wrapper_form">
     <div class="row_form">
         <div class="title_form">
@@ -22,8 +22,6 @@ if(isset($this->data['form'][0])){
         <form class="form_adms" action="" method="POST" id="form-edit-series">
             <!-- input oculto pra enviar o id, via post -->
             <input class="form-control" type="hidden" name="id_serie" id="id_serie" value="<?php if(isset($valorForm['id_serie'])){echo $valorForm['id_serie'];} ?>">
-            <input class="form-control" type="hidden" name="down_id" id="down_id" value="<?php if(isset($valorForm['down_id'])){echo $valorForm['down_id'];} ?>">
-            
             <div class="pt-3 text-center">
                 <?php if ((!empty($valorForm['img_mini'])) and (file_exists("app/site/assets/imgs/serie/{$valorForm['img_mini']}"))) {
                         echo "<img src='".URLADM."app/site/assets/imgs/serie/{$valorForm['img_mini']}' height='300'><br><br>";
@@ -69,32 +67,7 @@ if(isset($this->data['form'][0])){
             <div class="row_edit">
                 <label class="" for="trailer">Link do Trailer:</label>
                 <i class="fa-solid fa-link"></i>
-                <input class="form-control" type="text" name="trailer" id="trailer" value="<?php if(isset($valorForm['trailer'])){echo $valorForm['trailer'];} ?>" placeholder="Fim da Exibição da Serie">
-            </div>
-            <div class="div_inputs_down">
-                <h4>Link para download e Assistir Online:</h4>
-                <?php foreach($this->data['select']['down'] as $this->data['down']){ ?>
-                <i class="fa-solid fa-link"></i>
-                <label class="" for="link_down">Link para download:</label>
-                <input class="form-control" type="text" name="link_down" id="link_down" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] ==  $this->data['down']['id_down'])){echo $this->data['down']['link_down'];}?>" placeholder="Link para download da série">
-                <i class="fa-solid fa-file-signature"></i>
-                <label class="" for="link_down_desc">Descrição do Link Down:</label>
-                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_down_desc" id="link_down_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_down_desc'];} ?></textarea>
-
-                <i class="fa-solid fa-link"></i>
-                <label class="" for="link_online">Link para Assistir Online:</label>
-                <input class="form-control" type="text" name="link_online" id="link_online" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_online'];}?>" placeholder="Link para Assistir Online a série">
-                <i class="fa-solid fa-file-signature"></i>
-                <label class="" for="link_online_desc">Descrição do Link Assistir Online:</label>
-                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_online_desc" id="link_online_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_online_desc'];} ?></textarea>
-
-                <i class="fa-solid fa-link"></i>
-                <label class="" for="link_torrent">Link para download via Torrent:</label>
-                <input class="form-control" type="text" name="link_torrent" id="link_torrent" value="<?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_torrent'];}?>" placeholder="Link para download da série">
-                <i class="fa-solid fa-file-signature"></i>
-                <label class="" for="link_torrent_desc">Descrição do Link Torrent:</label>
-                <textarea class="form-control" spellcheck="true" rows="3" cols="33" name="link_torrent_desc" id="link_torrent_desc" placeholder="Edite a Descrição"><?php if((isset($valorForm['down_id'])) and ($valorForm['down_id'] == $this->data['down']['id_down'])){echo $this->data['down']['link_torrent_desc'];} ?></textarea>
-                <?php } var_dump($this->data['down']); ?>
+                <input class="form-control" type="text" name="trailer" id="trailer" value="<?php if(isset($valorForm['trailer'])){echo $valorForm['trailer'];} ?>" placeholder="Link Do Trailler">
             </div>
             <div class="row_input_select">
                 <label class="mx-3" for="anime_id">Anime Relacionado:</label>
@@ -132,13 +105,17 @@ if(isset($this->data['form'][0])){
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendEditSeries" value="Salvar">Salvar Mudanças</button><br>
             </div>
-            <!-- // if(!empty($this->data['button']['list_user']) OR ($this->data['button']['delete_user'])) {
-                //echo "<div class='col-12 text-center p-4'>";
-                //if(!empty($this->data['button']['list_user'])) { 
-                    //echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."list-user/index'><i class='fa-solid fa-list'></i> Listar</a>"; }
-                //if(!empty($this->data['button']['delete_user'])) { 
-                    //echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-user/index/{$valorForm['id_user']}' onclick='return confirm('Tem certeza que deseja excluir o registro?')'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
-            //echo "</div>"; } ?> -->
+            <?php if(!empty($this->data['button']['list_animacao']) OR ($this->data['button']['edit_serie_down']) OR ($this->data['button']['edit_serie_image']) OR ($this->data['button']['delete_serie'])) {
+                echo "<div class='col-12 text-center p-4'>";
+                if(!empty($this->data['button']['list_animacao'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."list-animacao/index'><i class='fa-solid fa-list'></i> List Animação</a>"; }
+                if(!empty($this->data['button']['edit_serie_down'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-serie-down/index/{$valorForm['down_id']}'><i class='fa-solid fa-list'></i> Edit Série Down</a>"; }
+                if(!empty($this->data['button']['edit_serie_image'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-serie-image/index/{$valorForm['id_serie']}'><i class='fa-solid fa-list'></i> Edit Série Imagem</a>"; }
+                if(!empty($this->data['button']['delete_serie'])) { 
+                    echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-serie/index/{$valorForm['id_serie']}' onclick='return confirm('Tem certeza que deseja excluir o registro?')'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+            echo "</div>"; } ?>
         </form>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-namespace Animes\Views;
+namespace AdmsSit\Views;
 if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
     header("Location: https://localhost/animes/"); } ?>
 <main class="container-fluid">

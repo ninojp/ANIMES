@@ -1,5 +1,5 @@
 <?php
-namespace Animes\Controllers;
+namespace AdmsSit\Controllers;
 if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){ header("Location: https://localhost/animes/"); }
 /** Classe controller, para gerenciar as informações entre a Views e a Models
  * @author NinoJP <ninocriptocoin@gmail.com> - 03/02/2023 */
