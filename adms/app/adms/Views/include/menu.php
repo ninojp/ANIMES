@@ -12,10 +12,10 @@ if (isset($this->data['sidebarActive'])) {
     <!-- Inicio do SIDE-BAR -->
     <!-- <div class='sidebar'> -->
 <!-- Inicio do conteúdo da pagina ADM -->
-<main class='main_content'>
+<!-- <main class='main_content'> -->
     <!-- Inicio do SIDE-BAR -->
     <div class='sidebar'>
-        <h1>Menu SideBar</h1>
+        <!-- <h1>Menu SideBar</h1> -->
         <?php
         //Menu DropDown Dinâmico com os dados da tabela:adms_items_menus
         if ((isset($this->data['menu'])) and ($this->data['menu'])) {

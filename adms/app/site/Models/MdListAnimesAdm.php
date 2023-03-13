@@ -53,7 +53,7 @@ class MdListAnimesAdm
         //------------------------------ PAGINAÇÂO -------------------------------------------
         //converte para inteiro e verifica se possui valor, se não atribui o valor 1
         $this->page = (int) $page ? $page : 1;
-        $pagination = new \Animes\Models\helper\MdPagination(URL.'list-animes/index');
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM.'list-animes-adm/index');
         $pagination->condition($this->page, $this->limitResult);
         $pagination->pagination("SELECT COUNT(id_anime) AS num_result FROM anime");
         $this->resultPg = $pagination->getResult();
@@ -66,7 +66,7 @@ class MdListAnimesAdm
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 151! Nenhum Anime encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 158! Nenhum Anime encontrado!</p>";
             $this->result = false;
         }
     }
@@ -99,7 +99,7 @@ class MdListAnimesAdm
     public function searchNameAnime(): void
     {
         //instância a classe:AdmsPagination, cria o objeto:$pagination 
-        $pagination = new \Animes\Models\helper\MdPagination(URL . 'list-animes/index', "?search_name={$this->searchName}");
+        $pagination = new \Adms\Models\helper\AdmsPagination(URLADM.'list-animes-adm/index', "?search_name={$this->searchName}");
         //instância o método para fazer a paginação
         $pagination->condition($this->page, $this->limitResult);
         //cria a query, buscar quantidade total de registros da tabela:adms_users
@@ -110,7 +110,7 @@ class MdListAnimesAdm
         // die("AQUI!");
         //-------------------------------------------------------------------------------------
 
-        $listUsersNameEmail = new \Animes\Models\helper\MdRead();
+        $listUsersNameEmail = new \Adms\Models\helper\AdmsRead();
         $listUsersNameEmail->fullRead("SELECT id_anime, codnome, tit_anime, img_mini 
         FROM anime WHERE tit_anime LIKE :search_name ORDER BY codnome ASC LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
         $this->resultBd = $listUsersNameEmail->getResult();
@@ -118,7 +118,7 @@ class MdListAnimesAdm
             // var_dump($this->resultBd);
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 151.1! Nenhum Anime(Pesquisa) encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert alert-warning'>Erro 158.1! Nenhum Anime(Pesquisa) encontrado!</p>";
             $this->result = false;
         }
     }

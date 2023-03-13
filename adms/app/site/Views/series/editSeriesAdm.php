@@ -105,16 +105,16 @@ if(isset($this->data['form'][0])){
             <div class="button_center">
                 <button class="btn btn-primary" type="submit" name="SendEditSeries" value="Salvar">Salvar Mudanças</button><br>
             </div>
-            <?php if(!empty($this->data['button']['list_animacao']) OR ($this->data['button']['edit_serie_down']) OR ($this->data['button']['edit_serie_image']) OR ($this->data['button']['delete_serie'])) {
+            <?php if(!empty($this->data['button']['list_series_adm']) OR ($this->data['button']['edit_series_down']) OR ($this->data['button']['edit_series_image']) OR ($this->data['button']['delete_series'])) {
                 echo "<div class='col-12 text-center p-4'>";
-                if(!empty($this->data['button']['list_animacao'])) { 
-                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."list-animacao/index'><i class='fa-solid fa-list'></i> List Animação</a>"; }
-                if(!empty($this->data['button']['edit_serie_down'])) { 
-                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-serie-down/index/{$valorForm['down_id']}'><i class='fa-solid fa-list'></i> Edit Série Down</a>"; }
-                if(!empty($this->data['button']['edit_serie_image'])) { 
-                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-serie-image/index/{$valorForm['id_serie']}'><i class='fa-solid fa-list'></i> Edit Série Imagem</a>"; }
-                if(!empty($this->data['button']['delete_serie'])) { 
-                    echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-serie/index/{$valorForm['id_serie']}' onclick='return confirm('Tem certeza que deseja excluir o registro?')'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
+                if(!empty($this->data['button']['list_series_adm'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."list-series-adm/index'><i class='fa-solid fa-list'></i> List Séries</a>"; }
+                if(!empty($this->data['button']['edit_series_down'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-series-down/index/{$valorForm['down_id']}'><i class='fa-solid fa-list'></i> Edit Série Down</a>"; }
+                if(!empty($this->data['button']['edit_series_image'])) { 
+                    echo "<a class='btn btn-sm btn-outline-success mx-2' href='".URLADM."edit-series-image/index/{$valorForm['id_serie']}'><i class='fa-solid fa-list'></i> Edit Série Imagem</a>"; }
+                if(!empty($this->data['button']['delete_series'])) { 
+                    echo "<a class='btn btn-sm btn-outline-danger mx-2' href='".URLADM."delete-series/index/{$valorForm['id_serie']}' onclick='return confirm('Tem certeza que deseja excluir o registro?')'><i class='fa-solid fa-trash-can'></i> Apagar</a>"; } 
             echo "</div>"; } ?>
         </form>
     </div>

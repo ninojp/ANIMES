@@ -412,6 +412,9 @@ Erro 156 - ADMS/app/site/Controllers/EditSeriesAdm.php - loadEditSeries()
 Erro 157 - ADMS/app/site/Models/MdlistSeriesAdm.php - listSeries()
 Erro 157.1 - ADMS/app/site/Models/MdlistSeriesAdm.php - searchNameSerie()
 
+Erro 158 - ADMS/app/site/Models/MdlistAnimesAdm.php - listAnimes()
+Erro 158.1 - ADMS/app/site/Models/MdlistAnimesAdm.php - searchNameAnime()
+
 
 
 

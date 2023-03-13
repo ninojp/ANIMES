@@ -192,14 +192,17 @@ body{
 }
 /* Definições do DIV MENU LATERAL - SIDE-BAR ***************************************************/
 .sidebar{
-    position: sticky;
-    top: 60px;/*testar depois, ainda não muda nada */
+    /* display: inline-block; */
+    /* position: sticky; */
+    position: absolute;
+    top: 80px;/*testar depois, ainda não muda nada */
     height: calc(100vh - 100px);
     width: 60px;
-    /* width: 250px; */
+    /* width: fit-content; */
     overflow: auto;/* para exibir a barra de rolagem se for necessário */
     overflow-x: hidden;
     flex-shrink: 0;
+    z-index: 9;
     background-color: var(--azulScuro);
     color: var(--azulClaro);
     box-shadow: 4px 4px 4px 0px rgba(13, 110, 253, 0.3);
@@ -396,6 +399,10 @@ body{
 
 /* ============================================================================================== */
 /* Definições gerais do LAYOUT das VIEWs LISTAR ****************************************************/
+.main_listar{
+    display: block;
+    margin-left: 60px;
+}
 .wrapper_list{
     width: 100%;
     background-color: var(--azulEscuro);
@@ -759,9 +766,15 @@ select.input_form:focus{
     width: fit-content;
 }
 .thumb_div {
+    position: relative;
     max-height: 320px;
     max-width: 195px;
     margin: 2rem 0rem 0rem 1rem;
+}
+.div_btn_list{
+    position: absolute;
+    top: 20%;
+    left: 25%;
 }
 .thumb_img {
     height:270px;
@@ -771,17 +784,20 @@ select.input_form:focus{
 }
 .thumb_img:hover{
     box-shadow: 0px 0px 10px #ffd700;
+    /* transform: scale(1.1);
+    transition: all 0.3s ease-in; */
 }
 .thumb_div:hover {
     transform: scale(1.1);
     transition: all 0.3s ease-in;
 }
 .span_nome {
-    position: relative;
-    top: -23px; 
+    position: sticky;
+    bottom: 1em;
+    /* left: 20%;  */
     color: #ffffff;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-radius: 5px;
     background-color: rgba(0,0,0,0.8);
     padding: 0rem 0.5rem 0rem 0.5rem;
@@ -886,4 +902,8 @@ select.input_form:focus{
     padding: 0px 10px;
     width: max-content;
     margin-left: 50px;
+}
+.align_center{
+    justify-content: center;
+    align-items: center;
 }

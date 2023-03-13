@@ -35,10 +35,10 @@ class EditSeriesAdm
         $this->data['select'] = $listSelect->listSelect();
         
         // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
-        $button = ['list_animacao' => ['menu_controller' => 'list-animacao', 'menu_metodo' => 'index'],
-        'edit_serie_down' => ['menu_controller' => 'edit-serie-down', 'menu_metodo' => 'index'],
-        'edit_serie_image' => ['menu_controller' => 'edit-serie-image', 'menu_metodo' => 'index'],
-        'delete_serie' => ['menu_controller' => 'delete-serie', 'menu_metodo' => 'index']];
+        $button = ['list_series_adm' => ['menu_controller' => 'list-series-adm', 'menu_metodo' => 'index'],
+        'edit_series_down' => ['menu_controller' => 'edit-series-down', 'menu_metodo' => 'index'],
+        'edit_series_image' => ['menu_controller' => 'edit-series-image', 'menu_metodo' => 'index'],
+        'delete_series' => ['menu_controller' => 'delete-series', 'menu_metodo' => 'index']];
         $listButton = new \Adms\Models\helper\AdmsButton();
         $this->data['button'] = $listButton->buttonPermission($button);
         $listMenu = new \Adms\Models\helper\AdmsMenu();

@@ -28,7 +28,7 @@ class ListAnimesAdm
         // Recebe os dados da pesquisa via URL
         $this->searchName = filter_input(INPUT_GET, 'search_name', FILTER_DEFAULT);
 
-        $listAnimes = new \Animes\Models\MdListAnimesAdm();
+        $listAnimes = new \AdmsSit\Models\MdListAnimesAdm();
 
         //verifica se foi clicado no botão pesquisar, se foi executa o codigo abaixo
         if (!empty($this->dataForm['SendSearchAnime'])) {
@@ -58,7 +58,15 @@ class ListAnimesAdm
             $this->data['listAnimes'] = [];
             $this->data['pagination'] = "";
         }
-        $loadView = new \Src\ConfigViewAnimes("animes/Views/animes/listAnimes", $this->data);
-        $loadView->loadViewAnimes();
+        // ----------- Exibir ou ocultar botões conforme o nivel de acesso -------------------
+        $button = [ 'list_animacao' => ['menu_controller' => 'list-animacao', 'menu_metodo' => 'index'], 'edit_animes_image' => ['menu_controller' => 'edit-animes-image', 'menu_metodo' => 'index'], 'edit_animes_adm' => ['menu_controller' => 'edit-animes-adm', 'menu_metodo' => 'index']];
+        $listButton = new \Adms\Models\helper\AdmsButton();
+        $this->data['button'] = $listButton->buttonPermission($button);
+        
+        $listMenu = new \Adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        $this->data['sidebarActive'] = "list-animes-adm";
+        $loadView = new \AdmsSrc\ConfigViewAdms("site/Views/animes/listAnimesAdm", $this->data);
+        $loadView->loadViewSite();
     }
 }
