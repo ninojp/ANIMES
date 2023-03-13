@@ -3,7 +3,7 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
     header("Location: https://localhost/adms/");
     die("Erro 000! Página Não encontrada"); } ?>
 <!-- Início do NavBar -->
-<nav class="navbar sticky-top">
+<nav class="navbar">
     <div class="navbar_content">
         <div class="bars">
             <i class="fa-solid fa-bars"></i>
@@ -59,4 +59,4 @@ if(!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')){
         </div>
     </div>
 </nav>
-<!-- <div class="div_corpo_pg">INÍCIO da DIV ROW do corpo da pagina -->
+<div class="div_corpo_pg border"><!-- INÍCIO da DIV ROW do corpo da pagina -->

@@ -8,7 +8,7 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 } ?>
 <!-- Inicio do conteúdo da pagina ADM - class='main_content' -->
-<!-- <aside class='aside_container'> -->
+<aside class='aside_container border'>
     <!-- Inicio do SIDE-BAR -->
     <!-- <div class='sidebar'> -->
 <!-- Inicio do conteúdo da pagina ADM -->
@@ -63,5 +63,5 @@ if (isset($this->data['sidebarActive'])) {
             }
         } ?>
     </div>
-<!-- </aside> -->
+</aside>
 <!-- FIM do SIDE-BAR -->

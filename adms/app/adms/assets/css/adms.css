@@ -61,10 +61,11 @@ body{
     background-color: var(--preto) !important;
     color: var(--azulClaro);
 }
+/* ================================================================================================ */
 /* INICIO do NAVBAR do ADM */
 .navbar{
-    /* position: fixed; */
-    margin-top: 20px;
+    position: sticky;
+    margin-top: 5px;
     display: flex;
     width: 100%;
     align-items: center;
@@ -75,7 +76,7 @@ body{
     padding: 5px 15px;
     font-size: 17px;
     top: 0;
-    z-index: 1;
+    z-index: 100;
 }
 .navbar .navbar_content{
     display: flex;
@@ -183,23 +184,20 @@ body{
 /* FIM dropdown do navbar */
 
 
-/* =============================================================================================== */
-/* Definições do MAIN da VIEW menu.php ***********************************************************/
-.main_content{
-    display: flex;
-    background-color: var(--azulScuro);
-    box-shadow: 0px 3px 5px 0px var(--azulClaro);
-}
+/* ============================================================================================ */
 /* Definições do DIV MENU LATERAL - SIDE-BAR ***************************************************/
+.aside_container{
+    max-width: 15%;
+}
 .sidebar{
     /* display: inline-block; */
     /* position: sticky; */
-    position: absolute;
-    top: 80px;/*testar depois, ainda não muda nada */
+    /* position: sticky; */
+    top: 60px;/*testar depois, ainda não muda nada */
     height: calc(100vh - 100px);
     width: 60px;
     /* width: fit-content; */
-    overflow: auto;/* para exibir a barra de rolagem se for necessário */
+    overflow: hidden;/* para exibir a barra de rolagem se for necessário */
     overflow-x: hidden;
     flex-shrink: 0;
     z-index: 9;
@@ -232,7 +230,7 @@ body{
 }
 /* BUTTON class:dropdown_btn  - Botão DropDown **************************************************/
 .dropdown_btn{
-    padding: 15px 0;
+    padding: 10px 1px;
     font-size: 16px;
     border: none;
     background: none;
@@ -242,7 +240,7 @@ body{
     color: var(--azulClaro);
 }
 .dropdown_btn span{
-    margin-right: 5px;
+    margin-right: 1px;
 }
 .dropdown_btn:hover{
     background-color: var(--second-bg-color);
@@ -253,7 +251,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 20px;
     flex-shrink: 0;
 }
 .dropdown_btn.active{
@@ -352,7 +350,32 @@ body{
     border-radius: 7px;
 }
 /* Fim dropdown sidebar */
-
+/* =============================================================================================== */
+/* ****************************** Definições do MAIN da VIEW ***************************************/
+/* Esta classe está na DIV, no fim do NAVBAR */
+.div_corpo_pg{
+    display: flex;
+    width: 100%;
+}
+/* Esta classe está na TAG MAIN, no inicio das VIEWS listar */
+.main_listar{
+    display: block;
+    max-width: 85%;
+    background-color: var(--azulScuro);
+    box-shadow: 0px 3px 5px 0px var(--azulClaro);
+}
+.div_row_pricipal{
+    display: block;
+}
+/* Esta classe está na DIV, no inicio da VIEW search.php */
+.div_search{
+    display: flex;
+    width: 100%;
+}
+.div_listar{
+    display: block;
+    width: 100%;
+}
 /* ============================================================================================ */
 /* Definições da VIEW Dashboard.php ************************************************************/
 .box{
@@ -399,10 +422,6 @@ body{
 
 /* ============================================================================================== */
 /* Definições gerais do LAYOUT das VIEWs LISTAR ****************************************************/
-.main_listar{
-    display: block;
-    margin-left: 60px;
-}
 .wrapper_list{
     width: 100%;
     background-color: var(--azulEscuro);
@@ -889,9 +908,11 @@ select.input_form:focus{
 /* ============================================================================================== */
 /* Definições gerais da classe alert **************************************************************/
 .msg_alert{
-    /* width: 100%; */
+    position: sticky;
+    display: flex;
+    width: 100%;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
 }
 .msg_alert p{
     padding: 0px 10px;

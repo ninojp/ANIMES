@@ -1,11 +1,16 @@
 <?php
+
 namespace Adms\Views;
+
 if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
-    header("Location: https://localhost/animes/"); } ?>
-<div class="row align_center ms-5">
+    header("Location: https://localhost/animes/");
+} ?>
+<div class="main_listar border"> <!-- ROW do main listar -->
+<div class="div_row_pricipal border">
     <!-- coluna do campo Busca por letras -->
-    <div class="row align_center ms-5">
-        <div data-bs-placement="top" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Listar os Animes por LETRA" class="col-8 nav nav-tabs align_center ms-5">
+    <div class="div_search">
+        <div class="col-9 nav nav-tabs align_center">
+            <!-- <div class="col-8 nav nav-tabs align_center ms-5" data-bs-placement="top" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Listar os Animes por LETRA"> -->
             <div class="nav-item px-1"><a class="nav-link active px-1" href="form_busca.php?input_busca=a">B</a></div>
             <div class="nav-item px-1"><a class="nav-link px-1" href="">C</a></div>
             <div class="nav-item px-1"><a class="nav-link px-1" href="">D</a></div>
@@ -36,7 +41,8 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
         <div class="col-3 align_center" data-bs-placement="top" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Pesquise por nome, termo ou título">
             <!-- Manter os dados no formulário de PESQUISA   -->
             <?php if (isset($this->data['form'])) {
-            $valorForm = $this->data['form']; } ?>
+                $valorForm = $this->data['form'];
+            } ?>
             <form class="form_pesquisar align_center" action="" name="form_pesquisar" method="POST">
                 <div class="d-inline">
                     <?php $search_name = "";
@@ -47,7 +53,7 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
                     <input type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquise Aqui!">
                 </div>
                 <div class="d-inline">
-                    <button class="btn_tranp" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?=URL;?>app/animes/assets/imgs/pesquisar.png"></button>
+                    <button class="btn_tranp" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?= URL; ?>app/animes/assets/imgs/pesquisar.png"></button>
                 </div>
             </form>
         </div>
