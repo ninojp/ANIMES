@@ -191,13 +191,13 @@ body{
 }
 .sidebar{
     /* display: inline-block; */
-    /* position: sticky; */
-    /* position: sticky; */
+    position: sticky;
     top: 60px;/*testar depois, ainda não muda nada */
-    height: calc(100vh - 100px);
-    width: 60px;
+    /* height: calc(100vh - 100px); */
+    height: max-content;
+    width: 40px;
     /* width: fit-content; */
-    overflow: hidden;/* para exibir a barra de rolagem se for necessário */
+    overflow: auto;/* para exibir a barra de rolagem se for necessário */
     overflow-x: hidden;
     flex-shrink: 0;
     z-index: 9;
@@ -208,7 +208,7 @@ body{
 }
 @media (max-width: 768px) {
     .sidebar{
-        width: 60px;
+        width: 40px;
         position: fixed;
         z-index: 1;
         width: 0;
@@ -239,15 +239,15 @@ body{
     width: 100%;
     color: var(--azulClaro);
 }
-.dropdown_btn span{
+/* .dropdown_btn span{
     margin-right: 1px;
-}
+} */
 .dropdown_btn:hover{
     background-color: var(--second-bg-color);
     color: var(--active-color);
 }
 .dropdown_btn .icon{
-    width: 60px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -291,7 +291,7 @@ body{
     background-color: var(--branco);
 }
 .sidebar_nav .icon{
-    width: 50px;
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,11 +299,11 @@ body{
     flex-shrink: 0;
 }
 .sidebar_nav .icon_itens{
-    width: 30px;
+    width: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     flex-shrink: 0;
 }
 
@@ -367,15 +367,112 @@ body{
 .div_row_pricipal{
     display: block;
 }
-/* Esta classe está na DIV, no inicio da VIEW search.php */
+/* =================================================================================================================
+/****************************** Esta classe está na DIV, no inicio da VIEW search.php ****************************/
 .div_search{
     display: flex;
     width: 100%;
 }
+.form_pesquisar{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.input_search{
+    display: flex;
+    margin-top: 10px;
+}
+.btn_transp{
+    position: absolute;
+    right: 30px;
+    background-color: var(--transp);
+    margin-top: 10px;
+    padding: 0px 6px;
+}
+.img_search{
+    height: 25px;
+}
+/* Formulário de pesquisa das views listar **********************************************************/
+.div_row_form{
+    width: 100%;
+    display: flex;
+    margin: 20px 0px 5px 0px;
+}
+.row_form_pesquisar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div_row_msg_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.top_list_right{
+    padding: 0px;
+    text-align: center;
+}
+
+/* ===============================================================================================
+/******************************* DIVs E IMAGENS DO LISTAR_ANIMES ********************************/
 .div_listar{
     display: block;
     width: 100%;
 }
+.div_list_animes{
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+.thumb_div {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    max-height: 320px;
+    max-width: 195px;
+    margin: 2rem 1.5rem;
+}
+.div_btn_list{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+.thumb_img {
+    height:270px;
+    width:190px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255,1.00);
+}
+.thumb_img:hover{
+    box-shadow: 0px 0px 10px #ffd700;
+    /* transform: scale(1.1);
+    transition: all 0.3s ease-in; */
+}
+.thumb_div:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+}
+.span_nome {
+    position: absolute;
+    bottom: -1em;
+    /* left: 20%;  */
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.9);
+    padding: 0rem 0.5rem ;
+}
+.link_sem {
+    text-decoration: none;
+}
+.fonte_small {
+    font-weight: 400;
+    font-size: 14pt;
+}
+
 /* ============================================================================================ */
 /* Definições da VIEW Dashboard.php ************************************************************/
 .box{
@@ -451,31 +548,7 @@ body{
     font-size: 2.5rem;
     font-weight: 700;
 }
-/* Formulário de pesquisa das views listar **********************************************************/
-.div_row_form{
-    width: 100%;
-    display: flex;
-    margin: 20px 0px 5px 0px;
-}
-.form_pesquisar{
-    width: 100%;
-    display: flex;
-}
-.row_form_pesquisar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.div_row_msg_btn{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.top_list_right{
-    padding: 0px;
-    text-align: center;
-}
+
 /* Definições gerais das TABELAS *****************************************************************/
 .table_list{
     /* margin-top: 15px; */
@@ -778,56 +851,7 @@ select.input_form:focus{
     background-color: var(--gelo);
 }
 /* FIM da paginação */
-/******************************* DIVs E IMAGENS DO LISTAR_ANIMES ********************************/
-.div_list_animes{
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
-}
-.thumb_div {
-    position: relative;
-    max-height: 320px;
-    max-width: 195px;
-    margin: 2rem 0rem 0rem 1rem;
-}
-.div_btn_list{
-    position: absolute;
-    top: 20%;
-    left: 25%;
-}
-.thumb_img {
-    height:270px;
-    width:190px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255,1.00);
-}
-.thumb_img:hover{
-    box-shadow: 0px 0px 10px #ffd700;
-    /* transform: scale(1.1);
-    transition: all 0.3s ease-in; */
-}
-.thumb_div:hover {
-    transform: scale(1.1);
-    transition: all 0.3s ease-in;
-}
-.span_nome {
-    position: sticky;
-    bottom: 1em;
-    /* left: 20%;  */
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.8);
-    padding: 0rem 0.5rem 0rem 0.5rem;
-}
-.link_sem {
-    text-decoration: none;
-}
-.fonte_small {
-    font-weight: 400;
-    font-size: 14pt;
-}
+
 /* ============================================================================================== */
 /* Definições gerais dos BOTÕES *******************************************************************/
 .btn_primary{
@@ -905,6 +929,7 @@ select.input_form:focus{
     background-color: var(--gelo2);
     color: var(--azulMedio);
 }
+
 /* ============================================================================================== */
 /* Definições gerais da classe alert **************************************************************/
 .msg_alert{

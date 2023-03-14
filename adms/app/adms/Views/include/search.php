@@ -5,8 +5,8 @@ namespace Adms\Views;
 if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
     header("Location: https://localhost/animes/");
 } ?>
-<div class="main_listar border"> <!-- ROW do main listar -->
-<div class="div_row_pricipal border">
+<div class="main_listar"> <!-- ROW do main listar -->
+<div class="div_row_pricipal">
     <!-- coluna do campo Busca por letras -->
     <div class="div_search">
         <div class="col-9 nav nav-tabs align_center">
@@ -44,17 +44,11 @@ if (!defined('@2y!10#OaHjLtR02hiD23TKNv(0$2)TkYur)$ADMS$(zF')) {
                 $valorForm = $this->data['form'];
             } ?>
             <form class="form_pesquisar align_center" action="" name="form_pesquisar" method="POST">
-                <div class="d-inline">
                     <?php $search_name = "";
                     if (isset($valorForm['search_name'])) {
-                        $search_name = $valorForm['search_name'];
-                    } ?>
-                    <!-- <label for="search_name">Nome: </label> -->
-                    <input type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquise Aqui!">
-                </div>
-                <div class="d-inline">
-                    <button class="btn_tranp" type="submit" name="SendSearchAnime" value="Pesquisar"><img src="<?= URL; ?>app/animes/assets/imgs/pesquisar.png"></button>
-                </div>
+                        $search_name = $valorForm['search_name']; } ?>
+                    <input class="input_search d-inline" type="text" name="search_name" id="search_name" value="<?php echo $search_name; ?>" placeholder="Pesquise Aqui!">
+                    <button class="btn_transp d-inline" type="submit" name="SendSearchAnime" value="Pesquisar"><img class="img_search" src="<?= URL; ?>app/animes/assets/imgs/pesquisar.png"></button>
             </form>
         </div>
     </div>

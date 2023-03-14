@@ -9,7 +9,7 @@ if(isset($this->data['form'])){
 if(isset($this->data['form'][0])){
     $valorForm = $this->data['form'][0];
 } //var_dump($valorForm); ?>
-<div class="wrapper_form">
+<div class="div_listar">
     <div class="row_form">
         <div class="title_form">
             <h2>Editar Série</h2>
@@ -118,7 +118,7 @@ if(isset($this->data['form'][0])){
             echo "</div>"; } ?>
         </form>
     </div>
-</div>
+<!-- </div> -->
 
 
 
